@@ -35,7 +35,7 @@ export function SiteHeader() {
 
         <div className="hidden items-center gap-3 md:flex">
           <Link
-            href="/partners"
+            href="/#partner-with-us"
             className="rounded-full border border-gold/45 bg-gold px-5 py-2.5 text-sm font-semibold text-navy shadow-glow transition hover:-translate-y-0.5 hover:bg-parchment"
           >
             Partner With Us
@@ -67,7 +67,7 @@ export function SiteHeader() {
               </Link>
             ))}
             <Link
-              href="/partners"
+              href="/#partner-with-us"
               onClick={() => setIsOpen(false)}
               className="mt-2 rounded-2xl border border-gold/45 bg-gold px-4 py-3 text-center text-sm font-bold text-navy shadow-glow transition hover:bg-parchment"
             >

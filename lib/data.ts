@@ -3,7 +3,7 @@ import { BriefcaseBusiness, CalendarDays, Handshake, Sparkles, Trophy, UsersRoun
 export const navItems = [
   { label: 'Home', href: '/' },
   { label: 'Biztigation 2.0', href: '/biztigation' },
-  { label: 'Events', href: '/events' },
+  { label: 'Initiatives', href: '/initiatives' },
   { label: 'People', href: '/people' },
   { label: 'Partners', href: '/partners' },
   { label: 'Join Us', href: '/join' }
@@ -52,14 +52,14 @@ export const eventCards = [
     category: 'Competition Bootcamp',
     description: 'A practical training platform for case solving, presentation design, and executive-level pitching.',
     stats: '110+ teams · 21+ departments · 31K+ reach',
-    href: '/events'
+    href: '/initiatives'
   },
   {
     title: 'Finance Fest Legacy',
     category: 'Student-Corporate Engagement',
     description: 'Job fairs, panels, publications, competitions, campus engagement, and large-scale audience activation.',
     stats: '80+ stalls · 15,000+ CVs · 20+ speakers',
-    href: '/events'
+    href: '/initiatives'
   }
 ];
 
@@ -85,9 +85,9 @@ export const tournamentRounds = [
 ];
 
 export const samplePeople = [
-  { name: 'Arpan Samadder', role: 'President', group: 'Governing Body', email: 'president@jufinant.org' },
-  { name: 'General Secretary', role: 'General Secretary', group: 'Governing Body', email: 'general.secretary@jufinant.org' },
-  { name: 'Corporate Advisor', role: 'Advisor', group: 'Corporate Advisory Board', email: 'partnerships@jufinant.org' }
+  { name: 'Arpan Samadder', role: 'President', group: 'Governing Body', email: 'president account planned' },
+  { name: 'General Secretary', role: 'General Secretary', group: 'Governing Body', email: 'general secretary account planned' },
+  { name: 'Corporate Advisor', role: 'Advisor', group: 'Corporate Advisory Board', email: 'partnerships account planned' }
 ];
 
 export const partnerValues = [

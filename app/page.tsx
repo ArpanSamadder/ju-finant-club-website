@@ -14,17 +14,17 @@ export default function HomePage() {
               Official Website · Jahangirnagar University FinAnt Club
             </p>
             <h1 className="font-display text-5xl font-bold leading-[0.95] tracking-tight text-white md:text-7xl">
-              Building AI-Native Professionals for Bangladesh’s Business Future.
+              Building Future-Ready Professionals.
             </h1>
             <p className="mt-7 max-w-2xl text-lg leading-8 text-white/68">
-              JU FinAnt Club is a student-led institution focused on professional development, finance and business learning, leadership growth, AI-powered productivity, and corporate-ready execution.
+              A student-led institution for business learning, leadership, and industry-connected experiences.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <Link href="/biztigation" className="inline-flex items-center justify-center gap-2 rounded-full bg-gold px-6 py-3 font-semibold text-navy shadow-glow transition hover:-translate-y-1 hover:bg-parchment">
-                Explore Biztigation 2.0 <ArrowRight size={18} />
+              <Link href="/" className="inline-flex items-center justify-center gap-2 rounded-full bg-gold px-6 py-3 font-semibold text-navy shadow-glow transition hover:-translate-y-1 hover:bg-parchment">
+                Explore FinAnt <ArrowRight size={18} />
               </Link>
-              <Link href="/join" className="inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 font-semibold text-white transition hover:-translate-y-1 hover:bg-white/10">
-                Join JU FinAnt Club
+              <Link href="/biztigation" className="inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 font-semibold text-white transition hover:-translate-y-1 hover:bg-white/10">
+                Biztigation 2.0
               </Link>
             </div>
           </Reveal>

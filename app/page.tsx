@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { Reveal } from '@/components/reveal';
-import { eventCards, metrics, pillars } from '@/lib/data';
+import { eventCards, metrics, partnerValues, pillars } from '@/lib/data';
 
 export default function HomePage() {
   return (
@@ -93,6 +93,34 @@ export default function HomePage() {
                   <p className="mt-3 text-white/62">{event.description}</p>
                   <p className="mt-5 text-sm text-white/45">{event.stats}</p>
                 </Link>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="partner-with-us" className="bg-[#071122] py-20 scroll-mt-24">
+        <div className="section-shell grid gap-10 lg:grid-cols-[.9fr_1.1fr] lg:items-start">
+          <Reveal direction="left">
+            <div className="rounded-[2rem] border border-gold/20 bg-gold/10 p-8 md:p-10">
+              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-gold">Partner With Us</p>
+              <h2 className="mt-3 font-display text-4xl font-bold text-white md:text-5xl">Build brand equity through talent access and institutional collaboration.</h2>
+              <p className="mt-5 leading-8 text-white/66">
+                JU FinAnt Club creates sponsor-facing platforms through competitions, workshops, corporate sessions, roadshows, publications, and student engagement initiatives. Partnership is handled as a strategic relationship, not only logo placement.
+              </p>
+              <a href="mailto:ju.finantclub@gmail.com" className="mt-8 inline-flex items-center gap-2 rounded-full bg-gold px-6 py-3 font-semibold text-navy shadow-glow transition hover:-translate-y-1 hover:bg-parchment">
+                Contact Partnership Team <ArrowRight size={18} />
+              </a>
+            </div>
+          </Reveal>
+
+          <div className="grid gap-5 md:grid-cols-2">
+            {partnerValues.map((value, index) => (
+              <Reveal key={value} direction="right" delay={index * 0.07}>
+                <div className="card-border h-full rounded-3xl p-6 transition hover:-translate-y-2 hover:border-gold/40">
+                  <p className="font-display text-4xl font-bold text-gold/35">0{index + 1}</p>
+                  <p className="mt-4 leading-7 text-white/72">{value}</p>
+                </div>
               </Reveal>
             ))}
           </div>

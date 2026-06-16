@@ -1,0 +1,33 @@
+<svg width="520" height="390" viewBox="0 0 520 390" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g1" x1="62" y1="312" x2="225" y2="62" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0A2D70"/>
+      <stop offset="0.52" stop-color="#126CFF"/>
+      <stop offset="1" stop-color="#55D5FF"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="216" y1="330" x2="435" y2="76" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#082154"/>
+      <stop offset="0.52" stop-color="#0A78FF"/>
+      <stop offset="1" stop-color="#6DE3FF"/>
+    </linearGradient>
+    <linearGradient id="g3" x1="106" y1="322" x2="244" y2="190" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#061A44"/>
+      <stop offset="1" stop-color="#103A8E"/>
+    </linearGradient>
+    <filter id="glow" x="-35%" y="-35%" width="170%" height="170%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.05 0 0 0 0 0.45 0 0 0 0 1 0 0 0 .6 0"/>
+      <feBlend in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g filter="url(#glow)">
+    <path d="M78 310 215 56 276 174 208 310H78Z" fill="url(#g1)"/>
+    <path d="M215 56 303 310H231L276 174 215 56Z" fill="#0B4ED3" opacity=".86"/>
+    <path d="M231 310 355 118 454 310H231Z" fill="url(#g2)"/>
+    <path d="M355 118 382 258 331 310H231L355 118Z" fill="#136DF1" opacity=".72"/>
+    <path d="M116 310 207 223 208 310H116Z" fill="url(#g3)" opacity=".84"/>
+    <path d="M331 310 383 257 454 310H331Z" fill="#041331" opacity=".75"/>
+    <path d="M215 56 276 174 303 310" stroke="#88E6FF" stroke-opacity=".45" stroke-width="3"/>
+    <path d="M355 118 454 310" stroke="#8FE9FF" stroke-opacity=".42" stroke-width="3"/>
+  </g>
+</svg>

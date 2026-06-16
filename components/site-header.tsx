@@ -3,47 +3,39 @@
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
+import { finantLogo } from '@/lib/brand-assets';
 import { navItems } from '@/lib/data';
-
-function FinAntMark() {
-  return (
-    <div className="relative h-12 w-12" aria-hidden="true">
-      <div className="absolute left-0 top-2 h-9 w-5 skew-x-[-18deg] rounded bg-gradient-to-br from-cyan-300 via-blue-500 to-blue-950" />
-      <div className="absolute right-1 top-4 h-7 w-5 skew-x-[-18deg] rounded bg-gradient-to-br from-cyan-200 via-blue-500 to-blue-950" />
-      <div className="absolute bottom-2 left-5 h-4 w-4 skew-x-[-18deg] rounded bg-gradient-to-br from-blue-400 to-blue-950" />
-    </div>
-  );
-}
 
 export function SiteHeader() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-cyan-400/10 bg-[#020915]/85 shadow-2xl backdrop-blur-2xl">
-      <div className="section-shell flex h-24 items-center justify-between gap-6 lg:h-28">
-        <Link href="/" className="group flex items-center gap-4" onClick={() => setIsOpen(false)}>
-          <FinAntMark />
+    <header className="sticky top-0 z-40 border-b border-cyan-400/10 bg-[#020915]/70 shadow-2xl backdrop-blur-xl">
+      <div className="mx-auto flex h-24 w-[min(1460px,calc(100%-40px))] items-center justify-between gap-6 lg:h-28">
+        <Link href="/" className="group flex items-center gap-5" onClick={() => setIsOpen(false)}>
+          <img src={finantLogo} alt="JU FinAnt Club" className="h-14 w-14 object-contain md:h-16 md:w-16" />
           <div>
-            <p className="font-display text-xl font-semibold leading-none tracking-wide text-white md:text-2xl">JU FinAnt Club</p>
-            <p className="mt-2 text-[10px] uppercase tracking-[0.44em] text-cyan-300/90 md:text-xs">Industry · Integrity · Legacy</p>
+            <p className="font-display text-2xl font-semibold leading-none tracking-wide text-white md:text-3xl">JU FinAnt Club</p>
+            <p className="mt-3 text-[10px] uppercase tracking-[0.55em] text-cyan-300/95 md:text-xs">Industry · Integrity · Legacy</p>
           </div>
         </Link>
 
-        <nav className="hidden items-center gap-7 lg:flex">
+        <nav className="hidden items-center gap-12 lg:flex">
           {navItems.map((item) => (
-            <Link key={item.href} href={item.href} className="px-1 py-3 text-base font-medium text-white/78 transition hover:text-cyan-300">
+            <Link key={item.href} href={item.href} className="relative px-1 py-4 text-xl font-semibold text-white/86 transition hover:text-cyan-300">
               {item.label}
+              {item.href === '/' ? <span className="absolute inset-x-0 -bottom-1 h-1 rounded-full bg-gradient-to-r from-transparent via-cyan-300 to-transparent" /> : null}
             </Link>
           ))}
         </nav>
 
         <div className="hidden items-center gap-3 md:flex">
-          <Link href="/#partner-with-us" className="rounded-2xl border border-cyan-300/20 bg-blue-600 px-7 py-4 text-base font-semibold text-white shadow-glow transition hover:-translate-y-0.5 hover:bg-blue-500">
+          <Link href="/#partner-with-us" className="rounded-2xl border border-cyan-300/20 bg-gradient-to-r from-blue-700 to-blue-500 px-8 py-4 text-lg font-bold text-white shadow-glow transition hover:-translate-y-0.5 hover:from-blue-600 hover:to-cyan-500">
             Partner With Us
           </Link>
         </div>
 
-        <button type="button" aria-label="Toggle navigation menu" aria-expanded={isOpen} onClick={() => setIsOpen((current) => !current)} className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-cyan-300/20 bg-white/6 text-white transition hover:border-cyan-300/45 hover:text-cyan-300 lg:hidden">
+        <button type="button" aria-label="Toggle navigation menu" aria-expanded={isOpen} onClick={() => setIsOpen((current) => !current)} className="inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-cyan-300/20 bg-white/8 text-white transition hover:border-cyan-300/45 hover:text-cyan-300 lg:hidden">
           {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </div>

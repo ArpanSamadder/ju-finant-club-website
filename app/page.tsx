@@ -1,44 +1,51 @@
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { Reveal } from '@/components/reveal';
+import { heroBackground } from '@/lib/brand-assets';
 import { eventCards, partnerValues, pillars } from '@/lib/data';
 
 export default function HomePage() {
   return (
     <>
-      <section className="relative isolate overflow-hidden bg-gradient-to-br from-navy via-blue-950 to-black pb-24 pt-20">
-        <div className="absolute inset-0 -z-10 bg-radial-gold" />
-        <div className="section-shell grid min-h-[72vh] items-center gap-12 lg:grid-cols-[1.1fr_.9fr]">
-          <Reveal>
-            <p className="mb-5 inline-flex rounded-full border border-cyan-300/30 bg-cyan-300/10 px-4 py-2 text-sm font-medium text-cyan-200">
-              Official Website · Jahangirnagar University FinAnt Club
-            </p>
-            <h1 className="font-display text-5xl font-bold leading-[0.95] tracking-tight text-white md:text-7xl">
-              Building <span className="bg-gradient-to-r from-cyan-300 to-blue-500 bg-clip-text text-transparent">Future-Ready</span> Professionals.
-            </h1>
-            <p className="mt-7 text-3xl font-bold leading-tight text-white md:text-4xl">
-              Jahangirnagar University<br />
-              <span className="text-blue-400">FinAnt Club</span>
-            </p>
-            <p className="mt-7 max-w-2xl text-lg leading-8 text-white/68">
-              A student-led institution for business learning, leadership, and industry-connected experiences.
-            </p>
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <Link href="#what-finant-does" className="inline-flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white shadow-glow transition hover:-translate-y-1 hover:bg-blue-500">
-                Explore FinAnt <ArrowRight size={18} />
-              </Link>
-              <Link href="/biztigation" className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/50 px-6 py-3 font-semibold text-white transition hover:-translate-y-1 hover:bg-white/10">
-                Biztigation 2.0 <ArrowRight size={18} />
-              </Link>
-            </div>
-          </Reveal>
+      <section
+        className="relative isolate -mt-px min-h-[calc(100svh-6rem)] overflow-hidden bg-[#020915] pb-20 pt-16 md:pt-24 lg:pb-28"
+        style={{
+          backgroundImage: `linear-gradient(90deg, rgba(2, 9, 21, 0.82) 0%, rgba(2, 9, 21, 0.66) 34%, rgba(2, 9, 21, 0.08) 62%, rgba(2, 9, 21, 0.06) 100%), url(${heroBackground})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center center'
+        }}
+      >
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_72%_73%,rgba(56,189,248,0.22),transparent_26%),linear-gradient(180deg,rgba(1,8,24,0)_64%,#071122_100%)]" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[#020915]/55 to-transparent" />
+        <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#071122] to-transparent" />
 
-          <Reveal direction="right" delay={0.18}>
-            <div className="relative mx-auto h-96 w-96 max-w-full">
-              <div className="absolute left-16 top-12 h-64 w-24 rounded-3xl bg-gradient-to-br from-cyan-200 via-blue-500 to-blue-950 shadow-2xl" />
-              <div className="absolute right-14 top-28 h-52 w-24 rounded-3xl bg-gradient-to-br from-cyan-200 via-blue-500 to-blue-950 shadow-2xl" />
-              <div className="absolute bottom-24 left-36 h-24 w-24 rounded-2xl bg-gradient-to-br from-blue-400 to-blue-950" />
-              <div className="absolute bottom-8 left-1/2 h-20 w-72 -translate-x-1/2 rounded-full border border-cyan-300 shadow-glow" />
+        <div className="mx-auto flex min-h-[calc(100svh-12rem)] w-[min(1460px,calc(100%-40px))] items-center">
+          <Reveal>
+            <div className="max-w-[760px] pt-10 md:pt-16">
+              <h1 className="max-w-4xl text-[clamp(3.4rem,7vw,7.6rem)] font-black leading-[0.95] tracking-[-0.06em] text-white drop-shadow-[0_18px_42px_rgba(0,0,0,0.55)]">
+                Building <span className="bg-gradient-to-r from-[#23b6ff] via-[#1777ff] to-[#0b55df] bg-clip-text text-transparent">Future-Ready</span>
+                <br />
+                Professionals.
+              </h1>
+
+              <p className="mt-9 text-[clamp(1.85rem,3.1vw,3rem)] font-bold leading-tight tracking-[-0.035em] text-white drop-shadow-[0_12px_30px_rgba(0,0,0,0.45)]">
+                Jahangirnagar University
+                <br />
+                <span className="bg-gradient-to-r from-[#4cc9ff] to-[#1f65ff] bg-clip-text text-transparent">FinAnt Club</span>
+              </p>
+
+              <p className="mt-7 max-w-xl text-[clamp(1.05rem,1.6vw,1.42rem)] leading-8 text-white/82">
+                A student-led institution for business learning, leadership, and industry-connected experiences.
+              </p>
+
+              <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+                <Link href="#what-finant-does" className="inline-flex min-w-56 items-center justify-center gap-5 rounded-xl border border-cyan-200/25 bg-gradient-to-r from-[#0062d8] to-[#1a7dff] px-8 py-5 text-lg font-bold text-white shadow-[0_22px_55px_rgba(0,105,255,0.35)] transition hover:-translate-y-1 hover:shadow-[0_26px_70px_rgba(0,105,255,0.48)]">
+                  Explore FinAnt <ArrowRight size={24} strokeWidth={2.5} />
+                </Link>
+                <Link href="/biztigation" className="inline-flex min-w-56 items-center justify-center gap-5 rounded-xl border border-white/65 bg-[#050b1f]/35 px-8 py-5 text-lg font-bold text-white shadow-[0_16px_45px_rgba(0,0,0,0.24)] backdrop-blur-md transition hover:-translate-y-1 hover:border-cyan-300 hover:bg-cyan-300/10">
+                  Biztigation 2.0 <ArrowRight size={24} strokeWidth={2.5} />
+                </Link>
+              </div>
             </div>
           </Reveal>
         </div>

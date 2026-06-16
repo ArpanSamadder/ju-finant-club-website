@@ -5,7 +5,6 @@ export const navItems = [
   { label: 'Biztigation 2.0', href: '/biztigation' },
   { label: 'Initiatives', href: '/initiatives' },
   { label: 'People', href: '/people' },
-  { label: 'Partners', href: '/partners' },
   { label: 'Join Us', href: '/join' }
 ];
 

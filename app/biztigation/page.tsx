@@ -22,7 +22,7 @@ export default function BiztigationPage() {
               <a href="#register" className="inline-flex items-center justify-center gap-2 rounded-full bg-gold px-6 py-3 font-semibold text-navy shadow-glow transition hover:-translate-y-1 hover:bg-parchment">
                 Register Your Team <ArrowRight size={18} />
               </a>
-              <Link href="/partners" className="inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 font-semibold text-white transition hover:-translate-y-1 hover:bg-white/10">
+              <Link href="/#partner-with-us" className="inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 font-semibold text-white transition hover:-translate-y-1 hover:bg-white/10">
                 Partner With Biztigation
               </Link>
             </div>

@@ -13,12 +13,12 @@ const legacyCards = [
 export default function HomePage() {
   return (
     <main className="bg-[#020817] text-white">
-      <section className="relative min-h-[calc(100svh-80px)] overflow-hidden bg-[#020817]">
+      <section className="relative min-h-screen overflow-hidden bg-[#020817]">
         <img src="/images/hero/hero-bg.png" alt="" className="absolute inset-0 h-full w-full object-cover object-center" />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,#020817_0%,rgba(2,8,23,.88)_24%,rgba(2,8,23,.56)_44%,rgba(2,8,23,.16)_66%,rgba(2,8,23,.03)_84%)]" />
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#020817] via-[#020817]/40 to-transparent" />
 
-        <div className="relative mx-auto flex min-h-[calc(100svh-80px)] w-[min(1528px,calc(100%-72px))] items-center max-lg:w-[min(100%-32px,900px)] max-lg:items-start max-lg:pt-24">
+        <div className="relative mx-auto flex min-h-screen w-[min(1528px,calc(100%-72px))] items-center max-lg:w-[min(100%-32px,900px)] max-lg:items-start max-lg:pt-24">
           <div className="max-w-[650px] pb-16 pt-8">
             <h1 className="font-body font-extrabold tracking-[-0.048em] drop-shadow-[0_18px_58px_rgba(0,0,0,.74)]">
               <span className="block whitespace-nowrap text-[clamp(2.75rem,3.9vw,4.45rem)] leading-[1.03] max-xl:whitespace-normal max-md:text-[clamp(2.55rem,10.5vw,3.85rem)]">

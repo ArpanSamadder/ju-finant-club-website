@@ -55,3 +55,44 @@ body {
   background: linear-gradient(135deg, rgba(243, 230, 194, 0.98), rgba(255, 248, 226, 0.9));
   color: #111827;
 }
+
+@keyframes legacyReveal {
+  from {
+    opacity: 0;
+    transform: translateX(180px) translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+  }
+}
+
+@keyframes legacyTrackSlide {
+  from {
+    transform: translateX(120px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.legacy-reveal {
+  animation: legacyReveal 0.95s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 36%;
+}
+
+.legacy-track {
+  animation: legacyTrackSlide 1.15s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 42%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .legacy-reveal,
+  .legacy-track {
+    animation: none;
+    transform: none;
+    opacity: 1;
+  }
+}

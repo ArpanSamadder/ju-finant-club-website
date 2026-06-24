@@ -19,12 +19,15 @@ export default function HomePage() {
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#020817] via-[#020817]/40 to-transparent" />
 
         <div className="relative mx-auto flex min-h-[calc(100svh-80px)] w-[min(1528px,calc(100%-72px))] items-center max-lg:w-[min(100%-32px,900px)] max-lg:items-start max-lg:pt-24">
-          <div className="max-w-[790px] pb-16 pt-5">
-            <h1 className="font-body text-[clamp(3.8rem,5.6vw,6.35rem)] font-black leading-[1.03] tracking-[-0.07em] drop-shadow-[0_18px_60px_rgba(0,0,0,.78)] max-md:text-[clamp(3.1rem,14vw,4.8rem)]">
-              <span className="bg-gradient-to-b from-white via-white to-[#b8c0cc] bg-clip-text text-transparent">Building</span>{' '}
-              <span className="bg-gradient-to-r from-[#40cfff] via-[#168cff] to-[#075ef5] bg-clip-text text-transparent">Future-Ready</span>
-              <br />
-              <span className="bg-gradient-to-b from-white via-white to-[#b8c0cc] bg-clip-text text-transparent">Professionals.</span>
+          <div className="max-w-[800px] pb-16 pt-5">
+            <h1 className="font-body font-black tracking-[-0.07em] drop-shadow-[0_18px_60px_rgba(0,0,0,.78)]">
+              <span className="block whitespace-nowrap text-[clamp(3.55rem,5.35vw,6.05rem)] leading-[0.97] max-xl:whitespace-normal max-md:text-[clamp(3rem,13vw,4.45rem)]">
+                <span className="bg-gradient-to-b from-white via-white to-[#b8c0cc] bg-clip-text text-transparent">Building</span>{' '}
+                <span className="bg-gradient-to-r from-[#40cfff] via-[#168cff] to-[#075ef5] bg-clip-text text-transparent">Future-Ready</span>
+              </span>
+              <span className="mt-3 block text-[clamp(4.25rem,6.25vw,7.05rem)] leading-[0.9] max-md:mt-2 max-md:text-[clamp(3.45rem,15vw,5.2rem)]">
+                <span className="bg-gradient-to-b from-white via-white to-[#b8c0cc] bg-clip-text text-transparent">Professionals.</span>
+              </span>
             </h1>
 
             <div className="mt-8 text-[clamp(1.55rem,2vw,2.45rem)] font-extrabold leading-[1.12] tracking-[-0.035em]">

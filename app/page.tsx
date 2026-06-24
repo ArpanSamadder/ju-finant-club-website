@@ -14,7 +14,7 @@ export default function HomePage() {
   return (
     <main className="bg-[#020817] text-white">
       <section className="relative h-screen min-h-screen overflow-hidden bg-[#020817] max-md:h-[100svh] max-md:min-h-[100svh]">
-        <img src="/images/hero/hero-bg.png" alt="" className="absolute inset-0 h-full w-full object-cover object-center" />
+        <img src="/images/hero/legacy-bg.png" alt="" className="absolute inset-0 h-full w-full object-cover object-center" />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,#020817_0%,rgba(2,8,23,.88)_24%,rgba(2,8,23,.56)_44%,rgba(2,8,23,.16)_66%,rgba(2,8,23,.03)_84%)]" />
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#020817] via-[#020817]/40 to-transparent" />
 

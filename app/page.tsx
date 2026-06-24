@@ -40,11 +40,11 @@ export default function HomePage() {
             </p>
 
             <div className="mt-9 flex flex-col gap-5 sm:flex-row">
-              <Link href="#legacy-foundation" className="group inline-flex min-w-64 items-center justify-center gap-9 rounded-lg border border-cyan-200/25 bg-gradient-to-r from-[#0067ee] to-[#1a8cff] px-8 py-4 text-lg font-light tracking-[-0.01em] text-white shadow-[0_20px_55px_rgba(0,105,255,.34)] transition hover:-translate-y-1 max-sm:min-w-0 max-sm:w-full">
-                Explore FinAnt <span className="text-2xl font-light leading-none transition group-hover:translate-x-1">&gt;</span>
+              <Link href="#legacy-foundation" className="group inline-flex min-w-64 items-center justify-center gap-9 rounded-lg border border-cyan-200/25 bg-gradient-to-r from-[#0067ee] to-[#1a8cff] px-8 py-4 text-lg font-semibold tracking-[-0.01em] text-white shadow-[0_20px_55px_rgba(0,105,255,.34)] transition hover:-translate-y-1 max-sm:min-w-0 max-sm:w-full">
+                Explore FinAnt <span className="text-2xl font-normal leading-none transition group-hover:translate-x-1">&gt;</span>
               </Link>
-              <Link href="/biztigation" className="group inline-flex min-w-64 items-center justify-center gap-9 rounded-lg border border-white/52 bg-[#030817]/32 px-8 py-4 text-lg font-light tracking-[-0.01em] text-white backdrop-blur-md transition hover:-translate-y-1 hover:border-cyan-300 max-sm:min-w-0 max-sm:w-full">
-                Biztigation 2.0 <span className="text-2xl font-light leading-none transition group-hover:translate-x-1">&gt;</span>
+              <Link href="/biztigation" className="group inline-flex min-w-64 items-center justify-center gap-9 rounded-lg border border-white/52 bg-[#030817]/32 px-8 py-4 text-lg font-semibold tracking-[-0.01em] text-white backdrop-blur-md transition hover:-translate-y-1 hover:border-cyan-300 max-sm:min-w-0 max-sm:w-full">
+                Biztigation 2.0 <span className="text-2xl font-normal leading-none transition group-hover:translate-x-1">&gt;</span>
               </Link>
             </div>
           </div>

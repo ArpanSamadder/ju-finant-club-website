@@ -13,12 +13,12 @@ const legacyCards = [
 export default function HomePage() {
   return (
     <main className="bg-[#020817] text-white">
-      <section className="relative min-h-screen overflow-hidden bg-[#020817]">
+      <section className="relative h-[calc(100svh-80px)] min-h-[760px] overflow-hidden bg-[#020817] max-xl:min-h-[700px] max-md:min-h-[calc(100svh-80px)]">
         <img src="/images/hero/hero-bg.png" alt="" className="absolute inset-0 h-full w-full object-cover object-center" />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,#020817_0%,rgba(2,8,23,.88)_24%,rgba(2,8,23,.56)_44%,rgba(2,8,23,.16)_66%,rgba(2,8,23,.03)_84%)]" />
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#020817] via-[#020817]/40 to-transparent" />
 
-        <div className="relative mx-auto flex min-h-screen w-[min(1528px,calc(100%-72px))] items-center max-lg:w-[min(100%-32px,900px)] max-lg:items-start max-lg:pt-24">
+        <div className="relative mx-auto flex h-full w-[min(1528px,calc(100%-72px))] items-center max-lg:w-[min(100%-32px,900px)] max-lg:items-start max-lg:pt-24">
           <div className="max-w-[650px] pb-16 pt-8">
             <h1 className="font-body font-extrabold tracking-[-0.048em] drop-shadow-[0_18px_58px_rgba(0,0,0,.74)]">
               <span className="block whitespace-nowrap text-[clamp(2.75rem,3.9vw,4.45rem)] leading-[1.03] max-xl:whitespace-normal max-md:text-[clamp(2.55rem,10.5vw,3.85rem)]">
@@ -51,13 +51,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="legacy-foundation" className="legacy-reveal relative -mt-px min-h-screen overflow-hidden bg-[#020817] py-28">
+      <section id="legacy-foundation" className="legacy-reveal relative -mt-px min-h-[calc(100svh-80px)] scroll-mt-20 overflow-hidden bg-[#020817] py-16">
         <img src="/images/hero/legacy-bg.png" alt="" className="absolute inset-0 h-full w-full object-cover object-center" />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,#020817_0%,rgba(2,8,23,.36)_16%,rgba(2,8,23,.18)_44%,rgba(2,8,23,.84)_78%,#020817_100%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_52%_40%,rgba(0,132,255,.18),transparent_34%),linear-gradient(90deg,rgba(2,8,23,.92)_0%,rgba(2,8,23,.42)_36%,rgba(2,8,23,.12)_62%,rgba(2,8,23,.34)_100%)]" />
-        <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#020817] via-[#020817]/45 to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#020817] via-[#020817]/45 to-transparent" />
 
-        <div className="relative mx-auto flex min-h-[calc(100vh-14rem)] w-[min(1528px,calc(100%-72px))] flex-col justify-end max-lg:w-[min(100%-32px,900px)]">
+        <div className="relative mx-auto flex min-h-[calc(100svh-12rem)] w-[min(1528px,calc(100%-72px))] flex-col justify-end max-lg:w-[min(100%-32px,900px)]">
           <div className="max-w-5xl pb-8">
             <p className="text-sm font-medium uppercase tracking-[0.58em] text-cyan-300/90 max-md:tracking-[0.34em]">Legacy Foundation</p>
             <h2 className="mt-5 max-w-5xl font-body text-[clamp(2.35rem,4.45vw,5.55rem)] font-extrabold leading-[0.96] tracking-[-0.062em] text-white drop-shadow-[0_20px_70px_rgba(0,0,0,.7)]">

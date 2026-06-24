@@ -51,22 +51,26 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="legacy-foundation" className="legacy-reveal relative -mt-px overflow-hidden border-t border-cyan-300/15 bg-[#020817] pb-24 pt-8">
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,8,23,.2),#020817_30%),radial-gradient(circle_at_50%_0%,rgba(0,132,255,.2),transparent_33%)]" />
-        <div className="absolute left-1/2 top-0 h-20 w-[130vw] -translate-x-1/2 rounded-[0_0_100%_100%] border-b border-cyan-300/40 bg-[#031029]/40 shadow-[0_0_70px_rgba(0,132,255,.34)]" />
+      <section id="legacy-foundation" className="legacy-reveal relative -mt-px min-h-screen overflow-hidden bg-[#020817] py-28">
+        <img src="/images/hero/legacy-bg.png" alt="" className="absolute inset-0 h-full w-full object-cover object-center" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,#020817_0%,rgba(2,8,23,.36)_16%,rgba(2,8,23,.18)_44%,rgba(2,8,23,.84)_78%,#020817_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_52%_40%,rgba(0,132,255,.18),transparent_34%),linear-gradient(90deg,rgba(2,8,23,.92)_0%,rgba(2,8,23,.42)_36%,rgba(2,8,23,.12)_62%,rgba(2,8,23,.34)_100%)]" />
+        <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#020817] via-[#020817]/45 to-transparent" />
 
-        <div className="relative mx-auto w-[min(1528px,calc(100%-72px))] text-center max-lg:w-[min(100%-32px,900px)]">
-          <p className="mt-5 text-sm font-black uppercase tracking-[0.62em] text-cyan-300/90 max-md:tracking-[0.35em]">Legacy Foundation</p>
-          <h2 className="mx-auto mt-3 max-w-5xl font-body text-[clamp(2.15rem,3.1vw,3.35rem)] font-black leading-[1.05] tracking-[-0.055em] text-white">
-            The <span className="bg-gradient-to-r from-[#4bdcff] to-[#0876ff] bg-clip-text text-transparent">Departmental Legacy</span> We Carry Forward
-          </h2>
-          <p className="mx-auto mt-4 max-w-4xl text-[clamp(.95rem,1vw,1.08rem)] font-medium leading-6 text-white/78">
-            Before the formation of JU FinAnt Club, these flagship platforms were built through the student-led tradition of the Department of Finance and Banking. FinAnt now carries this legacy forward through a formal, future-ready institutional structure.
-          </p>
+        <div className="relative mx-auto flex min-h-[calc(100vh-14rem)] w-[min(1528px,calc(100%-72px))] flex-col justify-end max-lg:w-[min(100%-32px,900px)]">
+          <div className="max-w-5xl pb-8">
+            <p className="text-sm font-medium uppercase tracking-[0.58em] text-cyan-300/90 max-md:tracking-[0.34em]">Legacy Foundation</p>
+            <h2 className="mt-5 max-w-5xl font-body text-[clamp(2.35rem,4.45vw,5.55rem)] font-extrabold leading-[0.96] tracking-[-0.062em] text-white drop-shadow-[0_20px_70px_rgba(0,0,0,.7)]">
+              The <span className="bg-gradient-to-r from-[#54ddff] via-[#168cff] to-[#0866ff] bg-clip-text text-transparent">Departmental Legacy</span> We Carry Forward
+            </h2>
+            <p className="mt-5 max-w-3xl text-[clamp(.98rem,1.05vw,1.12rem)] font-light leading-7 text-white/76 drop-shadow-[0_10px_32px_rgba(0,0,0,.6)]">
+              Before JU FinAnt Club became a formal institution, these flagship platforms were built through the student-led tradition of the Department of Finance and Banking.
+            </p>
+          </div>
 
-          <div className="legacy-track mt-10 grid grid-cols-6 gap-5 overflow-x-auto pb-6 text-left [scrollbar-width:none] max-xl:flex max-xl:[&>*]:min-w-[250px] [&::-webkit-scrollbar]:hidden">
+          <div className="legacy-track grid grid-cols-6 gap-5 overflow-x-auto pb-4 text-left [scrollbar-width:none] max-xl:flex max-xl:[&>*]:min-w-[250px] [&::-webkit-scrollbar]:hidden">
             {legacyCards.map(({ title, subtitle, image, Icon }) => (
-              <article key={title} className="group relative h-[205px] overflow-hidden rounded-xl border border-cyan-200/35 bg-[#061337]/88 p-5 shadow-[0_20px_75px_rgba(0,0,0,.45),inset_0_0_35px_rgba(0,120,255,.12)] transition duration-300 hover:-translate-y-1 hover:border-cyan-200/80">
+              <article key={title} className="group relative h-[205px] overflow-hidden rounded-xl border border-cyan-200/35 bg-[#061337]/80 p-5 shadow-[0_20px_75px_rgba(0,0,0,.45),inset_0_0_35px_rgba(0,120,255,.12)] backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:border-cyan-200/80">
                 <img src={image} alt="" className="absolute inset-0 h-full w-full object-cover opacity-[.18] grayscale transition duration-500 group-hover:scale-105 group-hover:opacity-[.28]" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#020817] via-[#07133a]/75 to-[#05205d]/20" />
                 <div className="relative flex h-full flex-col items-center justify-center text-center">

@@ -18,7 +18,7 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-[linear-gradient(90deg,#020817_0%,rgba(2,8,23,.88)_24%,rgba(2,8,23,.56)_44%,rgba(2,8,23,.16)_66%,rgba(2,8,23,.03)_84%)]" />
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#020817] via-[#020817]/40 to-transparent" />
 
-        <div className="relative mx-auto flex h-full w-[min(1134px,calc(100%-260px))] items-start pt-[7.45rem] max-xl:w-[min(1080px,calc(100%-168px))] max-xl:pt-[7.2rem] max-lg:w-[min(100%-32px,900px)] max-lg:pt-24">
+        <div className="relative z-10 flex h-full w-full items-start pl-[7.25vw] pt-[6.15rem] max-xl:pl-[6.2vw] max-xl:pt-[5.85rem] max-lg:px-8 max-lg:pt-24">
           <div className="max-w-[650px]">
             <h1 className="font-body font-extrabold tracking-[-0.048em] drop-shadow-[0_18px_58px_rgba(0,0,0,.74)]">
               <span className="block whitespace-nowrap text-[clamp(2.75rem,3.9vw,4.45rem)] leading-[1.03] max-xl:whitespace-normal max-md:text-[clamp(2.55rem,10.5vw,3.85rem)]">

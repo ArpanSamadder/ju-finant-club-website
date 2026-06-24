@@ -1,98 +1,75 @@
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, BookOpen, BriefcaseBusiness, GraduationCap, Sparkles, Trophy, Users } from 'lucide-react';
 
 const legacyCards = [
-  {
-    title: 'Biztigation 2024',
-    subtitle: 'Business Case Competition',
-    image: '/images/brand/biztigation-logo-dark.png',
-  },
-  {
-    title: 'Crackademy 2025',
-    subtitle: 'Case Solving Bootcamp',
-    image: '/images/brand/finant-logo-dark.png',
-  },
-  {
-    title: 'Job Fair',
-    subtitle: 'Industry & Career Engagement',
-    image: '/images/brand/department-logo.jpg',
-  },
-  {
-    title: 'Panel Discussion',
-    subtitle: 'Leadership from Industry Voices',
-    image: '/images/brand/finant-logo.png',
-  },
-  {
-    title: 'Finance Fest',
-    subtitle: 'Departmental Legacy Platform',
-    image: '/images/brand/ju-logo.png',
-  },
-  {
-    title: 'Publications',
-    subtitle: 'Institutional Memory & Thought Leadership',
-    image: '/images/brand/finant-logo.png',
-  },
+  { title: 'Biztigation', subtitle: 'Business Case Competition', image: '/images/brand/biztigation-logo-dark.png', Icon: Trophy },
+  { title: 'Crackademy', subtitle: 'Case Solving Bootcamp', image: '/images/brand/finant-logo-dark.png', Icon: GraduationCap },
+  { title: 'Finance Fest', subtitle: 'Flagship Departmental Festival', image: '/images/hero/hero-bg.png', Icon: Sparkles },
+  { title: 'Job Fair', subtitle: 'Industry & Career Engagement', image: '/images/brand/department-logo.jpg', Icon: BriefcaseBusiness },
+  { title: 'Panel Discussion', subtitle: 'Learning from Industry Leaders', image: '/images/brand/finant-logo.png', Icon: Users },
+  { title: 'Publications', subtitle: 'Student Voices & Institutional Memory', image: '/images/brand/ju-logo.png', Icon: BookOpen },
 ];
 
 export default function HomePage() {
   return (
     <main className="bg-[#020817] text-white">
       <section className="relative min-h-[calc(100svh-80px)] overflow-hidden bg-[#020817]">
-        <img
-          src="/images/hero/hero-bg.png"
-          alt=""
-          className="absolute inset-0 h-full w-full object-cover object-[72%_center]"
-        />
+        <img src="/images/hero/hero-bg.png" alt="" className="absolute inset-0 h-full w-full object-cover object-center" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,#020817_0%,rgba(2,8,23,.84)_22%,rgba(2,8,23,.38)_50%,rgba(2,8,23,.04)_78%)]" />
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#020817] via-[#020817]/40 to-transparent" />
 
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,#020817_0%,rgba(2,8,23,.94)_18%,rgba(2,8,23,.72)_43%,rgba(2,8,23,.18)_72%,rgba(2,8,23,.1)_100%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_36%,rgba(0,132,255,.18),transparent_30%),radial-gradient(circle_at_20%_46%,rgba(0,0,0,.42),transparent_42%)]" />
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#020817] via-[#020817]/80 to-transparent" />
-
-        <div className="relative mx-auto flex min-h-[calc(100svh-80px)] w-[min(1440px,calc(100%-72px))] items-center pt-8 max-lg:w-[min(100%-32px,900px)] max-lg:items-start max-lg:pt-24">
-          <div className="max-w-[660px] pb-14 pt-10 max-lg:max-w-[95%]">
-            <p className="mb-5 inline-flex rounded-full border border-cyan-300/20 bg-cyan-300/5 px-4 py-2 text-[0.68rem] font-bold uppercase tracking-[0.34em] text-cyan-200/85 shadow-[0_0_35px_rgba(21,171,255,.12)]">
-              Jahangirnagar University
-            </p>
-
-            <h1 className="font-body text-[clamp(3.65rem,5.35vw,6rem)] font-black leading-[0.96] tracking-[-0.07em] text-white drop-shadow-[0_18px_50px_rgba(0,0,0,.72)] max-md:text-[clamp(3.2rem,14vw,4.8rem)]">
-              Building<br />
-              <span className="bg-gradient-to-r from-[#43d4ff] via-[#138cff] to-[#075ef5] bg-clip-text text-transparent">Future-Ready</span><br />
-              Professionals.
+        <div className="relative mx-auto flex min-h-[calc(100svh-80px)] w-[min(1528px,calc(100%-72px))] items-center max-lg:w-[min(100%-32px,900px)] max-lg:items-start max-lg:pt-24">
+          <div className="max-w-[790px] pb-16 pt-5">
+            <h1 className="font-body text-[clamp(3.8rem,5.6vw,6.35rem)] font-black leading-[1.03] tracking-[-0.07em] drop-shadow-[0_18px_60px_rgba(0,0,0,.78)] max-md:text-[clamp(3.1rem,14vw,4.8rem)]">
+              <span className="bg-gradient-to-b from-white via-white to-[#b8c0cc] bg-clip-text text-transparent">Building</span>{' '}
+              <span className="bg-gradient-to-r from-[#40cfff] via-[#168cff] to-[#075ef5] bg-clip-text text-transparent">Future-Ready</span>
+              <br />
+              <span className="bg-gradient-to-b from-white via-white to-[#b8c0cc] bg-clip-text text-transparent">Professionals.</span>
             </h1>
 
-            <p className="mt-7 max-w-[530px] text-[clamp(1rem,1.02vw,1.12rem)] font-medium leading-7 text-white/88 drop-shadow-[0_10px_24px_rgba(0,0,0,.55)]">
-              JU FinAnt Club is a student-led institution for business learning, leadership, and industry-connected experiences.
+            <div className="mt-8 text-[clamp(1.55rem,2vw,2.45rem)] font-extrabold leading-[1.12] tracking-[-0.035em]">
+              <p className="text-white">Jahangirnagar University</p>
+              <p className="mt-1 bg-gradient-to-r from-[#53d7ff] to-[#066bf6] bg-clip-text text-transparent">FinAnt Club</p>
+            </div>
+
+            <p className="mt-7 max-w-[620px] text-[clamp(1rem,1.15vw,1.25rem)] font-medium leading-8 text-white/88">
+              A student-led institution for business learning, leadership, and industry-connected experiences.
             </p>
 
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <Link href="#legacy-foundation" className="inline-flex min-w-44 items-center justify-center gap-3 rounded-lg border border-cyan-200/25 bg-gradient-to-r from-[#0065e8] to-[#1a8cff] px-6 py-3.5 text-sm font-extrabold text-white shadow-[0_18px_45px_rgba(0,105,255,.34)] transition hover:-translate-y-1">
-                Explore FinAnt <ArrowRight size={19} strokeWidth={2.6} />
+            <div className="mt-9 flex flex-col gap-5 sm:flex-row">
+              <Link href="#legacy-foundation" className="group inline-flex min-w-72 items-center justify-center gap-10 rounded-lg border border-cyan-200/25 bg-gradient-to-r from-[#0067ee] to-[#1a8cff] px-8 py-4 text-lg font-extrabold text-white shadow-[0_20px_55px_rgba(0,105,255,.34)] transition hover:-translate-y-1 max-sm:min-w-0 max-sm:w-full">
+                Explore FinAnt <ArrowRight size={26} strokeWidth={2.35} className="transition group-hover:translate-x-1" />
               </Link>
-              <Link href="/biztigation" className="inline-flex min-w-44 items-center justify-center gap-3 rounded-lg border border-white/30 bg-[#030817]/45 px-6 py-3.5 text-sm font-extrabold text-white backdrop-blur-md transition hover:-translate-y-1 hover:border-cyan-300">
-                Biztigation 2.0 <ArrowRight size={19} strokeWidth={2.6} />
+              <Link href="/biztigation" className="group inline-flex min-w-72 items-center justify-center gap-10 rounded-lg border border-white/52 bg-[#030817]/32 px-8 py-4 text-lg font-extrabold text-white backdrop-blur-md transition hover:-translate-y-1 hover:border-cyan-300 max-sm:min-w-0 max-sm:w-full">
+                Biztigation 2.0 <ArrowRight size={26} strokeWidth={2.35} className="transition group-hover:translate-x-1" />
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="legacy-foundation" className="relative overflow-hidden border-t border-cyan-300/10 bg-[#020817] py-24">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_12%,rgba(21,171,255,.09),transparent_28%),linear-gradient(180deg,rgba(3,10,28,.35),rgba(2,8,23,1))]" />
-        <div className="relative mx-auto w-[min(1440px,calc(100%-72px))] max-lg:w-[min(100%-32px,900px)]">
-          <p className="text-xs font-black uppercase tracking-[0.38em] text-cyan-300/80">Legacy Foundation</p>
-          <h2 className="mt-4 max-w-3xl font-display text-[clamp(2.4rem,4vw,4.5rem)] font-black leading-[1.02] tracking-[-0.055em] text-white">
-            The Departmental Legacy<br className="hidden md:block" /> We Carry Forward
-          </h2>
+      <section id="legacy-foundation" className="legacy-reveal relative -mt-px overflow-hidden border-t border-cyan-300/15 bg-[#020817] pb-24 pt-8">
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,8,23,.2),#020817_30%),radial-gradient(circle_at_50%_0%,rgba(0,132,255,.2),transparent_33%)]" />
+        <div className="absolute left-1/2 top-0 h-20 w-[130vw] -translate-x-1/2 rounded-[0_0_100%_100%] border-b border-cyan-300/40 bg-[#031029]/40 shadow-[0_0_70px_rgba(0,132,255,.34)]" />
 
-          <div className="mt-10 flex gap-5 overflow-x-auto pb-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            {legacyCards.map((card) => (
-              <article key={card.title} className="group relative h-[260px] min-w-[310px] overflow-hidden rounded-2xl border border-cyan-300/12 bg-white/[0.035] shadow-[0_20px_70px_rgba(0,0,0,.35)] transition duration-300 hover:-translate-y-1 hover:border-cyan-300/45 hover:shadow-[0_24px_85px_rgba(0,122,255,.22)] md:min-w-[330px]">
-                <img src={card.image} alt="" className="absolute inset-0 h-full w-full object-cover opacity-30 grayscale transition duration-500 group-hover:scale-105 group-hover:opacity-45" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#020817] via-[#020817]/58 to-transparent" />
-                <div className="absolute right-4 top-4 h-8 w-8 rounded-full border border-cyan-300/20 bg-cyan-300/10 shadow-[0_0_35px_rgba(21,171,255,.25)]" />
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <h3 className="text-xl font-black tracking-[-0.025em] text-white">{card.title}</h3>
-                  <p className="mt-2 text-sm font-semibold text-cyan-100/70">{card.subtitle}</p>
+        <div className="relative mx-auto w-[min(1528px,calc(100%-72px))] text-center max-lg:w-[min(100%-32px,900px)]">
+          <p className="mt-5 text-sm font-black uppercase tracking-[0.62em] text-cyan-300/90 max-md:tracking-[0.35em]">Legacy Foundation</p>
+          <h2 className="mx-auto mt-3 max-w-5xl font-body text-[clamp(2.15rem,3.1vw,3.35rem)] font-black leading-[1.05] tracking-[-0.055em] text-white">
+            The <span className="bg-gradient-to-r from-[#4bdcff] to-[#0876ff] bg-clip-text text-transparent">Departmental Legacy</span> We Carry Forward
+          </h2>
+          <p className="mx-auto mt-4 max-w-4xl text-[clamp(.95rem,1vw,1.08rem)] font-medium leading-6 text-white/78">
+            Before the formation of JU FinAnt Club, these flagship platforms were built through the student-led tradition of the Department of Finance and Banking. FinAnt now carries this legacy forward through a formal, future-ready institutional structure.
+          </p>
+
+          <div className="legacy-track mt-10 grid grid-cols-6 gap-5 overflow-x-auto pb-6 text-left [scrollbar-width:none] max-xl:flex max-xl:[&>*]:min-w-[250px] [&::-webkit-scrollbar]:hidden">
+            {legacyCards.map(({ title, subtitle, image, Icon }) => (
+              <article key={title} className="group relative h-[205px] overflow-hidden rounded-xl border border-cyan-200/35 bg-[#061337]/88 p-5 shadow-[0_20px_75px_rgba(0,0,0,.45),inset_0_0_35px_rgba(0,120,255,.12)] transition duration-300 hover:-translate-y-1 hover:border-cyan-200/80">
+                <img src={image} alt="" className="absolute inset-0 h-full w-full object-cover opacity-[.18] grayscale transition duration-500 group-hover:scale-105 group-hover:opacity-[.28]" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#020817] via-[#07133a]/75 to-[#05205d]/20" />
+                <div className="relative flex h-full flex-col items-center justify-center text-center">
+                  <Icon className="mb-5 h-14 w-14 text-cyan-300 drop-shadow-[0_0_22px_rgba(21,171,255,.65)]" strokeWidth={1.55} />
+                  <h3 className="text-[1.35rem] font-extrabold tracking-[-0.035em] text-white">{title}</h3>
+                  <p className="mt-2 max-w-[170px] text-sm font-medium leading-5 text-white/82">{subtitle}</p>
                 </div>
               </article>
             ))}

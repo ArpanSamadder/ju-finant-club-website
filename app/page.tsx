@@ -18,8 +18,8 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-[linear-gradient(90deg,#020817_0%,rgba(2,8,23,.88)_24%,rgba(2,8,23,.56)_44%,rgba(2,8,23,.16)_66%,rgba(2,8,23,.03)_84%)]" />
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#020817] via-[#020817]/40 to-transparent" />
 
-        <div className="relative mx-auto flex h-full w-[min(1528px,calc(100%-72px))] items-center max-lg:w-[min(100%-32px,900px)] max-lg:items-start max-lg:pt-24">
-          <div className="max-w-[650px] pb-16 pt-8">
+        <div className="relative mx-auto flex h-full w-[min(1134px,calc(100%-260px))] items-start pt-[7.45rem] max-xl:w-[min(1080px,calc(100%-168px))] max-xl:pt-[7.2rem] max-lg:w-[min(100%-32px,900px)] max-lg:pt-24">
+          <div className="max-w-[650px]">
             <h1 className="font-body font-extrabold tracking-[-0.048em] drop-shadow-[0_18px_58px_rgba(0,0,0,.74)]">
               <span className="block whitespace-nowrap text-[clamp(2.75rem,3.9vw,4.45rem)] leading-[1.03] max-xl:whitespace-normal max-md:text-[clamp(2.55rem,10.5vw,3.85rem)]">
                 <span className="bg-gradient-to-b from-white via-white to-[#bbc2ce] bg-clip-text text-transparent">Building</span>{' '}
@@ -30,20 +30,20 @@ export default function HomePage() {
               </span>
             </h1>
 
-            <div className="mt-8 text-[clamp(1.55rem,1.9vw,2.2rem)] font-normal leading-[1.12] tracking-[-0.038em] drop-shadow-[0_12px_34px_rgba(0,0,0,.55)]">
+            <div className="mt-7 text-[clamp(1.45rem,1.72vw,2rem)] font-normal leading-[1.12] tracking-[-0.038em] drop-shadow-[0_12px_34px_rgba(0,0,0,.55)]">
               <p className="text-[#f7fbff]">Jahangirnagar University</p>
               <p className="mt-1 font-bold text-[#168cff]">FinAnt Club</p>
             </div>
 
-            <p className="mt-5 max-w-[455px] text-[clamp(1rem,1.05vw,1.15rem)] font-light leading-[1.45] tracking-[-0.004em] text-white/78 drop-shadow-[0_10px_26px_rgba(0,0,0,.5)]">
+            <p className="mt-4 max-w-[455px] text-[clamp(.92rem,.95vw,1.05rem)] font-light leading-[1.43] tracking-[-0.004em] text-white/78 drop-shadow-[0_10px_26px_rgba(0,0,0,.5)]">
               A student-led institution for business learning, leadership, and industry-connected experiences.
             </p>
 
-            <div className="mt-9 flex flex-col gap-5 sm:flex-row">
-              <Link href="#legacy-foundation" className="group inline-flex min-w-64 items-center justify-center gap-9 rounded-lg border border-cyan-200/25 bg-gradient-to-r from-[#0067ee] to-[#1a8cff] px-8 py-4 text-lg font-light tracking-[-0.01em] text-white shadow-[0_20px_55px_rgba(0,105,255,.34)] transition hover:-translate-y-1 max-sm:min-w-0 max-sm:w-full">
+            <div className="mt-8 flex flex-col gap-5 sm:flex-row">
+              <Link href="#legacy-foundation" className="group inline-flex min-w-56 items-center justify-center gap-8 rounded-lg border border-cyan-200/25 bg-gradient-to-r from-[#0067ee] to-[#1a8cff] px-7 py-3.5 text-base font-light tracking-[-0.01em] text-white shadow-[0_20px_55px_rgba(0,105,255,.34)] transition hover:-translate-y-1 max-sm:min-w-0 max-sm:w-full">
                 Explore FinAnt <span className="text-2xl font-normal leading-none transition group-hover:translate-x-1">&gt;</span>
               </Link>
-              <Link href="/biztigation" className="group inline-flex min-w-64 items-center justify-center gap-9 rounded-lg border border-white/52 bg-[#030817]/32 px-8 py-4 text-lg font-light tracking-[-0.01em] text-white backdrop-blur-md transition hover:-translate-y-1 hover:border-cyan-300 max-sm:min-w-0 max-sm:w-full">
+              <Link href="/biztigation" className="group inline-flex min-w-56 items-center justify-center gap-8 rounded-lg border border-white/52 bg-[#030817]/32 px-7 py-3.5 text-base font-light tracking-[-0.01em] text-white backdrop-blur-md transition hover:-translate-y-1 hover:border-cyan-300 max-sm:min-w-0 max-sm:w-full">
                 Biztigation 2.0 <span className="text-2xl font-normal leading-none transition group-hover:translate-x-1">&gt;</span>
               </Link>
             </div>

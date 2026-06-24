@@ -30,12 +30,12 @@ export default function HomePage() {
               </span>
             </h1>
 
-            <div className="mt-8 text-[clamp(1.35rem,1.68vw,2.05rem)] font-bold leading-[1.14] tracking-[-0.03em]">
-              <p className="text-white">Jahangirnagar University</p>
-              <p className="mt-1 bg-gradient-to-r from-[#53d7ff] to-[#066bf6] bg-clip-text text-transparent">FinAnt Club</p>
+            <div className="mt-8 text-[clamp(1.55rem,1.9vw,2.25rem)] font-semibold leading-[1.12] tracking-[-0.04em] drop-shadow-[0_12px_34px_rgba(0,0,0,.55)]">
+              <p className="text-[#f7fbff]">Jahangirnagar University</p>
+              <p className="mt-1 bg-gradient-to-r from-[#32c9ff] via-[#168cff] to-[#056bf6] bg-clip-text text-transparent">FinAnt Club</p>
             </div>
 
-            <p className="mt-7 max-w-[560px] text-[clamp(.98rem,1.02vw,1.12rem)] font-medium leading-8 text-white/88">
+            <p className="mt-5 max-w-[560px] text-[clamp(1rem,1.05vw,1.16rem)] font-normal leading-[1.55] tracking-[-0.012em] text-white/88 drop-shadow-[0_10px_26px_rgba(0,0,0,.5)]">
               A student-led institution for business learning, leadership, and industry-connected experiences.
             </p>
 

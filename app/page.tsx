@@ -15,27 +15,27 @@ export default function HomePage() {
     <main className="bg-[#020817] text-white">
       <section className="relative min-h-[calc(100svh-80px)] overflow-hidden bg-[#020817]">
         <img src="/images/hero/hero-bg.png" alt="" className="absolute inset-0 h-full w-full object-cover object-center" />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,#020817_0%,rgba(2,8,23,.86)_25%,rgba(2,8,23,.52)_46%,rgba(2,8,23,.12)_69%,rgba(2,8,23,.02)_84%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,#020817_0%,rgba(2,8,23,.88)_24%,rgba(2,8,23,.56)_44%,rgba(2,8,23,.16)_66%,rgba(2,8,23,.03)_84%)]" />
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#020817] via-[#020817]/40 to-transparent" />
 
         <div className="relative mx-auto flex min-h-[calc(100svh-80px)] w-[min(1528px,calc(100%-72px))] items-center max-lg:w-[min(100%-32px,900px)] max-lg:items-start max-lg:pt-24">
-          <div className="max-w-[720px] pb-16 pt-8">
-            <h1 className="font-body font-black tracking-[-0.072em] drop-shadow-[0_18px_60px_rgba(0,0,0,.78)]">
-              <span className="block whitespace-nowrap text-[clamp(3.05rem,4.22vw,4.85rem)] leading-[1.02] max-xl:whitespace-normal max-md:text-[clamp(2.65rem,11vw,4.05rem)]">
-                <span className="bg-gradient-to-b from-white via-white to-[#b8c0cc] bg-clip-text text-transparent">Building</span>{' '}
-                <span className="bg-gradient-to-r from-[#40cfff] via-[#168cff] to-[#075ef5] bg-clip-text text-transparent">Future-Ready</span>
+          <div className="max-w-[650px] pb-16 pt-8">
+            <h1 className="font-body font-extrabold tracking-[-0.048em] drop-shadow-[0_18px_58px_rgba(0,0,0,.74)]">
+              <span className="block whitespace-nowrap text-[clamp(2.75rem,3.9vw,4.45rem)] leading-[1.03] max-xl:whitespace-normal max-md:text-[clamp(2.55rem,10.5vw,3.85rem)]">
+                <span className="bg-gradient-to-b from-white via-white to-[#bbc2ce] bg-clip-text text-transparent">Building</span>{' '}
+                <span className="bg-gradient-to-r from-[#42d4ff] via-[#168cff] to-[#075ef5] bg-clip-text text-transparent">Future-Ready</span>
               </span>
-              <span className="mt-2 block text-[clamp(3.85rem,5.15vw,6rem)] leading-[0.9] max-md:mt-2 max-md:text-[clamp(3.25rem,14vw,5rem)]">
-                <span className="bg-gradient-to-b from-white via-white to-[#b8c0cc] bg-clip-text text-transparent">Professionals.</span>
+              <span className="mt-1 block text-[clamp(3.55rem,4.75vw,5.55rem)] font-extrabold leading-[0.94] tracking-[-0.052em] max-md:mt-2 max-md:text-[clamp(3rem,13vw,4.65rem)]">
+                <span className="bg-gradient-to-b from-white via-white to-[#bbc2ce] bg-clip-text text-transparent">Professionals.</span>
               </span>
             </h1>
 
-            <div className="mt-8 text-[clamp(1.45rem,1.82vw,2.25rem)] font-extrabold leading-[1.12] tracking-[-0.035em]">
+            <div className="mt-8 text-[clamp(1.35rem,1.68vw,2.05rem)] font-bold leading-[1.14] tracking-[-0.03em]">
               <p className="text-white">Jahangirnagar University</p>
               <p className="mt-1 bg-gradient-to-r from-[#53d7ff] to-[#066bf6] bg-clip-text text-transparent">FinAnt Club</p>
             </div>
 
-            <p className="mt-7 max-w-[590px] text-[clamp(1rem,1.08vw,1.18rem)] font-medium leading-8 text-white/88">
+            <p className="mt-7 max-w-[560px] text-[clamp(.98rem,1.02vw,1.12rem)] font-medium leading-8 text-white/88">
               A student-led institution for business learning, leadership, and industry-connected experiences.
             </p>
 

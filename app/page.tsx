@@ -52,11 +52,6 @@ export default function HomePage() {
       </section>
 
       <section id="legacy-foundation" className="legacy-reveal relative -mt-px min-h-[calc(100svh-80px)] scroll-mt-20 overflow-hidden bg-[#020817] py-16">
-        <img src="/images/hero/legacy-bg.png" alt="" className="absolute inset-0 h-full w-full object-cover object-center" />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,#020817_0%,rgba(2,8,23,.36)_16%,rgba(2,8,23,.18)_44%,rgba(2,8,23,.84)_78%,#020817_100%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_52%_40%,rgba(0,132,255,.18),transparent_34%),linear-gradient(90deg,rgba(2,8,23,.92)_0%,rgba(2,8,23,.42)_36%,rgba(2,8,23,.12)_62%,rgba(2,8,23,.34)_100%)]" />
-        <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#020817] via-[#020817]/45 to-transparent" />
-
         <div className="relative mx-auto flex min-h-[calc(100svh-12rem)] w-[min(1528px,calc(100%-72px))] flex-col justify-end max-lg:w-[min(100%-32px,900px)]">
           <div className="max-w-5xl pb-8">
             <p className="text-sm font-medium uppercase tracking-[0.58em] text-cyan-300/90 max-md:tracking-[0.34em]">Legacy Foundation</p>

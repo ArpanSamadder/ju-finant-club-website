@@ -3,11 +3,11 @@ import Link from 'next/link';
 export default function HomePage() {
   return (
     <main className="bg-[#020817] text-white">
-      <section className="relative bg-[#020817]">
+      <section className="relative overflow-clip bg-[#020817]">
         <img
           src="/images/hero/home-hero-bg.png"
           alt=""
-          className="block h-auto w-full"
+          className="block h-auto w-full scale-105"
         />
 
         <div className="absolute left-[7.55vw] top-[6.2vw] max-w-[560px] max-xl:left-[6.6vw] max-xl:top-[5.8vw] max-lg:left-8 max-lg:top-16">

@@ -7,7 +7,7 @@ export default function HomePage() {
         <img
           src="/images/hero/home-hero-bg.png"
           alt=""
-          className="absolute left-0 top-0 h-auto w-full scale-105"
+          className="absolute left-0 top-0 h-auto w-full scale-130"
         />
 
         <div className="absolute left-[7.55vw] top-[6.2vw] max-w-[560px] max-xl:left-[6.6vw] max-xl:top-[5.8vw] max-lg:left-8 max-lg:top-16">

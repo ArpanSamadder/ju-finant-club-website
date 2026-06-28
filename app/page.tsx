@@ -20,12 +20,12 @@ export default function HomePage() {
             </span>
           </h1>
 
-          <div className="mt-[2.05vw] text-[clamp(1.35rem,2.05vw,2.45rem)] leading-[1.16] tracking-[-0.044em] drop-shadow-[0_12px_34px_rgba(0,0,0,.55)] max-lg:mt-7 max-md:text-[clamp(1.45rem,6vw,2.2rem)]">
+          <div className="mt-[2.05vw] text-[clamp(1.62rem,2.46vw,2.94rem)] leading-[1.16] tracking-[-0.044em] drop-shadow-[0_12px_34px_rgba(0,0,0,.55)] max-lg:mt-7 max-md:text-[clamp(1.74rem,7.2vw,2.64rem)]">
             <p className="font-normal text-[#f7fbff]">Jahangirnagar University</p>
             <p className="mt-1 font-bold text-[#115FEB]">FinAnt Club</p>
           </div>
 
-          <p className="mt-3 max-w-[470px] text-[clamp(.95rem,1.05vw,1.08rem)] font-light leading-[1.42] tracking-[-0.006em] text-white/88 drop-shadow-[0_10px_26px_rgba(0,0,0,.5)]">
+          <p className="mt-3 max-w-[565px] text-[clamp(1.14rem,1.26vw,1.3rem)] font-light leading-[1.42] tracking-[-0.006em] text-white/88 drop-shadow-[0_10px_26px_rgba(0,0,0,.5)]">
             A student-led institution for business learning,<br />
             leadership, and industry-connected experiences.
           </p>

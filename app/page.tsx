@@ -8,6 +8,18 @@ export default function HomePage() {
           className="absolute inset-0 h-full w-full select-none object-cover object-center"
         />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,8,23,.18)_0%,rgba(2,8,23,.08)_42%,rgba(2,8,23,.02)_100%)]" />
+
+        <div className="absolute left-[6.65vw] top-[20.2vw] z-10 max-w-[850px] max-xl:left-[6.2vw] max-xl:top-[18vw] max-lg:left-8 max-lg:top-40">
+          <h1 className="font-body font-extrabold tracking-[-0.052em] drop-shadow-[0_18px_58px_rgba(0,0,0,.74)]">
+            <span className="block whitespace-nowrap text-[clamp(3.3rem,5.45vw,6.35rem)] leading-[1.02] max-xl:whitespace-normal max-md:text-[clamp(2.8rem,12vw,4.5rem)]">
+              <span className="bg-gradient-to-b from-white via-white to-[#bbc2ce] bg-clip-text text-transparent">Building</span>{' '}
+              <span className="bg-gradient-to-r from-[#42d4ff] via-[#168cff] to-[#075ef5] bg-clip-text text-transparent">Future-Ready</span>
+            </span>
+            <span className="mt-3 block text-[clamp(4.1rem,6.25vw,7.25rem)] leading-[0.96] tracking-[-0.058em] max-md:text-[clamp(3.2rem,14vw,5.1rem)]">
+              <span className="bg-gradient-to-b from-white via-white to-[#bbc2ce] bg-clip-text text-transparent">Professionals.</span>
+            </span>
+          </h1>
+        </div>
       </section>
 
       <section id="legacy-foundation" className="relative overflow-hidden bg-[#020817] py-24">

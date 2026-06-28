@@ -20,8 +20,8 @@ export default function HomePage() {
             </span>
           </h1>
 
-          <div className="mt-[2.05vw] text-[clamp(1.35rem,2.05vw,2.45rem)] font-medium leading-[1.16] tracking-[-0.044em] drop-shadow-[0_12px_34px_rgba(0,0,0,.55)] max-lg:mt-7 max-md:text-[clamp(1.45rem,6vw,2.2rem)]">
-            <p className="text-[#f7fbff]">Jahangirnagar University</p>
+          <div className="mt-[2.05vw] text-[clamp(1.35rem,2.05vw,2.45rem)] leading-[1.16] tracking-[-0.044em] drop-shadow-[0_12px_34px_rgba(0,0,0,.55)] max-lg:mt-7 max-md:text-[clamp(1.45rem,6vw,2.2rem)]">
+            <p className="font-normal text-[#f7fbff]">Jahangirnagar University</p>
             <p className="mt-1 font-bold text-[#115FEB]">FinAnt Club</p>
           </div>
         </div>

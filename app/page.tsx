@@ -1,5 +1,32 @@
 import Link from 'next/link';
 
+const legacyCards = [
+  {
+    title: 'Biztigation 2024',
+    badge: 'BIZ\nTIGATION\n2.0',
+    accent: 'from-[#06123d] via-[#071b58] to-[#020817]',
+    visual: 'TROPHY',
+  },
+  {
+    title: 'Crackademy 2025',
+    badge: 'CRACK\nADEMY',
+    accent: 'from-[#07152d] via-[#112033] to-[#020817]',
+    visual: 'CLASSROOM',
+  },
+  {
+    title: 'Job Fair',
+    badge: 'JOB\nFAIR\n2025',
+    accent: 'from-[#071532] via-[#122a48] to-[#020817]',
+    visual: 'CAREERS',
+  },
+  {
+    title: 'Panel Discussion',
+    badge: 'PEOPLE',
+    accent: 'from-[#040b2a] via-[#07184a] to-[#020817]',
+    visual: 'PANEL',
+  },
+];
+
 export default function HomePage() {
   return (
     <main className="bg-[#020817] text-white">
@@ -43,20 +70,64 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="legacy-foundation" className="relative overflow-hidden bg-[#020817] py-24">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,123,255,.16),transparent_48%)]" />
-        <div className="relative mx-auto max-w-[1180px] px-6 text-center">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.5em] text-[#53d6ff]">
-            Legacy Foundation
-          </p>
-          <h2 className="text-[clamp(2rem,3.4vw,4rem)] font-extrabold leading-[1.06] tracking-[-0.045em]">
-            <span className="bg-gradient-to-b from-white via-white to-[#c6ced9] bg-clip-text text-transparent">The </span>
-            <span className="bg-gradient-to-r from-[#42d4ff] via-[#168cff] to-[#075ef5] bg-clip-text text-transparent">Legacy</span>
-            <span className="bg-gradient-to-b from-white via-white to-[#c6ced9] bg-clip-text text-transparent"> We Carry Forward</span>
-          </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-white/62">
-            From Finance Fest, Biztigation, Crackademy, job fairs, panel discussions, and publications — FinAnt carries this departmental legacy into a permanent institutional platform.
-          </p>
+      <section id="legacy-foundation" className="relative overflow-hidden bg-[#020817] px-6 py-[6.5vw] min-h-[calc(100svh-72px)]">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(17,95,235,.20),transparent_54%)]" />
+        <div className="pointer-events-none absolute inset-x-[-8vw] top-[-28vw] h-[42vw] rounded-[50%] border-t-2 border-[#115FEB]/80 shadow-[0_0_42px_rgba(17,95,235,.55)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(transparent_0%,rgba(17,95,235,.08)_100%),linear-gradient(90deg,rgba(17,95,235,.13)_1px,transparent_1px),linear-gradient(0deg,rgba(17,95,235,.13)_1px,transparent_1px)] bg-[size:auto,72px_72px,72px_72px] opacity-35" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-[#020817] to-transparent" />
+
+        <div className="relative mx-auto max-w-[1760px]">
+          <div className="text-center">
+            <p className="text-[clamp(.82rem,1vw,1.05rem)] font-medium uppercase tracking-[0.55em] text-[#00D9FF] drop-shadow-[0_0_18px_rgba(0,217,255,.45)]">
+              Legacy Foundation
+            </p>
+            <h2 className="mt-4 text-[clamp(2.2rem,3.35vw,4.4rem)] font-bold leading-[1.04] tracking-[-0.045em] drop-shadow-[0_18px_58px_rgba(0,0,0,.68)]">
+              <span className="bg-gradient-to-b from-white via-white to-[#b9c0cb] bg-clip-text text-transparent">The </span>
+              <span className="text-[#115FEB]">Departmental Legacy</span>
+              <span className="bg-gradient-to-b from-white via-white to-[#b9c0cb] bg-clip-text text-transparent"> We Carry Forward</span>
+            </h2>
+          </div>
+
+          <div className="relative mt-7 px-20 max-xl:px-12 max-lg:px-0">
+            <button aria-label="Previous legacy event" className="absolute left-0 top-1/2 z-20 flex h-16 w-16 -translate-y-1/2 items-center justify-center rounded-full border border-[#7fb3ff]/40 bg-[#07122e]/70 text-5xl font-light text-white shadow-[0_0_34px_rgba(17,95,235,.38)] backdrop-blur-md transition hover:border-[#00D9FF] hover:text-[#00D9FF] max-lg:hidden">
+              ‹
+            </button>
+            <button aria-label="Next legacy event" className="absolute right-0 top-1/2 z-20 flex h-16 w-16 -translate-y-1/2 items-center justify-center rounded-full border border-[#7fb3ff]/40 bg-[#07122e]/70 text-5xl font-light text-white shadow-[0_0_34px_rgba(17,95,235,.38)] backdrop-blur-md transition hover:border-[#00D9FF] hover:text-[#00D9FF] max-lg:hidden">
+              ›
+            </button>
+
+            <div className="grid grid-cols-4 gap-5 max-xl:grid-cols-2 max-md:grid-cols-1">
+              {legacyCards.map((card) => (
+                <article key={card.title} className="group relative overflow-hidden rounded-[20px] border border-[#2e7fff]/70 bg-[#04112d]/88 p-2 shadow-[0_0_0_1px_rgba(0,217,255,.12),0_24px_70px_rgba(0,0,0,.55),0_0_35px_rgba(17,95,235,.22)] transition duration-300 hover:-translate-y-2 hover:border-[#00D9FF]">
+                  <div className={`relative min-h-[330px] overflow-hidden rounded-[15px] bg-gradient-to-br ${card.accent} max-2xl:min-h-[290px]`}>
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_22%,rgba(0,217,255,.28),transparent_20%),radial-gradient(circle_at_50%_70%,rgba(17,95,235,.35),transparent_34%)]" />
+                    <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,.06)_1px,transparent_1px),linear-gradient(0deg,rgba(255,255,255,.05)_1px,transparent_1px)] bg-[size:44px_44px] opacity-20" />
+                    <div className="absolute inset-x-8 top-6 h-28 rounded-full bg-[#115FEB]/20 blur-3xl" />
+
+                    <div className="absolute left-1/2 top-[30%] flex h-24 w-24 -translate-x-1/2 items-center justify-center rounded-full border border-[#00D9FF]/45 bg-[#06173d]/70 text-center text-[.75rem] font-black uppercase leading-[.95] tracking-[-.04em] text-white shadow-[0_0_34px_rgba(0,217,255,.45)] backdrop-blur-md whitespace-pre-line">
+                      {card.badge}
+                    </div>
+
+                    <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#020817] via-[#020817]/78 to-transparent" />
+                    <div className="absolute bottom-24 left-8 right-8 flex justify-center">
+                      <div className="rounded-full border border-[#00D9FF]/30 bg-[#07173a]/45 px-5 py-2 text-[.7rem] font-semibold uppercase tracking-[0.42em] text-[#00D9FF]/80">
+                        {card.visual}
+                      </div>
+                    </div>
+                    <h3 className="absolute bottom-5 left-4 right-4 text-center text-[clamp(1.65rem,1.7vw,2.25rem)] font-medium leading-none tracking-[-0.05em] text-white drop-shadow-[0_12px_28px_rgba(0,0,0,.85)]">
+                      {card.title}
+                    </h3>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-8 flex items-center justify-center gap-5">
+            {[0, 1, 2, 3, 4, 5, 6].map((dot) => (
+              <span key={dot} className={`h-4 w-4 rounded-full ${dot === 0 ? 'border-2 border-[#00D9FF] bg-[#115FEB] shadow-[0_0_20px_rgba(0,217,255,.8)]' : 'bg-slate-400/55'}`} />
+            ))}
+          </div>
         </div>
       </section>
     </main>

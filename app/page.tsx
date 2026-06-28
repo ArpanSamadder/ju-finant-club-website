@@ -24,6 +24,11 @@ export default function HomePage() {
             <p className="font-normal text-[#f7fbff]">Jahangirnagar University</p>
             <p className="mt-1 font-bold text-[#115FEB]">FinAnt Club</p>
           </div>
+
+          <p className="mt-4 max-w-[430px] text-[clamp(.82rem,.92vw,1rem)] font-light leading-[1.42] tracking-[-0.004em] text-white/82 drop-shadow-[0_10px_26px_rgba(0,0,0,.5)]">
+            A student-led institution for business learning,<br />
+            leadership, and industry-connected experiences.
+          </p>
         </div>
       </section>
 

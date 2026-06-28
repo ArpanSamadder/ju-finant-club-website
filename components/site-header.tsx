@@ -39,7 +39,7 @@ export function SiteHeader() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`relative flex h-full items-center whitespace-nowrap text-lg font-bold transition-colors after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-left after:rounded-full after:bg-gradient-to-r after:from-[#1597ff] after:via-[#53d6ff] after:to-transparent after:transition-transform after:duration-300 ${
+                className={`relative flex h-full items-center whitespace-nowrap text-lg font-bold transition-colors after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-left after:rounded-full after:bg-[#1597ff] after:shadow-[0_0_14px_rgba(21,151,255,.72)] after:transition-transform after:duration-300 ${
                   active
                     ? 'text-[#53d6ff] after:scale-x-100'
                     : 'text-white/90 hover:text-cyan-300 after:scale-x-0 hover:after:scale-x-100'

@@ -25,7 +25,7 @@ export default function HomePage() {
             <p className="mt-1 font-bold text-[#115FEB]">FinAnt Club</p>
           </div>
 
-          <p className="mt-4 max-w-[430px] text-[clamp(.82rem,.92vw,1rem)] font-light leading-[1.42] tracking-[-0.004em] text-white/82 drop-shadow-[0_10px_26px_rgba(0,0,0,.5)]">
+          <p className="mt-3 max-w-[470px] text-[clamp(.95rem,1.05vw,1.08rem)] font-light leading-[1.42] tracking-[-0.006em] text-white/88 drop-shadow-[0_10px_26px_rgba(0,0,0,.5)]">
             A student-led institution for business learning,<br />
             leadership, and industry-connected experiences.
           </p>

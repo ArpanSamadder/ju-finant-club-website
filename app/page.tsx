@@ -11,7 +11,7 @@ export default function HomePage() {
         />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,8,23,.18)_0%,rgba(2,8,23,.08)_42%,rgba(2,8,23,.02)_100%)]" />
 
-        <div className="absolute left-[6.55vw] top-[7.15vw] z-10 max-w-[600px] max-xl:left-[6.2vw] max-xl:top-[6.8vw] max-lg:left-8 max-lg:top-16">
+        <div className="absolute left-[6.55vw] top-[6.55vw] z-10 max-w-[600px] max-xl:left-[6.2vw] max-xl:top-[6.35vw] max-lg:left-8 max-lg:top-16">
           <h1 className="font-body font-extrabold tracking-[-0.048em] drop-shadow-[0_18px_58px_rgba(0,0,0,.74)]">
             <span className="block whitespace-nowrap text-[clamp(2.35rem,3.75vw,4.25rem)] leading-[1.02] max-xl:whitespace-normal max-md:text-[clamp(2.4rem,10vw,3.6rem)]">
               <span className="bg-gradient-to-b from-white via-white to-[#bbc2ce] bg-clip-text text-transparent">Building</span>{' '}

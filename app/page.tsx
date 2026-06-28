@@ -3,12 +3,14 @@ import Link from 'next/link';
 export default function HomePage() {
   return (
     <main className="bg-[#020817] text-white">
-      <section className="relative h-[40.6vw] min-h-[500px] overflow-clip bg-[#020817]">
+      <section className="relative overflow-hidden bg-[#020817]">
         <img
-          src="/images/hero/home-hero-bg.png"
+          src="/images/hero/home-merged-bg.png"
           alt=""
-          className="absolute left-0 top-0 h-auto w-full scale-1.25"
+          className="block h-auto w-full select-none"
         />
+
+        <div id="legacy-foundation" className="absolute left-0 top-[52%]" />
 
         <div className="absolute left-[7.55vw] top-[6.2vw] max-w-[560px] max-xl:left-[6.6vw] max-xl:top-[5.8vw] max-lg:left-8 max-lg:top-16">
           <h1 className="font-body font-extrabold tracking-[-0.048em] drop-shadow-[0_18px_58px_rgba(0,0,0,.74)]">

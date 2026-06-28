@@ -100,7 +100,7 @@ export default function HomePage() {
                     <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,.06)_1px,transparent_1px),linear-gradient(0deg,rgba(255,255,255,.05)_1px,transparent_1px)] bg-[size:44px_44px] opacity-20" />
                     <div className="absolute inset-x-8 top-6 h-28 rounded-full bg-[#115FEB]/20 blur-3xl" />
 
-                    <div className="absolute left-1/2 top-[38%] flex h-24 w-24 -translate-x-1/2 items-center justify-center rounded-full border border-[#00D9FF]/45 bg-[#06173d]/70 text-center text-[.75rem] font-black uppercase leading-[.95] tracking-[-.04em] text-white shadow-[0_0_34px_rgba(0,217,255,.45)] backdrop-blur-md whitespace-pre-line">
+                    <div className="absolute bottom-24 left-1/2 flex h-24 w-24 -translate-x-1/2 items-center justify-center rounded-full border border-[#00D9FF]/45 bg-[#06173d]/70 text-center text-[.75rem] font-black uppercase leading-[.95] tracking-[-.04em] text-white shadow-[0_0_34px_rgba(0,217,255,.45)] backdrop-blur-md whitespace-pre-line">
                       {card.badge}
                     </div>
 

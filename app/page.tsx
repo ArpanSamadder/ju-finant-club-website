@@ -5,25 +5,21 @@ const legacyCards = [
     title: 'Biztigation 2024',
     badge: 'BIZ\nTIGATION\n2.0',
     accent: 'from-[#06123d] via-[#071b58] to-[#020817]',
-    visual: 'TROPHY',
   },
   {
     title: 'Crackademy 2025',
     badge: 'CRACK\nADEMY',
     accent: 'from-[#07152d] via-[#112033] to-[#020817]',
-    visual: 'CLASSROOM',
   },
   {
     title: 'Job Fair',
     badge: 'JOB\nFAIR\n2025',
     accent: 'from-[#071532] via-[#122a48] to-[#020817]',
-    visual: 'CAREERS',
   },
   {
     title: 'Panel Discussion',
     badge: 'PEOPLE',
     accent: 'from-[#040b2a] via-[#07184a] to-[#020817]',
-    visual: 'PANEL',
   },
 ];
 
@@ -104,17 +100,12 @@ export default function HomePage() {
                     <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,.06)_1px,transparent_1px),linear-gradient(0deg,rgba(255,255,255,.05)_1px,transparent_1px)] bg-[size:44px_44px] opacity-20" />
                     <div className="absolute inset-x-8 top-6 h-28 rounded-full bg-[#115FEB]/20 blur-3xl" />
 
-                    <div className="absolute left-1/2 top-[30%] flex h-24 w-24 -translate-x-1/2 items-center justify-center rounded-full border border-[#00D9FF]/45 bg-[#06173d]/70 text-center text-[.75rem] font-black uppercase leading-[.95] tracking-[-.04em] text-white shadow-[0_0_34px_rgba(0,217,255,.45)] backdrop-blur-md whitespace-pre-line">
+                    <div className="absolute left-1/2 top-[38%] flex h-24 w-24 -translate-x-1/2 items-center justify-center rounded-full border border-[#00D9FF]/45 bg-[#06173d]/70 text-center text-[.75rem] font-black uppercase leading-[.95] tracking-[-.04em] text-white shadow-[0_0_34px_rgba(0,217,255,.45)] backdrop-blur-md whitespace-pre-line">
                       {card.badge}
                     </div>
 
                     <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#020817] via-[#020817]/78 to-transparent" />
-                    <div className="absolute bottom-24 left-8 right-8 flex justify-center">
-                      <div className="rounded-full border border-[#00D9FF]/30 bg-[#07173a]/45 px-5 py-2 text-[.7rem] font-semibold uppercase tracking-[0.42em] text-[#00D9FF]/80">
-                        {card.visual}
-                      </div>
-                    </div>
-                    <h3 className="absolute bottom-5 left-4 right-4 text-center text-[clamp(1.65rem,1.7vw,2.25rem)] font-medium leading-none tracking-[-0.05em] text-white drop-shadow-[0_12px_28px_rgba(0,0,0,.85)]">
+                    <h3 className="absolute bottom-6 left-4 right-4 text-center text-[clamp(1.65rem,1.7vw,2.25rem)] font-medium leading-none tracking-[-0.05em] text-white drop-shadow-[0_12px_28px_rgba(0,0,0,.85)]">
                       {card.title}
                     </h3>
                   </div>

@@ -11,11 +11,11 @@ export default function HomePage() {
 
         <div className="absolute left-[6.6vw] top-[10.35vw] z-10 max-w-[760px] max-xl:left-[6.2vw] max-xl:top-[9.7vw] max-lg:left-8 max-lg:top-28">
           <h1 className="font-body font-extrabold tracking-[-0.052em] drop-shadow-[0_18px_58px_rgba(0,0,0,.74)]">
-            <span className="block whitespace-nowrap text-[clamp(2.9rem,4.75vw,5.75rem)] leading-[1.02] max-xl:whitespace-normal max-md:text-[clamp(2.7rem,11vw,4.15rem)]">
+            <span className="block whitespace-nowrap text-[clamp(2.75rem,4.45vw,5.35rem)] leading-[1.02] max-xl:whitespace-normal max-md:text-[clamp(2.55rem,10.5vw,3.95rem)]">
               <span className="bg-gradient-to-b from-white via-white to-[#bbc2ce] bg-clip-text text-transparent">Building</span>{' '}
               <span className="text-[#115FEB]">Future-Ready</span>
             </span>
-            <span className="mt-1 block text-[clamp(3.55rem,5.45vw,6.55rem)] leading-[0.95] tracking-[-0.058em] max-md:text-[clamp(3rem,13vw,4.85rem)]">
+            <span className="mt-1 block text-[clamp(3.75rem,5.85vw,7.05rem)] leading-[0.95] tracking-[-0.058em] max-md:text-[clamp(3.15rem,13.5vw,5.15rem)]">
               <span className="bg-gradient-to-b from-white via-white to-[#bbc2ce] bg-clip-text text-transparent">Professionals.</span>
             </span>
           </h1>

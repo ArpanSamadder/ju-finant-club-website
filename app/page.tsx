@@ -13,7 +13,7 @@ export default function HomePage() {
           <h1 className="font-body font-extrabold tracking-[-0.052em] drop-shadow-[0_18px_58px_rgba(0,0,0,.74)]">
             <span className="block whitespace-nowrap text-[clamp(2.9rem,4.75vw,5.75rem)] leading-[1.02] max-xl:whitespace-normal max-md:text-[clamp(2.7rem,11vw,4.15rem)]">
               <span className="bg-gradient-to-b from-white via-white to-[#bbc2ce] bg-clip-text text-transparent">Building</span>{' '}
-              <span className="bg-gradient-to-r from-[#42d4ff] via-[#168cff] to-[#075ef5] bg-clip-text text-transparent">Future-Ready</span>
+              <span className="text-[#115FEB]">Future-Ready</span>
             </span>
             <span className="mt-1 block text-[clamp(3.55rem,5.45vw,6.55rem)] leading-[0.95] tracking-[-0.058em] max-md:text-[clamp(3rem,13vw,4.85rem)]">
               <span className="bg-gradient-to-b from-white via-white to-[#bbc2ce] bg-clip-text text-transparent">Professionals.</span>

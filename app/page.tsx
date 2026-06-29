@@ -166,10 +166,10 @@ export default async function HomePage() {
           </div>
 
           <div className="relative mt-[4.2vw] px-20 max-2xl:px-16 max-xl:px-10 max-lg:px-0">
-            <button aria-label="Previous legacy event" className="absolute left-0 top-1/2 z-20 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full border border-[#f8f0d7]/75 bg-[#050a17]/70 text-4xl font-light leading-none text-white shadow-[0_0_24px_rgba(255,255,255,.16),0_0_30px_rgba(17,95,235,.32)] backdrop-blur-md transition hover:border-[#00D9FF] hover:text-[#00D9FF] max-xl:h-12 max-xl:w-12 max-xl:text-3xl max-lg:hidden">
+            <button aria-label="Previous legacy event" className="absolute left-0 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-[#115FEB]/80 bg-[#020817] text-3xl font-light leading-none text-white shadow-none transition hover:border-[#00D9FF] hover:text-[#00D9FF] max-xl:h-11 max-xl:w-11 max-xl:text-2xl max-lg:hidden">
               ‹
             </button>
-            <button aria-label="Next legacy event" className="absolute right-0 top-1/2 z-20 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full border border-[#f8f0d7]/75 bg-[#050a17]/70 text-4xl font-light leading-none text-white shadow-[0_0_24px_rgba(255,255,255,.16),0_0_30px_rgba(17,95,235,.32)] backdrop-blur-md transition hover:border-[#00D9FF] hover:text-[#00D9FF] max-xl:h-12 max-xl:w-12 max-xl:text-3xl max-lg:hidden">
+            <button aria-label="Next legacy event" className="absolute right-0 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-[#115FEB]/80 bg-[#020817] text-3xl font-light leading-none text-white shadow-none transition hover:border-[#00D9FF] hover:text-[#00D9FF] max-xl:h-11 max-xl:w-11 max-xl:text-2xl max-lg:hidden">
               ›
             </button>
 
@@ -207,12 +207,6 @@ export default async function HomePage() {
                 </article>
               ))}
             </div>
-          </div>
-
-          <div className="mt-8 flex items-center justify-center gap-5">
-            {[0, 1, 2, 3].map((dot) => (
-              <span key={dot} className={`h-4 w-4 rounded-full ${dot === 0 ? 'bg-[#00D9FF] shadow-[0_0_20px_rgba(0,217,255,.82)]' : 'bg-[#d7d7d7]/70 shadow-[0_0_10px_rgba(255,255,255,.22)]'}`} />
-            ))}
           </div>
         </div>
       </section>

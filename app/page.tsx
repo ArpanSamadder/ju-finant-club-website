@@ -130,23 +130,30 @@ export default async function HomePage() {
 
       <section id="legacy-foundation" className="relative min-h-[calc(100svh-72px)] overflow-hidden bg-[#020817] px-6 py-[7vw]">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_18%,rgba(17,95,235,.16),transparent_31%),radial-gradient(circle_at_50%_84%,rgba(0,217,255,.08),transparent_35%)]" />
-        <svg aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-[10rem] w-full overflow-visible" viewBox="0 0 1600 180" preserveAspectRatio="none">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-[22rem] bg-gradient-to-b from-[#030817] via-[#020817]/45 to-transparent" />
+        <svg aria-hidden="true" className="pointer-events-none absolute left-1/2 top-[-150px] z-0 h-[420px] w-[160vw] -translate-x-1/2 overflow-visible max-lg:top-[-125px] max-lg:h-[340px]" viewBox="0 0 1600 420" preserveAspectRatio="none">
           <defs>
-            <filter id="legacyArcGlow" x="-15%" y="-90%" width="130%" height="260%">
+            <filter id="legacyOrbitGlow" x="-12%" y="-80%" width="124%" height="240%">
               <feGaussianBlur stdDeviation="5" result="blur" />
               <feMerge>
                 <feMergeNode in="blur" />
                 <feMergeNode in="SourceGraphic" />
               </feMerge>
             </filter>
+            <linearGradient id="legacyOrbitGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#0B5CFF" stopOpacity="0.25" />
+              <stop offset="35%" stopColor="#00B7FF" stopOpacity="0.95" />
+              <stop offset="65%" stopColor="#2F80FF" stopOpacity="0.75" />
+              <stop offset="100%" stopColor="#0B5CFF" stopOpacity="0.25" />
+            </linearGradient>
           </defs>
-          <path d="M -120 145 C 320 8 1280 8 1720 145" fill="none" stroke="rgba(23,107,255,.96)" strokeWidth="2.2" filter="url(#legacyArcGlow)" />
+          <path d="M -120 360 Q 800 40 1720 360" fill="none" stroke="rgba(17,95,235,.16)" strokeWidth="8" strokeLinecap="round" />
+          <path d="M -120 360 Q 800 40 1720 360" fill="none" stroke="url(#legacyOrbitGradient)" strokeWidth="2" strokeLinecap="round" filter="url(#legacyOrbitGlow)" />
         </svg>
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-[22rem] bg-gradient-to-b from-[#030817] via-[#020817]/45 to-transparent" />
         <div className="pointer-events-none absolute right-0 top-0 h-[52rem] w-1/2 bg-[linear-gradient(128deg,transparent_0%,rgba(17,95,235,.16)_1px,transparent_2px),linear-gradient(142deg,transparent_0%,rgba(0,217,255,.10)_1px,transparent_2px)] bg-[length:95px_95px] opacity-45" />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#020817] to-transparent" />
 
-        <div className="relative mx-auto max-w-[1680px]">
+        <div className="relative z-10 mx-auto max-w-[1680px]">
           <div className="text-center">
             <p className="text-[clamp(.82rem,1.05vw,1.15rem)] font-semibold uppercase tracking-[0.72em] text-[#00F0FF] drop-shadow-[0_0_18px_rgba(0,217,255,.72)] max-md:tracking-[0.38em]">
               Legacy Foundation

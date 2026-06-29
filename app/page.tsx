@@ -130,7 +130,7 @@ export default async function HomePage() {
 
       <section id="legacy-foundation" className="relative min-h-[calc(100svh-72px)] overflow-hidden bg-[#020817] px-6 py-[7vw]">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_18%,rgba(17,95,235,.20),transparent_34%),radial-gradient(circle_at_50%_84%,rgba(0,217,255,.10),transparent_35%)]" />
-        <div className="pointer-events-none absolute inset-x-[-12vw] top-[-9.5rem] h-[24rem] rounded-[50%] border-t border-[#176BFF]/95 shadow-[0_-4px_28px_rgba(17,95,235,.70),0_0_90px_rgba(0,217,255,.34)]" />
+        <div className="pointer-events-none absolute inset-x-[-12vw] top-[1.25rem] h-[20rem] rounded-[50%] border-t border-[#176BFF]/95 shadow-[0_-4px_28px_rgba(17,95,235,.70),0_0_90px_rgba(0,217,255,.34)]" />
         <div className="pointer-events-none absolute inset-x-0 top-0 h-[22rem] bg-gradient-to-b from-[#030817] via-[#020817]/45 to-transparent" />
         <div className="pointer-events-none absolute right-0 top-0 h-[52rem] w-1/2 bg-[linear-gradient(128deg,transparent_0%,rgba(17,95,235,.16)_1px,transparent_2px),linear-gradient(142deg,transparent_0%,rgba(0,217,255,.10)_1px,transparent_2px)] bg-[length:95px_95px] opacity-45" />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#020817] to-transparent" />

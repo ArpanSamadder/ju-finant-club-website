@@ -88,6 +88,7 @@ export default async function HomePage() {
           className="absolute inset-0 h-full w-full select-none object-cover object-center"
         />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,8,23,.18)_0%,rgba(2,8,23,.08)_42%,rgba(2,8,23,.02)_100%)]" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent via-[#020817]/72 to-[#020817]" />
 
         <div className="absolute left-[6.6vw] top-[6.95vw] z-10 max-w-[760px] max-xl:left-[6.2vw] max-xl:top-[6.5vw] max-lg:left-8 max-lg:top-16">
           <h1 className="font-body font-bold tracking-[-0.052em] drop-shadow-[0_18px_58px_rgba(0,0,0,.74)]">
@@ -121,10 +122,12 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section id="legacy-foundation" className="relative min-h-[calc(100svh-72px)] overflow-hidden bg-[#020817] px-6 py-[6.5vw]">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(17,95,235,.20),transparent_54%)]" />
-        <div className="pointer-events-none absolute inset-x-[-8vw] top-[-28vw] h-[42vw] rounded-[50%] border-t-2 border-[#115FEB]/80 shadow-[0_0_42px_rgba(17,95,235,.55)]" />
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(transparent_0%,rgba(17,95,235,.08)_100%),linear-gradient(90deg,rgba(17,95,235,.13)_1px,transparent_1px),linear-gradient(0deg,rgba(17,95,235,.13)_1px,transparent_1px)] bg-[size:auto,72px_72px,72px_72px] opacity-35" />
+      <section id="legacy-foundation" className="relative -mt-px min-h-[calc(100svh-72px)] overflow-hidden bg-[#020817] px-6 py-[6.5vw]">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-52 bg-[linear-gradient(180deg,#020817_0%,rgba(2,8,23,.96)_30%,rgba(3,13,39,.78)_68%,transparent_100%)]" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#115FEB]/45 to-transparent" />
+        <div className="pointer-events-none absolute inset-x-[-12vw] top-[-18rem] h-[30rem] bg-[radial-gradient(ellipse_at_top,rgba(17,95,235,.30),rgba(17,95,235,.09)_42%,transparent_74%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(17,95,235,.16),transparent_56%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(transparent_0%,rgba(17,95,235,.08)_100%),linear-gradient(90deg,rgba(17,95,235,.13)_1px,transparent_1px),linear-gradient(0deg,rgba(17,95,235,.13)_1px,transparent_1px)] bg-[size:auto,72px_72px,72px_72px] opacity-30" />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-[#020817] to-transparent" />
 
         <div className="relative mx-auto max-w-[1760px]">

@@ -1,28 +1,105 @@
 @media (max-width: 767px) {
-  .finant-mobile-hero {
-    min-height: calc(100svh - 7.6rem);
+  main div section:first-child {
+    min-height: calc(100svh - 7.6rem) !important;
+    isolation: isolate;
   }
 
-  .finant-mobile-hero-image {
-    object-position: 60% 50%;
+  main div section:first-child img:first-child {
+    object-position: 60% 50% !important;
   }
 
-  .finant-mobile-hero-content {
-    inset: 0;
-    width: 100%;
-    max-width: none;
-    height: 100%;
-    padding: 7vw 6vw 0;
-  }
-
-  .finant-mobile-hero-buttons {
+  main div section:first-child::after {
+    content: '';
     position: absolute;
-    left: 6vw;
-    right: 6vw;
-    bottom: 6vw;
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-    margin-top: 0;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(2, 8, 23, 0.18) 0%, rgba(2, 8, 23, 0.02) 42%, rgba(2, 8, 23, 0.12) 70%, rgba(2, 8, 23, 0.92) 100%), linear-gradient(90deg, rgba(2, 8, 23, 0.34) 0%, rgba(2, 8, 23, 0.06) 58%, rgba(2, 8, 23, 0.24) 100%);
+  }
+
+  main div section:first-child div:nth-of-type(3) {
+    inset: 0 !important;
+    width: 100% !important;
+    max-width: none !important;
+    height: 100% !important;
+    padding: 7vw 6vw 0 !important;
+  }
+
+  main div section:first-child div:nth-of-type(3) h1 {
+    letter-spacing: -0.06em !important;
+  }
+
+  main div section:first-child div:nth-of-type(3) h1 span:first-child {
+    font-size: clamp(3.35rem, 14.2vw, 4.55rem) !important;
+    line-height: 1.03 !important;
+    white-space: normal !important;
+  }
+
+  main div section:first-child div:nth-of-type(3) h1 span:first-child span:nth-of-type(2) {
+    display: block !important;
+  }
+
+  main div section:first-child div:nth-of-type(3) h1 span:nth-child(2) {
+    margin-top: 0.5rem !important;
+    font-size: clamp(3.35rem, 13.7vw, 4.7rem) !important;
+    line-height: 0.98 !important;
+  }
+
+  main div section:first-child div:nth-of-type(3) h1 + div {
+    margin-top: 2.25rem !important;
+    font-size: clamp(1.85rem, 7.2vw, 2.45rem) !important;
+    line-height: 1.18 !important;
+  }
+
+  main div section:first-child div:nth-of-type(3) p {
+    margin-top: 1.75rem !important;
+    max-width: 78vw !important;
+    font-size: clamp(1.1rem, 5.1vw, 1.45rem) !important;
+    line-height: 1.55 !important;
+  }
+
+  main div section:first-child div:nth-of-type(3) p br {
+    display: none !important;
+  }
+
+  main div section:first-child div:nth-of-type(3) div:last-child {
+    position: absolute !important;
+    left: 6vw !important;
+    right: 6vw !important;
+    bottom: 6vw !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.25rem !important;
+    margin-top: 0 !important;
+  }
+
+  main div section:first-child div:nth-of-type(3) div:last-child a {
+    width: 100% !important;
+    min-width: 0 !important;
+    height: 4.9rem !important;
+    border-radius: 0.55rem !important;
+    justify-content: center !important;
+    gap: 28vw !important;
+    font-size: 1.55rem !important;
+    letter-spacing: -0.03em !important;
+  }
+
+  main div section:first-child div:nth-of-type(3) div:last-child a span {
+    font-size: 2.4rem !important;
+  }
+}
+
+@media (max-width: 420px) {
+  main div section:first-child div:nth-of-type(3) h1 span:first-child {
+    font-size: clamp(2.95rem, 14vw, 3.7rem) !important;
+  }
+
+  main div section:first-child div:nth-of-type(3) h1 span:nth-child(2) {
+    font-size: clamp(3.05rem, 13.6vw, 3.8rem) !important;
+  }
+
+  main div section:first-child div:nth-of-type(3) div:last-child a {
+    height: 4.35rem !important;
+    font-size: 1.32rem !important;
   }
 }

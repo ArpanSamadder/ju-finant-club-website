@@ -175,8 +175,7 @@ export default async function HomePage() {
 
             <div className="grid grid-cols-4 gap-4 max-xl:grid-cols-2 max-md:grid-cols-1">
               {legacyCards.map((card, index) => (
-                <article key={card._id ?? `${card.title}-${index}`} className="group relative overflow-hidden rounded-[14px] border border-[#5F79FF]/90 bg-[#030817]/92 p-[1px] shadow-[0_0_0_1px_rgba(0,217,255,.16),0_22px_58px_rgba(0,0,0,.64),0_0_28px_rgba(17,95,235,.34)] transition duration-500 hover:-translate-y-1.5 hover:border-[#00D9FF] hover:shadow-[0_0_0_1px_rgba(0,217,255,.42),0_28px_70px_rgba(0,0,0,.7),0_0_48px_rgba(0,217,255,.36)]">
-                  <div className="pointer-events-none absolute left-[48%] top-[-5px] z-20 h-[6px] w-[6px] rounded-full bg-[#00F0FF] shadow-[0_0_14px_5px_rgba(0,217,255,.72)]" />
+                <article key={card._id ?? `${card.title}-${index}`} className="group relative overflow-hidden rounded-[14px] border border-[#5F79FF]/90 bg-[#030817]/92 p-[1px] shadow-[0_18px_48px_rgba(0,0,0,.62)] transition duration-500 hover:-translate-y-1.5 hover:border-[#00D9FF] hover:shadow-[0_24px_60px_rgba(0,0,0,.68)]">
                   <div className={`relative h-[16rem] overflow-hidden rounded-[13px] bg-gradient-to-br ${card.accent ?? 'from-[#06123d] via-[#071b58] to-[#020817]'} max-2xl:h-[14.5rem] max-xl:h-[16rem]`}>
                     {card.mainImageUrl ? (
                       <img
@@ -185,7 +184,7 @@ export default async function HomePage() {
                         className="absolute inset-0 h-full w-full object-cover opacity-62 grayscale-[8%] saturate-[1.18] transition duration-700 group-hover:scale-105 group-hover:opacity-74"
                       />
                     ) : (
-                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_42%,rgba(0,217,255,.45),transparent_11%),radial-gradient(circle_at_68%_48%,rgba(17,95,235,.46),transparent_23%),linear-gradient(180deg,rgba(2,8,23,.08),rgba(2,8,23,.82))]" />
+                      <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(6,18,61,.94)_0%,rgba(7,27,88,.62)_48%,rgba(2,8,23,.98)_100%)]" />
                     )}
 
                     <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,8,23,.12)_0%,rgba(2,8,23,.22)_38%,rgba(2,8,23,.92)_100%)]" />
@@ -193,7 +192,7 @@ export default async function HomePage() {
                     <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#020817] via-[#020817]/88 to-transparent" />
 
                     <div className="absolute bottom-4 left-5 right-5 flex items-center gap-3">
-                      <div className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-full border border-[#115FEB]/95 bg-[#05112d]/72 text-center text-[.43rem] font-black uppercase leading-[.86] tracking-[-.04em] text-white shadow-[0_0_20px_rgba(17,95,235,.38),0_0_16px_rgba(0,217,255,.22)] backdrop-blur-md whitespace-pre-line">
+                      <div className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-full border border-[#115FEB]/95 bg-[#05112d]/72 text-center text-[.43rem] font-black uppercase leading-[.86] tracking-[-.04em] text-white shadow-[0_0_10px_rgba(17,95,235,.24)] backdrop-blur-md whitespace-pre-line">
                         {card.eventLogoUrl ? (
                           <img src={card.eventLogoUrl} alt="" className="h-full w-full scale-[1.55] object-contain p-0" />
                         ) : (

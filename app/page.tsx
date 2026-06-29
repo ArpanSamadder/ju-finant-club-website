@@ -166,10 +166,10 @@ export default async function HomePage() {
           </div>
 
           <div className="relative mt-[4.2vw] px-20 max-2xl:px-16 max-xl:px-10 max-lg:px-0">
-            <button aria-label="Previous legacy event" className="absolute left-0 top-1/2 z-20 flex h-20 w-20 -translate-y-1/2 items-center justify-center rounded-full border border-[#f8f0d7]/75 bg-[#050a17]/70 text-6xl font-light leading-none text-white shadow-[0_0_28px_rgba(255,255,255,.18),0_0_38px_rgba(17,95,235,.35)] backdrop-blur-md transition hover:border-[#00D9FF] hover:text-[#00D9FF] max-xl:h-16 max-xl:w-16 max-xl:text-5xl max-lg:hidden">
+            <button aria-label="Previous legacy event" className="absolute left-0 top-1/2 z-20 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full border border-[#f8f0d7]/75 bg-[#050a17]/70 text-4xl font-light leading-none text-white shadow-[0_0_24px_rgba(255,255,255,.16),0_0_30px_rgba(17,95,235,.32)] backdrop-blur-md transition hover:border-[#00D9FF] hover:text-[#00D9FF] max-xl:h-12 max-xl:w-12 max-xl:text-3xl max-lg:hidden">
               ‹
             </button>
-            <button aria-label="Next legacy event" className="absolute right-0 top-1/2 z-20 flex h-20 w-20 -translate-y-1/2 items-center justify-center rounded-full border border-[#f8f0d7]/75 bg-[#050a17]/70 text-6xl font-light leading-none text-white shadow-[0_0_28px_rgba(255,255,255,.18),0_0_38px_rgba(17,95,235,.35)] backdrop-blur-md transition hover:border-[#00D9FF] hover:text-[#00D9FF] max-xl:h-16 max-xl:w-16 max-xl:text-5xl max-lg:hidden">
+            <button aria-label="Next legacy event" className="absolute right-0 top-1/2 z-20 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full border border-[#f8f0d7]/75 bg-[#050a17]/70 text-4xl font-light leading-none text-white shadow-[0_0_24px_rgba(255,255,255,.16),0_0_30px_rgba(17,95,235,.32)] backdrop-blur-md transition hover:border-[#00D9FF] hover:text-[#00D9FF] max-xl:h-12 max-xl:w-12 max-xl:text-3xl max-lg:hidden">
               ›
             </button>
 

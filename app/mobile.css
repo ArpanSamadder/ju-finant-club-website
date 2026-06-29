@@ -1,3 +1,9 @@
+@media (max-width: 1023px) {
+  header button:last-child {
+    display: flex !important;
+  }
+}
+
 @media (max-width: 767px) {
   main div section:first-child {
     min-height: calc(100svh - 7.6rem) !important;

@@ -193,7 +193,7 @@ export default async function HomePage() {
                     <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#020817] via-[#020817]/88 to-transparent" />
 
                     <div className="absolute bottom-4 left-5 right-5 flex items-center gap-3">
-                      <div className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-full border border-[#d7bd70]/85 bg-[#05112d]/72 text-center text-[.43rem] font-black uppercase leading-[.86] tracking-[-.04em] text-white shadow-[0_0_20px_rgba(201,161,74,.20),0_0_16px_rgba(0,217,255,.18)] backdrop-blur-md whitespace-pre-line">
+                      <div className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-full border border-[#115FEB]/95 bg-[#05112d]/72 text-center text-[.43rem] font-black uppercase leading-[.86] tracking-[-.04em] text-white shadow-[0_0_20px_rgba(17,95,235,.38),0_0_16px_rgba(0,217,255,.22)] backdrop-blur-md whitespace-pre-line">
                         {card.eventLogoUrl ? (
                           <img src={card.eventLogoUrl} alt="" className="h-full w-full scale-[1.55] object-contain p-0" />
                         ) : (

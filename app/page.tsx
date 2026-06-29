@@ -131,35 +131,33 @@ export default async function HomePage() {
       <section id="legacy-foundation" className="relative min-h-[calc(100svh-72px)] overflow-hidden bg-[#020817] px-6 py-[7vw]">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_18%,rgba(17,95,235,.16),transparent_31%),radial-gradient(circle_at_50%_84%,rgba(0,217,255,.08),transparent_35%)]" />
         <div className="pointer-events-none absolute inset-x-0 top-0 h-[22rem] bg-gradient-to-b from-[#030817] via-[#020817]/45 to-transparent" />
-        <svg aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-[-3.6rem] z-0 h-[19rem] w-full overflow-visible" viewBox="0 0 1600 260" preserveAspectRatio="none">
+        <svg aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-[-2.35rem] z-0 h-[14rem] w-full overflow-visible" viewBox="0 0 1600 220" preserveAspectRatio="none">
           <defs>
             <linearGradient id="legacyArcStroke" x1="0" y1="0" x2="1600" y2="0" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#0B46FF" stopOpacity="0.7" />
-              <stop offset="18%" stopColor="#0D67FF" stopOpacity="0.98" />
-              <stop offset="34%" stopColor="#00E5FF" stopOpacity="1" />
-              <stop offset="50%" stopColor="#117DFF" stopOpacity="0.92" />
-              <stop offset="66%" stopColor="#00E5FF" stopOpacity="1" />
-              <stop offset="82%" stopColor="#0D67FF" stopOpacity="0.98" />
-              <stop offset="100%" stopColor="#0B46FF" stopOpacity="0.7" />
+              <stop offset="0%" stopColor="#0B46FF" stopOpacity="0.45" />
+              <stop offset="22%" stopColor="#0D67FF" stopOpacity="0.82" />
+              <stop offset="42%" stopColor="#00D9FF" stopOpacity="1" />
+              <stop offset="58%" stopColor="#1684FF" stopOpacity="0.92" />
+              <stop offset="78%" stopColor="#0D67FF" stopOpacity="0.76" />
+              <stop offset="100%" stopColor="#0B46FF" stopOpacity="0.42" />
             </linearGradient>
-            <filter id="legacyArcOuterGlow" x="-20%" y="-130%" width="140%" height="340%">
-              <feGaussianBlur stdDeviation="14" result="blur" />
+            <filter id="legacyArcSoftGlow" x="-18%" y="-120%" width="136%" height="320%">
+              <feGaussianBlur stdDeviation="8" result="blur" />
               <feMerge>
                 <feMergeNode in="blur" />
                 <feMergeNode in="SourceGraphic" />
               </feMerge>
             </filter>
-            <filter id="legacyArcCoreGlow" x="-12%" y="-80%" width="124%" height="260%">
-              <feGaussianBlur stdDeviation="4" result="blur" />
+            <filter id="legacyArcSharpGlow" x="-10%" y="-70%" width="120%" height="240%">
+              <feGaussianBlur stdDeviation="2.4" result="blur" />
               <feMerge>
                 <feMergeNode in="blur" />
                 <feMergeNode in="SourceGraphic" />
               </feMerge>
             </filter>
           </defs>
-          <path d="M -180 220 C 310 34 1290 34 1780 220" fill="none" stroke="rgba(17,95,235,.22)" strokeWidth="34" strokeLinecap="round" filter="url(#legacyArcOuterGlow)" />
-          <path d="M -180 220 C 310 34 1290 34 1780 220" fill="none" stroke="url(#legacyArcStroke)" strokeWidth="4.2" strokeLinecap="round" filter="url(#legacyArcCoreGlow)" />
-          <path d="M -180 220 C 310 34 1290 34 1780 220" fill="none" stroke="rgba(255,255,255,.32)" strokeWidth="1" strokeLinecap="round" opacity="0.7" />
+          <path d="M -170 178 C 310 30 1290 30 1770 178" fill="none" stroke="rgba(17,95,235,.20)" strokeWidth="13" strokeLinecap="round" filter="url(#legacyArcSoftGlow)" />
+          <path d="M -170 178 C 310 30 1290 30 1770 178" fill="none" stroke="url(#legacyArcStroke)" strokeWidth="2.8" strokeLinecap="round" filter="url(#legacyArcSharpGlow)" />
         </svg>
         <div className="pointer-events-none absolute right-0 top-0 h-[52rem] w-1/2 bg-[linear-gradient(128deg,transparent_0%,rgba(17,95,235,.16)_1px,transparent_2px),linear-gradient(142deg,transparent_0%,rgba(0,217,255,.10)_1px,transparent_2px)] bg-[length:95px_95px] opacity-45" />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#020817] to-transparent" />

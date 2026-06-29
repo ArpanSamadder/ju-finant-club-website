@@ -141,10 +141,10 @@ export default async function HomePage() {
               </feMerge>
             </filter>
             <linearGradient id="legacyOrbitGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#0B5CFF" stopOpacity="0.25" />
-              <stop offset="35%" stopColor="#00B7FF" stopOpacity="0.95" />
-              <stop offset="65%" stopColor="#2F80FF" stopOpacity="0.75" />
-              <stop offset="100%" stopColor="#0B5CFF" stopOpacity="0.25" />
+              <stop offset="0%" stopColor="#0A4CE3" stopOpacity="0.25" />
+              <stop offset="35%" stopColor="#115FEB" stopOpacity="0.95" />
+              <stop offset="65%" stopColor="#115FEB" stopOpacity="0.75" />
+              <stop offset="100%" stopColor="#0A4CE3" stopOpacity="0.25" />
             </linearGradient>
           </defs>
           <path d="M -120 360 Q 800 40 1720 360" fill="none" stroke="rgba(17,95,235,.16)" strokeWidth="8" strokeLinecap="round" />

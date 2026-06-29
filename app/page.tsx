@@ -10,29 +10,30 @@ type LegacyCard = {
   shortDescription?: string;
   mainImageUrl?: string;
   eventLogoUrl?: string;
+  eventUrl?: string;
   badge?: string;
   accent?: string;
 };
 
 const fallbackLegacyCards: LegacyCard[] = [
   {
-    title: 'Biztigation 2024',
-    badge: 'BIZ\nTIGATION\n2.0',
+    title: 'Biztigation',
+    badge: 'BIZ\nTIGATION',
     accent: 'from-[#06123d] via-[#071b58] to-[#020817]',
   },
   {
-    title: 'Crackademy 2025',
+    title: 'Crackademy',
     badge: 'CRACK\nADEMY',
     accent: 'from-[#07152d] via-[#112033] to-[#020817]',
   },
   {
-    title: 'Job Fair',
-    badge: 'JOB\nFAIR\n2025',
+    title: 'Finance Fest',
+    badge: 'FINANCE\nFEST',
     accent: 'from-[#071532] via-[#122a48] to-[#020817]',
   },
   {
-    title: 'Panel Discussion',
-    badge: 'PEOPLE',
+    title: 'Job Fair',
+    badge: 'JOB\nFAIR',
     accent: 'from-[#040b2a] via-[#07184a] to-[#020817]',
   },
 ];
@@ -46,7 +47,7 @@ const legacyAccentFallbacks = [
 
 function makeBadge(title: string) {
   const words = title.split(' ').filter(Boolean);
-  return words.slice(0, 3).join('\n').toUpperCase();
+  return words.slice(0, 2).join('\n').toUpperCase();
 }
 
 async function getLegacyCards() {
@@ -57,6 +58,7 @@ async function getLegacyCards() {
         title,
         year,
         shortDescription,
+        eventUrl,
         "mainImageUrl": mainImage.asset->url,
         "eventLogoUrl": eventLogo.asset->url
       }`,
@@ -64,13 +66,17 @@ async function getLegacyCards() {
       {next: {revalidate: 60}}
     );
 
-    if (!cards.length) return fallbackLegacyCards;
-
-    return cards.map((card, index) => ({
+    const cmsCards = cards.map((card, index) => ({
       ...card,
       badge: makeBadge(card.title),
       accent: legacyAccentFallbacks[index % legacyAccentFallbacks.length],
     }));
+
+    const fillers = fallbackLegacyCards.filter(
+      (fallback) => !cmsCards.some((card) => card.title.toLowerCase().trim() === fallback.title.toLowerCase().trim())
+    );
+
+    return [...cmsCards, ...fillers].slice(0, 4);
   } catch {
     return fallbackLegacyCards;
   }
@@ -80,7 +86,7 @@ export default async function HomePage() {
   const legacyCards = await getLegacyCards();
 
   return (
-    <main className="bg-[#020817] text-white">
+    <div className="bg-[#020817] text-white">
       <section className="relative min-h-[calc(100svh-72px)] overflow-hidden bg-[#020817]">
         <img
           src="/images/hero/hero-bg.png"
@@ -122,74 +128,77 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section id="legacy-foundation" className="relative -mt-px min-h-[calc(100svh-72px)] overflow-hidden bg-[#020817] px-6 py-[6.5vw]">
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-52 bg-[linear-gradient(180deg,#020817_0%,rgba(2,8,23,.96)_30%,rgba(3,13,39,.78)_68%,transparent_100%)]" />
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#115FEB]/45 to-transparent" />
-        <div className="pointer-events-none absolute inset-x-[-12vw] top-[-18rem] h-[30rem] bg-[radial-gradient(ellipse_at_top,rgba(17,95,235,.30),rgba(17,95,235,.09)_42%,transparent_74%)]" />
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(17,95,235,.16),transparent_56%)]" />
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(transparent_0%,rgba(17,95,235,.08)_100%),linear-gradient(90deg,rgba(17,95,235,.13)_1px,transparent_1px),linear-gradient(0deg,rgba(17,95,235,.13)_1px,transparent_1px)] bg-[size:auto,72px_72px,72px_72px] opacity-30" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-[#020817] to-transparent" />
+      <section id="legacy-foundation" className="relative min-h-[calc(100svh-72px)] overflow-hidden bg-[#020817] px-6 py-[7vw]">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_18%,rgba(17,95,235,.20),transparent_34%),radial-gradient(circle_at_50%_84%,rgba(0,217,255,.10),transparent_35%)]" />
+        <div className="pointer-events-none absolute inset-x-[-12vw] top-[-9.5rem] h-[24rem] rounded-[50%] border-t border-[#176BFF]/95 shadow-[0_-4px_28px_rgba(17,95,235,.70),0_0_90px_rgba(0,217,255,.34)]" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-[22rem] bg-gradient-to-b from-[#030817] via-[#020817]/45 to-transparent" />
+        <div className="pointer-events-none absolute right-0 top-0 h-[52rem] w-1/2 bg-[linear-gradient(128deg,transparent_0%,rgba(17,95,235,.16)_1px,transparent_2px),linear-gradient(142deg,transparent_0%,rgba(0,217,255,.10)_1px,transparent_2px)] bg-[length:95px_95px] opacity-45" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#020817] to-transparent" />
 
-        <div className="relative mx-auto max-w-[1760px]">
+        <div className="relative mx-auto max-w-[1680px]">
           <div className="text-center">
-            <p className="text-[clamp(.82rem,1vw,1.05rem)] font-medium uppercase tracking-[0.55em] text-[#00D9FF] drop-shadow-[0_0_18px_rgba(0,217,255,.45)]">
+            <p className="text-[clamp(.82rem,1.05vw,1.15rem)] font-semibold uppercase tracking-[0.72em] text-[#00F0FF] drop-shadow-[0_0_18px_rgba(0,217,255,.72)] max-md:tracking-[0.38em]">
               Legacy Foundation
             </p>
-            <h2 className="mt-4 text-[clamp(2.2rem,3.35vw,4.4rem)] font-bold leading-[1.04] tracking-[-0.045em] drop-shadow-[0_18px_58px_rgba(0,0,0,.68)]">
-              <span className="bg-gradient-to-b from-white via-white to-[#b9c0cb] bg-clip-text text-transparent">The </span>
-              <span className="text-[#115FEB]">Departmental Legacy</span>
-              <span className="bg-gradient-to-b from-white via-white to-[#b9c0cb] bg-clip-text text-transparent"> We Carry Forward</span>
+            <h2 className="mt-7 text-[clamp(2.4rem,3.45vw,4.05rem)] font-semibold leading-[1.02] tracking-[-0.055em] drop-shadow-[0_18px_58px_rgba(0,0,0,.78)] max-md:mt-5">
+              <span className="bg-gradient-to-b from-white via-white to-[#c4cad6] bg-clip-text text-transparent">The </span>
+              <span className="bg-gradient-to-b from-[#18BAFF] via-[#115FEB] to-[#0A4CE3] bg-clip-text text-transparent">Departmental Legacy</span>
+              <span className="bg-gradient-to-b from-white via-white to-[#c4cad6] bg-clip-text text-transparent"> We Carry Forward</span>
             </h2>
           </div>
 
-          <div className="relative mt-7 px-20 max-xl:px-12 max-lg:px-0">
-            <button aria-label="Previous legacy event" className="absolute left-0 top-1/2 z-20 flex h-16 w-16 -translate-y-1/2 items-center justify-center rounded-full border border-[#7fb3ff]/40 bg-[#07122e]/70 text-5xl font-light text-white shadow-[0_0_34px_rgba(17,95,235,.38)] backdrop-blur-md transition hover:border-[#00D9FF] hover:text-[#00D9FF] max-lg:hidden">
+          <div className="relative mt-[4.8vw] px-20 max-2xl:px-16 max-xl:px-10 max-lg:px-0">
+            <button aria-label="Previous legacy event" className="absolute left-0 top-1/2 z-20 flex h-20 w-20 -translate-y-1/2 items-center justify-center rounded-full border border-[#f8f0d7]/75 bg-[#050a17]/70 text-6xl font-light leading-none text-white shadow-[0_0_28px_rgba(255,255,255,.18),0_0_38px_rgba(17,95,235,.35)] backdrop-blur-md transition hover:border-[#00D9FF] hover:text-[#00D9FF] max-xl:h-16 max-xl:w-16 max-xl:text-5xl max-lg:hidden">
               ‹
             </button>
-            <button aria-label="Next legacy event" className="absolute right-0 top-1/2 z-20 flex h-16 w-16 -translate-y-1/2 items-center justify-center rounded-full border border-[#7fb3ff]/40 bg-[#07122e]/70 text-5xl font-light text-white shadow-[0_0_34px_rgba(17,95,235,.38)] backdrop-blur-md transition hover:border-[#00D9FF] hover:text-[#00D9FF] max-lg:hidden">
+            <button aria-label="Next legacy event" className="absolute right-0 top-1/2 z-20 flex h-20 w-20 -translate-y-1/2 items-center justify-center rounded-full border border-[#f8f0d7]/75 bg-[#050a17]/70 text-6xl font-light leading-none text-white shadow-[0_0_28px_rgba(255,255,255,.18),0_0_38px_rgba(17,95,235,.35)] backdrop-blur-md transition hover:border-[#00D9FF] hover:text-[#00D9FF] max-xl:h-16 max-xl:w-16 max-xl:text-5xl max-lg:hidden">
               ›
             </button>
 
             <div className="grid grid-cols-4 gap-5 max-xl:grid-cols-2 max-md:grid-cols-1">
-              {legacyCards.map((card) => (
-                <article key={card._id ?? card.title} className="group relative overflow-hidden rounded-[20px] border border-[#2e7fff]/70 bg-[#04112d]/88 p-2 shadow-[0_0_0_1px_rgba(0,217,255,.12),0_24px_70px_rgba(0,0,0,.55),0_0_35px_rgba(17,95,235,.22)] transition duration-300 hover:-translate-y-2 hover:border-[#00D9FF]">
-                  <div className={`relative min-h-[330px] overflow-hidden rounded-[15px] bg-gradient-to-br ${card.accent ?? 'from-[#06123d] via-[#071b58] to-[#020817]'} max-2xl:min-h-[290px]`}>
+              {legacyCards.map((card, index) => (
+                <article key={card._id ?? `${card.title}-${index}`} className="group relative overflow-hidden rounded-[32px] border border-[#5F79FF]/90 bg-[#030817]/92 p-[1px] shadow-[0_0_0_1px_rgba(0,217,255,.18),0_30px_90px_rgba(0,0,0,.72),0_0_42px_rgba(17,95,235,.44)] transition duration-500 hover:-translate-y-2 hover:border-[#00D9FF] hover:shadow-[0_0_0_1px_rgba(0,217,255,.48),0_34px_100px_rgba(0,0,0,.74),0_0_68px_rgba(0,217,255,.46)]">
+                  <div className="pointer-events-none absolute left-[28%] top-[-9px] z-20 h-[9px] w-[9px] rounded-full bg-[#00F0FF] shadow-[0_0_18px_6px_rgba(0,217,255,.78)]" />
+                  <div className={`relative h-[31rem] overflow-hidden rounded-[31px] bg-gradient-to-br ${card.accent ?? 'from-[#06123d] via-[#071b58] to-[#020817]'} max-2xl:h-[28rem] max-xl:h-[30rem]`}>
                     {card.mainImageUrl ? (
                       <img
                         src={card.mainImageUrl}
                         alt=""
-                        className="absolute inset-0 h-full w-full object-cover opacity-80 transition duration-500 group-hover:scale-105"
+                        className="absolute inset-0 h-full w-full object-cover opacity-58 grayscale-[8%] saturate-[1.18] transition duration-700 group-hover:scale-105 group-hover:opacity-72"
                       />
-                    ) : null}
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_22%,rgba(0,217,255,.28),transparent_20%),radial-gradient(circle_at_50%_70%,rgba(17,95,235,.35),transparent_34%)]" />
-                    <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,.06)_1px,transparent_1px),linear-gradient(0deg,rgba(255,255,255,.05)_1px,transparent_1px)] bg-[size:44px_44px] opacity-20" />
-                    <div className="absolute inset-x-8 top-6 h-28 rounded-full bg-[#115FEB]/20 blur-3xl" />
+                    ) : (
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_42%,rgba(0,217,255,.45),transparent_11%),radial-gradient(circle_at_68%_48%,rgba(17,95,235,.46),transparent_23%),linear-gradient(180deg,rgba(2,8,23,.08),rgba(2,8,23,.82))]" />
+                    )}
 
-                    <div className="absolute bottom-24 left-1/2 flex h-24 w-24 -translate-x-1/2 items-center justify-center overflow-hidden rounded-full border border-[#00D9FF]/45 bg-[#06173d]/70 text-center text-[.75rem] font-black uppercase leading-[.95] tracking-[-.04em] text-white shadow-[0_0_34px_rgba(0,217,255,.45)] backdrop-blur-md whitespace-pre-line">
-                      {card.eventLogoUrl ? (
-                        <img src={card.eventLogoUrl} alt="" className="h-full w-full object-contain p-3" />
-                      ) : (
-                        card.badge
-                      )}
+                    <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,8,23,.18)_0%,rgba(2,8,23,.28)_34%,rgba(2,8,23,.92)_100%)]" />
+                    <div className="absolute inset-x-7 bottom-[6.6rem] h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#020817] via-[#020817]/90 to-transparent" />
+
+                    <div className="absolute bottom-6 left-7 right-6 flex items-center gap-4">
+                      <div className="flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-full border border-[#d7bd70]/85 bg-[#05112d]/72 text-center text-[.58rem] font-black uppercase leading-[.9] tracking-[-.04em] text-white shadow-[0_0_26px_rgba(201,161,74,.22),0_0_20px_rgba(0,217,255,.20)] backdrop-blur-md whitespace-pre-line">
+                        {card.eventLogoUrl ? (
+                          <img src={card.eventLogoUrl} alt="" className="h-full w-full object-contain p-2.5" />
+                        ) : (
+                          card.badge
+                        )}
+                      </div>
+                      <h3 className="min-w-0 text-[clamp(1.35rem,1.35vw,1.72rem)] font-medium leading-none tracking-[-0.055em] text-white drop-shadow-[0_12px_28px_rgba(0,0,0,.95)]">
+                        {card.title}
+                      </h3>
                     </div>
-
-                    <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#020817] via-[#020817]/78 to-transparent" />
-                    <h3 className="absolute bottom-6 left-4 right-4 text-center text-[clamp(1.65rem,1.7vw,2.25rem)] font-medium leading-none tracking-[-0.05em] text-white drop-shadow-[0_12px_28px_rgba(0,0,0,.85)]">
-                      {card.title}
-                    </h3>
                   </div>
                 </article>
               ))}
             </div>
           </div>
 
-          <div className="mt-8 flex items-center justify-center gap-5">
-            {[0, 1, 2, 3, 4, 5, 6].map((dot) => (
-              <span key={dot} className={`h-4 w-4 rounded-full ${dot === 0 ? 'border-2 border-[#00D9FF] bg-[#115FEB] shadow-[0_0_20px_rgba(0,217,255,.8)]' : 'bg-slate-400/55'}`} />
+          <div className="mt-12 flex items-center justify-center gap-6">
+            {[0, 1, 2, 3].map((dot) => (
+              <span key={dot} className={`h-6 w-6 rounded-full ${dot === 0 ? 'bg-[#00D9FF] shadow-[0_0_26px_rgba(0,217,255,.9)]' : 'bg-[#d7d7d7]/70 shadow-[0_0_12px_rgba(255,255,255,.25)]'}`} />
             ))}
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

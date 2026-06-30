@@ -1,0 +1,152 @@
+@media (max-width: 767px) {
+  #legacy-foundation {
+    min-height: auto !important;
+    padding: 4.8rem 1.25rem 4.8rem !important;
+    overflow: hidden !important;
+  }
+
+  #legacy-foundation > svg {
+    top: -132px !important;
+    width: 168vw !important;
+    height: 245px !important;
+  }
+
+  #legacy-foundation > .relative.z-10 {
+    max-width: 100% !important;
+  }
+
+  #legacy-foundation .text-center p {
+    font-size: 0.62rem !important;
+    letter-spacing: 0.56em !important;
+    line-height: 1 !important;
+  }
+
+  #legacy-foundation .text-center h2 {
+    max-width: 21rem !important;
+    margin: 1.25rem auto 0 !important;
+    font-size: clamp(1.55rem, 6.7vw, 2rem) !important;
+    line-height: 1.18 !important;
+    letter-spacing: -0.055em !important;
+  }
+
+  #legacy-foundation .text-center h2 span:last-child {
+    display: block !important;
+    margin-top: 0.18rem !important;
+  }
+
+  #legacy-foundation > .relative.z-10 > div:nth-child(2) {
+    margin-top: 3.7rem !important;
+    padding-left: 1.72rem !important;
+    padding-right: 1.72rem !important;
+  }
+
+  #legacy-foundation > .relative.z-10 > div:nth-child(2)::after {
+    content: "";
+    position: absolute;
+    left: calc(50% - 0.92rem);
+    bottom: -2.28rem;
+    width: 2.1rem;
+    height: 0.34rem;
+    border-radius: 999px;
+    background: #115FEB;
+    box-shadow: 0 0 13px rgba(17, 95, 235, 0.62);
+  }
+
+  #legacy-foundation > .relative.z-10 > div:nth-child(2)::before {
+    content: "";
+    position: absolute;
+    left: calc(50% + 1.82rem);
+    bottom: -2.22rem;
+    width: 1.65rem;
+    height: 0.28rem;
+    border-radius: 999px;
+    background: rgba(75, 93, 130, 0.72);
+  }
+
+  #legacy-foundation > .relative.z-10 > div:nth-child(2) > button {
+    display: flex !important;
+    width: 1.8rem !important;
+    height: 1.8rem !important;
+    top: 50% !important;
+    border-color: rgba(90, 132, 255, 0.9) !important;
+    background: rgba(2, 8, 23, 0.88) !important;
+    font-size: 1.35rem !important;
+    color: white !important;
+  }
+
+  #legacy-foundation > .relative.z-10 > div:nth-child(2) > button:first-child {
+    left: -0.9rem !important;
+  }
+
+  #legacy-foundation > .relative.z-10 > div:nth-child(2) > button:nth-child(2) {
+    right: -0.9rem !important;
+  }
+
+  #legacy-foundation .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.6rem !important;
+  }
+
+  #legacy-foundation article:nth-child(n + 3) {
+    display: none !important;
+  }
+
+  #legacy-foundation article {
+    border-radius: 0.55rem !important;
+    box-shadow: 0 15px 36px rgba(0, 0, 0, 0.58) !important;
+  }
+
+  #legacy-foundation article > div {
+    height: 10.55rem !important;
+    border-radius: 0.5rem !important;
+  }
+
+  #legacy-foundation article img {
+    opacity: 0.68 !important;
+  }
+
+  #legacy-foundation article > div > div:nth-last-child(3) {
+    bottom: 3.4rem !important;
+    left: 0.65rem !important;
+    right: 0.65rem !important;
+  }
+
+  #legacy-foundation article > div > div:last-child {
+    left: 0.6rem !important;
+    right: 0.6rem !important;
+    bottom: 0.72rem !important;
+    gap: 0.45rem !important;
+  }
+
+  #legacy-foundation article > div > div:last-child > div {
+    width: 2rem !important;
+    height: 2rem !important;
+    border-color: rgba(17, 95, 235, 0.95) !important;
+  }
+
+  #legacy-foundation article h3 {
+    font-size: 0.72rem !important;
+    line-height: 1 !important;
+    letter-spacing: -0.045em !important;
+  }
+}
+
+@media (max-width: 390px) {
+  #legacy-foundation {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  #legacy-foundation > .relative.z-10 > div:nth-child(2) {
+    padding-left: 1.55rem !important;
+    padding-right: 1.55rem !important;
+  }
+
+  #legacy-foundation article > div {
+    height: 9.8rem !important;
+  }
+
+  #legacy-foundation article h3 {
+    font-size: 0.66rem !important;
+  }
+}

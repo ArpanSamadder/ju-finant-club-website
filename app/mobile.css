@@ -74,7 +74,7 @@
     flex-wrap: nowrap !important;
     gap: 0.38rem !important;
     margin-top: 1.35rem !important;
-    font-size: clamp(0.92rem, 4vw, 1.22rem) !important;
+    font-size: clamp(1.02rem, 4.25vw, 1.36rem) !important;
     line-height: 1.08 !important;
     white-space: nowrap !important;
   }
@@ -142,7 +142,7 @@
 
   main > div > section:first-child > div:nth-of-type(3) > h1 + div {
     gap: 0.28rem !important;
-    font-size: clamp(0.78rem, 3.55vw, 1rem) !important;
+    font-size: clamp(0.88rem, 3.8vw, 1.12rem) !important;
   }
 
   main > div > section:first-child > div:nth-of-type(3) > p {

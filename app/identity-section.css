@@ -221,21 +221,27 @@
   }
 
   #our-identity .identity-lead {
-    margin-top: 2.4rem;
-    max-width: 100%;
-    font-size: clamp(1.34rem, 5.3vw, 1.75rem);
-    line-height: 1.45;
-    letter-spacing: -0.052em;
+    margin: 1.4rem auto 0;
+    max-width: 84vw;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: clamp(0.9rem, 3.72vw, 1.04rem);
+    font-weight: 300;
+    line-height: 1.48;
+    letter-spacing: -0.008em;
+    text-align: left;
+    text-wrap: balance;
   }
 
   #our-identity .identity-body {
-    margin-top: 2.55rem;
-    max-width: 100%;
-    font-size: clamp(1.12rem, 4.55vw, 1.44rem);
-    line-height: 1.68;
-    letter-spacing: 0.015em;
-    text-align: justify;
-    text-justify: inter-word;
+    margin: 1.05rem auto 0;
+    max-width: 84vw;
+    color: rgba(255, 255, 255, 0.86);
+    font-size: clamp(0.9rem, 3.72vw, 1.04rem);
+    font-weight: 300;
+    line-height: 1.55;
+    letter-spacing: -0.008em;
+    text-align: left;
+    text-justify: auto;
   }
 
   #our-identity .identity-feature-stack {
@@ -322,13 +328,11 @@
     letter-spacing: -0.073em;
   }
 
-  #our-identity .identity-lead {
-    font-size: clamp(1.18rem, 5.1vw, 1.46rem);
-  }
-
+  #our-identity .identity-lead,
   #our-identity .identity-body {
-    font-size: clamp(1rem, 4.38vw, 1.22rem);
-    line-height: 1.68;
+    max-width: 84vw;
+    font-size: clamp(0.82rem, 3.65vw, 0.98rem);
+    line-height: 1.45;
   }
 
   #our-identity .identity-feature-card {

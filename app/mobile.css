@@ -6,7 +6,7 @@
 
 @media (max-width: 767px) {
   main > div > section:first-child {
-    min-height: max(calc(100svh - 3.85rem), 760px) !important;
+    min-height: max(calc(100vw * 1.7778), calc(100svh - 3.85rem), 700px) !important;
     isolation: isolate;
   }
 
@@ -17,7 +17,7 @@
     z-index: 0;
     pointer-events: none;
     background-image: url('/images/hero/hero-bg-mobile.png');
-    background-size: cover;
+    background-size: 100% auto;
     background-position: center top;
     background-repeat: no-repeat;
   }
@@ -114,11 +114,11 @@
 
 @media (max-width: 420px) {
   main > div > section:first-child {
-    min-height: max(calc(100svh - 3.85rem), 700px) !important;
+    min-height: max(calc(100vw * 1.7778), calc(100svh - 3.85rem), 700px) !important;
   }
 
   main > div > section:first-child::before {
-    background-size: cover;
+    background-size: 100% auto;
     background-position: center top;
   }
 

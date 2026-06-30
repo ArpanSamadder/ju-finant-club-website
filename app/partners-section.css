@@ -1,0 +1,412 @@
+#partners-collaborators {
+  min-height: calc(100svh - 72px);
+  isolation: isolate;
+  background: #020817;
+  padding-top: clamp(3.2rem, 5vw, 5.6rem) !important;
+  padding-bottom: clamp(3.6rem, 5.4vw, 6rem) !important;
+}
+
+#partners-collaborators .partners-bg-grid {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(17, 95, 235, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(17, 95, 235, 0.12) 1px, transparent 1px),
+    radial-gradient(circle at 50% 56%, rgba(0, 217, 255, 0.12) 1px, transparent 1.2px);
+  background-size: 48px 48px, 48px 48px, 24px 24px;
+  opacity: 0.16;
+}
+
+#partners-collaborators .partners-bg-lines {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(132deg, transparent 0%, transparent 77%, rgba(17, 95, 235, 0.18) 77.12%, transparent 77.3%),
+    linear-gradient(132deg, transparent 0%, transparent 83%, rgba(0, 217, 255, 0.1) 83.1%, transparent 83.28%),
+    linear-gradient(132deg, transparent 0%, transparent 90%, rgba(17, 95, 235, 0.14) 90.08%, transparent 90.25%);
+  opacity: 0.86;
+}
+
+#partners-collaborators .partners-bg-glow {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 16%, rgba(17, 95, 235, 0.20), transparent 30%),
+    radial-gradient(circle at 12% 88%, rgba(17, 95, 235, 0.24), transparent 24%),
+    linear-gradient(180deg, rgba(2, 8, 23, 0.04) 0%, rgba(2, 8, 23, 0.96) 100%);
+}
+
+#partners-collaborators .partners-kicker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.35rem;
+}
+
+#partners-collaborators .partners-kicker::before,
+#partners-collaborators .partners-kicker::after {
+  content: "";
+  width: clamp(7rem, 11.5vw, 13rem);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.86));
+  box-shadow: 0 0 15px rgba(0, 217, 255, 0.52);
+}
+
+#partners-collaborators .partners-kicker::after {
+  background: linear-gradient(90deg, rgba(0, 240, 255, 0.86), transparent);
+}
+
+#partners-collaborators .partners-title {
+  color: #00f0ff;
+  font-size: clamp(1.25rem, 1.65vw, 2.05rem);
+  font-weight: 800;
+  letter-spacing: 0.62em;
+  line-height: 1;
+  text-transform: uppercase;
+  text-shadow: 0 0 20px rgba(0, 217, 255, 0.72);
+}
+
+#partners-collaborators .partners-title-glow {
+  position: relative;
+}
+
+#partners-collaborators .partners-title-glow::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -1.15rem;
+  width: 7.6rem;
+  height: 0.18rem;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, #00d9ff, transparent);
+  box-shadow: 0 0 24px rgba(0, 217, 255, 0.95);
+}
+
+#partners-collaborators .partners-subtitle {
+  margin-top: 2.8rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: clamp(1.05rem, 1.24vw, 1.42rem);
+  line-height: 1.45;
+  letter-spacing: -0.03em;
+}
+
+#partners-collaborators .partners-carousel {
+  position: relative;
+  margin-top: clamp(2.45rem, 3.3vw, 3.65rem);
+  padding-inline: 4rem;
+}
+
+#partners-collaborators .partners-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1rem, 1.35vw, 1.45rem);
+}
+
+#partners-collaborators .partner-card {
+  min-height: clamp(13rem, 14vw, 15.65rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(95, 121, 255, 0.92);
+  border-radius: 0.72rem;
+  background: radial-gradient(circle at 50% 0%, rgba(17, 95, 235, 0.20), transparent 46%), rgba(2, 10, 31, 0.64);
+  box-shadow: 0 20px 58px rgba(0, 0, 0, 0.46), inset 0 0 48px rgba(17, 95, 235, 0.09);
+  padding: 1.45rem;
+  backdrop-filter: blur(8px);
+}
+
+#partners-collaborators .partner-logo {
+  height: 5.4rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1;
+}
+
+#partners-collaborators .partner-logo span {
+  display: block;
+  white-space: nowrap;
+}
+
+#partners-collaborators .partner-logo small {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.42em;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+#partners-collaborators .partner-logo-pragati span {
+  color: #38b449;
+  font-family: Georgia, serif;
+  font-size: clamp(1.25rem, 1.7vw, 2.05rem);
+  font-weight: 500;
+}
+
+#partners-collaborators .partner-logo-pragati small {
+  color: rgba(255,255,255,0.55);
+  font-size: clamp(0.9rem, 1.05vw, 1.2rem);
+}
+
+#partners-collaborators .partner-logo-chaldal span {
+  color: white;
+  font-family: "Brush Script MT", "Segoe Script", cursive;
+  font-size: clamp(2rem, 2.85vw, 3.25rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+#partners-collaborators .partner-logo-chaldal small {
+  align-self: flex-end;
+  margin-right: 3rem;
+  margin-top: -0.15rem;
+  color: #ff5738;
+  font-size: clamp(0.9rem, 1.08vw, 1.25rem);
+  font-weight: 800;
+}
+
+#partners-collaborators .partner-logo-lankabangla span {
+  color: #3daa4b;
+  font-family: Georgia, serif;
+  font-size: clamp(1.7rem, 2.45vw, 2.85rem);
+  font-weight: 500;
+}
+
+#partners-collaborators .partner-logo-lankabangla small {
+  color: white;
+  font-size: clamp(0.65rem, 0.85vw, 0.95rem);
+  letter-spacing: 0.08em;
+}
+
+#partners-collaborators .partner-logo-greendelta span,
+#partners-collaborators .partner-logo-crown span {
+  color: white;
+  font-size: clamp(1.3rem, 1.75vw, 2rem);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+#partners-collaborators .partner-logo-greendelta small {
+  color: white;
+  font-size: clamp(1.1rem, 1.45vw, 1.65rem);
+  letter-spacing: 0.28em;
+}
+
+#partners-collaborators .partner-logo-dailystar span {
+  color: white;
+  font-family: Georgia, serif;
+  font-size: clamp(1.65rem, 2.25vw, 2.7rem);
+  font-weight: 800;
+}
+
+#partners-collaborators .partner-logo-nrb span {
+  color: #d9404f;
+  font-family: Georgia, serif;
+  font-size: clamp(1.8rem, 2.4vw, 2.9rem);
+  font-weight: 800;
+}
+
+#partners-collaborators .partner-logo-syngenta span {
+  color: white;
+  font-size: clamp(2rem, 2.7vw, 3.15rem);
+  font-weight: 900;
+  letter-spacing: -0.07em;
+}
+
+#partners-collaborators .partner-logo-crown span {
+  color: #36b24a;
+}
+
+#partners-collaborators .partner-logo-crown small {
+  color: #ff334b;
+  font-size: clamp(0.55rem, 0.75vw, 0.88rem);
+  letter-spacing: 0.08em;
+}
+
+#partners-collaborators .partner-rule {
+  width: 5.8rem;
+  height: 1px;
+  margin-top: 1.6rem;
+  background: linear-gradient(90deg, transparent, #00d9ff, transparent);
+  box-shadow: 0 0 14px rgba(0, 217, 255, 0.62);
+}
+
+#partners-collaborators .partner-name {
+  margin-top: 1.25rem;
+  color: white;
+  text-align: center;
+  font-size: clamp(1rem, 1.05vw, 1.28rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+  text-shadow: 0 12px 28px rgba(0, 0, 0, 0.72);
+}
+
+#partners-collaborators .partners-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 20;
+  width: 4.1rem;
+  height: 4.1rem;
+  transform: translateY(-50%);
+  border: 1px solid rgba(17, 95, 235, 0.95);
+  border-radius: 999px;
+  background: rgba(2, 8, 23, 0.82);
+  color: white;
+  font-size: 3.6rem;
+  font-weight: 200;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 30px rgba(17, 95, 235, 0.42);
+}
+
+#partners-collaborators .partners-arrow-left { left: -1rem; }
+#partners-collaborators .partners-arrow-right { right: -1rem; }
+
+#partners-collaborators .partners-dots {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  #partners-collaborators .partners-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #partners-collaborators .partner-card:nth-child(n + 5) {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  #partners-collaborators {
+    min-height: auto;
+    padding: 4.35rem 1.1rem 5.4rem !important;
+  }
+
+  #partners-collaborators .partners-kicker {
+    gap: 0.75rem;
+  }
+
+  #partners-collaborators .partners-kicker::before,
+  #partners-collaborators .partners-kicker::after {
+    width: 2.8rem;
+  }
+
+  #partners-collaborators .partners-title {
+    font-size: clamp(0.94rem, 4.2vw, 1.22rem);
+    letter-spacing: 0.34em;
+    text-align: center;
+  }
+
+  #partners-collaborators .partners-subtitle {
+    margin-top: 2rem;
+    font-size: clamp(0.88rem, 3.8vw, 1.05rem);
+    line-height: 1.5;
+    max-width: 21rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #partners-collaborators .partners-carousel {
+    margin-top: 2.35rem;
+    padding-inline: 1.8rem;
+  }
+
+  #partners-collaborators .partners-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.72rem;
+  }
+
+  #partners-collaborators .partner-card {
+    min-height: 9.9rem;
+    border-radius: 0.56rem;
+    padding: 0.85rem 0.65rem;
+  }
+
+  #partners-collaborators .partner-logo {
+    height: 3.7rem;
+  }
+
+  #partners-collaborators .partner-logo-pragati span,
+  #partners-collaborators .partner-logo-lankabangla span,
+  #partners-collaborators .partner-logo-dailystar span,
+  #partners-collaborators .partner-logo-nrb span,
+  #partners-collaborators .partner-logo-greendelta span,
+  #partners-collaborators .partner-logo-crown span {
+    font-size: clamp(0.88rem, 4.1vw, 1.2rem);
+  }
+
+  #partners-collaborators .partner-logo-chaldal span,
+  #partners-collaborators .partner-logo-syngenta span {
+    font-size: clamp(1.25rem, 5.4vw, 1.65rem);
+  }
+
+  #partners-collaborators .partner-rule {
+    width: 3.7rem;
+    margin-top: 0.9rem;
+  }
+
+  #partners-collaborators .partner-name {
+    margin-top: 0.85rem;
+    font-size: clamp(0.72rem, 3.3vw, 0.92rem);
+    line-height: 1.18;
+  }
+
+  #partners-collaborators .partners-arrow {
+    width: 2.25rem;
+    height: 2.25rem;
+    font-size: 2.1rem;
+  }
+
+  #partners-collaborators .partners-arrow-left { left: -0.3rem; }
+  #partners-collaborators .partners-arrow-right { right: -0.3rem; }
+
+  #partners-collaborators .partners-dots {
+    display: flex;
+    justify-content: center;
+    gap: 1.35rem;
+    margin-top: 2.1rem;
+  }
+
+  #partners-collaborators .partners-dots span {
+    width: 2.45rem;
+    height: 0.5rem;
+    border-radius: 999px;
+    background: rgba(95, 121, 255, 0.26);
+  }
+
+  #partners-collaborators .partners-dots span:first-child {
+    width: 3.15rem;
+    background: #115feb;
+    box-shadow: 0 0 15px rgba(17,95,235,0.62);
+  }
+}
+
+@media (max-width: 390px) {
+  #partners-collaborators .partners-carousel {
+    padding-inline: 1.45rem;
+  }
+
+  #partners-collaborators .partner-card {
+    min-height: 9.2rem;
+  }
+
+  #partners-collaborators .partner-logo {
+    height: 3.25rem;
+  }
+
+  #partners-collaborators .partner-name {
+    font-size: clamp(0.66rem, 3.05vw, 0.82rem);
+  }
+}

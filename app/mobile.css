@@ -11,7 +11,7 @@
   }
 
   main > div > section:first-child::before {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
     z-index: 0;
@@ -27,21 +27,17 @@
   }
 
   main > div > section:first-child::after {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
     z-index: 1;
     pointer-events: none;
-    background:
-      linear-gradient(180deg, rgba(2, 8, 23, 0.08) 0%, rgba(2, 8, 23, 0.01) 38%, rgba(2, 8, 23, 0.08) 62%, rgba(2, 8, 23, 0.78) 100%),
-      linear-gradient(90deg, rgba(2, 8, 23, 0.24) 0%, rgba(2, 8, 23, 0.04) 56%, rgba(2, 8, 23, 0.10) 100%);
+    background: linear-gradient(180deg, rgba(2, 8, 23, 0.08) 0%, rgba(2, 8, 23, 0.01) 38%, rgba(2, 8, 23, 0.08) 62%, rgba(2, 8, 23, 0.78) 100%), linear-gradient(90deg, rgba(2, 8, 23, 0.24) 0%, rgba(2, 8, 23, 0.04) 56%, rgba(2, 8, 23, 0.10) 100%);
   }
 
   main > div > section:first-child > div:nth-of-type(3) {
     left: 6vw !important;
     top: 5.4vw !important;
-    right: auto !important;
-    bottom: auto !important;
     width: 88vw !important;
     max-width: 88vw !important;
     height: calc(100% - 10vw) !important;
@@ -52,20 +48,24 @@
   }
 
   main > div > section:first-child > div:nth-of-type(3) > h1 > span:first-child {
-    font-size: clamp(2.45rem, 10.6vw, 3.45rem) !important;
-    line-height: 1.04 !important;
-    white-space: normal !important;
+    display: flex !important;
+    align-items: baseline !important;
+    flex-wrap: nowrap !important;
+    gap: 0.18em !important;
+    font-size: clamp(1.9rem, 8.5vw, 2.55rem) !important;
+    line-height: 1.02 !important;
+    white-space: nowrap !important;
   }
 
   main > div > section:first-child > div:nth-of-type(3) > h1 > span:first-child > span:nth-of-type(2) {
-    display: block !important;
+    display: inline-block !important;
     white-space: nowrap !important;
   }
 
   main > div > section:first-child > div:nth-of-type(3) > h1 > span:nth-child(2) {
     margin-top: 0.16rem !important;
-    font-size: clamp(2.48rem, 10.4vw, 3.45rem) !important;
-    line-height: 0.98 !important;
+    font-size: clamp(2.35rem, 10.8vw, 3.2rem) !important;
+    line-height: 0.96 !important;
   }
 
   main > div > section:first-child > div:nth-of-type(3) > h1 + div {
@@ -118,16 +118,16 @@
   }
 
   main > div > section:first-child::before {
-    background-size: 100% auto;
     background-position: center -32px;
   }
 
   main > div > section:first-child > div:nth-of-type(3) > h1 > span:first-child {
-    font-size: clamp(2.05rem, 10.3vw, 2.75rem) !important;
+    font-size: clamp(1.68rem, 8.35vw, 2.16rem) !important;
+    gap: 0.15em !important;
   }
 
   main > div > section:first-child > div:nth-of-type(3) > h1 > span:nth-child(2) {
-    font-size: clamp(2.08rem, 10vw, 2.8rem) !important;
+    font-size: clamp(2.08rem, 10.2vw, 2.75rem) !important;
   }
 
   main > div > section:first-child > div:nth-of-type(3) > h1 + div {

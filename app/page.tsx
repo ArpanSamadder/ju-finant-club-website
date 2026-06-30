@@ -15,6 +15,12 @@ type LegacyCard = {
   accent?: string;
 };
 
+type IdentityCard = {
+  title: string;
+  body: string;
+  icon: 'ai' | 'briefcase' | 'legacy';
+};
+
 const fallbackLegacyCards: LegacyCard[] = [
   {
     title: 'Biztigation',
@@ -45,9 +51,64 @@ const legacyAccentFallbacks = [
   'from-[#040b2a] via-[#07184a] to-[#020817]',
 ];
 
+const identityCards: IdentityCard[] = [
+  {
+    title: 'AI-Native Capability',
+    body: 'Members build real AI fluency, not tool familiarity.',
+    icon: 'ai',
+  },
+  {
+    title: 'Corporate Readiness',
+    body: 'Every program is designed around professional outcomes.',
+    icon: 'briefcase',
+  },
+  {
+    title: 'Legacy by Design',
+    body: 'Systems, culture, and standards that outlast any single leadership team.',
+    icon: 'legacy',
+  },
+];
+
 function makeBadge(title: string) {
   const words = title.split(' ').filter(Boolean);
   return words.slice(0, 2).join('\n').toUpperCase();
+}
+
+function IdentityIcon({icon}: {icon: IdentityCard['icon']}) {
+  if (icon === 'briefcase') {
+    return (
+      <svg viewBox="0 0 96 96" aria-hidden="true" className="identity-card-icon-svg">
+        <path d="M32 34v-9c0-4 3-7 7-7h18c4 0 7 3 7 7v9" />
+        <path d="M20 36h56c4 0 7 3 7 7v29c0 4-3 7-7 7H20c-4 0-7-3-7-7V43c0-4 3-7 7-7Z" />
+        <path d="M13 53h70" />
+        <path d="M43 53h10v10H43z" />
+      </svg>
+    );
+  }
+
+  if (icon === 'legacy') {
+    return (
+      <svg viewBox="0 0 96 96" aria-hidden="true" className="identity-card-icon-svg">
+        <path d="M22 77h52" />
+        <path d="M28 70h40" />
+        <path d="M31 35h34" />
+        <path d="M25 29h46L48 17 25 29Z" />
+        <path d="M34 38v28" />
+        <path d="M48 38v28" />
+        <path d="M62 38v28" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg viewBox="0 0 96 96" aria-hidden="true" className="identity-card-icon-svg">
+      <path d="M29 29h38v38H29z" />
+      <path d="M38 29V16M48 29V16M58 29V16M38 80V67M48 80V67M58 80V67M29 38H16M29 48H16M29 58H16M80 38H67M80 48H67M80 58H67" />
+      <path d="M40 58l8-20 8 20" />
+      <path d="M43 51h10" />
+      <path d="M61 39v19" />
+    </svg>
+  );
 }
 
 async function getLegacyCards() {
@@ -206,6 +267,48 @@ export default async function HomePage() {
                   </div>
                 </article>
               ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="our-identity" className="identity-section relative overflow-hidden bg-[#020817] px-6 py-[7.6vw]">
+        <div className="identity-bg-grid" />
+        <div className="identity-bg-lines" />
+        <div className="identity-bg-glow" />
+
+        <div className="identity-shell relative z-10 mx-auto grid max-w-[1760px] grid-cols-[1.05fr_.9fr] items-center gap-[6.2vw] px-[3vw]">
+          <div className="identity-copy">
+            <p className="identity-eyebrow">Our Identity</p>
+            <h2 className="identity-title">
+              <span>Jahangirnagar University’s</span>
+              <span className="identity-title-accent">AI-Native Career</span>
+              <span>Development Platform</span>
+            </h2>
+            <p className="identity-lead">
+              Where financial discipline meets artificial intelligence, and professionals are built before graduation.
+            </p>
+            <p className="identity-body">
+              FinAnt draws its name from two foundations: Finance, representing analytical discipline and professional judgment, and Ant, representing industry, collective strength, and legacy. Together, they define what we build. JU FinAnt Club develops AI-native professionals, corporate-ready leaders, and high-capability talents prepared to create lasting impact.
+            </p>
+          </div>
+
+          <div className="identity-feature-stack">
+            {identityCards.map((card) => (
+              <article key={card.title} className="identity-feature-card">
+                <div className="identity-card-icon">
+                  <IdentityIcon icon={card.icon} />
+                </div>
+                <div className="identity-card-divider" />
+                <div className="identity-card-copy">
+                  <h3>{card.title}</h3>
+                  <p>{card.body}</p>
+                </div>
+              </article>
+            ))}
+            <div className="identity-mobile-dots" aria-hidden="true">
+              <span />
+              <span />
             </div>
           </div>
         </div>

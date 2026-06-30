@@ -173,7 +173,7 @@
 @media (max-width: 767px) {
   #our-identity {
     min-height: auto;
-    padding: 4.4rem 1.35rem 7.5rem !important;
+    padding: 4.4rem 1.1rem 7.5rem !important;
     margin-top: 0 !important;
   }
 
@@ -202,6 +202,11 @@
     padding: 0 !important;
   }
 
+  #our-identity .identity-copy {
+    width: min(91vw, 46rem);
+    margin: 0 auto;
+  }
+
   #our-identity .identity-eyebrow {
     font-size: 0.88rem;
     letter-spacing: 0.48em;
@@ -211,7 +216,7 @@
 
   #our-identity .identity-title {
     margin: 1.55rem auto 0;
-    max-width: 92vw;
+    max-width: 100%;
     font-size: clamp(1.14rem, 4.85vw, 1.58rem);
     line-height: 1.15;
     letter-spacing: -0.058em;
@@ -231,7 +236,7 @@
 
   #our-identity .identity-lead {
     margin: 1.45rem auto 0;
-    max-width: 84vw;
+    max-width: 100%;
     color: rgba(255, 255, 255, 0.88);
     font-size: clamp(0.9rem, 3.72vw, 1.04rem);
     font-weight: 300;
@@ -243,7 +248,7 @@
 
   #our-identity .identity-body {
     margin: 1.05rem auto 0;
-    max-width: 84vw;
+    max-width: 100%;
     color: rgba(255, 255, 255, 0.86);
     font-size: clamp(0.9rem, 3.72vw, 1.04rem);
     font-weight: 300;
@@ -256,11 +261,14 @@
 
   #our-identity .identity-feature-stack {
     position: relative;
-    margin-top: 3.9rem;
+    width: min(91vw, 46rem);
+    margin: 3.9rem auto 0;
     gap: 0;
   }
 
   #our-identity .identity-feature-card {
+    width: 100%;
+    box-sizing: border-box;
     min-height: 12.4rem;
     grid-template-columns: 6.6rem 1px 1fr;
     gap: 1.65rem;
@@ -323,8 +331,13 @@
 
 @media (max-width: 420px) {
   #our-identity {
-    padding-left: 1.1rem !important;
-    padding-right: 1.1rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  #our-identity .identity-copy,
+  #our-identity .identity-feature-stack {
+    width: min(91vw, 100%);
   }
 
   #our-identity .identity-eyebrow {
@@ -334,14 +347,14 @@
   }
 
   #our-identity .identity-title {
-    max-width: 93vw;
+    max-width: 100%;
     font-size: clamp(1rem, 4.55vw, 1.34rem);
     letter-spacing: -0.055em;
   }
 
   #our-identity .identity-lead,
   #our-identity .identity-body {
-    max-width: 84vw;
+    max-width: 100%;
     font-size: clamp(0.82rem, 3.65vw, 0.98rem);
     line-height: 1.45;
   }

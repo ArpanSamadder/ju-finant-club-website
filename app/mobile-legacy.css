@@ -1,14 +1,25 @@
 @media (max-width: 767px) {
   #legacy-foundation {
     min-height: auto !important;
-    padding: 4.8rem 1.25rem 4.8rem !important;
+    padding: 5.35rem 1.25rem 4.8rem !important;
     overflow: hidden !important;
   }
 
   #legacy-foundation > svg {
-    top: -132px !important;
-    width: 168vw !important;
-    height: 245px !important;
+    top: -42px !important;
+    width: 210vw !important;
+    height: 220px !important;
+    opacity: 1 !important;
+  }
+
+  #legacy-foundation > svg path:first-of-type {
+    stroke-width: 10 !important;
+    stroke: rgba(17, 95, 235, 0.22) !important;
+  }
+
+  #legacy-foundation > svg path:last-of-type {
+    stroke-width: 2.4 !important;
+    stroke: #115FEB !important;
   }
 
   #legacy-foundation > .relative.z-10 {
@@ -135,6 +146,12 @@
   #legacy-foundation {
     padding-left: 1rem !important;
     padding-right: 1rem !important;
+  }
+
+  #legacy-foundation > svg {
+    top: -36px !important;
+    width: 220vw !important;
+    height: 210px !important;
   }
 
   #legacy-foundation > .relative.z-10 > div:nth-child(2) {

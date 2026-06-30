@@ -113,8 +113,8 @@ export default async function HomePage() {
           </div>
 
           <p className="mt-3 max-w-[565px] text-[clamp(1.14rem,1.26vw,1.3rem)] font-light leading-[1.42] tracking-[-0.006em] text-white/88 drop-shadow-[0_10px_26px_rgba(0,0,0,.5)]">
-            A student-led institution for business learning,<br />
-            leadership, and industry-connected experiences.
+            An AI-first career platform for professional readiness,<br />
+            leadership growth, and corporate trust.
           </p>
 
           <div className="mt-5 flex flex-col gap-4 sm:flex-row">

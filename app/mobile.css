@@ -106,7 +106,7 @@
     position: absolute !important;
     left: 0 !important;
     right: 0 !important;
-    bottom: max(2.25rem, calc(env(safe-area-inset-bottom) + 1.5rem)) !important;
+    bottom: max(8.25rem, calc(env(safe-area-inset-bottom) + 7.25rem)) !important;
     display: flex !important;
     flex-direction: row !important;
     gap: 0.62rem !important;
@@ -172,7 +172,7 @@
   }
 
   main > div > section:first-child > div:nth-of-type(3) > div:last-child {
-    bottom: max(1.75rem, calc(env(safe-area-inset-bottom) + 1.1rem)) !important;
+    bottom: max(7.25rem, calc(env(safe-area-inset-bottom) + 6.25rem)) !important;
     gap: 0.45rem !important;
   }
 

@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Inter } from 'next/font/google';
 import './globals.css';
 import './mobile.css';
 import './mobile-cta-row.css';
+import './mobile-legacy.css';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
 

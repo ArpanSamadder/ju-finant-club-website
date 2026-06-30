@@ -1,0 +1,37 @@
+@media (max-width: 767px) {
+  #legacy-foundation > .relative.z-10 > div:nth-child(2) {
+    overflow: hidden !important;
+  }
+
+  #legacy-foundation .grid {
+    animation: none !important;
+    display: flex !important;
+    grid-template-columns: none !important;
+    gap: 0.6rem !important;
+    width: max-content !important;
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+
+  #legacy-foundation article.legacy-card {
+    flex: 0 0 calc((100vw - 6rem) / 2) !important;
+  }
+
+  #legacy-foundation article.legacy-clone {
+    display: block !important;
+  }
+
+  #legacy-foundation > .relative.z-10 > div:nth-child(2) > button {
+    cursor: pointer !important;
+    pointer-events: auto !important;
+    user-select: none !important;
+    touch-action: manipulation !important;
+  }
+}
+
+@media (max-width: 390px) {
+  #legacy-foundation article.legacy-card {
+    flex-basis: calc((100vw - 5.5rem) / 2) !important;
+  }
+}

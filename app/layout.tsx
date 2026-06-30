@@ -4,10 +4,12 @@ import './globals.css';
 import './mobile.css';
 import './mobile-cta-row.css';
 import './mobile-legacy.css';
+import './legacy-carousel-interactive.css';
 import './identity-section.css';
 import './identity-mobile-grid.css';
 import './voices-section.css';
 import './partners-section.css';
+import { LegacyCarouselController } from '@/components/legacy-carousel-controller';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
 
@@ -35,6 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div className="noise" />
         <SiteHeader />
         <main>{children}</main>
+        <LegacyCarouselController />
         <SiteFooter />
       </body>
     </html>

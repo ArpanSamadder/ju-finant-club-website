@@ -8,8 +8,10 @@ import './legacy-carousel-interactive.css';
 import './identity-section.css';
 import './identity-mobile-grid.css';
 import './voices-section.css';
+import './voices-carousel-interactive.css';
 import './partners-section.css';
 import { LegacyCarouselController } from '@/components/legacy-carousel-controller';
+import { VoicesCarouselController } from '@/components/voices-carousel-controller';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
 
@@ -38,6 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SiteHeader />
         <main>{children}</main>
         <LegacyCarouselController />
+        <VoicesCarouselController />
         <SiteFooter />
       </body>
     </html>

@@ -24,6 +24,12 @@ const fallbackVoiceCards: VoiceCard[] = [
   },
 ];
 
+function optimizedSanityImage(url?: string, width = 900) {
+  if (!url) return undefined;
+  const separator = url.includes('?') ? '&' : '?';
+  return `${url}${separator}auto=format&w=${width}&q=75`;
+}
+
 async function getVoiceCards() {
   try {
     const cmsCards = await client.fetch<VoiceCard[]>(
@@ -72,12 +78,13 @@ export async function VoicesSection() {
             <div className="voices-card-grid">
               {voiceLoopCards.map((voice, index) => {
                 const isClone = index >= voiceCards.length;
+                const photoSrc = optimizedSanityImage(voice.photoUrl);
 
                 return (
                   <article key={`${voice._id ?? voice.name}-${index}`} aria-hidden={isClone ? 'true' : undefined} className={`voice-card ${isClone ? 'voice-clone' : ''}`}>
-                    {voice.photoUrl ? (
+                    {photoSrc ? (
                       <div className="voice-photo" aria-hidden="true">
-                        <img src={voice.photoUrl} alt="" />
+                        <img src={photoSrc} alt="" loading="lazy" decoding="async" />
                       </div>
                     ) : (
                       <div className={`voice-photo ${voice.photoClass ?? 'voice-photo-advisor'}`} aria-hidden="true" />

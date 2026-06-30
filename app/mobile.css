@@ -6,13 +6,13 @@
 
 @media (max-width: 767px) {
   main > div > section:first-child {
-    min-height: calc(100svh - 7.6rem) !important;
+    min-height: max(calc(100svh - 7.6rem), 760px) !important;
     isolation: isolate;
   }
 
   main > div > section:first-child > img:first-child {
-    object-position: 58% 63% !important;
-    transform: scale(1.08);
+    object-position: 58% 74% !important;
+    transform: none !important;
   }
 
   main > div > section:first-child::after {
@@ -21,12 +21,14 @@
     inset: 0;
     z-index: 1;
     pointer-events: none;
-    background: linear-gradient(180deg, rgba(2, 8, 23, 0.2) 0%, rgba(2, 8, 23, 0.04) 44%, rgba(2, 8, 23, 0.18) 72%, rgba(2, 8, 23, 0.95) 100%);
+    background:
+      linear-gradient(180deg, rgba(2, 8, 23, 0.18) 0%, rgba(2, 8, 23, 0.02) 42%, rgba(2, 8, 23, 0.16) 68%, rgba(2, 8, 23, 0.94) 100%),
+      linear-gradient(90deg, rgba(2, 8, 23, 0.32) 0%, rgba(2, 8, 23, 0.07) 58%, rgba(2, 8, 23, 0.18) 100%);
   }
 
   main > div > section:first-child > div:nth-of-type(3) {
     left: 6vw !important;
-    top: 5.8vw !important;
+    top: 5.4vw !important;
     right: auto !important;
     bottom: auto !important;
     width: 88vw !important;
@@ -39,7 +41,7 @@
   }
 
   main > div > section:first-child > div:nth-of-type(3) > h1 > span:first-child {
-    font-size: clamp(2.9rem, 12.3vw, 3.8rem) !important;
+    font-size: clamp(2.45rem, 10.6vw, 3.45rem) !important;
     line-height: 1.04 !important;
     white-space: normal !important;
   }
@@ -50,22 +52,22 @@
   }
 
   main > div > section:first-child > div:nth-of-type(3) > h1 > span:nth-child(2) {
-    margin-top: 0.25rem !important;
-    font-size: clamp(2.95rem, 12vw, 3.75rem) !important;
+    margin-top: 0.16rem !important;
+    font-size: clamp(2.48rem, 10.4vw, 3.45rem) !important;
     line-height: 0.98 !important;
   }
 
   main > div > section:first-child > div:nth-of-type(3) > h1 + div {
-    margin-top: 1.45rem !important;
-    font-size: clamp(1.45rem, 5.8vw, 1.95rem) !important;
-    line-height: 1.18 !important;
+    margin-top: 1.35rem !important;
+    font-size: clamp(1.15rem, 4.9vw, 1.6rem) !important;
+    line-height: 1.17 !important;
   }
 
   main > div > section:first-child > div:nth-of-type(3) > p {
-    margin-top: 1rem !important;
-    max-width: 75vw !important;
-    font-size: clamp(1rem, 4.45vw, 1.22rem) !important;
-    line-height: 1.5 !important;
+    margin-top: 0.95rem !important;
+    max-width: 68vw !important;
+    font-size: clamp(0.86rem, 3.7vw, 1.02rem) !important;
+    line-height: 1.62 !important;
   }
 
   main > div > section:first-child > div:nth-of-type(3) > p br {
@@ -79,37 +81,50 @@
     bottom: 0 !important;
     display: flex !important;
     flex-direction: column !important;
-    gap: 1.15rem !important;
+    gap: 1rem !important;
     margin-top: 0 !important;
   }
 
   main > div > section:first-child > div:nth-of-type(3) > div:last-child a {
     width: 100% !important;
     min-width: 0 !important;
-    height: 4.55rem !important;
+    height: 4rem !important;
     border-radius: 0.55rem !important;
     justify-content: center !important;
     gap: 28vw !important;
-    font-size: 1.42rem !important;
+    font-size: 1.12rem !important;
     letter-spacing: -0.03em !important;
   }
 
   main > div > section:first-child > div:nth-of-type(3) > div:last-child a span {
-    font-size: 2.25rem !important;
+    font-size: 2rem !important;
   }
 }
 
 @media (max-width: 420px) {
+  main > div > section:first-child {
+    min-height: max(calc(100svh - 7.6rem), 700px) !important;
+  }
+
   main > div > section:first-child > div:nth-of-type(3) > h1 > span:first-child {
-    font-size: clamp(2.65rem, 12vw, 3.2rem) !important;
+    font-size: clamp(2.05rem, 10.3vw, 2.75rem) !important;
   }
 
   main > div > section:first-child > div:nth-of-type(3) > h1 > span:nth-child(2) {
-    font-size: clamp(2.75rem, 11.7vw, 3.25rem) !important;
+    font-size: clamp(2.08rem, 10vw, 2.8rem) !important;
+  }
+
+  main > div > section:first-child > div:nth-of-type(3) > h1 + div {
+    font-size: clamp(1rem, 4.6vw, 1.25rem) !important;
+  }
+
+  main > div > section:first-child > div:nth-of-type(3) > p {
+    max-width: 72vw !important;
+    font-size: clamp(0.78rem, 3.55vw, 0.92rem) !important;
   }
 
   main > div > section:first-child > div:nth-of-type(3) > div:last-child a {
-    height: 4.2rem !important;
-    font-size: 1.25rem !important;
+    height: 3.7rem !important;
+    font-size: 1rem !important;
   }
 }

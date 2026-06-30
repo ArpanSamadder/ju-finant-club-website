@@ -5,6 +5,7 @@ import './mobile.css';
 import './mobile-cta-row.css';
 import './mobile-legacy.css';
 import './identity-section.css';
+import './identity-mobile-grid.css';
 import './voices-section.css';
 import './partners-section.css';
 import { SiteFooter } from '@/components/site-footer';

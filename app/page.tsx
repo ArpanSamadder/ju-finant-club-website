@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import {client} from '@/sanity/lib/client';
+import {PartnersSection} from '@/components/partners-section';
 
 export const revalidate = 60;
 
@@ -371,6 +372,8 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
+      <PartnersSection />
     </div>
   );
 }

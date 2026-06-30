@@ -1,0 +1,42 @@
+@media (max-width: 767px) {
+  #our-identity {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  #our-identity .identity-copy,
+  #our-identity .identity-feature-stack {
+    width: 88vw !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  #our-identity .identity-lead,
+  #our-identity .identity-body {
+    max-width: 84vw !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  #our-identity .identity-feature-card {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+}
+
+@media (max-width: 420px) {
+  #our-identity {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  #our-identity .identity-copy,
+  #our-identity .identity-feature-stack {
+    width: 88vw !important;
+  }
+
+  #our-identity .identity-lead,
+  #our-identity .identity-body {
+    max-width: 84vw !important;
+  }
+}

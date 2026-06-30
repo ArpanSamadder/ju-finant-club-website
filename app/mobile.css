@@ -18,7 +18,7 @@
     pointer-events: none;
     background-image: url('/images/hero/hero-bg-mobile.png');
     background-size: 100% auto;
-    background-position: center top;
+    background-position: center -42px;
     background-repeat: no-repeat;
   }
 
@@ -119,7 +119,7 @@
 
   main > div > section:first-child::before {
     background-size: 100% auto;
-    background-position: center top;
+    background-position: center -32px;
   }
 
   main > div > section:first-child > div:nth-of-type(3) > h1 > span:first-child {

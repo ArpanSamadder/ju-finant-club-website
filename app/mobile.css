@@ -11,8 +11,9 @@
   }
 
   main > div > section:first-child > img:first-child {
-    object-position: 58% 74% !important;
-    transform: none !important;
+    object-position: 76% 44% !important;
+    transform: scale(0.92) translateY(6%) !important;
+    transform-origin: center center !important;
   }
 
   main > div > section:first-child::after {
@@ -22,8 +23,8 @@
     z-index: 1;
     pointer-events: none;
     background:
-      linear-gradient(180deg, rgba(2, 8, 23, 0.18) 0%, rgba(2, 8, 23, 0.02) 42%, rgba(2, 8, 23, 0.16) 68%, rgba(2, 8, 23, 0.94) 100%),
-      linear-gradient(90deg, rgba(2, 8, 23, 0.32) 0%, rgba(2, 8, 23, 0.07) 58%, rgba(2, 8, 23, 0.18) 100%);
+      linear-gradient(180deg, rgba(2, 8, 23, 0.18) 0%, rgba(2, 8, 23, 0.03) 36%, rgba(2, 8, 23, 0.10) 58%, rgba(2, 8, 23, 0.40) 76%, rgba(2, 8, 23, 0.94) 100%),
+      linear-gradient(90deg, rgba(2, 8, 23, 0.40) 0%, rgba(2, 8, 23, 0.10) 54%, rgba(2, 8, 23, 0.16) 100%);
   }
 
   main > div > section:first-child > div:nth-of-type(3) {
@@ -104,6 +105,11 @@
 @media (max-width: 420px) {
   main > div > section:first-child {
     min-height: max(calc(100svh - 3.85rem), 700px) !important;
+  }
+
+  main > div > section:first-child > img:first-child {
+    object-position: 78% 42% !important;
+    transform: scale(0.88) translateY(7%) !important;
   }
 
   main > div > section:first-child > div:nth-of-type(3) > h1 > span:first-child {

@@ -8,6 +8,7 @@ export function LegacyCarouselController() {
     if (!section) return;
 
     const viewport = window.matchMedia('(max-width: 767px)');
+    const carousel = section.querySelector<HTMLElement>('.relative.mt-\\[4\\.2vw\\]');
     const track = section.querySelector<HTMLElement>('.grid');
     const cards = Array.from(section.querySelectorAll<HTMLElement>('article.legacy-card'));
     const prevButton = section.querySelector<HTMLButtonElement>('button[aria-label="Previous legacy event"]');
@@ -15,10 +16,13 @@ export function LegacyCarouselController() {
 
     if (!track || cards.length < 4) return;
 
+    const swipeSurface = carousel ?? track;
     const originalCount = Math.max(1, Math.floor(cards.length / 2));
     let index = 0;
     let timer: number | undefined;
     let isTransitioning = false;
+    let touchStartX = 0;
+    let touchStartY = 0;
 
     const getStepSize = () => {
       const firstCard = cards[0];
@@ -92,6 +96,32 @@ export function LegacyCarouselController() {
       startAuto();
     };
 
+    const handleTouchStart = (event: TouchEvent) => {
+      if (!viewport.matches || event.touches.length !== 1) return;
+      touchStartX = event.touches[0].clientX;
+      touchStartY = event.touches[0].clientY;
+    };
+
+    const handleTouchEnd = (event: TouchEvent) => {
+      if (!viewport.matches || !touchStartX) return;
+
+      const touch = event.changedTouches[0];
+      const deltaX = touch.clientX - touchStartX;
+      const deltaY = touch.clientY - touchStartY;
+      touchStartX = 0;
+      touchStartY = 0;
+
+      if (Math.abs(deltaX) < 34 || Math.abs(deltaX) < Math.abs(deltaY) * 1.15) return;
+
+      if (deltaX < 0) {
+        goNext();
+      } else {
+        goPrev();
+      }
+
+      startAuto();
+    };
+
     const handleResize = () => {
       setPosition(index, false);
       startAuto();
@@ -99,6 +129,8 @@ export function LegacyCarouselController() {
 
     nextButton?.addEventListener('click', handleNextClick);
     prevButton?.addEventListener('click', handlePrevClick);
+    swipeSurface.addEventListener('touchstart', handleTouchStart, {passive: true});
+    swipeSurface.addEventListener('touchend', handleTouchEnd, {passive: true});
     track.addEventListener('transitionend', handleTransitionEnd);
     window.addEventListener('resize', handleResize);
 
@@ -109,6 +141,8 @@ export function LegacyCarouselController() {
       window.clearInterval(timer);
       nextButton?.removeEventListener('click', handleNextClick);
       prevButton?.removeEventListener('click', handlePrevClick);
+      swipeSurface.removeEventListener('touchstart', handleTouchStart);
+      swipeSurface.removeEventListener('touchend', handleTouchEnd);
       track.removeEventListener('transitionend', handleTransitionEnd);
       window.removeEventListener('resize', handleResize);
       track.style.transition = '';

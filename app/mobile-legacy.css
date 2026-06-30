@@ -81,6 +81,7 @@
     margin-top: 3.7rem !important;
     padding-left: 1.72rem !important;
     padding-right: 1.72rem !important;
+    overflow: hidden !important;
   }
 
   #legacy-foundation > .relative.z-10 > div:nth-child(2)::after {
@@ -133,7 +134,7 @@
     will-change: transform;
     transform: translate3d(0, 0, 0);
     backface-visibility: hidden;
-    animation: legacyMobileAutoSlide 15s ease-in-out infinite;
+    animation: legacyMobileMarquee 16s linear infinite;
   }
 
   #legacy-foundation article {
@@ -181,24 +182,12 @@
   }
 }
 
-@keyframes legacyMobileAutoSlide {
-  0%, 16% {
+@keyframes legacyMobileMarquee {
+  from {
     transform: translate3d(0, 0, 0);
   }
 
-  21%, 37% {
-    transform: translate3d(calc(-1 * (((100vw - 6rem) / 2) + 0.6rem)), 0, 0);
-  }
-
-  42%, 58% {
-    transform: translate3d(calc(-1 * ((((100vw - 6rem) / 2) + 0.6rem) * 2)), 0, 0);
-  }
-
-  63%, 79% {
-    transform: translate3d(calc(-1 * ((((100vw - 6rem) / 2) + 0.6rem) * 3)), 0, 0);
-  }
-
-  84%, 100% {
+  to {
     transform: translate3d(calc(-1 * ((((100vw - 6rem) / 2) + 0.6rem) * 4)), 0, 0);
   }
 }
@@ -249,24 +238,12 @@
 }
 
 @media (max-width: 390px) {
-  @keyframes legacyMobileAutoSlide {
-    0%, 16% {
+  @keyframes legacyMobileMarquee {
+    from {
       transform: translate3d(0, 0, 0);
     }
 
-    21%, 37% {
-      transform: translate3d(calc(-1 * (((100vw - 5.5rem) / 2) + 0.6rem)), 0, 0);
-    }
-
-    42%, 58% {
-      transform: translate3d(calc(-1 * ((((100vw - 5.5rem) / 2) + 0.6rem) * 2)), 0, 0);
-    }
-
-    63%, 79% {
-      transform: translate3d(calc(-1 * ((((100vw - 5.5rem) / 2) + 0.6rem) * 3)), 0, 0);
-    }
-
-    84%, 100% {
+    to {
       transform: translate3d(calc(-1 * ((((100vw - 5.5rem) / 2) + 0.6rem) * 4)), 0, 0);
     }
   }

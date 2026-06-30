@@ -10,10 +10,20 @@
     isolation: isolate;
   }
 
+  main > div > section:first-child::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image: url('/images/hero/hero-bg-mobile.png');
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+  }
+
   main > div > section:first-child > img:first-child {
-    object-position: 76% 44% !important;
-    transform: scale(0.92) translateY(6%) !important;
-    transform-origin: center center !important;
+    display: none !important;
   }
 
   main > div > section:first-child::after {
@@ -23,8 +33,8 @@
     z-index: 1;
     pointer-events: none;
     background:
-      linear-gradient(180deg, rgba(2, 8, 23, 0.18) 0%, rgba(2, 8, 23, 0.03) 36%, rgba(2, 8, 23, 0.10) 58%, rgba(2, 8, 23, 0.40) 76%, rgba(2, 8, 23, 0.94) 100%),
-      linear-gradient(90deg, rgba(2, 8, 23, 0.40) 0%, rgba(2, 8, 23, 0.10) 54%, rgba(2, 8, 23, 0.16) 100%);
+      linear-gradient(180deg, rgba(2, 8, 23, 0.08) 0%, rgba(2, 8, 23, 0.01) 38%, rgba(2, 8, 23, 0.08) 62%, rgba(2, 8, 23, 0.78) 100%),
+      linear-gradient(90deg, rgba(2, 8, 23, 0.24) 0%, rgba(2, 8, 23, 0.04) 56%, rgba(2, 8, 23, 0.10) 100%);
   }
 
   main > div > section:first-child > div:nth-of-type(3) {
@@ -107,9 +117,9 @@
     min-height: max(calc(100svh - 3.85rem), 700px) !important;
   }
 
-  main > div > section:first-child > img:first-child {
-    object-position: 78% 42% !important;
-    transform: scale(0.88) translateY(7%) !important;
+  main > div > section:first-child::before {
+    background-size: cover;
+    background-position: center top;
   }
 
   main > div > section:first-child > div:nth-of-type(3) > h1 > span:first-child {

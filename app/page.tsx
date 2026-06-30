@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import {client} from '@/sanity/lib/client';
 import {PartnersSection} from '@/components/partners-section';
+import {VoicesSection} from '@/components/voices-section';
 
 export const revalidate = 60;
 
@@ -20,13 +21,6 @@ type IdentityCard = {
   title: string;
   body: string;
   icon: 'ai' | 'briefcase' | 'legacy';
-};
-
-type VoiceCard = {
-  name: string;
-  role: string;
-  quote: string;
-  photoClass: string;
 };
 
 const fallbackLegacyCards: LegacyCard[] = [
@@ -74,21 +68,6 @@ const identityCards: IdentityCard[] = [
     title: 'Legacy by Design',
     body: 'Systems, culture, and standards that outlast any single leadership team.',
     icon: 'legacy',
-  },
-];
-
-const voiceCards: VoiceCard[] = [
-  {
-    name: 'Arpan Samadder',
-    role: 'Founding President, Jahangirnagar University FinAnt Club',
-    quote: 'FinAnt was built for one reason: the AI age is here, and most professionals are not ready. We did not build events for the sake of events. We built a platform that develops AI-native professionals the industry will compete to hire, measured not by event counts, but by what our members become.',
-    photoClass: 'voice-photo-arpan',
-  },
-  {
-    name: 'Demo CA 1',
-    role: 'Corporate Advisor, Jahangirnagar University FinAnt Club',
-    quote: 'The talent gap in Bangladesh’s corporate sector is real, and FinAnt is one of the few platforms actively closing it. This is not a club running events. It is a structured development platform producing disciplined, AI-aware professionals who can contribute from day one — exactly what the industry needs.',
-    photoClass: 'voice-photo-advisor',
   },
 ];
 
@@ -342,41 +321,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section id="voices-of-finant" className="voices-section relative overflow-hidden bg-[#020817] px-6 py-[6.8vw]">
-        <div className="voices-bg-grid" />
-        <div className="voices-bg-lines" />
-        <div className="voices-bg-glow" />
-        <div className="relative z-10 mx-auto max-w-[1760px] px-[2.6vw]">
-          <p className="voices-eyebrow">Voices of FinAnt</p>
-
-          <div className="voices-carousel-wrap">
-            <button aria-label="Previous voice" className="voices-arrow voices-arrow-left">‹</button>
-            <button aria-label="Next voice" className="voices-arrow voices-arrow-right">›</button>
-
-            <div className="voices-card-grid">
-              {voiceCards.map((voice) => (
-                <article key={voice.name} className="voice-card">
-                  <div className={`voice-photo ${voice.photoClass}`} aria-hidden="true" />
-                  <div className="voice-content">
-                    <p className="voice-quote">{voice.quote}</p>
-                    <div className="voice-rule" />
-                    <div className="voice-signature">
-                      <h3>{voice.name}</h3>
-                      <p>{voice.role}</p>
-                    </div>
-                  </div>
-                </article>
-              ))}
-            </div>
-
-            <div className="voices-dots" aria-hidden="true">
-              <span />
-              <span />
-              <span />
-            </div>
-          </div>
-        </div>
-      </section>
+      <VoicesSection />
 
       <PartnersSection />
     </div>

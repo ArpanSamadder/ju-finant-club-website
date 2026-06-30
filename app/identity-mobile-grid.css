@@ -16,11 +16,38 @@
     max-width: 84vw !important;
     margin-left: 0 !important;
     margin-right: 0 !important;
+    color: rgba(255, 255, 255, 0.92) !important;
   }
 
   #our-identity .identity-feature-card {
     width: 100% !important;
     box-sizing: border-box !important;
+    border-color: #115FEB !important;
+    box-shadow: 0 18px 46px rgba(0, 0, 0, 0.52), inset 0 0 42px rgba(17, 95, 235, 0.12) !important;
+  }
+
+  #our-identity .identity-card-icon {
+    border-color: #115FEB !important;
+    color: #115FEB !important;
+    box-shadow: 0 0 24px rgba(17, 95, 235, 0.34) !important;
+  }
+
+  #our-identity .identity-card-icon-svg {
+    color: #115FEB !important;
+    stroke: #115FEB !important;
+  }
+
+  #our-identity .identity-card-divider {
+    background: linear-gradient(180deg, transparent, #115FEB 18%, #115FEB 82%, transparent) !important;
+    box-shadow: 0 0 16px rgba(17, 95, 235, 0.62) !important;
+  }
+
+  #our-identity .identity-card-copy h3 {
+    color: #ffffff !important;
+  }
+
+  #our-identity .identity-card-copy p {
+    color: rgba(255, 255, 255, 0.9) !important;
   }
 }
 

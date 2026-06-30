@@ -73,18 +73,18 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-cyan-400/10 bg-[#020817]/90 backdrop-blur-xl max-lg:bg-[#020817]/96">
-      <div className="mx-auto flex h-20 w-[min(1528px,calc(100%-40px))] items-center justify-between gap-6 max-lg:h-[8.6rem] max-lg:w-full max-lg:px-[6vw] max-sm:h-[7.6rem]">
-        <Link href="/" className="flex items-center gap-4 max-lg:gap-5 max-sm:gap-3" aria-label="JU FinAnt Club home">
+      <div className="mx-auto flex h-20 w-[min(1528px,calc(100%-40px))] items-center justify-between gap-6 max-lg:h-[4.3rem] max-lg:w-full max-lg:px-[5.6vw] max-sm:h-[3.85rem] max-sm:gap-3">
+        <Link href="/" className="flex min-w-0 items-center gap-4 max-lg:gap-3 max-sm:gap-2.5" aria-label="JU FinAnt Club home">
           <img
             src="/images/brand/finant-mark.png"
             alt="JU FinAnt Club"
-            className="h-14 w-auto object-contain md:h-16 max-lg:h-[4.75rem] max-sm:h-[3.85rem]"
+            className="h-14 w-auto shrink-0 object-contain md:h-16 max-lg:h-[2.9rem] max-sm:h-[2.45rem]"
           />
-          <span className="flex flex-col leading-none">
-            <span className="font-serif text-[1.72rem] font-medium tracking-[0.02em] text-white drop-shadow-[0_8px_20px_rgba(0,0,0,.55)] max-lg:text-[2.05rem] max-sm:text-[1.5rem]">
+          <span className="flex min-w-0 flex-col leading-none">
+            <span className="whitespace-nowrap font-serif text-[1.72rem] font-medium tracking-[0.02em] text-white drop-shadow-[0_8px_20px_rgba(0,0,0,.55)] max-lg:text-[1.24rem] max-sm:text-[1.03rem]">
               JU FinAnt Club
             </span>
-            <span className="mt-2 font-body text-[0.78rem] font-semibold uppercase tracking-[0.42em] text-[#1597ff] drop-shadow-[0_6px_18px_rgba(0,118,255,.35)] max-lg:text-[0.8rem] max-lg:tracking-[0.44em] max-sm:text-[0.58rem] max-sm:tracking-[0.34em]">
+            <span className="mt-1 whitespace-nowrap font-body text-[0.78rem] font-semibold uppercase tracking-[0.42em] text-[#1597ff] drop-shadow-[0_6px_18px_rgba(0,118,255,.35)] max-lg:text-[0.44rem] max-lg:tracking-[0.34em] max-sm:text-[0.36rem] max-sm:tracking-[0.27em]">
               INDUSTRY · INTEGRITY · LEGACY
             </span>
           </span>
@@ -116,12 +116,12 @@ export function SiteHeader() {
           type="button"
           aria-label="Open navigation menu"
           onClick={() => setMobileMenuOpen(true)}
-          className="hidden h-[5rem] w-[5rem] shrink-0 items-center justify-center rounded-2xl border border-[#115FEB] bg-[#030817]/76 shadow-[0_0_34px_rgba(17,95,235,.22),inset_0_0_26px_rgba(17,95,235,.10)] lg:hidden max-sm:h-[3.9rem] max-sm:w-[3.9rem]"
+          className="flex h-[3.15rem] w-[3.15rem] shrink-0 items-center justify-center rounded-xl border border-[#115FEB] bg-[#030817]/76 shadow-[0_0_24px_rgba(17,95,235,.18),inset_0_0_18px_rgba(17,95,235,.08)] lg:hidden max-sm:h-[2.85rem] max-sm:w-[2.85rem]"
         >
-          <span className="flex flex-col gap-[0.48rem] max-sm:gap-[0.35rem]">
-            <span className="h-[3px] w-10 rounded-full bg-white shadow-[0_0_14px_rgba(255,255,255,.55)] max-sm:w-8" />
-            <span className="h-[3px] w-10 rounded-full bg-white shadow-[0_0_14px_rgba(255,255,255,.55)] max-sm:w-8" />
-            <span className="h-[3px] w-10 rounded-full bg-white shadow-[0_0_14px_rgba(255,255,255,.55)] max-sm:w-8" />
+          <span className="flex flex-col gap-[0.31rem] max-sm:gap-[0.26rem]">
+            <span className="h-[2px] w-7 rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,.45)] max-sm:w-6" />
+            <span className="h-[2px] w-7 rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,.45)] max-sm:w-6" />
+            <span className="h-[2px] w-7 rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,.45)] max-sm:w-6" />
           </span>
         </button>
       </div>

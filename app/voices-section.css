@@ -1,0 +1,289 @@
+#voices-of-finant {
+  min-height: calc(100svh - 72px);
+  isolation: isolate;
+  padding-top: clamp(3.2rem, 5.2vw, 5.8rem) !important;
+  padding-bottom: clamp(3.4rem, 5.5vw, 6rem) !important;
+}
+
+#voices-of-finant .voices-bg-grid {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(0, 217, 255, 0.15) 1px, transparent 1.2px),
+    linear-gradient(180deg, rgba(2, 8, 23, 0.18), rgba(2, 8, 23, 0.96));
+  background-size: 25px 25px, auto;
+  opacity: 0.18;
+}
+
+#voices-of-finant .voices-bg-lines {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(132deg, transparent 0%, transparent 67%, rgba(17, 95, 235, 0.18) 67.15%, transparent 67.35%),
+    linear-gradient(132deg, transparent 0%, transparent 72%, rgba(0, 217, 255, 0.10) 72.12%, transparent 72.28%),
+    linear-gradient(132deg, transparent 0%, transparent 85%, rgba(17, 95, 235, 0.14) 85.14%, transparent 85.3%);
+  opacity: 0.82;
+}
+
+#voices-of-finant .voices-bg-glow {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 16% 8%, rgba(17, 95, 235, 0.18), transparent 28%),
+    radial-gradient(circle at 84% 48%, rgba(0, 217, 255, 0.10), transparent 34%),
+    linear-gradient(180deg, rgba(2, 8, 23, 0.05) 0%, rgba(2, 8, 23, 0.98) 100%);
+}
+
+#voices-of-finant .voices-eyebrow {
+  color: #00f0ff;
+  font-size: clamp(1.05rem, 1.42vw, 1.7rem);
+  font-weight: 700;
+  letter-spacing: 0.62em;
+  line-height: 1;
+  text-transform: uppercase;
+  text-shadow: 0 0 20px rgba(0, 217, 255, 0.68);
+}
+
+#voices-of-finant .voices-carousel-wrap {
+  position: relative;
+  margin-top: clamp(2.4rem, 3.8vw, 4.2rem);
+  padding-inline: 4rem;
+}
+
+#voices-of-finant .voices-card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.7rem, 2.3vw, 2.6rem);
+}
+
+#voices-of-finant .voice-card {
+  display: grid;
+  grid-template-columns: minmax(14rem, 42%) 1fr;
+  gap: clamp(1.7rem, 2.1vw, 2.45rem);
+  min-height: clamp(34rem, 40vw, 43.5rem);
+  border: 1px solid rgba(0, 217, 255, 0.82);
+  border-radius: 0.7rem;
+  background: rgba(2, 10, 31, 0.58);
+  box-shadow: 0 22px 68px rgba(0, 0, 0, 0.46), inset 0 0 54px rgba(17, 95, 235, 0.08);
+  padding: clamp(1.3rem, 1.55vw, 1.75rem);
+  backdrop-filter: blur(8px);
+}
+
+#voices-of-finant .voice-photo {
+  min-height: 100%;
+  border-radius: 0.35rem;
+  background-color: #020817;
+  background-position: center bottom;
+  background-size: cover;
+  box-shadow: inset 0 0 70px rgba(2, 8, 23, 0.28), 0 22px 46px rgba(0, 0, 0, 0.28);
+}
+
+#voices-of-finant .voice-photo-arpan {
+  background-image: url("data:image/webp;base64,UklGRiALAABXRUJQVlA4IBQLAACQQgCdASqgADgBPsFgqU+npaQqIpQKYUAYCWNuvciVeyZ16m31lDevCud206RQ70N13YuA8FEZqhclOWJCYPb9qGn/fxkK6e7+MGgrYyma0qF/jIQvYNKgQbIf5rdtNIlFzw03jbrCTCFUacsTtHgiHstaKBQegnabrzjXPxS1X3qyENqfsbIf3Gb+oREhQSO5ZWWUB+1mnXPR4CDiZaV5Ll0m2OfQmkcjxrNfFYVN9iWYC2JqlLwm8xOe2JW0B69cpYk9/rj2aOLDoA9XLWKlPtMIzOx/mjoQCx44vGXcIZixt/pvxXZEm7PLCoZMsH349dygoP0hfP/qXMKPT6lBKaKUyzgtL4YgkvthURR1JM0Yt6AGI1LDiYLqMqpf3uoXQsyPf9U/1AfLkP72j2FDd++FC1Rcm2uDGmebjRS12YQdX9JOOss//MVmHG5Qmh4gn7t1k40umr4j2ccFMG7A4lfriBUoSgzVg91YuetRMIuV9Sj9WTYasWOqqnhGB8WTtV/NpjTaH9UWNy9K9AcJvYJPeIEbaTfjYbhK+1N93q9bj/FeDjMjf0S6tBdXahDj6nkBhfJoSI/3p+QoKxIDrztmu/uvAkRQSMgFV1LKRab5J0W06W42KjGSohxCsNzrhQZ//RFwvZYj//a20Kg+fdcLcgBdDgp+spN2rakEFWE4E8ctljHe26N5ownWIPTRQdgjS1yUm0eA5rigAP7VRnpHpDDvwn0YS+jzs0bTjsb/gldOYAVokoVJUFC0IkD2AmHewBqAUyeUS4Xv86MW8NEJQjQzYZvlUBkvyjIiM7hJXh7lvWi5DXeDvSPB1GiaxLo637CY77EY+HaW7eOWZo/GW8ulHmXk15QUGo+sHBp2Kesuo2mjsZ+AoyzObczJ6C/Rd2dFGfFHii3tna40BBWehrCpaX2cbTxLiNJSUZ5ZT8i/Fxj7S6dlUkHHuP0Qw0HnyV58cdNG1IQ2+LiDU411pVDkpvVRMF1XA0CnZEHHE+cW1QSYPOkMiTSRH236nSdfXGCuNgDUgZxLDZoua3cb/N+cvlgq7eJXxi/YW9O7mp/gnGBD8gjuVwVVtMft68MpN7JrEY1uwDnjVUA5GZl/v5S8Jn4UF4MbDtjlJrbt1/fgeB34HJaNQB04BGfpVLmO3CAoEL9Ea9VwkxSmLd99NxTPG4h8u76jgEEJ+a6TpAn5Sr0nLKm4WfPk9Qn3SsEa2lF+gZzFNELiT9kTLtt/0BXjf+HJg3moHEIk9EU3nJWa1z6rZ1E0t2s9FcLwDeoTPjpqXR19PJuvpH+ohV2mchbtMhlsaRWxNwuSjzk6FR9C5zgRR0Vk17LOr9rEKMTDuoZZqDBJHN+Ah0iozkpgdz7ojpmjjTeEr6crrDbpxFq4ncUKZUC41ThdIqpt7ozfSUn41kZjd2sjeuyhRWtq9bwtfhk0PHiwqT2lSXWLDKKLb/7LUL0oVKauHd+qyUc+YyiLB4O0E52E0EbZ6CgTTISXr22Ol2Rj4yRiGgHr3EL47HcbE97KFzjhV5CDloKkorRoTkSPqy+ItP6M8NdTXnq2WcxTV3X3vyaYML5IUlJ/TBVX6YEtlkyJ/Sc7JbN/0ctgoVdfRBokomGUCth5lXfsKs+L4dAJzZUnuVs7BWWconpb7o+wL5u09WxiPVpayp0G8K1FRSIVVv4rURrddnW+HecJEZKPphhaRDx3GAw4AKxlZkolMUFhXtOLjsmWv13UA5B6JGI3N1cwpwa1VEwCG+OsvMGKBOgWmVfLFCh5M0zI+iiYZm4ofx7yQfofrrVpMiDledep0W1UPLzkRkgi6Th0k5Dr4DP5PpuIKV2xDAZHkyzA4oOt7GzYz1M2rzTjr4qQIwyeCVZaRcZM5pN0xIBKVlfkta/+iNV/BHSr5Xmb1LRTC3e7ibvIfbhFWb0oOH6ehEEL3U+CBm4au99bVynWK0o/ZL9lEkfJlrdBGj3F3B7uwLO0PrtaJUD8dGsltTgP2q0ayCHTeUbsHm0RZP97WT/pvYnHVZcn1APYPAkHt7LZp4OsLs6XCbY8Baug7aTi9djH2L7B+3A3FDl98xOW/927f7CCAHTGOgozKUXM3EmRzQRRJGu+FLV5HGmXK12yxNJy96bvIv+AlBpof0zxeejKWHYPMwthrGzifIHY6RfmPsCkHFqFf/2q/BoX9TM3XgyzLOdKc3j4iFenjHsgfCSivvAgdGWDkmqE6dgsbzes5g3LQ0PwVm9pXxU91BR+pm6BLXMCMaAft1COxSYd3JXEDa7ehTU6lYr4DRG7etpXYht1h34FIaLi2DkCYowvBibg+CUz5Jk7S5BDLSsno7ELycmcS5uYYaczgbquiaF8FGWtu5nkPGSavIf48yHjdYrAYuInpUxeJ/DML/cCHH87O2jZ9FFIpT6pjMuSj+Q8NKZ6qJZKZ/tcpu9811Ku+pJPIDZADJAi5NMsXUaqbyTT2Q5KOD2CMrMu91pdtAx6yptEmkwUK0UxX5dIYVUF3jbnBh4PSuED7WZ1PdFgucX5EIlmwdOZHbhPFjz9tR22qykCmTzAOiToPO+aac+nKdjOr2YI/zTcvlEWd03wmIs9UwVrFka8i0uWdsU0dh68q5gkkNExJJ9VwMEd6v7pnAXPF3MjCynxq5/XfqJnGZ3IR8rP8uifLSZINRu17nSW9NQlP2V2N51duREpdFd/t0vjLygoLa8g5u4wh7YG7mK5aJCJVbz0vksGpZs1f9vbOSVoQG3CCSVYLKbkamw9gDYpEdCmy0ef6PT1zXaVVcdhRHoUz5/zNoFu+WhiRREzcb9/cP7EJEoWDej2OykgNu8Gd9WJSKcQn+LbvGpOju6mB7EXvV3YQEJQHjR9k8UFJiGC1WH7p2Br6+fBHgvrp6ZCxge6Pf8lRwk29JlVL+LABiv1NLmjHvlp3LLuYJOEhg0DIjZdw+kQxrucESuGJFy2oljt+H/OWIo3+7+RxeiC9QfwR0DcRbhTPRvDH+XWK27klc1VK9fzD2nbD1Qd/wPqjsrgTs+oke0Pp/gy7yZcA02buXlegkqylGFG3ZE1ViJ5NdsBo8q+iFbQr62wHgwwjY/fLAP/mNXvypkoIBL2SZigqZiCvbMfMZMX3wK/7cPbjWKZA4xLd9h1lc13XxBpeNwfJ4EUt1Dde4CpshV3KH6NfsO812HhAJrQAUaNtaTRahEXfw8AaPSBy42Vm28LufqsWdmXdK3cVtCGhn2dL5nf8C/LXBq3om8m8ItlStYYDJtMJrMNtbnwWDci4jqqMVwO22Br6jSy8SJnTxa/XO2NHcvqoAWSzXHIpvD8yaMFXfe/wetXzqAAdTYn63BuOZRc2ldRBNwB65+0simEe44hOxscIUf17/xV1BueN9RGrkcGCkBeAJwsd9KHqWwRkzHoOz34XrYQjdTeQIBemgA1K4NKPOrXICgQGI2BpSsrCRywBwKZkTEUF4rjJyO1qJRLxY/GCpFBQmMMgG38ghgxoXAaytp4tuxjpP4P+51xcTbA0TcfVnaKbeFgO3BDmfd8MIJ7zL/7FUGH2AVQGJbsQAxR/OanuRMR2KY/KPYwarKNjzoHClof85TfottOIVE68PH9gXRPQlgifT7+lcTr5riHH7IWwk5TT5mthBAqJok2QIGor3qplYKXFJKfFm6XBFlFh9Uczeeutz7h6QkBTq5/s57hOlnbbLa7RhSIBalZHi5mdiqRJUGNT1cp0CGQLoncNZf7fykG3OoCE+CIYuVBoJyb5luoxYB9QDY4AuEYfigA");
+}
+
+#voices-of-finant .voice-photo-advisor {
+  background-image: linear-gradient(180deg, rgba(2,8,23,0), rgba(2,8,23,0.08)), radial-gradient(circle at 50% 42%, rgba(17,95,235,0.45), transparent 42%);
+}
+
+#voices-of-finant .voice-content {
+  align-self: center;
+  min-width: 0;
+}
+
+#voices-of-finant .voice-quote {
+  color: rgba(255,255,255,0.88);
+  font-size: clamp(1.08rem, 1.32vw, 1.58rem);
+  line-height: 1.62;
+  letter-spacing: -0.035em;
+}
+
+#voices-of-finant .voice-rule {
+  height: 1px;
+  margin-top: clamp(2rem, 2.5vw, 3rem);
+  background: linear-gradient(90deg, rgba(17,95,235,0.8), rgba(0,217,255,0.14));
+}
+
+#voices-of-finant .voice-signature {
+  margin-top: clamp(1.6rem, 2vw, 2.2rem);
+  border-left: 2px solid #00f0ff;
+  padding-left: 1.55rem;
+}
+
+#voices-of-finant .voice-signature h3 {
+  color: white;
+  font-size: clamp(1.75rem, 2.45vw, 3rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.06em;
+}
+
+#voices-of-finant .voice-signature p {
+  margin-top: 0.95rem;
+  color: rgba(255,255,255,0.82);
+  font-size: clamp(1.02rem, 1.28vw, 1.48rem);
+  line-height: 1.35;
+  letter-spacing: -0.035em;
+}
+
+#voices-of-finant .voices-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 20;
+  width: 4.65rem;
+  height: 4.65rem;
+  transform: translateY(-50%);
+  border: 1px solid #115feb;
+  border-radius: 999px;
+  background: rgba(2, 8, 23, 0.82);
+  color: white;
+  font-size: 4rem;
+  font-weight: 200;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 28px rgba(17,95,235,0.4);
+}
+
+#voices-of-finant .voices-arrow-left { left: -1.4rem; }
+#voices-of-finant .voices-arrow-right { right: -1.4rem; }
+
+#voices-of-finant .voices-dots {
+  display: flex;
+  justify-content: center;
+  gap: 2.1rem;
+  margin-top: 3.15rem;
+}
+
+#voices-of-finant .voices-dots span {
+  width: 2.5rem;
+  height: 0.72rem;
+  border-radius: 999px;
+  background: rgba(95,121,255,0.26);
+}
+
+#voices-of-finant .voices-dots span:nth-child(2) {
+  width: 3.8rem;
+  background: #115feb;
+  box-shadow: 0 0 16px rgba(17,95,235,0.65);
+}
+
+@media (max-width: 1023px) {
+  #voices-of-finant .voices-card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #voices-of-finant .voice-card:nth-child(n + 2) {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  #voices-of-finant {
+    padding: 4.4rem 1.1rem 6.2rem !important;
+    min-height: auto;
+  }
+
+  #voices-of-finant .voices-eyebrow {
+    font-size: 0.9rem;
+    letter-spacing: 0.44em;
+  }
+
+  #voices-of-finant .voices-carousel-wrap {
+    margin-top: 2.3rem;
+    padding-inline: 1.4rem;
+  }
+
+  #voices-of-finant .voice-card {
+    grid-template-columns: 43% 1fr;
+    gap: 1rem;
+    min-height: 27rem;
+    padding: 1rem;
+    border-radius: 0.55rem;
+  }
+
+  #voices-of-finant .voice-photo {
+    min-height: 25rem;
+  }
+
+  #voices-of-finant .voice-quote {
+    font-size: clamp(0.88rem, 3.55vw, 1.08rem);
+    line-height: 1.55;
+    letter-spacing: -0.035em;
+  }
+
+  #voices-of-finant .voice-rule {
+    margin-top: 1.45rem;
+  }
+
+  #voices-of-finant .voice-signature {
+    margin-top: 1.3rem;
+    padding-left: 1rem;
+  }
+
+  #voices-of-finant .voice-signature h3 {
+    font-size: clamp(1.45rem, 6.6vw, 2.05rem);
+  }
+
+  #voices-of-finant .voice-signature p {
+    margin-top: 0.6rem;
+    font-size: clamp(0.86rem, 3.6vw, 1.08rem);
+  }
+
+  #voices-of-finant .voices-arrow {
+    width: 2.35rem;
+    height: 2.35rem;
+    font-size: 2.2rem;
+  }
+
+  #voices-of-finant .voices-arrow-left { left: -0.35rem; }
+  #voices-of-finant .voices-arrow-right { right: -0.35rem; }
+
+  #voices-of-finant .voices-dots {
+    gap: 1.4rem;
+    margin-top: 2.2rem;
+  }
+
+  #voices-of-finant .voices-dots span {
+    width: 2.15rem;
+    height: 0.5rem;
+  }
+
+  #voices-of-finant .voices-dots span:nth-child(2) {
+    width: 3.05rem;
+  }
+}
+
+@media (max-width: 420px) {
+  #voices-of-finant .voices-carousel-wrap {
+    padding-inline: 1.15rem;
+  }
+
+  #voices-of-finant .voice-card {
+    min-height: 24.2rem;
+    grid-template-columns: 42% 1fr;
+    gap: 0.78rem;
+    padding: 0.78rem;
+  }
+
+  #voices-of-finant .voice-photo {
+    min-height: 22.8rem;
+  }
+
+  #voices-of-finant .voice-quote {
+    font-size: clamp(0.72rem, 3.25vw, 0.88rem);
+    line-height: 1.5;
+  }
+
+  #voices-of-finant .voice-signature h3 {
+    font-size: clamp(1.18rem, 5.6vw, 1.55rem);
+  }
+
+  #voices-of-finant .voice-signature p {
+    font-size: clamp(0.72rem, 3.2vw, 0.9rem);
+  }
+}

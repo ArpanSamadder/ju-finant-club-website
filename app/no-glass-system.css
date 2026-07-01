@@ -57,6 +57,47 @@ section:first-of-type a[href="/biztigation"] {
   filter: none !important;
 }
 
+#partners-collaborators .partners-arrow,
+#partners-collaborators .partners-dots {
+  display: none !important;
+}
+
+#partners-collaborators .partners-carousel {
+  overflow: hidden !important;
+  padding-inline: 0 !important;
+}
+
+#partners-collaborators .partners-track-viewport {
+  width: 100% !important;
+  overflow: hidden !important;
+}
+
+#partners-collaborators .partners-grid {
+  display: flex !important;
+  grid-template-columns: none !important;
+  width: max-content !important;
+  gap: clamp(1rem, 1.35vw, 1.45rem) !important;
+  animation: partners-marquee 34s linear infinite !important;
+  will-change: transform;
+}
+
+#partners-collaborators .partner-card {
+  flex: 0 0 clamp(15.8rem, 20.35vw, 21.75rem) !important;
+}
+
+#partners-collaborators .partner-logo-img {
+  display: block !important;
+  width: min(82%, 14rem) !important;
+  height: 5.2rem !important;
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+@keyframes partners-marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
 @media (min-width: 768px) {
   #our-identity {
     min-height: auto !important;
@@ -337,11 +378,26 @@ section:first-of-type a[href="/biztigation"] {
     margin-top: 1.75rem !important;
   }
 
-  #partners-collaborators .partner-card:nth-child(n + 3) {
-    display: none !important;
+  #partners-collaborators .partners-carousel {
+    padding-inline: 0 !important;
   }
 
   #partners-collaborators .partners-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    display: flex !important;
+    grid-template-columns: none !important;
+    gap: 0.75rem !important;
+    width: max-content !important;
+    animation-duration: 24s !important;
+  }
+
+  #partners-collaborators .partner-card,
+  #partners-collaborators .partner-card:nth-child(n + 3) {
+    display: flex !important;
+    flex: 0 0 min(44vw, 12.2rem) !important;
+  }
+
+  #partners-collaborators .partner-logo-img {
+    width: 82% !important;
+    height: 3.35rem !important;
   }
 }

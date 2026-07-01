@@ -1,0 +1,50 @@
+@media (min-width: 768px) {
+  #our-identity .identity-feature-stack {
+    gap: 0.78rem !important;
+  }
+
+  #our-identity .identity-feature-card {
+    min-height: 6.85rem !important;
+    grid-template-columns: 5.65rem 1px 1fr !important;
+    gap: 1.45rem !important;
+    padding: 0.82rem 1.45rem 0.82rem 1.25rem !important;
+    border-color: #115FEB !important;
+    background: rgba(2, 10, 31, 0.52) !important;
+  }
+
+  #our-identity .identity-card-icon {
+    width: 4.45rem !important;
+    height: 4.45rem !important;
+    border-color: #115FEB !important;
+    color: #115FEB !important;
+  }
+
+  #our-identity .identity-card-icon-svg {
+    width: 2.45rem !important;
+    height: 2.45rem !important;
+    stroke: #115FEB !important;
+  }
+
+  #our-identity .identity-card-divider {
+    height: 3.75rem !important;
+    background: linear-gradient(180deg, transparent, #115FEB 18%, #115FEB 82%, transparent) !important;
+    box-shadow: 0 0 14px rgba(17, 95, 235, 0.55) !important;
+  }
+
+  #our-identity .identity-card-copy h3 {
+    font-size: clamp(1.02rem, 1.05vw, 1.34rem) !important;
+    line-height: 1.06 !important;
+    font-weight: 800 !important;
+    color: #ffffff !important;
+  }
+
+  #our-identity .identity-card-copy p {
+    margin-top: 0.48rem !important;
+    max-width: 27rem !important;
+    font-size: clamp(0.82rem, 0.86vw, 0.98rem) !important;
+    font-weight: 300 !important;
+    line-height: 1.43 !important;
+    letter-spacing: -0.008em !important;
+    color: rgba(255, 255, 255, 0.88) !important;
+  }
+}

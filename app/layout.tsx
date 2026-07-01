@@ -12,6 +12,7 @@ import './voices-section.css';
 import './voices-carousel-interactive.css';
 import './partners-section.css';
 import './performance-fixes.css';
+import './no-glass-system.css';
 import { LegacyCarouselController } from '@/components/legacy-carousel-controller';
 import { VoicesCarouselController } from '@/components/voices-carousel-controller';
 import { SiteFooter } from '@/components/site-footer';

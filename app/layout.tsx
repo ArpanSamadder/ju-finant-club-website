@@ -7,6 +7,7 @@ import './mobile-legacy.css';
 import './legacy-carousel-interactive.css';
 import './identity-section.css';
 import './identity-mobile-grid.css';
+import './identity-card-compact.css';
 import './voices-section.css';
 import './voices-carousel-interactive.css';
 import './partners-section.css';

@@ -1,0 +1,51 @@
+section:first-of-type a[href="#legacy-foundation"],
+section:first-of-type a[href="/biztigation"] {
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  filter: none !important;
+}
+
+section:first-of-type a[href="#legacy-foundation"] {
+  background: #115FEB !important;
+  border-color: #115FEB !important;
+}
+
+section:first-of-type a[href="/biztigation"] {
+  background: transparent !important;
+  border-color: rgba(255, 255, 255, 0.82) !important;
+}
+
+#legacy-foundation .text-center p,
+#our-identity .identity-eyebrow,
+#voices-of-finant .voices-eyebrow,
+#partners-collaborators .partners-title,
+#partners-collaborators .partners-subtitle {
+  text-shadow: none !important;
+  filter: none !important;
+}
+
+#our-identity .identity-feature-card {
+  background: #020817 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-color: #115FEB !important;
+}
+
+#our-identity .identity-card-icon {
+  background: transparent !important;
+  box-shadow: none !important;
+  border-color: #115FEB !important;
+}
+
+#our-identity .identity-card-divider {
+  box-shadow: none !important;
+  background: linear-gradient(180deg, transparent, #115FEB 18%, #115FEB 82%, transparent) !important;
+}
+
+#our-identity .identity-card-copy h3,
+#our-identity .identity-card-copy p {
+  text-shadow: none !important;
+  filter: none !important;
+}

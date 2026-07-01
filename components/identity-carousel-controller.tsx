@@ -4,10 +4,12 @@ import {useEffect} from 'react';
 
 export function IdentityCarouselController() {
   useEffect(() => {
+    const mobile = window.matchMedia('(max-width: 767px)');
+    if (!mobile.matches) return;
+
     const section = document.querySelector<HTMLElement>('#our-identity');
     const stack = section?.querySelector<HTMLElement>('.identity-feature-stack');
     const dots = stack?.querySelector<HTMLElement>('.identity-mobile-dots');
-    const mobile = window.matchMedia('(max-width: 767px)');
 
     if (!section || !stack || !dots) return;
     if (stack.querySelector('.identity-card-track-viewport')) return;
@@ -56,21 +58,20 @@ export function IdentityCarouselController() {
     };
 
     const move = (nextIndex: number, animate = true) => {
-      if (!mobile.matches) return;
       track.style.transition = animate ? 'transform 560ms cubic-bezier(.45,0,.2,1)' : 'none';
       track.style.transform = `translate3d(${-nextIndex * step()}px,0,0)`;
       syncDots();
     };
 
     const forward = () => {
-      if (!mobile.matches || busy) return;
+      if (busy) return;
       busy = true;
       index += 1;
       move(index);
     };
 
     const backward = () => {
-      if (!mobile.matches || busy) return;
+      if (busy) return;
       busy = true;
       if (index === 0) {
         index = count;
@@ -83,7 +84,7 @@ export function IdentityCarouselController() {
 
     const restart = () => {
       window.clearInterval(timer);
-      if (mobile.matches) timer = window.setInterval(forward, 2000);
+      timer = window.setInterval(forward, 2000);
     };
 
     const done = (event: TransitionEvent) => {
@@ -98,13 +99,13 @@ export function IdentityCarouselController() {
     };
 
     const onStart = (event: TouchEvent) => {
-      if (!mobile.matches || event.touches.length !== 1) return;
+      if (event.touches.length !== 1) return;
       startX = event.touches[0].clientX;
       startY = event.touches[0].clientY;
     };
 
     const onEnd = (event: TouchEvent) => {
-      if (!mobile.matches || !startX) return;
+      if (!startX) return;
       const dx = event.changedTouches[0].clientX - startX;
       const dy = event.changedTouches[0].clientY - startY;
       startX = 0;
@@ -115,6 +116,7 @@ export function IdentityCarouselController() {
     };
 
     const onResize = () => {
+      if (!mobile.matches) return;
       move(index, false);
       restart();
     };

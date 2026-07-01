@@ -125,10 +125,10 @@ export default function BiztigationPage() {
       <section className={`${styles.hero} ${heroStyles.heroReset}`}>
         <div className={`${styles.shell} ${heroStyles.heroInner}`}>
           <div className={`${styles.heroCopy} ${heroStyles.heroCopyMatch}`}>
-            <p className={`${styles.kicker} ${heroStyles.kickerMatch}`}>Jahangirnagar University FinAnt Club presents</p>
-            <h1 className={styles.title} style={{color: '#f7f6ef', fontSize: 'clamp(4.75rem, 6.9vw, 8.65rem)', lineHeight: 0.9, letterSpacing: '-0.055em', whiteSpace: 'nowrap'}}>Biztigation <span style={{color: '#e4b65c'}}>2.0</span></h1>
-            <p className={`${styles.subtitle} ${heroStyles.subtitleMatch}`}>An Inter-University Business Case Competition</p>
-            <p className={`${styles.heroText} ${heroStyles.heroTextMatch}`}>Step into a national business case competition where strategy, creativity, and presentation meet real-world business challenges.</p>
+            <p className={`${styles.kicker} ${heroStyles.kickerMatch}`} style={{color: '#C7CDD7', opacity: 0.78, letterSpacing: '0.035em'}}>Jahangirnagar University FinAnt Club presents</p>
+            <h1 className={styles.title} style={{color: '#f7f6ef', fontFamily: 'var(--font-display), Cormorant Garamond, Georgia, serif', fontSize: 'clamp(4.9rem, 7.15vw, 8.95rem)', fontWeight: 700, lineHeight: 0.88, letterSpacing: '-0.035em', whiteSpace: 'nowrap', textShadow: '0 2px 0 rgba(255,255,255,0.14), 0 4px 0 rgba(0,0,0,0.72), 0 12px 22px rgba(0,0,0,0.42)'}}>Biztigation <span style={{display: 'inline-block', fontSize: '0.93em', color: '#D6A94A', background: 'linear-gradient(180deg, #F8D77A 0%, #D6A94A 48%, #F3C86B 100%)', WebkitBackgroundClip: 'text', backgroundClip: 'text', WebkitTextFillColor: 'transparent', textShadow: '0 0 10px rgba(216,169,74,0.2), 0 2px 4px rgba(0,0,0,0.42)'}}>2.0</span></h1>
+            <p className={`${styles.subtitle} ${heroStyles.subtitleMatch}`} style={{color: '#E0AE4F', fontSize: 'clamp(1.48rem, 1.78vw, 2.08rem)', fontWeight: 800, lineHeight: 1.24}}>An Inter-University Business Case Competition</p>
+            <p className={`${styles.heroText} ${heroStyles.heroTextMatch}`} style={{maxWidth: '35rem', color: '#E8E8E8', fontSize: 'clamp(1.08rem, 1.16vw, 1.32rem)', lineHeight: 1.7}}>Step into a national business case competition where strategy, creativity, and presentation meet real-world business challenges.</p>
             <div className={`${styles.buttonRow} ${heroStyles.buttonRowMatch}`}>
               <Link href="#registration" className={styles.primaryButton}>Register Now <ArrowRight size={18} /></Link>
               <Link href="#rules" className={styles.secondaryButton}>Download Rulebook <Download size={18} /></Link>

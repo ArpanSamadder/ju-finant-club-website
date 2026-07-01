@@ -288,9 +288,7 @@ export default async function HomePage() {
           <div className="identity-copy">
             <p className="identity-eyebrow">Our Identity</p>
             <h2 className="identity-title">
-              <span>Jahangirnagar University’s</span>
-              <span className="identity-title-accent">AI-Native Career</span>
-              <span>Development Platform</span>
+              <span>JU&apos;s <strong className="identity-title-accent">AI-Native Leadership</strong> Platform</span>
             </h2>
             <p className="identity-lead">
               Where financial discipline meets artificial intelligence, and professionals are built before graduation.

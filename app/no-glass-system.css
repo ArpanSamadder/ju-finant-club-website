@@ -71,7 +71,61 @@ section:first-of-type a[href="/biztigation"] {
   }
 
   #voices-of-finant {
+    min-height: auto !important;
     padding-top: clamp(2.1rem, 2.8vw, 3.1rem) !important;
+    padding-bottom: clamp(2rem, 2.6vw, 3rem) !important;
+  }
+
+  #voices-of-finant .voices-eyebrow {
+    font-size: clamp(0.82rem, 1.05vw, 1.18rem) !important;
+    letter-spacing: 0.62em !important;
+    font-weight: 700 !important;
+  }
+
+  #voices-of-finant .voices-carousel-wrap {
+    margin-top: clamp(1.75rem, 2.4vw, 2.7rem) !important;
+    padding-inline: 3.1rem !important;
+  }
+
+  #voices-of-finant .voices-card-grid {
+    gap: clamp(1.25rem, 1.65vw, 1.9rem) !important;
+  }
+
+  #voices-of-finant .voice-card {
+    min-height: clamp(23.5rem, 27vw, 29rem) !important;
+    grid-template-columns: minmax(11.5rem, 38%) 1fr !important;
+    gap: clamp(1.05rem, 1.35vw, 1.55rem) !important;
+    padding: clamp(0.95rem, 1.1vw, 1.25rem) !important;
+  }
+
+  #voices-of-finant .voice-photo {
+    min-height: 0 !important;
+    height: 100% !important;
+  }
+
+  #voices-of-finant .voice-content {
+    min-height: 0 !important;
+    justify-content: center !important;
+  }
+
+  #voices-of-finant .voice-quote {
+    font-size: clamp(0.98rem, 1.02vw, 1.18rem) !important;
+    line-height: 1.42 !important;
+    letter-spacing: -0.02em !important;
+  }
+
+  #voices-of-finant .voice-rule {
+    margin-block: clamp(1.05rem, 1.25vw, 1.35rem) !important;
+  }
+
+  #voices-of-finant .voice-signature h3 {
+    font-size: clamp(1.65rem, 2vw, 2.35rem) !important;
+    line-height: 0.96 !important;
+  }
+
+  #voices-of-finant .voice-signature p {
+    font-size: clamp(0.78rem, 0.82vw, 0.95rem) !important;
+    line-height: 1.3 !important;
   }
 }
 

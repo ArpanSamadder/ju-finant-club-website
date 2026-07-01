@@ -7,7 +7,6 @@ export function LegacyCarouselController() {
     const section = document.querySelector<HTMLElement>('#legacy-foundation');
     if (!section) return;
 
-    const viewport = window.matchMedia('(max-width: 767px)');
     const carousel = section.querySelector<HTMLElement>('.relative.mt-\\[4\\.2vw\\]');
     const track = section.querySelector<HTMLElement>('.grid');
     const cards = Array.from(section.querySelectorAll<HTMLElement>('article.legacy-card'));
@@ -32,13 +31,6 @@ export function LegacyCarouselController() {
     };
 
     const setPosition = (nextIndex: number, animate = true) => {
-      if (!viewport.matches) {
-        track.style.transition = '';
-        track.style.transform = '';
-        track.style.animation = '';
-        return;
-      }
-
       const step = getStepSize();
       track.style.animation = 'none';
       track.style.transition = animate ? 'transform 560ms cubic-bezier(.45,0,.2,1)' : 'none';
@@ -54,14 +46,14 @@ export function LegacyCarouselController() {
     };
 
     const goNext = () => {
-      if (!viewport.matches || isTransitioning) return;
+      if (isTransitioning) return;
       isTransitioning = true;
       index += 1;
       setPosition(index, true);
     };
 
     const goPrev = () => {
-      if (!viewport.matches || isTransitioning) return;
+      if (isTransitioning) return;
       isTransitioning = true;
 
       if (index === 0) {
@@ -76,7 +68,6 @@ export function LegacyCarouselController() {
 
     const startAuto = () => {
       window.clearInterval(timer);
-      if (!viewport.matches) return;
       timer = window.setInterval(goNext, 2000);
     };
 
@@ -97,13 +88,13 @@ export function LegacyCarouselController() {
     };
 
     const handleTouchStart = (event: TouchEvent) => {
-      if (!viewport.matches || event.touches.length !== 1) return;
+      if (event.touches.length !== 1) return;
       touchStartX = event.touches[0].clientX;
       touchStartY = event.touches[0].clientY;
     };
 
     const handleTouchEnd = (event: TouchEvent) => {
-      if (!viewport.matches || !touchStartX) return;
+      if (!touchStartX) return;
 
       const touch = event.changedTouches[0];
       const deltaX = touch.clientX - touchStartX;

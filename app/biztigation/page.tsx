@@ -126,12 +126,12 @@ export default function BiztigationPage() {
         <div className={`${styles.shell} ${heroStyles.heroInner}`}>
           <div className={`${styles.heroCopy} ${heroStyles.heroCopyMatch}`}>
             <p className={`${styles.kicker} ${heroStyles.kickerMatch}`}>Jahangirnagar University FinAnt Club presents</p>
-            <h1 className={styles.title} style={{color: '#f7f6ef', fontSize: 'clamp(4.75rem, 6.9vw, 8.65rem)', lineHeight: 0.9, letterSpacing: '-0.055em', whiteSpace: 'nowrap'}}>Biztigation <span style={{color: '#1f7bff'}}>2.0</span></h1>
-            <p className={`${styles.subtitle} ${heroStyles.subtitleMatch}`} style={{color: '#1f7bff'}}>An Inter-University Business Case Competition</p>
+            <h1 className={styles.title} style={{color: '#f7f6ef', fontSize: 'clamp(4.75rem, 6.9vw, 8.65rem)', lineHeight: 0.9, letterSpacing: '-0.055em', whiteSpace: 'nowrap'}}>Biztigation <span style={{color: '#e4b65c'}}>2.0</span></h1>
+            <p className={`${styles.subtitle} ${heroStyles.subtitleMatch}`}>An Inter-University Business Case Competition</p>
             <p className={`${styles.heroText} ${heroStyles.heroTextMatch}`}>Step into a national business case competition where strategy, creativity, and presentation meet real-world business challenges.</p>
             <div className={`${styles.buttonRow} ${heroStyles.buttonRowMatch}`}>
               <Link href="#registration" className={styles.primaryButton}>Register Now <ArrowRight size={18} /></Link>
-              <Link href="#rules" className={styles.secondaryButton} style={{borderColor: 'rgba(31, 123, 255, 0.9)'}}>Download Rulebook <Download size={18} /></Link>
+              <Link href="#rules" className={styles.secondaryButton}>Download Rulebook <Download size={18} /></Link>
             </div>
           </div>
           <div className={`${styles.heroVisual} ${heroStyles.heroVisualMatch}`} aria-hidden="true" />

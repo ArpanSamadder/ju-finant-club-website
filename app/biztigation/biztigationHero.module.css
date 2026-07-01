@@ -38,23 +38,26 @@
   line-height: 0.9 !important;
   letter-spacing: -0.055em !important;
   white-space: nowrap !important;
-  background: linear-gradient(180deg, #ffffff 0%, #d7d7d7 34%, #707070 54%, #f6f6f6 74%, #d8aa57 100%) !important;
+  background: linear-gradient(180deg, #ffffff 0%, #f4f4f0 20%, #9b9b97 44%, #3c3c3c 50%, #f7f2e8 63%, #b9b5ad 82%, #fbf7ed 100%) !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;
   color: transparent !important;
-  text-shadow: 0 5px 0 rgba(0, 0, 0, 0.42), 0 18px 40px rgba(0, 0, 0, 0.68) !important;
+  -webkit-text-stroke: 0.35px rgba(255, 255, 255, 0.36) !important;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.68), 0 8px 16px rgba(0, 0, 0, 0.58) !important;
 }
 
 .titleMatch span {
-  background: linear-gradient(180deg, #fff4d9 0%, #dca84b 55%, #7f5620 100%) !important;
+  background: linear-gradient(180deg, #fff3c2 0%, #f3cf7a 28%, #d09b3f 58%, #7b4c18 100%) !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;
   color: transparent !important;
+  -webkit-text-stroke: 0.25px rgba(255, 229, 165, 0.45) !important;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.58), 0 8px 16px rgba(0, 0, 0, 0.5) !important;
 }
 
 .subtitleMatch {
   margin-top: clamp(1.1rem, 1.4vw, 1.55rem) !important;
-  color: #d9a64d !important;
+  color: #d6a04a !important;
   font-size: clamp(1.38rem, 1.65vw, 2rem) !important;
   line-height: 1.18 !important;
   font-weight: 700 !important;

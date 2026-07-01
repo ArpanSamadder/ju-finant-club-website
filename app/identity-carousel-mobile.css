@@ -1,0 +1,122 @@
+@media (max-width: 767px) {
+  #our-identity .identity-feature-stack {
+    display: block !important;
+    width: 88vw !important;
+    margin: 3rem auto 0 !important;
+    overflow: visible !important;
+  }
+
+  #our-identity .identity-card-track-viewport {
+    width: 100% !important;
+    overflow: hidden !important;
+    touch-action: pan-y;
+  }
+
+  #our-identity .identity-card-track {
+    display: flex !important;
+    gap: 0.72rem !important;
+    width: max-content !important;
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+
+  #our-identity .identity-card-track .identity-feature-card,
+  #our-identity .identity-card-track .identity-feature-card:nth-child(n + 2),
+  #our-identity .identity-clone {
+    display: grid !important;
+    flex: 0 0 88vw !important;
+  }
+
+  #our-identity .identity-feature-card {
+    min-height: 8.2rem !important;
+    grid-template-columns: 4.7rem 1px 1fr !important;
+    gap: 1.05rem !important;
+    padding: 1rem 1rem !important;
+    border-radius: 0.18rem !important;
+    background: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  #our-identity .identity-card-icon {
+    width: 3.85rem !important;
+    height: 3.85rem !important;
+    border-width: 1.35px !important;
+    box-shadow: none !important;
+  }
+
+  #our-identity .identity-card-icon-svg {
+    width: 2.15rem !important;
+    height: 2.15rem !important;
+    stroke-width: 4 !important;
+  }
+
+  #our-identity .identity-card-divider {
+    height: 4.5rem !important;
+    box-shadow: none !important;
+  }
+
+  #our-identity .identity-card-copy h3 {
+    font-size: clamp(1.12rem, 5.2vw, 1.5rem) !important;
+    line-height: 1.08 !important;
+    letter-spacing: -0.055em !important;
+  }
+
+  #our-identity .identity-card-copy p {
+    margin-top: 0.62rem !important;
+    font-size: clamp(0.88rem, 3.85vw, 1.05rem) !important;
+    line-height: 1.42 !important;
+    letter-spacing: -0.012em !important;
+  }
+
+  #our-identity .identity-mobile-dots {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 1.3rem !important;
+    margin-top: 2.2rem !important;
+  }
+
+  #our-identity .identity-mobile-dots span {
+    width: 3.4rem !important;
+    height: 0.42rem !important;
+    border-radius: 999px !important;
+    background: rgba(75, 93, 130, 0.72) !important;
+    box-shadow: none !important;
+  }
+
+  #our-identity .identity-mobile-dots span:first-child,
+  #our-identity .identity-mobile-dots span.identity-dot-active {
+    background: #115FEB !important;
+    box-shadow: none !important;
+  }
+}
+
+@media (max-width: 390px) {
+  #our-identity .identity-feature-card {
+    min-height: 7.7rem !important;
+    grid-template-columns: 4.15rem 1px 1fr !important;
+    gap: 0.9rem !important;
+    padding: 0.9rem 0.85rem !important;
+  }
+
+  #our-identity .identity-card-icon {
+    width: 3.45rem !important;
+    height: 3.45rem !important;
+  }
+
+  #our-identity .identity-card-icon-svg {
+    width: 1.95rem !important;
+    height: 1.95rem !important;
+  }
+
+  #our-identity .identity-card-copy h3 {
+    font-size: clamp(1rem, 5vw, 1.32rem) !important;
+  }
+
+  #our-identity .identity-card-copy p {
+    font-size: clamp(0.82rem, 3.65vw, 0.98rem) !important;
+  }
+}

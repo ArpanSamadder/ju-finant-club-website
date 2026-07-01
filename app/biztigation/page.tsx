@@ -35,6 +35,7 @@ import {
 } from 'lucide-react';
 import styles from './biztigation.module.css';
 import heroStyles from './biztigationHero.module.css';
+import whatStyles from './whatBiztigation.module.css';
 
 type CardItem = { title: string; text: string; icon: LucideIcon };
 
@@ -138,7 +139,28 @@ export default function BiztigationPage() {
         </div>
       </section>
       <main className={styles.shell}>
-        <section className={styles.section}><h2 className={styles.sectionTitle}>What is Biztigation?</h2><p className={styles.sectionIntro}>Biztigation 2.0 is an inter-university business case competition where student teams solve real-world business problems, develop strategic solutions, and compete through multiple rounds of submission, presentation, and evaluation.</p><div className={styles.grid4}>{whatItems.map((item) => <IconCard key={item.title} item={item} />)}</div></section>
+        <section className={whatStyles.overviewSection}>
+          <div className={whatStyles.overviewInner}>
+            <div className={whatStyles.overviewHeader}>
+              <p className={whatStyles.overviewLabel}>WHAT IS BIZTIGATION?</p>
+              <h2 className={whatStyles.overviewTitle}>Solve Real Business. Build Real Impact.</h2>
+              <div className={whatStyles.overviewDivider} aria-hidden="true" />
+              <p className={whatStyles.overviewText}>Biztigation 2.0 is an inter-university business case competition where student teams solve real-world business problems, develop strategic solutions, and compete through multiple rounds of submission, presentation, and evaluation.</p>
+            </div>
+            <div className={whatStyles.overviewCards}>
+              {whatItems.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <article className={whatStyles.overviewCard} key={item.title}>
+                    <div className={whatStyles.overviewIcon}><Icon /></div>
+                    <h3 className={whatStyles.overviewCardTitle}>{item.title}</h3>
+                    <p className={whatStyles.overviewCardText}>{item.text}</p>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+        </section>
         <section className={styles.section}><h2 className={styles.sectionTitle}>Prize Money &amp; Recognition</h2><div className={styles.goldFrame}><div className={styles.grid6}>{prizeItems.map((item) => <IconCard key={item.title} item={item} className={styles.prizeCard} />)}</div></div></section>
         <section className={`${styles.section} ${styles.participationRow}`}><h2 className={styles.sectionTitle}>Why Participate?</h2><div className={styles.grid6}>{whyItems.map((item) => <SmallCard key={item.title} item={item} />)}</div></section>
         <section className={`${styles.section} ${styles.twoColumn}`} id="registration"><div><h2 className={styles.subTitle}>Competition Structure</h2><div className={styles.grid3}>{rounds.map((item) => <IconCard key={item.title} item={item} />)}</div><div className={styles.structureFlow}>{[['Registration', User], ['Round 1', ClipboardList], ['Round 2', FileText], ['Grand Finale', Users], ['Prize Giving', Gift]].map(([label, Icon]) => { const FlowIcon = Icon as LucideIcon; return <div className={styles.flowStep} key={label as string}><FlowIcon /><span>{label as string}</span></div>; })}</div></div><div><h2 className={styles.subTitle}>Registration Information</h2><div className={styles.infoGrid}>{registrationItems.map((item) => <InfoCard key={item.title} item={item} />)}</div></div></section>

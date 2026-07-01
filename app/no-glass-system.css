@@ -58,10 +58,57 @@ section:first-of-type a[href="/biztigation"] {
 }
 
 @media (max-width: 767px) {
-  #our-identity .identity-feature-card {
-    background: transparent !important;
-    background-image: none !important;
+  #our-identity,
+  #our-identity * {
+    text-shadow: none !important;
     box-shadow: none !important;
+    filter: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  #our-identity .identity-bg-glow {
+    background: linear-gradient(180deg, rgba(2, 8, 23, 0.08) 0%, rgba(2, 8, 23, 0.98) 100%) !important;
+  }
+
+  #our-identity .identity-bg-grid,
+  #our-identity .identity-bg-lines {
+    opacity: 0.12 !important;
+    filter: none !important;
+  }
+
+  #our-identity .identity-eyebrow {
+    color: #00F0FF !important;
+    text-shadow: none !important;
+    filter: none !important;
+  }
+
+  #our-identity .identity-title,
+  #our-identity .identity-title > span {
+    text-shadow: none !important;
+    filter: none !important;
+  }
+
+  #our-identity .identity-title > span {
+    background: none !important;
+    -webkit-background-clip: border-box !important;
+    background-clip: border-box !important;
+    color: #ffffff !important;
+  }
+
+  #our-identity .identity-title .identity-title-accent {
+    background: none !important;
+    -webkit-background-clip: border-box !important;
+    background-clip: border-box !important;
+    color: #115FEB !important;
+  }
+
+  #our-identity .identity-feature-card {
+    background: #020A1F !important;
+    background-image: none !important;
+    border: 1px solid #115FEB !important;
+    box-shadow: none !important;
+    outline: none !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
     filter: none !important;
@@ -70,14 +117,45 @@ section:first-of-type a[href="/biztigation"] {
   #our-identity .identity-card-icon {
     background: transparent !important;
     background-image: none !important;
+    border-color: #115FEB !important;
+    color: #115FEB !important;
     box-shadow: none !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
+    filter: none !important;
+  }
+
+  #our-identity .identity-card-icon-svg {
+    color: #115FEB !important;
+    stroke: #115FEB !important;
+    filter: none !important;
+  }
+
+  #our-identity .identity-card-divider {
+    background: #115FEB !important;
+    box-shadow: none !important;
+    filter: none !important;
+  }
+
+  #our-identity .identity-card-copy h3,
+  #our-identity .identity-card-copy p,
+  #our-identity .identity-lead,
+  #our-identity .identity-body {
+    text-shadow: none !important;
     filter: none !important;
   }
 
   #our-identity .identity-mobile-dots span,
-  #our-identity .identity-mobile-dots span:first-child {
+  #our-identity .identity-mobile-dots span:first-child,
+  #our-identity .identity-mobile-dots span.identity-dot-active {
     box-shadow: none !important;
+    filter: none !important;
+  }
+
+  #our-identity .identity-mobile-dots span {
+    background: rgba(75, 93, 130, 0.72) !important;
+  }
+
+  #our-identity .identity-mobile-dots span:first-child,
+  #our-identity .identity-mobile-dots span.identity-dot-active {
+    background: #115FEB !important;
   }
 }

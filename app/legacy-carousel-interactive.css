@@ -1,34 +1,49 @@
-@media (max-width: 767px) {
-  #legacy-foundation > .relative.z-10 > div:nth-child(2) {
-    overflow: hidden !important;
-  }
+#legacy-foundation > .relative.z-10 > div:nth-child(2) {
+  overflow: hidden !important;
+}
 
+#legacy-foundation .grid {
+  animation: none !important;
+  display: flex !important;
+  grid-template-columns: none !important;
+  gap: 1rem !important;
+  width: max-content !important;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+  backface-visibility: hidden;
+  touch-action: pan-y;
+}
+
+#legacy-foundation article.legacy-card,
+#legacy-foundation article.legacy-clone {
+  display: block !important;
+}
+
+#legacy-foundation article.legacy-card {
+  flex: 0 0 clamp(17rem, calc((100vw - 15rem) / 4), 23rem) !important;
+}
+
+#legacy-foundation > .relative.z-10 > div:nth-child(2) > button {
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  user-select: none !important;
+  touch-action: manipulation !important;
+  z-index: 40 !important;
+}
+
+@media (max-width: 1279px) {
+  #legacy-foundation article.legacy-card {
+    flex-basis: calc((100vw - 6rem) / 2) !important;
+  }
+}
+
+@media (max-width: 767px) {
   #legacy-foundation .grid {
-    animation: none !important;
-    display: flex !important;
-    grid-template-columns: none !important;
     gap: 0.6rem !important;
-    width: max-content !important;
-    transform: translate3d(0, 0, 0);
-    will-change: transform;
-    backface-visibility: hidden;
-    touch-action: pan-y;
   }
 
   #legacy-foundation article.legacy-card {
-    flex: 0 0 calc((100vw - 6rem) / 2) !important;
-  }
-
-  #legacy-foundation article.legacy-clone {
-    display: block !important;
-  }
-
-  #legacy-foundation > .relative.z-10 > div:nth-child(2) > button {
-    cursor: pointer !important;
-    pointer-events: auto !important;
-    user-select: none !important;
-    touch-action: manipulation !important;
-    z-index: 40 !important;
+    flex-basis: calc((100vw - 6rem) / 2) !important;
   }
 
   #legacy-foundation > .relative.z-10 > div:nth-child(2) > button:first-child {

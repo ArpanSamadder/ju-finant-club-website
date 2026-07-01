@@ -16,6 +16,8 @@ const partnerCards: PartnerCard[] = [
   {name: 'Crown Cement', logo: 'CROWN CEMENT', logoSub: 'FOR SOLID FOUNDATION', logoClass: 'partner-logo-crown'},
 ];
 
+const visiblePartnerCards = partnerCards.slice(0, 4);
+
 export function PartnersSection() {
   return (
     <section id="partners-collaborators" className="partners-section relative overflow-hidden bg-[#020817] px-6 py-[6.8vw]">
@@ -34,7 +36,7 @@ export function PartnersSection() {
           <button aria-label="Next partner" className="partners-arrow partners-arrow-right">›</button>
 
           <div className="partners-grid">
-            {partnerCards.map((partner) => (
+            {visiblePartnerCards.map((partner) => (
               <article key={partner.name} className="partner-card">
                 <div className={`partner-logo ${partner.logoClass}`} aria-hidden="true">
                   <span>{partner.logo}</span>

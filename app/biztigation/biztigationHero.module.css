@@ -16,7 +16,23 @@
 }
 
 @media (max-width: 760px) {
+  .heroReset {
+    min-height: 100svh !important;
+    padding: 5.4rem 0 2.4rem !important;
+  }
+
+  .heroReset::before {
+    background:
+      linear-gradient(180deg, rgba(2, 8, 23, 0.58) 0%, rgba(2, 8, 23, 0.62) 34%, rgba(2, 8, 23, 0.22) 56%, rgba(2, 8, 23, 0.78) 100%),
+      url('/images/biztigation/biztigation-hero-bg-mobile.png') !important;
+    background-position: center bottom !important;
+    background-size: cover !important;
+    opacity: 1 !important;
+  }
+
   .heroInner {
+    min-height: calc(100svh - 7.8rem);
+    align-content: start;
     gap: 1.2rem;
   }
 }

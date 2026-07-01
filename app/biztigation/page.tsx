@@ -171,13 +171,7 @@ export default function BiztigationPage() {
             </div>
           </div>
 
-          <div className={styles.heroVisual}>
-            <div className={styles.portal} />
-            <div className={styles.eventLogoSlot} aria-label="Biztigation logo placeholder">
-              <div className={styles.eventLogoText}>Biz<br />Tigation<small>Inter-University Business Case Competition · 2.0</small></div>
-            </div>
-            <p className={styles.heroNote}>Hero background placeholder is ready at /images/biztigation/biztigation-hero-bg.png. Upload the final background there later.</p>
-          </div>
+          <div className={styles.heroVisual} aria-hidden="true" />
         </div>
       </section>
 

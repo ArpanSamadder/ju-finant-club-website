@@ -158,20 +158,20 @@ export default function BiztigationPage() {
 
       <section className={`${styles.hero} ${heroStyles.heroReset}`}>
         <div className={`${styles.shell} ${heroStyles.heroInner}`}>
-          <div className={styles.heroCopy}>
-            <p className={styles.kicker}>Jahangirnagar University FinAnt Club presents</p>
-            <h1 className={styles.title}>Biztigation <span>2.0</span></h1>
-            <p className={styles.subtitle}>An Inter-University Business Case Competition</p>
-            <p className={styles.heroText}>
+          <div className={`${styles.heroCopy} ${heroStyles.heroCopyMatch}`}>
+            <p className={`${styles.kicker} ${heroStyles.kickerMatch}`}>Jahangirnagar University FinAnt Club presents</p>
+            <h1 className={`${styles.title} ${heroStyles.titleMatch}`}>Biztigation <span>2.0</span></h1>
+            <p className={`${styles.subtitle} ${heroStyles.subtitleMatch}`}>An Inter-University Business Case Competition</p>
+            <p className={`${styles.heroText} ${heroStyles.heroTextMatch}`}>
               Step into a national business case competition where strategy, creativity, and presentation meet real-world business challenges.
             </p>
-            <div className={styles.buttonRow}>
+            <div className={`${styles.buttonRow} ${heroStyles.buttonRowMatch}`}>
               <Link href="#registration" className={styles.primaryButton}>Register Now <ArrowRight size={18} /></Link>
               <Link href="#rules" className={styles.secondaryButton}>Download Rulebook <Download size={18} /></Link>
             </div>
           </div>
 
-          <div className={styles.heroVisual} aria-hidden="true" />
+          <div className={`${styles.heroVisual} ${heroStyles.heroVisualMatch}`} aria-hidden="true" />
         </div>
       </section>
 

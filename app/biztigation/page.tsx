@@ -36,11 +36,7 @@ import {
 import styles from './biztigation.module.css';
 import heroStyles from './biztigationHero.module.css';
 
-type CardItem = {
-  title: string;
-  text: string;
-  icon: LucideIcon;
-};
+type CardItem = { title: string; text: string; icon: LucideIcon };
 
 const whatItems: CardItem[] = [
   {title: 'Business Case Solving', text: 'Analyze real business cases and develop practical, impactful solutions.', icon: Search},
@@ -103,51 +99,22 @@ const spectatorItems: CardItem[] = [
   {title: 'Note', text: 'Finale details will be announced soon.', icon: Bell},
 ];
 
-const faqs = [
-  'Who can participate?',
-  'How many members can be in one team?',
-  'What is the registration fee?',
-  'How do we register?',
-  'What do we submit in Round 1?',
-  'How will teams be shortlisted?',
-  'Can spectators attend the finale?',
-  'Where will updates be posted?',
-];
+const faqs = ['Who can participate?', 'How many members can be in one team?', 'What is the registration fee?', 'How do we register?', 'What do we submit in Round 1?', 'How will teams be shortlisted?', 'Can spectators attend the finale?', 'Where will updates be posted?'];
 
 function IconCard({item, className = ''}: {item: CardItem; className?: string}) {
   const Icon = item.icon;
   const formattedTitle = item.title.split('\n');
-
-  return (
-    <article className={`${styles.card} ${className}`}>
-      <div className={styles.iconBox}><Icon /></div>
-      <h3>{formattedTitle.map((line) => <span key={line}>{line}<br /></span>)}</h3>
-      {item.text ? <p>{item.text}</p> : null}
-    </article>
-  );
+  return <article className={`${styles.card} ${className}`}><div className={styles.iconBox}><Icon /></div><h3>{formattedTitle.map((line) => <span key={line}>{line}<br /></span>)}</h3>{item.text ? <p>{item.text}</p> : null}</article>;
 }
 
 function SmallCard({item}: {item: CardItem}) {
   const Icon = item.icon;
-
-  return (
-    <article className={styles.smallCard}>
-      <div className={styles.iconBox}><Icon /></div>
-      <h3>{item.title}</h3>
-    </article>
-  );
+  return <article className={styles.smallCard}><div className={styles.iconBox}><Icon /></div><h3>{item.title}</h3></article>;
 }
 
 function InfoCard({item}: {item: CardItem}) {
   const Icon = item.icon;
-
-  return (
-    <article className={styles.infoCard}>
-      <div className={styles.iconBox}><Icon /></div>
-      <h3>{item.title}</h3>
-      <p>{item.text}</p>
-    </article>
-  );
+  return <article className={styles.infoCard}><div className={styles.iconBox}><Icon /></div><h3>{item.title}</h3><p>{item.text}</p></article>;
 }
 
 export default function BiztigationPage() {
@@ -155,135 +122,29 @@ export default function BiztigationPage() {
     <div className={styles.page}>
       <div className={`${styles.decorCorner} ${styles.decorLeft}`} />
       <div className={`${styles.decorCorner} ${styles.decorRight}`} />
-
       <section className={`${styles.hero} ${heroStyles.heroReset}`}>
         <div className={`${styles.shell} ${heroStyles.heroInner}`}>
           <div className={`${styles.heroCopy} ${heroStyles.heroCopyMatch}`}>
             <p className={`${styles.kicker} ${heroStyles.kickerMatch}`}>Jahangirnagar University FinAnt Club presents</p>
-            <h1 className={`${styles.title} ${heroStyles.titleMatch}`}>Biztigation <span>2.0</span></h1>
+            <h1 className={styles.title} style={{color: '#f7f6ef', fontSize: 'clamp(4.75rem, 6.9vw, 8.65rem)', lineHeight: 0.9, letterSpacing: '-0.055em', whiteSpace: 'nowrap'}}>Biztigation <span style={{color: '#e4b65c'}}>2.0</span></h1>
             <p className={`${styles.subtitle} ${heroStyles.subtitleMatch}`}>An Inter-University Business Case Competition</p>
-            <p className={`${styles.heroText} ${heroStyles.heroTextMatch}`}>
-              Step into a national business case competition where strategy, creativity, and presentation meet real-world business challenges.
-            </p>
+            <p className={`${styles.heroText} ${heroStyles.heroTextMatch}`}>Step into a national business case competition where strategy, creativity, and presentation meet real-world business challenges.</p>
             <div className={`${styles.buttonRow} ${heroStyles.buttonRowMatch}`}>
               <Link href="#registration" className={styles.primaryButton}>Register Now <ArrowRight size={18} /></Link>
               <Link href="#rules" className={styles.secondaryButton}>Download Rulebook <Download size={18} /></Link>
             </div>
           </div>
-
           <div className={`${styles.heroVisual} ${heroStyles.heroVisualMatch}`} aria-hidden="true" />
         </div>
       </section>
-
       <main className={styles.shell}>
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>What is Biztigation?</h2>
-          <p className={styles.sectionIntro}>
-            Biztigation 2.0 is an inter-university business case competition where student teams solve real-world business problems, develop strategic solutions, and compete through multiple rounds of submission, presentation, and evaluation.
-          </p>
-          <div className={styles.grid4}>
-            {whatItems.map((item) => <IconCard key={item.title} item={item} />)}
-          </div>
-        </section>
-
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Prize Money &amp; Recognition</h2>
-          <div className={styles.goldFrame}>
-            <div className={styles.grid6}>
-              {prizeItems.map((item) => <IconCard key={item.title} item={item} className={styles.prizeCard} />)}
-            </div>
-          </div>
-        </section>
-
-        <section className={`${styles.section} ${styles.participationRow}`}>
-          <h2 className={styles.sectionTitle}>Why Participate?</h2>
-          <div className={styles.grid6}>
-            {whyItems.map((item) => <SmallCard key={item.title} item={item} />)}
-          </div>
-        </section>
-
-        <section className={`${styles.section} ${styles.twoColumn}`} id="registration">
-          <div>
-            <h2 className={styles.subTitle}>Competition Structure</h2>
-            <div className={styles.grid3}>
-              {rounds.map((item) => <IconCard key={item.title} item={item} />)}
-            </div>
-            <div className={styles.structureFlow}>
-              {[['Registration', User], ['Round 1', ClipboardList], ['Round 2', FileText], ['Grand Finale', Users], ['Prize Giving', Gift]].map(([label, Icon]) => {
-                const FlowIcon = Icon as LucideIcon;
-                return <div className={styles.flowStep} key={label as string}><FlowIcon /><span>{label as string}</span></div>;
-              })}
-            </div>
-          </div>
-
-          <div>
-            <h2 className={styles.subTitle}>Registration Information</h2>
-            <div className={styles.infoGrid}>
-              {registrationItems.map((item) => <InfoCard key={item.title} item={item} />)}
-            </div>
-          </div>
-        </section>
-
-        <section className={`${styles.section} ${styles.twoColumn}`} id="rules">
-          <div>
-            <h2 className={styles.subTitle}>Important Dates</h2>
-            <div className={styles.datePanel}>
-              <div className={styles.dateList}>
-                {leftDates.map((date) => <div className={styles.dateItem} key={date}><strong>{date}</strong><span>Details in rulebook</span></div>)}
-              </div>
-              <div className={styles.timelineRail} aria-hidden="true"><span /><span /><span /><span /><span /><span /></div>
-              <div className={styles.dateList}>
-                {rightDates.map((date) => <div className={styles.dateItem} key={date}><strong>{date}</strong><span>Details in rulebook</span></div>)}
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <h2 className={styles.subTitle}>Rules &amp; Guidelines</h2>
-            <div className={styles.ruleButtons}>
-              <Link href="#rules" className={styles.primaryButton}>Download Rulebook <Download size={17} /></Link>
-              <Link href="#rules" className={styles.secondaryButton}>Submission Guidelines <FileText size={17} /></Link>
-            </div>
-            <div className={styles.ruleGrid}>
-              {ruleItems.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <article className={styles.ruleCard} key={item.title}>
-                    <div className={styles.iconBox}><Icon /></div>
-                    <h3>{item.title}</h3>
-                  </article>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        <section className={`${styles.section} ${styles.twoColumn}`}>
-          <div>
-            <h2 className={styles.subTitle}>Spectator Information</h2>
-            <div className={styles.spectatorBox}>
-              <div className={styles.grid5}>
-                {spectatorItems.map((item) => <InfoCard key={item.title} item={item} />)}
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <h2 className={styles.subTitle}>Frequently Asked Questions</h2>
-            <div className={styles.faqList}>
-              {faqs.map((faq) => <div className={styles.faqItem} key={faq}><span>{faq}</span><span>⌄</span></div>)}
-            </div>
-          </div>
-        </section>
-
-        <section className={styles.cta}>
-          <h2>Ready to enter the competition?</h2>
-          <p>Register your team for Biztigation 2.0 and follow the journey from case release to grand finale.</p>
-          <div className={styles.buttonRow} style={{justifyContent: 'center'}}>
-            <Link href="#registration" className={styles.primaryButton}>Register Now <ArrowRight size={18} /></Link>
-            <Link href="#rules" className={styles.secondaryButton}>Download Rulebook <Download size={18} /></Link>
-          </div>
-        </section>
+        <section className={styles.section}><h2 className={styles.sectionTitle}>What is Biztigation?</h2><p className={styles.sectionIntro}>Biztigation 2.0 is an inter-university business case competition where student teams solve real-world business problems, develop strategic solutions, and compete through multiple rounds of submission, presentation, and evaluation.</p><div className={styles.grid4}>{whatItems.map((item) => <IconCard key={item.title} item={item} />)}</div></section>
+        <section className={styles.section}><h2 className={styles.sectionTitle}>Prize Money &amp; Recognition</h2><div className={styles.goldFrame}><div className={styles.grid6}>{prizeItems.map((item) => <IconCard key={item.title} item={item} className={styles.prizeCard} />)}</div></div></section>
+        <section className={`${styles.section} ${styles.participationRow}`}><h2 className={styles.sectionTitle}>Why Participate?</h2><div className={styles.grid6}>{whyItems.map((item) => <SmallCard key={item.title} item={item} />)}</div></section>
+        <section className={`${styles.section} ${styles.twoColumn}`} id="registration"><div><h2 className={styles.subTitle}>Competition Structure</h2><div className={styles.grid3}>{rounds.map((item) => <IconCard key={item.title} item={item} />)}</div><div className={styles.structureFlow}>{[['Registration', User], ['Round 1', ClipboardList], ['Round 2', FileText], ['Grand Finale', Users], ['Prize Giving', Gift]].map(([label, Icon]) => { const FlowIcon = Icon as LucideIcon; return <div className={styles.flowStep} key={label as string}><FlowIcon /><span>{label as string}</span></div>; })}</div></div><div><h2 className={styles.subTitle}>Registration Information</h2><div className={styles.infoGrid}>{registrationItems.map((item) => <InfoCard key={item.title} item={item} />)}</div></div></section>
+        <section className={`${styles.section} ${styles.twoColumn}`} id="rules"><div><h2 className={styles.subTitle}>Important Dates</h2><div className={styles.datePanel}><div className={styles.dateList}>{leftDates.map((date) => <div className={styles.dateItem} key={date}><strong>{date}</strong><span>Details in rulebook</span></div>)}</div><div className={styles.timelineRail} aria-hidden="true"><span /><span /><span /><span /><span /><span /></div><div className={styles.dateList}>{rightDates.map((date) => <div className={styles.dateItem} key={date}><strong>{date}</strong><span>Details in rulebook</span></div>)}</div></div></div><div><h2 className={styles.subTitle}>Rules &amp; Guidelines</h2><div className={styles.ruleButtons}><Link href="#rules" className={styles.primaryButton}>Download Rulebook <Download size={17} /></Link><Link href="#rules" className={styles.secondaryButton}>Submission Guidelines <FileText size={17} /></Link></div><div className={styles.ruleGrid}>{ruleItems.map((item) => { const Icon = item.icon; return <article className={styles.ruleCard} key={item.title}><div className={styles.iconBox}><Icon /></div><h3>{item.title}</h3></article>; })}</div></div></section>
+        <section className={`${styles.section} ${styles.twoColumn}`}><div><h2 className={styles.subTitle}>Spectator Information</h2><div className={styles.spectatorBox}><div className={styles.grid5}>{spectatorItems.map((item) => <InfoCard key={item.title} item={item} />)}</div></div></div><div><h2 className={styles.subTitle}>Frequently Asked Questions</h2><div className={styles.faqList}>{faqs.map((faq) => <div className={styles.faqItem} key={faq}><span>{faq}</span><span>⌄</span></div>)}</div></div></section>
+        <section className={styles.cta}><h2>Ready to enter the competition?</h2><p>Register your team for Biztigation 2.0 and follow the journey from case release to grand finale.</p><div className={styles.buttonRow} style={{justifyContent: 'center'}}><Link href="#registration" className={styles.primaryButton}>Register Now <ArrowRight size={18} /></Link><Link href="#rules" className={styles.secondaryButton}>Download Rulebook <Download size={18} /></Link></div></section>
       </main>
     </div>
   );

@@ -1,3 +1,28 @@
+#our-identity .identity-title {
+  font-family: var(--font-body) !important;
+  font-weight: 600 !important;
+  font-size: clamp(2.4rem, 3.45vw, 4.05rem) !important;
+  line-height: 1.02 !important;
+  letter-spacing: -0.055em !important;
+}
+
+#our-identity .identity-title > span {
+  display: inline !important;
+  background: linear-gradient(180deg, #ffffff 0%, #ffffff 52%, #c4cad6 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+}
+
+#our-identity .identity-title .identity-title-accent {
+  display: inline !important;
+  font-weight: 600 !important;
+  background: linear-gradient(180deg, #18BAFF 0%, #115FEB 55%, #0A4CE3 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+}
+
 @media (max-width: 767px) {
   #our-identity {
     padding-left: 0 !important;
@@ -9,6 +34,18 @@
     width: 88vw !important;
     margin-left: auto !important;
     margin-right: auto !important;
+  }
+
+  #our-identity .identity-title {
+    font-size: clamp(1.62rem, 6.85vw, 2.18rem) !important;
+    line-height: 1.08 !important;
+    letter-spacing: -0.07em !important;
+    font-weight: 800 !important;
+    text-align: center !important;
+  }
+
+  #our-identity .identity-title .identity-title-accent {
+    font-weight: 800 !important;
   }
 
   #our-identity .identity-lead,
@@ -60,6 +97,11 @@
   #our-identity .identity-copy,
   #our-identity .identity-feature-stack {
     width: 88vw !important;
+  }
+
+  #our-identity .identity-title {
+    font-size: clamp(1.42rem, 6.1vw, 1.78rem) !important;
+    letter-spacing: -0.073em !important;
   }
 
   #our-identity .identity-lead,

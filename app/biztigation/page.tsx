@@ -9,6 +9,7 @@ import {
   CalendarDays,
   ClipboardList,
   Clock,
+  Crown,
   Download,
   FileCheck,
   FileText,
@@ -22,7 +23,6 @@ import {
   Medal,
   PenTool,
   Presentation,
-  ScrollText,
   Search,
   ShieldCheck,
   Star,
@@ -34,6 +34,7 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 import styles from './biztigation.module.css';
+import heroStyles from './biztigationHero.module.css';
 
 type CardItem = {
   title: string;
@@ -54,7 +55,7 @@ const prizeItems: CardItem[] = [
   {title: '2nd Runner-Up', text: 'Prize details announced in the rulebook', icon: Medal},
   {title: 'Finalist Recognition', text: 'Recognition and awards', icon: Award},
   {title: 'Certificates', text: 'Participation certificates for all participants', icon: FileCheck},
-  {title: 'Special Recognition', text: 'Special awards for outstanding performers', icon: BadgeIcon},
+  {title: 'Special Recognition', text: 'Special awards for outstanding performers', icon: Award},
 ];
 
 const whyItems: CardItem[] = [
@@ -113,16 +114,6 @@ const faqs = [
   'Where will updates be posted?',
 ];
 
-function BadgeIcon(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" {...props}>
-      <circle cx="12" cy="8" r="4" />
-      <path d="M8.8 11.3 7 21l5-3 5 3-1.8-9.7" />
-      <path d="m10.5 8 1 1 2-2" />
-    </svg>
-  );
-}
-
 function IconCard({item, className = ''}: {item: CardItem; className?: string}) {
   const Icon = item.icon;
   const formattedTitle = item.title.split('\n');
@@ -165,8 +156,8 @@ export default function BiztigationPage() {
       <div className={`${styles.decorCorner} ${styles.decorLeft}`} />
       <div className={`${styles.decorCorner} ${styles.decorRight}`} />
 
-      <section className={styles.hero}>
-        <div className={styles.shell} style={{display: 'contents'}}>
+      <section className={`${styles.hero} ${heroStyles.heroReset}`}>
+        <div className={`${styles.shell} ${heroStyles.heroInner}`}>
           <div className={styles.heroCopy}>
             <p className={styles.kicker}>Jahangirnagar University FinAnt Club presents</p>
             <h1 className={styles.title}>Biztigation <span>2.0</span></h1>

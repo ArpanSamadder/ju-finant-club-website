@@ -1,3 +1,11 @@
+@media (min-width: 768px) {
+  #our-identity .identity-clone,
+  #our-identity .identity-card-track-viewport,
+  #our-identity .identity-card-track {
+    display: contents !important;
+  }
+}
+
 @media (max-width: 767px) {
   #our-identity .identity-feature-stack {
     display: block !important;
@@ -29,10 +37,10 @@
   }
 
   #our-identity .identity-feature-card {
-    min-height: 8.2rem !important;
-    grid-template-columns: 4.7rem 1px 1fr !important;
-    gap: 1.05rem !important;
-    padding: 1rem 1rem !important;
+    min-height: 7.65rem !important;
+    grid-template-columns: 4.55rem 1px 1fr !important;
+    gap: 1rem !important;
+    padding: 0.9rem 0.95rem !important;
     border-radius: 0.18rem !important;
     background: transparent !important;
     background-image: none !important;
@@ -42,34 +50,36 @@
   }
 
   #our-identity .identity-card-icon {
-    width: 3.85rem !important;
-    height: 3.85rem !important;
-    border-width: 1.35px !important;
+    width: 3.65rem !important;
+    height: 3.65rem !important;
+    border-width: 1.3px !important;
     box-shadow: none !important;
   }
 
   #our-identity .identity-card-icon-svg {
-    width: 2.15rem !important;
-    height: 2.15rem !important;
+    width: 2rem !important;
+    height: 2rem !important;
     stroke-width: 4 !important;
   }
 
   #our-identity .identity-card-divider {
-    height: 4.5rem !important;
+    height: 4.05rem !important;
     box-shadow: none !important;
   }
 
   #our-identity .identity-card-copy h3 {
-    font-size: clamp(1.12rem, 5.2vw, 1.5rem) !important;
+    font-size: clamp(1.02rem, 4.6vw, 1.32rem) !important;
     line-height: 1.08 !important;
     letter-spacing: -0.055em !important;
   }
 
   #our-identity .identity-card-copy p {
-    margin-top: 0.62rem !important;
-    font-size: clamp(0.88rem, 3.85vw, 1.05rem) !important;
-    line-height: 1.42 !important;
-    letter-spacing: -0.012em !important;
+    margin-top: 0.46rem !important;
+    font-size: clamp(0.76rem, 3.15vw, 0.88rem) !important;
+    font-weight: 300 !important;
+    line-height: 1.45 !important;
+    letter-spacing: -0.008em !important;
+    color: rgba(255, 255, 255, 0.9) !important;
   }
 
   #our-identity .identity-mobile-dots {
@@ -96,27 +106,27 @@
 
 @media (max-width: 390px) {
   #our-identity .identity-feature-card {
-    min-height: 7.7rem !important;
-    grid-template-columns: 4.15rem 1px 1fr !important;
-    gap: 0.9rem !important;
-    padding: 0.9rem 0.85rem !important;
+    min-height: 7.2rem !important;
+    grid-template-columns: 4rem 1px 1fr !important;
+    gap: 0.82rem !important;
+    padding: 0.82rem 0.78rem !important;
   }
 
   #our-identity .identity-card-icon {
-    width: 3.45rem !important;
-    height: 3.45rem !important;
+    width: 3.25rem !important;
+    height: 3.25rem !important;
   }
 
   #our-identity .identity-card-icon-svg {
-    width: 1.95rem !important;
-    height: 1.95rem !important;
+    width: 1.85rem !important;
+    height: 1.85rem !important;
   }
 
   #our-identity .identity-card-copy h3 {
-    font-size: clamp(1rem, 5vw, 1.32rem) !important;
+    font-size: clamp(0.96rem, 4.65vw, 1.2rem) !important;
   }
 
   #our-identity .identity-card-copy p {
-    font-size: clamp(0.82rem, 3.65vw, 0.98rem) !important;
+    font-size: clamp(0.72rem, 3vw, 0.82rem) !important;
   }
 }

@@ -60,7 +60,8 @@ section:first-of-type a[href="/biztigation"] {
 @media (min-width: 768px) {
   #our-identity {
     min-height: auto !important;
-    padding-bottom: clamp(0.25rem, 0.45vw, 0.6rem) !important;
+    padding-top: clamp(2rem, 3.2vw, 3.5rem) !important;
+    padding-bottom: clamp(2rem, 3.2vw, 3.5rem) !important;
   }
 
   #our-identity .identity-shell {

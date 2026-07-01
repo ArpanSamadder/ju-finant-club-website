@@ -230,4 +230,118 @@ section:first-of-type a[href="/biztigation"] {
   #our-identity .identity-mobile-dots span.identity-dot-active {
     background: #115FEB !important;
   }
+
+  #voices-of-finant {
+    min-height: auto !important;
+    padding: 3.6rem 0 4.2rem !important;
+  }
+
+  #voices-of-finant .relative.z-10 {
+    width: 100% !important;
+    padding-left: 1.05rem !important;
+    padding-right: 1.05rem !important;
+  }
+
+  #voices-of-finant .voices-eyebrow {
+    font-size: 0.82rem !important;
+    letter-spacing: 0.44em !important;
+    padding-left: 0.44em !important;
+  }
+
+  #voices-of-finant .voices-carousel-wrap {
+    width: 100% !important;
+    margin-top: 1.85rem !important;
+    padding-inline: 1.95rem !important;
+  }
+
+  #voices-of-finant .voices-track-viewport {
+    width: 100% !important;
+    overflow: hidden !important;
+  }
+
+  #voices-of-finant .voices-card-grid {
+    display: block !important;
+    width: 100% !important;
+    transform: translate3d(0, 0, 0) !important;
+  }
+
+  #voices-of-finant .voice-card:nth-child(n + 2),
+  #voices-of-finant .voice-clone {
+    display: none !important;
+  }
+
+  #voices-of-finant .voice-card:first-child {
+    display: grid !important;
+    width: 100% !important;
+    min-height: 22.8rem !important;
+    grid-template-columns: 39% 1fr !important;
+    gap: 0.85rem !important;
+    padding: 0.82rem !important;
+    border-radius: 0.42rem !important;
+    box-sizing: border-box !important;
+  }
+
+  #voices-of-finant .voice-photo {
+    min-height: 21rem !important;
+    height: 100% !important;
+    display: block !important;
+    background-size: cover !important;
+    background-position: center bottom !important;
+  }
+
+  #voices-of-finant .voice-photo img {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 21rem !important;
+    object-fit: cover !important;
+    object-position: center bottom !important;
+    display: block !important;
+  }
+
+  #voices-of-finant .voice-content {
+    display: flex !important;
+    min-width: 0 !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+  }
+
+  #voices-of-finant .voice-quote {
+    display: block !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-size: clamp(0.68rem, 2.9vw, 0.82rem) !important;
+    line-height: 1.42 !important;
+    letter-spacing: -0.025em !important;
+  }
+
+  #voices-of-finant .voice-rule {
+    margin-top: 0.9rem !important;
+  }
+
+  #voices-of-finant .voice-signature {
+    margin-top: 0.85rem !important;
+    padding-left: 0.72rem !important;
+  }
+
+  #voices-of-finant .voice-signature h3 {
+    font-size: clamp(1rem, 4.5vw, 1.36rem) !important;
+    line-height: 0.96 !important;
+  }
+
+  #voices-of-finant .voice-signature p {
+    margin-top: 0.4rem !important;
+    font-size: clamp(0.62rem, 2.65vw, 0.78rem) !important;
+    line-height: 1.28 !important;
+  }
+
+  #voices-of-finant .voices-dots {
+    margin-top: 1.75rem !important;
+  }
+
+  #partners-collaborators .partner-card:nth-child(n + 3) {
+    display: none !important;
+  }
+
+  #partners-collaborators .partners-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
 }

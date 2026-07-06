@@ -7,6 +7,13 @@ export const metadata = {
   description: 'IELTS Masterclass for global education pathways and study abroad guidance.'
 };
 
+const infoCards = [
+  { label: 'Date:', value: 'July 20', icon: CalendarDays },
+  { label: 'Venue:', value: 'Jahangirnagar University Campus', icon: MapPin },
+  { label: 'For:', value: 'Final-year & Master’s Students', icon: Users },
+  { label: 'Access:', value: 'Registration Required', icon: ClipboardList },
+];
+
 export default function DecodingIELTSPage() {
   return (
     <div className={styles.page}>
@@ -14,26 +21,36 @@ export default function DecodingIELTSPage() {
         <div className={styles.bg} />
 
         <div className={styles.shell}>
-          <p className={styles.kicker}>Jahangirnagar University FinAnt Club × Enhance English</p>
+          <div className={styles.copy}>
+            <p className={styles.kicker}>Jahangirnagar University FinAnt Club <span>×</span> Enhance English</p>
 
-          <h1 className={styles.title}>
-            Decoding IELTS:
-            <br />Your Gateway to Global Education
-          </h1>
+            <h1 className={styles.title}>
+              Decoding IELTS:
+              <br />Your Gateway to
+              <br />Global Education
+            </h1>
 
-          <p className={styles.subtitle}>
-            A focused IELTS Masterclass for students preparing for higher studies, global education pathways, and internationally competitive academic opportunities.
-          </p>
+            <p className={styles.subtitle}>
+              A focused IELTS Masterclass for students preparing for higher studies, global education pathways, and internationally competitive academic opportunities.
+            </p>
 
-          <p className={styles.body}>
-            Join a practical campus session covering IELTS strategy, preparation direction, study abroad guidance, and next-step opportunities through Enhance English.
-          </p>
+            <div className={styles.goldLine} />
+
+            <p className={styles.body}>
+              Join a practical campus session covering IELTS strategy, preparation direction, study abroad guidance, and next-step opportunities through Enhance English.
+            </p>
+          </div>
 
           <div className={styles.cards}>
-            <div className={styles.card}><CalendarDays /> July 20</div>
-            <div className={styles.card}><MapPin /> Jahangirnagar University Campus</div>
-            <div className={styles.card}><Users /> Final-year & Master’s Students</div>
-            <div className={styles.card}><ClipboardList /> Registration Required</div>
+            {infoCards.map(({label, value, icon: Icon}) => (
+              <div className={styles.card} key={label}>
+                <Icon className={styles.cardIcon} />
+                <div>
+                  <span>{label}</span>
+                  <strong>{value}</strong>
+                </div>
+              </div>
+            ))}
           </div>
 
           <div className={styles.actions}>
@@ -48,15 +65,17 @@ export default function DecodingIELTSPage() {
       </section>
 
       <section id="details" className={styles.details}>
-        <h2>Event Overview</h2>
+        <p className={styles.sectionEyebrow}>Event Details</p>
+        <h2>IELTS strategy, study abroad direction, and practical next steps.</h2>
         <p>
-          This masterclass focuses on IELTS strategy, structured preparation, and study abroad pathways with practical guidance.
+          This masterclass focuses on IELTS preparation strategy, global education pathways, and study abroad decision-making for students preparing for internationally competitive academic opportunities.
         </p>
       </section>
 
       <section id="registration" className={styles.registration}>
-        <h2>Registration</h2>
-        <p>Registration system will be connected via Google Sheets + CRM pipeline.</p>
+        <p className={styles.sectionEyebrow}>Registration</p>
+        <h2>Registration opens through the official website.</h2>
+        <p>The registration form will be connected to a Google Sheet response database in the next implementation step.</p>
       </section>
     </div>
   );

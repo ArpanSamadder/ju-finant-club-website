@@ -5,7 +5,7 @@
 
 .hero{
   position:relative;
-  height:clamp(520px,calc(100svh - 80px),760px);
+  height:clamp(720px,56.25vw,930px);
   overflow:hidden;
   background:#eef6ff;
 }
@@ -20,74 +20,81 @@
 }
 
 .heroShell{
-  position:relative;
+  position:absolute;
+  inset:0;
   z-index:2;
-  width:min(1540px,calc(100% - 112px));
+  width:100%;
   height:100%;
-  margin:0 auto;
-  padding:3.75rem 0 2.2rem;
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-start;
+  margin:0;
+  padding:0;
 }
 
 .copy{
-  width:min(47vw,720px);
+  position:absolute;
+  left:4.15%;
+  top:7.7%;
+  width:48.5%;
+  max-width:820px;
 }
 
 .kicker{
-  margin:0 0 3.15rem;
+  margin:0 0 clamp(5.1rem,6.35vw,6.7rem);
   color:#003fbc;
-  font-size:clamp(.95rem,1.18vw,1.32rem);
+  font-size:clamp(1.05rem,1.15vw,1.34rem);
   font-weight:760;
+  line-height:1.2;
   letter-spacing:-.035em;
 }
 
 .kicker span{
-  margin:0 .7rem;
+  margin:0 .65rem;
   color:#e2a21a;
   font-weight:500;
 }
 
 .title{
-  margin:0 0 2.1rem;
+  margin:0 0 clamp(2.35rem,3.45vw,3.65rem);
   color:#061a4a;
   font-weight:900;
   line-height:.98;
   letter-spacing:-.072em;
 }
 
-.title span{
+.titleMain{
   display:block;
   white-space:nowrap;
-  font-size:clamp(3.15rem,5.1vw,5.85rem);
+  color:#061a4a;
+  font-size:clamp(4.15rem,5.24vw,5.95rem);
+  font-weight:900;
+  line-height:.98;
+  letter-spacing:-.072em;
 }
 
-.title small{
+.titleSub{
   display:block;
-  margin-top:.55rem;
+  margin-top:.42em;
+  white-space:nowrap;
   color:#061a4a;
-  font-size:clamp(1.8rem,2.9vw,3.25rem);
+  font-size:clamp(2.05rem,2.95vw,3.35rem);
   font-weight:900;
   line-height:1.05;
   letter-spacing:-.067em;
-  white-space:nowrap;
 }
 
 .subtitle{
   margin:0;
-  max-width:665px;
+  max-width:705px;
   color:#071a42;
-  font-size:clamp(.95rem,1.12vw,1.28rem);
+  font-size:clamp(1.02rem,1.19vw,1.34rem);
   font-weight:430;
-  line-height:1.5;
+  line-height:1.48;
   letter-spacing:-.028em;
 }
 
 .goldLine{
   width:72px;
   height:3px;
-  margin:1.6rem 0 0;
+  margin:1.85rem 0 0;
   border-radius:99px;
   background:#e2a21a;
 }
@@ -97,21 +104,25 @@
 }
 
 .cards{
+  position:absolute;
+  left:4%;
+  top:62.1%;
   display:grid;
   grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:12px;
-  width:min(43vw,680px);
-  margin-top:2rem;
+  gap:.75vw;
+  width:40.4%;
+  max-width:680px;
+  min-width:600px;
 }
 
 .card{
-  min-height:128px;
+  height:clamp(132px,10.1vw,166px);
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  gap:.78rem;
-  padding:1rem .9rem;
+  gap:.85rem;
+  padding:1rem .8rem;
   border:1px solid rgba(255,255,255,.92);
   border-radius:14px;
   background:rgba(255,255,255,.84);
@@ -121,8 +132,8 @@
 }
 
 .cardIcon{
-  width:2.25rem;
-  height:2.25rem;
+  width:clamp(2.15rem,2.4vw,2.55rem);
+  height:clamp(2.15rem,2.4vw,2.55rem);
   color:#064bd3;
   stroke-width:2.35;
 }
@@ -130,36 +141,39 @@
 .card span{
   display:block;
   color:#071b4f;
-  font-size:.9rem;
+  font-size:clamp(.78rem,.9vw,1rem);
   font-weight:850;
   line-height:1.05;
 }
 
 .card strong{
   display:block;
-  margin-top:.65rem;
+  margin-top:.75rem;
   color:#071b4f;
-  font-size:1.05rem;
+  font-size:clamp(1rem,1.2vw,1.28rem);
   font-weight:900;
   line-height:1.15;
   letter-spacing:-.035em;
 }
 
 .actions{
+  position:absolute;
+  left:3.92%;
+  top:85.9%;
   display:flex;
-  gap:1.4rem;
-  margin-top:2rem;
+  gap:1.5vw;
+  margin:0;
 }
 
 .primary,.secondary{
-  min-width:270px;
-  min-height:68px;
+  min-width:clamp(245px,16.1vw,270px);
+  min-height:clamp(58px,4.15vw,68px);
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  gap:3.7rem;
+  gap:clamp(2.4rem,3.4vw,3.7rem);
   border-radius:10px;
-  font-size:1.18rem;
+  font-size:clamp(1rem,1.18vw,1.25rem);
   font-weight:800;
   letter-spacing:-.025em;
   text-decoration:none;
@@ -174,7 +188,7 @@
 }
 
 .secondary{
-  min-width:285px;
+  min-width:clamp(265px,17.2vw,288px);
   border:2px solid #0055de;
   background:rgba(255,255,255,.64);
   color:#0048bd;
@@ -508,34 +522,25 @@
 }
 
 @media(max-width:1280px){
-  .heroShell,
-  .partnerShell{
-    width:min(100% - 64px,1180px);
-  }
-
   .copy{
-    width:min(49vw,640px);
+    width:49%;
   }
 
-  .kicker{
-    margin-bottom:2.2rem;
+  .titleMain{
+    font-size:clamp(3.55rem,5.05vw,4.5rem);
   }
 
-  .title span{
-    font-size:clamp(2.75rem,4.9vw,4.35rem);
-  }
-
-  .title small{
-    font-size:clamp(1.55rem,2.75vw,2.6rem);
+  .titleSub{
+    font-size:clamp(1.85rem,2.85vw,2.8rem);
   }
 
   .cards{
-    width:min(52vw,620px);
+    width:43%;
+    min-width:520px;
   }
 
   .card{
-    min-height:104px;
-    padding:.8rem .65rem;
+    height:clamp(112px,10.1vw,138px);
     gap:.55rem;
   }
 
@@ -588,12 +593,16 @@
   }
 
   .heroShell{
+    position:relative;
     width:100%;
     min-height:calc(100svh - 68px);
     padding:2.25rem 6.1vw 2.15rem;
   }
 
   .copy{
+    position:relative;
+    left:auto;
+    top:auto;
     width:100%;
   }
 
@@ -607,12 +616,12 @@
     margin-bottom:1.35rem;
   }
 
-  .title span{
+  .titleMain{
     font-size:clamp(3.05rem,12vw,4.45rem);
     white-space:normal;
   }
 
-  .title small{
+  .titleSub{
     margin-top:.45rem;
     font-size:clamp(1.72rem,7vw,2.65rem);
     white-space:normal;
@@ -631,13 +640,19 @@
   }
 
   .cards{
+    position:relative;
+    left:auto;
+    top:auto;
     grid-template-columns:repeat(2,minmax(0,1fr));
     width:100%;
+    min-width:0;
+    max-width:none;
     gap:.85rem;
     margin-top:36vh;
   }
 
   .card{
+    height:auto;
     min-height:84px;
     padding:.9rem .95rem;
     border-radius:12px;
@@ -654,6 +669,9 @@
   }
 
   .actions{
+    position:relative;
+    left:auto;
+    top:auto;
     flex-direction:column;
     gap:.9rem;
     margin-top:1.15rem;
@@ -700,11 +718,9 @@
   }
 
   .card{
-    grid-template-columns:auto 1fr;
     align-items:center;
-    text-align:left;
+    text-align:center;
     min-height:74px;
-    flex-direction:row;
   }
 
   .cardIcon{

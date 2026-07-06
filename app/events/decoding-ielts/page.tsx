@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { ArrowRight, BookOpen, Bus, CalendarDays, Clock, FileText, Globe2, GraduationCap, Headphones, Landmark, MapPin, Plane, Route, Star, UsersRound } from 'lucide-react';
 import styles from './decodingIelts.module.css';
+import sectionStyles from './decodingSections.module.css';
 
 export const metadata = {
   title: 'Decoding IELTS | JU FinAnt Club',
@@ -112,23 +113,23 @@ export default function DecodingIELTSPage() {
         </div>
       </section>
 
-      <section id="journey" className={styles.journeySection}>
-        <div className={styles.journeyMapLeft} />
-        <div className={styles.journeyMapRight} />
-        <div className={styles.journeyShell}>
-          <h2 className={styles.journeyTitle}>Your <span>FREE</span> Global Education Journey</h2>
-          <div className={styles.pathwayBadge}><Route /> <span>4-Step Pathway</span></div>
+      <section id="journey" className={sectionStyles.journeySection}>
+        <div className={sectionStyles.journeyMapLeft} />
+        <div className={sectionStyles.journeyMapRight} />
+        <div className={sectionStyles.journeyShell}>
+          <h2 className={sectionStyles.journeyTitle}>Your <span>FREE</span> Global Education Journey</h2>
+          <div className={sectionStyles.pathwayBadge}><Route /> <span>4-Step Pathway</span></div>
 
-          <div className={styles.stepTrack}>
+          <div className={sectionStyles.stepTrack}>
             {journeySteps.map(({step, title, description, icon: Icon, highlights}) => (
-              <article className={styles.stepCard} key={step}>
-                <div className={styles.stepNumber}>{step}</div>
-                <div className={styles.stepIcon}><Icon /></div>
+              <article className={sectionStyles.stepCard} key={step}>
+                <div className={sectionStyles.stepNumber}>{step}</div>
+                <div className={sectionStyles.stepIcon}><Icon /></div>
                 <h3>{title}</h3>
-                <div className={styles.stepLine} />
+                <div className={sectionStyles.stepLine} />
                 <p>{description}</p>
                 {highlights && (
-                  <ul className={styles.stepHighlights}>
+                  <ul className={sectionStyles.stepHighlights}>
                     <li><Star /> {highlights[0]}</li>
                     <li><Bus /> {highlights[1]}</li>
                   </ul>
@@ -137,7 +138,7 @@ export default function DecodingIELTSPage() {
             ))}
           </div>
 
-          <div className={styles.journeyFootnote}>
+          <div className={sectionStyles.journeyFootnote}>
             <span><Star /> Free student opportunity</span>
             <i />
             <span>Open to final-year & master’s students</span>
@@ -145,21 +146,21 @@ export default function DecodingIELTSPage() {
         </div>
       </section>
 
-      <section id="about-enhance" className={styles.aboutSection}>
-        <div className={styles.aboutDotsTop} />
-        <div className={styles.aboutDotsBottom} />
-        <div className={styles.aboutShell}>
-          <div className={styles.aboutCopy}>
+      <section id="about-enhance" className={sectionStyles.aboutSection}>
+        <div className={sectionStyles.aboutDotsTop} />
+        <div className={sectionStyles.aboutDotsBottom} />
+        <div className={sectionStyles.aboutShell}>
+          <div className={sectionStyles.aboutCopy}>
             <h2>About Enhance English</h2>
-            <div className={styles.aboutRule}><span /></div>
+            <div className={sectionStyles.aboutRule}><span /></div>
             <p>
               Enhance English is a leading test preparation and study abroad guidance platform helping students achieve their global education goals. Powered by PFEC Global, they provide expert training, personalized guidance, and end-to-end support for IELTS, PTE, SAT and international admissions.
             </p>
 
-            <div className={styles.partnerCards}>
+            <div className={sectionStyles.partnerCards}>
               {partnerCards.map(({title, description, icon: Icon}) => (
-                <article className={styles.partnerCard} key={title}>
-                  <div className={styles.partnerIcon}><Icon /></div>
+                <article className={sectionStyles.partnerCard} key={title}>
+                  <div className={sectionStyles.partnerIcon}><Icon /></div>
                   <h3>{title}</h3>
                   <p>{description}</p>
                   <span />
@@ -168,22 +169,22 @@ export default function DecodingIELTSPage() {
             </div>
           </div>
 
-          <div className={styles.aboutDivider} />
+          <div className={sectionStyles.aboutDivider} />
 
-          <div className={styles.aboutBrand}>
-            <div className={styles.enhanceLogo}>
-              <div className={styles.enhanceMark}>e</div>
+          <div className={sectionStyles.aboutBrand}>
+            <div className={sectionStyles.enhanceLogo}>
+              <div className={sectionStyles.enhanceMark}>e</div>
               <div>
                 <strong>enhance<br />english</strong>
                 <small>IELTS | PTE | SAT</small>
               </div>
             </div>
-            <div className={styles.logoRule} />
+            <div className={sectionStyles.logoRule} />
             <h3>Powered by <span>PFEC Global</span></h3>
 
-            <div className={styles.benefitList}>
+            <div className={sectionStyles.benefitList}>
               {partnerBenefits.map(({text, icon: Icon}) => (
-                <div className={styles.benefitItem} key={text}>
+                <div className={sectionStyles.benefitItem} key={text}>
                   <Icon />
                   <span>{text}</span>
                 </div>

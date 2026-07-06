@@ -5,7 +5,7 @@
 
 .hero{
   position:relative;
-  height:clamp(560px,calc(100svh - 80px),720px);
+  height:clamp(520px,calc(100svh - 80px),760px);
   overflow:hidden;
   background:#eef6ff;
 }
@@ -22,134 +22,146 @@
 .heroShell{
   position:relative;
   z-index:2;
-  width:min(1280px,calc(100% - 96px));
+  width:min(1540px,calc(100% - 112px));
   height:100%;
   margin:0 auto;
-  padding:3.7rem 0 2.4rem;
+  padding:3.75rem 0 2.2rem;
   display:flex;
   flex-direction:column;
   justify-content:flex-start;
 }
 
 .copy{
-  width:min(47vw,590px);
+  width:min(47vw,720px);
 }
 
 .kicker{
-  margin:0 0 1.35rem;
+  margin:0 0 3.15rem;
   color:#003fbc;
-  font-size:clamp(.92rem,1.05vw,1.14rem);
-  font-weight:750;
+  font-size:clamp(.95rem,1.18vw,1.32rem);
+  font-weight:760;
   letter-spacing:-.035em;
 }
 
 .kicker span{
-  margin:0 .55rem;
+  margin:0 .7rem;
   color:#e2a21a;
   font-weight:500;
 }
 
 .title{
-  margin:0 0 1.1rem;
+  margin:0 0 2.1rem;
   color:#061a4a;
-  font-size:clamp(3.05rem,4.15vw,4.45rem);
   font-weight:900;
-  line-height:1.02;
-  letter-spacing:-.07em;
+  line-height:.98;
+  letter-spacing:-.072em;
+}
+
+.title span{
+  display:block;
+  white-space:nowrap;
+  font-size:clamp(3.15rem,5.1vw,5.85rem);
+}
+
+.title small{
+  display:block;
+  margin-top:.55rem;
+  color:#061a4a;
+  font-size:clamp(1.8rem,2.9vw,3.25rem);
+  font-weight:900;
+  line-height:1.05;
+  letter-spacing:-.067em;
+  white-space:nowrap;
 }
 
 .subtitle{
   margin:0;
-  max-width:560px;
+  max-width:665px;
   color:#071a42;
-  font-size:clamp(.9rem,.98vw,1.08rem);
-  font-weight:420;
-  line-height:1.48;
+  font-size:clamp(.95rem,1.12vw,1.28rem);
+  font-weight:430;
+  line-height:1.5;
   letter-spacing:-.028em;
 }
 
 .goldLine{
-  width:70px;
+  width:72px;
   height:3px;
-  margin:1.05rem 0 1rem;
+  margin:1.6rem 0 0;
   border-radius:99px;
   background:#e2a21a;
 }
 
 .body{
-  margin:0;
-  max-width:565px;
-  color:#071a42;
-  font-size:clamp(.88rem,.96vw,1.04rem);
-  font-weight:420;
-  line-height:1.5;
-  letter-spacing:-.028em;
+  display:none;
 }
 
 .cards{
   display:grid;
   grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:10px;
-  width:min(50vw,540px);
-  margin-top:1.35rem;
+  gap:12px;
+  width:min(43vw,680px);
+  margin-top:2rem;
 }
 
 .card{
-  min-height:66px;
-  display:grid;
-  grid-template-columns:auto 1fr;
+  min-height:128px;
+  display:flex;
+  flex-direction:column;
   align-items:center;
-  gap:9px;
-  padding:11px 12px;
-  border:1px solid rgba(255,255,255,.9);
-  border-radius:10px;
+  justify-content:center;
+  gap:.78rem;
+  padding:1rem .9rem;
+  border:1px solid rgba(255,255,255,.92);
+  border-radius:14px;
   background:rgba(255,255,255,.84);
-  box-shadow:0 14px 34px rgba(34,92,170,.1);
+  box-shadow:0 18px 42px rgba(34,92,170,.12);
   color:#071b4f;
+  text-align:center;
 }
 
 .cardIcon{
-  width:1.55rem;
-  height:1.55rem;
+  width:2.25rem;
+  height:2.25rem;
   color:#064bd3;
-  stroke-width:2.25;
+  stroke-width:2.35;
 }
 
 .card span{
   display:block;
-  color:#09337a;
-  font-size:.64rem;
-  font-weight:650;
+  color:#071b4f;
+  font-size:.9rem;
+  font-weight:850;
   line-height:1.05;
 }
 
 .card strong{
   display:block;
-  margin-top:.2rem;
+  margin-top:.65rem;
   color:#071b4f;
-  font-size:.62rem;
-  font-weight:850;
-  line-height:1.12;
-  letter-spacing:-.03em;
+  font-size:1.05rem;
+  font-weight:900;
+  line-height:1.15;
+  letter-spacing:-.035em;
 }
 
 .actions{
   display:flex;
-  gap:1rem;
-  margin-top:1.15rem;
+  gap:1.4rem;
+  margin-top:2rem;
 }
 
 .primary,.secondary{
-  min-width:178px;
-  min-height:50px;
+  min-width:270px;
+  min-height:68px;
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  gap:2rem;
-  border-radius:9px;
-  font-size:.94rem;
-  font-weight:750;
-  letter-spacing:-.02em;
+  gap:3.7rem;
+  border-radius:10px;
+  font-size:1.18rem;
+  font-weight:800;
+  letter-spacing:-.025em;
   text-decoration:none;
   transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
 }
@@ -158,11 +170,11 @@
   border:1px solid #064bd3;
   background:linear-gradient(180deg,#0861ff 0%,#004ed0 100%);
   color:#fff;
-  box-shadow:0 20px 40px rgba(0,76,208,.2);
+  box-shadow:0 22px 44px rgba(0,76,208,.22);
 }
 
 .secondary{
-  min-width:206px;
+  min-width:285px;
   border:2px solid #0055de;
   background:rgba(255,255,255,.64);
   color:#0048bd;
@@ -173,8 +185,8 @@
 }
 
 .primary svg,.secondary svg{
-  width:1.08rem;
-  height:1.08rem;
+  width:1.35rem;
+  height:1.35rem;
 }
 
 .partnerSection{
@@ -502,25 +514,52 @@
   }
 
   .copy{
-    width:min(47vw,560px);
+    width:min(49vw,640px);
   }
 
-  .title{
-    font-size:clamp(2.85rem,4.05vw,4.1rem);
+  .kicker{
+    margin-bottom:2.2rem;
+  }
+
+  .title span{
+    font-size:clamp(2.75rem,4.9vw,4.35rem);
+  }
+
+  .title small{
+    font-size:clamp(1.55rem,2.75vw,2.6rem);
   }
 
   .cards{
-    width:min(51vw,520px);
-    grid-template-columns:repeat(4,minmax(0,1fr));
+    width:min(52vw,620px);
   }
 
   .card{
-    padding:10px 10px;
-    gap:8px;
+    min-height:104px;
+    padding:.8rem .65rem;
+    gap:.55rem;
+  }
+
+  .cardIcon{
+    width:1.85rem;
+    height:1.85rem;
+  }
+
+  .card span{
+    font-size:.78rem;
   }
 
   .card strong{
-    font-size:.6rem;
+    font-size:.88rem;
+  }
+
+  .primary,.secondary{
+    min-height:58px;
+    min-width:220px;
+    font-size:1rem;
+  }
+
+  .secondary{
+    min-width:250px;
   }
 
   .partnerShell{
@@ -565,9 +604,18 @@
   }
 
   .title{
+    margin-bottom:1.35rem;
+  }
+
+  .title span{
     font-size:clamp(3.05rem,12vw,4.45rem);
-    line-height:1.03;
-    letter-spacing:-.075em;
+    white-space:normal;
+  }
+
+  .title small{
+    margin-top:.45rem;
+    font-size:clamp(1.72rem,7vw,2.65rem);
+    white-space:normal;
   }
 
   .subtitle{
@@ -577,28 +625,23 @@
   }
 
   .goldLine{
-    margin:1.15rem 0 1rem;
+    margin:1.15rem 0 0;
     width:72px;
     height:3px;
-  }
-
-  .body{
-    font-size:clamp(.98rem,4.05vw,1.15rem);
-    line-height:1.45;
   }
 
   .cards{
     grid-template-columns:repeat(2,minmax(0,1fr));
     width:100%;
     gap:.85rem;
-    margin-top:38vh;
+    margin-top:36vh;
   }
 
   .card{
     min-height:84px;
     padding:.9rem .95rem;
     border-radius:12px;
-    gap:.75rem;
+    gap:.55rem;
   }
 
   .cardIcon{
@@ -653,12 +696,15 @@
 
 @media(max-width:430px){
   .cards{
-    margin-top:34vh;
+    margin-top:32vh;
   }
 
   .card{
     grid-template-columns:auto 1fr;
+    align-items:center;
+    text-align:left;
     min-height:74px;
+    flex-direction:row;
   }
 
   .cardIcon{

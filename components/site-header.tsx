@@ -26,6 +26,18 @@ export function SiteHeader() {
       );
     }
 
+    if (label === 'Decoding IELTS') {
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className={base}>
+          <path d="M5 4.8h9.2A3.8 3.8 0 0 1 18 8.6v10.6H8.8A3.8 3.8 0 0 0 5 23V4.8Z" />
+          <path d="M8 8h6" />
+          <path d="M8 11.5h7" />
+          <path d="M8 15h5" />
+          <path d="M18 8.8h1.8A1.2 1.2 0 0 1 21 10v9.2h-3" />
+        </svg>
+      );
+    }
+
     if (label === 'Biztigation 2.0') {
       return (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className={base}>

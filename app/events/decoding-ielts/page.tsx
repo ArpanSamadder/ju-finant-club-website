@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, BookOpen, CalendarDays, ClipboardList, Globe2, GraduationCap, Headphones, MapPin, MessageCircle, Pencil, Plane, Users } from 'lucide-react';
+import { ArrowRight, BookOpen, CalendarDays, Clock, Globe2, GraduationCap, Headphones, MapPin, MessageCircle, Pencil, Plane, Users } from 'lucide-react';
 import styles from './decodingIelts.module.css';
 
 export const metadata = {
@@ -8,10 +8,10 @@ export const metadata = {
 };
 
 const infoCards = [
-  { label: 'Date:', value: 'July 20', icon: CalendarDays },
-  { label: 'Venue:', value: 'Jahangirnagar University Campus', icon: MapPin },
-  { label: 'For:', value: 'Final-year & Master’s Students', icon: Users },
-  { label: 'Access:', value: 'Registration Required', icon: ClipboardList },
+  { label: 'Date:', value: '20 July', icon: CalendarDays },
+  { label: 'Time:', value: '2.30pm', icon: Clock },
+  { label: 'Venue:', value: 'Seminar Room', icon: MapPin },
+  { label: 'Eligibility:', value: 'JU 50 & 51', icon: GraduationCap },
 ];
 
 const partnerCards = [
@@ -43,9 +43,8 @@ export default function DecodingIELTSPage() {
             <p className={styles.kicker}>Jahangirnagar University FinAnt Club <span>×</span> Enhance English</p>
 
             <h1 className={styles.title}>
-              Decoding IELTS:
-              <br />Your Gateway to
-              <br />Global Education
+              <span>Decoding IELTS</span>
+              <small>Your Gateway to Global Education</small>
             </h1>
 
             <p className={styles.subtitle}>
@@ -53,10 +52,6 @@ export default function DecodingIELTSPage() {
             </p>
 
             <div className={styles.goldLine} />
-
-            <p className={styles.body}>
-              Join a practical campus session covering IELTS strategy, preparation direction, study abroad guidance, and next-step opportunities through Enhance English.
-            </p>
           </div>
 
           <div className={styles.cards}>

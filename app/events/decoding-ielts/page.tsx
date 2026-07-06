@@ -43,8 +43,8 @@ export default function DecodingIELTSPage() {
             <p className={styles.kicker}>Jahangirnagar University FinAnt Club <span>×</span> Enhance English</p>
 
             <h1 className={styles.title}>
-              <span>Decoding IELTS</span>
-              <small>Your Gateway to Global Education</small>
+              <span className={styles.titleMain}>Decoding IELTS</span>
+              <span className={styles.titleSub}>Your Gateway to Global Education</span>
             </h1>
 
             <p className={styles.subtitle}>

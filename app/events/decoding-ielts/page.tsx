@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, BookOpen, Bus, CalendarDays, Clock, FileText, Globe2, GraduationCap, Headphones, Landmark, MapPin, Plane, Route, Star, UsersRound } from 'lucide-react';
+import { ArrowRight, BookOpen, Bus, CalendarDays, ClipboardList, Clock, FileText, Globe2, GraduationCap, Headphones, Landmark, MapPin, Plane, Route, Star, UserRound, UsersRound } from 'lucide-react';
 import styles from './decodingIelts.module.css';
 import sectionStyles from './decodingSections.module.css';
 
@@ -15,50 +15,24 @@ const infoCards = [
   { label: 'Eligibility:', value: 'JU 50 & 51', icon: GraduationCap },
 ];
 
+const mobileInfoCards = [
+  { label: 'Date:', value: 'July 20', icon: CalendarDays },
+  { label: 'Venue:', value: 'Jahangirnagar University Campus', icon: MapPin },
+  { label: 'For:', value: 'Final-year & Master’s Students', icon: UserRound },
+  { label: 'Access:', value: 'Registration Required', icon: ClipboardList },
+];
+
 const journeySteps = [
-  {
-    step: '01',
-    title: 'Register Online',
-    description: 'Complete your registration to begin the journey.',
-    icon: FileText,
-  },
-  {
-    step: '02',
-    title: 'Attend the JU MasterClass',
-    description: 'Join the campus session on IELTS strategy and study abroad direction.',
-    icon: UsersRound,
-  },
-  {
-    step: '03',
-    title: 'Join the Dhanmondi Workshop',
-    description: 'Selected students can access a full-day workshop with expert guidance and lab testing.',
-    icon: Landmark,
-  },
-  {
-    step: '04',
-    title: 'Access the Global Education Expo',
-    description: 'Eligible participants can join the Hotel Sheraton global education expo.',
-    icon: Globe2,
-    highlights: ['5-star hotel venue.', 'Free transportation from JU to Sheraton provided.'],
-  },
+  { step: '01', title: 'Register Online', description: 'Complete your registration to begin the journey.', icon: FileText },
+  { step: '02', title: 'Attend the JU MasterClass', description: 'Join the campus session on IELTS strategy and study abroad direction.', icon: UsersRound },
+  { step: '03', title: 'Join the Dhanmondi Workshop', description: 'Selected students can access a full-day workshop with expert guidance and lab testing.', icon: Landmark },
+  { step: '04', title: 'Access the Global Education Expo', description: 'Eligible participants can join the Hotel Sheraton global education expo.', icon: Globe2, highlights: ['5-star hotel venue.', 'Free transportation from JU to Sheraton provided.'] },
 ];
 
 const partnerCards = [
-  {
-    title: 'IELTS | PTE | SAT',
-    description: 'Expert preparation for globally recognized exams.',
-    icon: GraduationCap,
-  },
-  {
-    title: 'Study Abroad Guidance',
-    description: 'Personalized counseling for universities and global pathways.',
-    icon: Globe2,
-  },
-  {
-    title: 'Powered by PFEC Global',
-    description: 'A trusted global education network with proven expertise.',
-    icon: BookOpen,
-  },
+  { title: 'IELTS | PTE | SAT', description: 'Expert preparation for globally recognized exams.', icon: GraduationCap },
+  { title: 'Study Abroad Guidance', description: 'Personalized counseling for universities and global pathways.', icon: Globe2 },
+  { title: 'Powered by PFEC Global', description: 'A trusted global education network with proven expertise.', icon: BookOpen },
 ];
 
 const partnerBenefits = [
@@ -73,42 +47,33 @@ export default function DecodingIELTSPage() {
     <div className={styles.page}>
       <section className={styles.hero}>
         <div className={styles.bg} />
-
         <div className={styles.heroShell}>
           <div className={styles.copy}>
             <p className={styles.kicker}>Jahangirnagar University FinAnt Club <span>×</span> Enhance English</p>
-
             <h1 className={styles.title}>
               <span className={styles.titleMain}>Decoding IELTS</span>
               <span className={styles.titleSub}>Your Gateway to Global Education</span>
             </h1>
-
-            <p className={styles.subtitle}>
-              A focused IELTS Masterclass for students preparing for higher studies, global education pathways, and internationally competitive academic opportunities.
-            </p>
-
+            <p className={styles.subtitle}>A focused IELTS Masterclass for students preparing for higher studies, global education pathways, and internationally competitive academic opportunities.</p>
             <div className={styles.goldLine} />
+            <p className={styles.mobileIntro}>Join a practical campus session covering IELTS strategy, preparation direction, study abroad guidance, and next-step opportunities through Enhance English.</p>
           </div>
 
           <div className={styles.cards}>
             {infoCards.map(({label, value, icon: Icon}) => (
-              <div className={styles.card} key={label}>
-                <Icon className={styles.cardIcon} />
-                <div>
-                  <span>{label}</span>
-                  <strong>{value}</strong>
-                </div>
-              </div>
+              <div className={styles.card} key={label}><Icon className={styles.cardIcon} /><div><span>{label}</span><strong>{value}</strong></div></div>
+            ))}
+          </div>
+
+          <div className={styles.mobileCards}>
+            {mobileInfoCards.map(({label, value, icon: Icon}) => (
+              <div className={styles.mobileCard} key={label}><Icon className={styles.mobileCardIcon} /><div><span>{label}</span><strong>{value}</strong></div></div>
             ))}
           </div>
 
           <div className={styles.actions}>
-            <Link href="#registration" className={styles.primary}>
-              Register Now <ArrowRight />
-            </Link>
-            <Link href="#journey" className={styles.secondary}>
-              View Event Details <ArrowRight />
-            </Link>
+            <Link href="#registration" className={styles.primary}>Register Now <ArrowRight /></Link>
+            <Link href="#journey" className={styles.secondary}>View Event Details <ArrowRight /></Link>
           </div>
         </div>
       </section>
@@ -119,7 +84,6 @@ export default function DecodingIELTSPage() {
         <div className={sectionStyles.journeyShell}>
           <h2 className={sectionStyles.journeyTitle}>Your <span>FREE</span> Global Education Journey</h2>
           <div className={sectionStyles.pathwayBadge}><Route /> <span>4-Step Pathway</span></div>
-
           <div className={sectionStyles.stepTrack}>
             {journeySteps.map(({step, title, description, icon: Icon, highlights}) => (
               <article className={sectionStyles.stepCard} key={step}>
@@ -128,21 +92,11 @@ export default function DecodingIELTSPage() {
                 <h3>{title}</h3>
                 <div className={sectionStyles.stepLine} />
                 <p>{description}</p>
-                {highlights && (
-                  <ul className={sectionStyles.stepHighlights}>
-                    <li><Star /> {highlights[0]}</li>
-                    <li><Bus /> {highlights[1]}</li>
-                  </ul>
-                )}
+                {highlights && <ul className={sectionStyles.stepHighlights}><li><Star /> {highlights[0]}</li><li><Bus /> {highlights[1]}</li></ul>}
               </article>
             ))}
           </div>
-
-          <div className={sectionStyles.journeyFootnote}>
-            <span><Star /> Free student opportunity</span>
-            <i />
-            <span>Open to final-year & master’s students</span>
-          </div>
+          <div className={sectionStyles.journeyFootnote}><span><Star /> Free student opportunity</span><i /><span>Open to final-year & master’s students</span></div>
         </div>
       </section>
 
@@ -153,43 +107,17 @@ export default function DecodingIELTSPage() {
           <div className={sectionStyles.aboutCopy}>
             <h2>About Enhance English</h2>
             <div className={sectionStyles.aboutRule}><span /></div>
-            <p>
-              Enhance English is a leading test preparation and study abroad guidance platform helping students achieve their global education goals. Powered by PFEC Global, they provide expert training, personalized guidance, and end-to-end support for IELTS, PTE, SAT and international admissions.
-            </p>
-
+            <p>Enhance English is a leading test preparation and study abroad guidance platform helping students achieve their global education goals. Powered by PFEC Global, they provide expert training, personalized guidance, and end-to-end support for IELTS, PTE, SAT and international admissions.</p>
             <div className={sectionStyles.partnerCards}>
-              {partnerCards.map(({title, description, icon: Icon}) => (
-                <article className={sectionStyles.partnerCard} key={title}>
-                  <div className={sectionStyles.partnerIcon}><Icon /></div>
-                  <h3>{title}</h3>
-                  <p>{description}</p>
-                  <span />
-                </article>
-              ))}
+              {partnerCards.map(({title, description, icon: Icon}) => <article className={sectionStyles.partnerCard} key={title}><div className={sectionStyles.partnerIcon}><Icon /></div><h3>{title}</h3><p>{description}</p><span /></article>)}
             </div>
           </div>
-
           <div className={sectionStyles.aboutDivider} />
-
           <div className={sectionStyles.aboutBrand}>
-            <div className={sectionStyles.enhanceLogo}>
-              <div className={sectionStyles.enhanceMark}>e</div>
-              <div>
-                <strong>enhance<br />english</strong>
-                <small>IELTS | PTE | SAT</small>
-              </div>
-            </div>
+            <div className={sectionStyles.enhanceLogo}><div className={sectionStyles.enhanceMark}>e</div><div><strong>enhance<br />english</strong><small>IELTS | PTE | SAT</small></div></div>
             <div className={sectionStyles.logoRule} />
             <h3>Powered by <span>PFEC Global</span></h3>
-
-            <div className={sectionStyles.benefitList}>
-              {partnerBenefits.map(({text, icon: Icon}) => (
-                <div className={sectionStyles.benefitItem} key={text}>
-                  <Icon />
-                  <span>{text}</span>
-                </div>
-              ))}
-            </div>
+            <div className={sectionStyles.benefitList}>{partnerBenefits.map(({text, icon: Icon}) => <div className={sectionStyles.benefitItem} key={text}><Icon /><span>{text}</span></div>)}</div>
           </div>
         </div>
       </section>

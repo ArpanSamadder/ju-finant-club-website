@@ -5,7 +5,7 @@
 
 .hero{
   position:relative;
-  min-height:calc(100svh - 80px);
+  height:clamp(560px,calc(100svh - 80px),720px);
   overflow:hidden;
   background:#eef6ff;
 }
@@ -22,37 +22,37 @@
 .heroShell{
   position:relative;
   z-index:2;
-  width:min(1360px,calc(100% - 96px));
-  min-height:calc(100svh - 80px);
+  width:min(1280px,calc(100% - 96px));
+  height:100%;
   margin:0 auto;
-  padding:4.25rem 0 3.3rem;
+  padding:3.7rem 0 2.4rem;
   display:flex;
   flex-direction:column;
   justify-content:flex-start;
 }
 
 .copy{
-  width:min(44vw,620px);
+  width:min(47vw,590px);
 }
 
 .kicker{
-  margin:0 0 1.45rem;
+  margin:0 0 1.35rem;
   color:#003fbc;
-  font-size:clamp(1rem,1.15vw,1.28rem);
+  font-size:clamp(.92rem,1.05vw,1.14rem);
   font-weight:750;
   letter-spacing:-.035em;
 }
 
 .kicker span{
-  margin:0 .6rem;
+  margin:0 .55rem;
   color:#e2a21a;
   font-weight:500;
 }
 
 .title{
-  margin:0 0 1.45rem;
+  margin:0 0 1.1rem;
   color:#061a4a;
-  font-size:clamp(3.75rem,5.15vw,5.8rem);
+  font-size:clamp(3.05rem,4.15vw,4.45rem);
   font-weight:900;
   line-height:1.02;
   letter-spacing:-.07em;
@@ -60,57 +60,57 @@
 
 .subtitle{
   margin:0;
-  max-width:585px;
+  max-width:560px;
   color:#071a42;
-  font-size:clamp(1rem,1.08vw,1.2rem);
+  font-size:clamp(.9rem,.98vw,1.08rem);
   font-weight:420;
-  line-height:1.52;
+  line-height:1.48;
   letter-spacing:-.028em;
 }
 
 .goldLine{
-  width:72px;
+  width:70px;
   height:3px;
-  margin:1.25rem 0 1.15rem;
+  margin:1.05rem 0 1rem;
   border-radius:99px;
   background:#e2a21a;
 }
 
 .body{
   margin:0;
-  max-width:590px;
+  max-width:565px;
   color:#071a42;
-  font-size:clamp(1rem,1.06vw,1.18rem);
+  font-size:clamp(.88rem,.96vw,1.04rem);
   font-weight:420;
-  line-height:1.52;
+  line-height:1.5;
   letter-spacing:-.028em;
 }
 
 .cards{
   display:grid;
   grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:12px;
-  width:min(51vw,620px);
-  margin-top:2rem;
+  gap:10px;
+  width:min(50vw,540px);
+  margin-top:1.35rem;
 }
 
 .card{
-  min-height:76px;
+  min-height:66px;
   display:grid;
   grid-template-columns:auto 1fr;
   align-items:center;
-  gap:12px;
-  padding:13px 14px;
+  gap:9px;
+  padding:11px 12px;
   border:1px solid rgba(255,255,255,.9);
-  border-radius:12px;
-  background:rgba(255,255,255,.82);
-  box-shadow:0 16px 40px rgba(34,92,170,.11);
+  border-radius:10px;
+  background:rgba(255,255,255,.84);
+  box-shadow:0 14px 34px rgba(34,92,170,.1);
   color:#071b4f;
 }
 
 .cardIcon{
-  width:1.75rem;
-  height:1.75rem;
+  width:1.55rem;
+  height:1.55rem;
   color:#064bd3;
   stroke-width:2.25;
 }
@@ -118,16 +118,16 @@
 .card span{
   display:block;
   color:#09337a;
-  font-size:.72rem;
+  font-size:.64rem;
   font-weight:650;
   line-height:1.05;
 }
 
 .card strong{
   display:block;
-  margin-top:.22rem;
+  margin-top:.2rem;
   color:#071b4f;
-  font-size:.72rem;
+  font-size:.62rem;
   font-weight:850;
   line-height:1.12;
   letter-spacing:-.03em;
@@ -135,19 +135,19 @@
 
 .actions{
   display:flex;
-  gap:1.05rem;
-  margin-top:1.45rem;
+  gap:1rem;
+  margin-top:1.15rem;
 }
 
 .primary,.secondary{
-  min-width:190px;
-  min-height:58px;
+  min-width:178px;
+  min-height:50px;
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  gap:2.35rem;
-  border-radius:10px;
-  font-size:1rem;
+  gap:2rem;
+  border-radius:9px;
+  font-size:.94rem;
   font-weight:750;
   letter-spacing:-.02em;
   text-decoration:none;
@@ -158,11 +158,11 @@
   border:1px solid #064bd3;
   background:linear-gradient(180deg,#0861ff 0%,#004ed0 100%);
   color:#fff;
-  box-shadow:0 22px 44px rgba(0,76,208,.22);
+  box-shadow:0 20px 40px rgba(0,76,208,.2);
 }
 
 .secondary{
-  min-width:220px;
+  min-width:206px;
   border:2px solid #0055de;
   background:rgba(255,255,255,.64);
   color:#0048bd;
@@ -173,8 +173,8 @@
 }
 
 .primary svg,.secondary svg{
-  width:1.2rem;
-  height:1.2rem;
+  width:1.08rem;
+  height:1.08rem;
 }
 
 .partnerSection{
@@ -498,25 +498,29 @@
 @media(max-width:1280px){
   .heroShell,
   .partnerShell{
-    width:min(100% - 64px,1200px);
+    width:min(100% - 64px,1180px);
   }
 
   .copy{
-    width:min(48vw,600px);
+    width:min(47vw,560px);
+  }
+
+  .title{
+    font-size:clamp(2.85rem,4.05vw,4.1rem);
   }
 
   .cards{
-    width:min(56vw,620px);
+    width:min(51vw,520px);
     grid-template-columns:repeat(4,minmax(0,1fr));
   }
 
   .card{
-    padding:12px 11px;
-    gap:9px;
+    padding:10px 10px;
+    gap:8px;
   }
 
   .card strong{
-    font-size:.68rem;
+    font-size:.6rem;
   }
 
   .partnerShell{
@@ -527,7 +531,8 @@
 
 @media(max-width:900px){
   .hero{
-    min-height:auto;
+    height:auto;
+    min-height:calc(100svh - 68px);
   }
 
   .bg{

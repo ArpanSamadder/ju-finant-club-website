@@ -1,0 +1,117 @@
+.page{
+  background:#020817;
+  color:#ffffff;
+}
+
+.hero{
+  position:relative;
+  min-height:calc(100svh - 72px);
+  overflow:hidden;
+}
+
+.bg{
+  position:absolute;
+  inset:0;
+  background-image:url('/images/events/decoding-ielts/hero-desktop.png');
+  background-size:cover;
+  background-position:center;
+  filter:brightness(0.9) contrast(1.05);
+}
+
+.shell{
+  position:relative;
+  z-index:2;
+  max-width:1200px;
+  margin:0 auto;
+  padding:6vw 5vw;
+}
+
+.kicker{
+  font-size:0.9rem;
+  letter-spacing:0.2em;
+  color:#9fb6ff;
+  text-transform:uppercase;
+  margin-bottom:1.2rem;
+}
+
+.title{
+  font-size:clamp(2.6rem,5vw,4.8rem);
+  font-weight:700;
+  line-height:1.05;
+  margin-bottom:1.2rem;
+}
+
+.subtitle{
+  font-size:1.25rem;
+  color:#d7e3ff;
+  margin-bottom:1rem;
+  max-width:700px;
+}
+
+.body{
+  font-size:1.05rem;
+  color:#b9c7e6;
+  max-width:680px;
+  margin-bottom:2rem;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0,1fr));
+  gap:12px;
+  margin-bottom:2rem;
+}
+
+.card{
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.08);
+  padding:14px;
+  border-radius:12px;
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.actions{
+  display:flex;
+  gap:14px;
+}
+
+.primary{
+  background:#115FEB;
+  padding:12px 18px;
+  border-radius:10px;
+  color:white;
+  font-weight:600;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  text-decoration:none;
+}
+
+.secondary{
+  border:1px solid rgba(255,255,255,0.3);
+  padding:12px 18px;
+  border-radius:10px;
+  color:white;
+  text-decoration:none;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.details,.registration{
+  padding:80px 5vw;
+  max-width:1000px;
+  margin:0 auto;
+}
+
+@media(max-width:768px){
+  .cards{
+    grid-template-columns:1fr;
+  }
+
+  .actions{
+    flex-direction:column;
+  }
+}

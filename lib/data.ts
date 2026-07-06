@@ -2,7 +2,7 @@ import { BriefcaseBusiness, CalendarDays, Handshake, Sparkles, Trophy, UsersRoun
 
 export const navItems = [
   { label: 'Home', href: '/' },
-  { label: 'Biztigation 2.0', href: '/biztigation' },
+  { label: 'Decoding IELTS', href: '/events/decoding-ielts' },
   { label: 'Initiatives', href: '/initiatives' },
   { label: 'People', href: '/people' },
   { label: 'Join Us', href: '/join' }
@@ -40,11 +40,11 @@ export const metrics = [
 
 export const eventCards = [
   {
-    title: 'Biztigation 2.0',
-    category: 'Flagship Business Case Competition',
-    description: 'A national inter-university business tournament built around real-world corporate challenges.',
-    stats: '600+ teams target · 35+ universities · 1.5M+ projected reach',
-    href: '/biztigation'
+    title: 'Decoding IELTS',
+    category: 'IELTS Masterclass & Study Abroad Guidance',
+    description: 'A focused campus learning session for IELTS strategy, preparation direction, and global education pathways.',
+    stats: 'July 20 · JU Campus · Registration required',
+    href: '/events/decoding-ielts'
   },
   {
     title: 'Crackademy',

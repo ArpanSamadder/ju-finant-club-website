@@ -1,6 +1,20 @@
 .heroFix {}
 .bgFix {}
+.heroShellFix {}
+.copyFix {}
+.kickerFix {}
+.titleFix {}
+.titleMainFix {}
+.titleSubFix {}
+.subtitleFix {}
+.goldLineFix {}
+.mobileIntroFix {}
 .mobileCardsFix {}
+.mobileCardFix {}
+.mobileCardIconFix {}
+.actionsFix {}
+.primaryFix {}
+.secondaryFix {}
 
 @media (max-width: 900px) {
   .heroFix {
@@ -20,19 +34,198 @@
     content: none !important;
   }
 
+  .heroShellFix {
+    padding: clamp(2.35rem, 8vw, 3rem) 6.7vw 2rem !important;
+  }
+
+  .kickerFix {
+    margin: 0 0 clamp(1.85rem, 5.8vw, 2.35rem) !important;
+    font-size: clamp(1rem, 3.85vw, 1.22rem) !important;
+    line-height: 1.2 !important;
+    color: #0048bd !important;
+    white-space: nowrap !important;
+    letter-spacing: -0.04em !important;
+  }
+
+  .titleFix {
+    margin: 0 0 clamp(1.25rem, 4.2vw, 1.65rem) !important;
+    letter-spacing: -0.07em !important;
+  }
+
+  .titleMainFix {
+    display: block !important;
+    white-space: nowrap !important;
+    font-size: clamp(3.15rem, 11vw, 4.15rem) !important;
+    line-height: 1.02 !important;
+    letter-spacing: -0.075em !important;
+    color: #061a4a !important;
+    font-weight: 900 !important;
+  }
+
+  .titleMainFix::after {
+    content: ':';
+  }
+
+  .titleSubFix {
+    display: block !important;
+    max-width: 96% !important;
+    white-space: normal !important;
+    margin-top: 0.12rem !important;
+    font-size: clamp(2.75rem, 9.8vw, 3.65rem) !important;
+    line-height: 1.06 !important;
+    letter-spacing: -0.07em !important;
+    color: #061a4a !important;
+    font-weight: 900 !important;
+  }
+
+  .subtitleFix {
+    max-width: 96% !important;
+    font-size: clamp(1.2rem, 4.45vw, 1.45rem) !important;
+    line-height: 1.42 !important;
+    color: #071a42 !important;
+    letter-spacing: -0.025em !important;
+  }
+
+  .goldLineFix {
+    width: 6.75rem !important;
+    height: 3px !important;
+    margin: clamp(1.05rem, 3.8vw, 1.35rem) 0 clamp(1.05rem, 3.8vw, 1.35rem) !important;
+  }
+
+  .mobileIntroFix {
+    display: block !important;
+    max-width: 96% !important;
+    margin: 0 !important;
+    font-size: clamp(1.08rem, 4.15vw, 1.34rem) !important;
+    line-height: 1.42 !important;
+    color: #071a42 !important;
+    letter-spacing: -0.025em !important;
+  }
+
   .mobileCardsFix {
-    margin-top: clamp(14.5rem, 42vw, 18rem) !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: clamp(0.72rem, 2.4vw, 0.95rem) !important;
+    margin-top: clamp(31rem, 116vw, 37rem) !important;
+    width: 100% !important;
+  }
+
+  .mobileCardFix {
+    min-height: clamp(5.95rem, 18.5vw, 7.15rem) !important;
+    grid-template-columns: clamp(3.8rem, 13vw, 4.8rem) 1fr !important;
+    padding: clamp(0.85rem, 2.8vw, 1.15rem) clamp(0.8rem, 3vw, 1.15rem) !important;
+    border-radius: 12px !important;
+  }
+
+  .mobileCardIconFix {
+    width: clamp(2rem, 7.2vw, 2.55rem) !important;
+    height: clamp(2rem, 7.2vw, 2.55rem) !important;
+  }
+
+  .mobileCardFix span {
+    font-size: clamp(0.92rem, 3.3vw, 1.08rem) !important;
+    line-height: 1.08 !important;
+  }
+
+  .mobileCardFix strong {
+    margin-top: 0.18rem !important;
+    font-size: clamp(1rem, 3.55vw, 1.15rem) !important;
+    line-height: 1.12 !important;
+  }
+
+  .actionsFix {
+    margin-top: clamp(1rem, 3.2vw, 1.25rem) !important;
+    gap: clamp(0.78rem, 2.5vw, 0.95rem) !important;
+  }
+
+  .primaryFix,
+  .secondaryFix {
+    min-height: clamp(3.65rem, 12vw, 4.2rem) !important;
+    border-radius: 10px !important;
+    font-size: clamp(1.12rem, 4vw, 1.35rem) !important;
+    font-weight: 800 !important;
   }
 }
 
 @media (max-width: 430px) {
+  .heroShellFix {
+    padding: 2.45rem 6.4vw 1.85rem !important;
+  }
+
+  .kickerFix {
+    margin-bottom: 1.8rem !important;
+    font-size: 0.98rem !important;
+  }
+
+  .titleMainFix {
+    font-size: clamp(2.82rem, 11.05vw, 3.25rem) !important;
+  }
+
+  .titleSubFix {
+    font-size: clamp(2.38rem, 9.55vw, 2.9rem) !important;
+    max-width: 98% !important;
+  }
+
+  .subtitleFix {
+    font-size: 1.08rem !important;
+    max-width: 98% !important;
+  }
+
+  .mobileIntroFix {
+    font-size: 1.03rem !important;
+    max-width: 98% !important;
+  }
+
   .mobileCardsFix {
-    margin-top: clamp(13.4rem, 40vw, 16.5rem) !important;
+    margin-top: clamp(27.4rem, 111vw, 31rem) !important;
+    gap: 0.72rem !important;
+  }
+
+  .mobileCardFix {
+    grid-template-columns: 3.9rem 1fr !important;
+    min-height: 5.95rem !important;
+    padding: 0.9rem 0.82rem !important;
+  }
+
+  .mobileCardIconFix {
+    width: 2.08rem !important;
+    height: 2.08rem !important;
+  }
+
+  .mobileCardFix span {
+    font-size: 0.92rem !important;
+  }
+
+  .mobileCardFix strong {
+    font-size: 0.98rem !important;
+  }
+
+  .primaryFix,
+  .secondaryFix {
+    min-height: 3.6rem !important;
+    font-size: 1.12rem !important;
   }
 }
 
 @media (max-width: 380px) {
+  .kickerFix {
+    font-size: 0.9rem !important;
+  }
+
+  .titleMainFix {
+    font-size: 2.55rem !important;
+  }
+
+  .titleSubFix {
+    font-size: 2.1rem !important;
+  }
+
+  .subtitleFix,
+  .mobileIntroFix {
+    font-size: 0.96rem !important;
+  }
+
   .mobileCardsFix {
-    margin-top: 12.5rem !important;
+    margin-top: 25.6rem !important;
   }
 }

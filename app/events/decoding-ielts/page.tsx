@@ -48,16 +48,16 @@ export default function DecodingIELTSPage() {
     <div className={styles.page}>
       <section className={`${styles.hero} ${mobileHeroFix.heroFix}`}>
         <div className={`${styles.bg} ${mobileHeroFix.bgFix}`} />
-        <div className={styles.heroShell}>
-          <div className={styles.copy}>
-            <p className={styles.kicker}>Jahangirnagar University FinAnt Club <span>×</span> Enhance English</p>
-            <h1 className={styles.title}>
-              <span className={styles.titleMain}>Decoding IELTS</span>
-              <span className={styles.titleSub}>Your Gateway to Global Education</span>
+        <div className={`${styles.heroShell} ${mobileHeroFix.heroShellFix}`}>
+          <div className={`${styles.copy} ${mobileHeroFix.copyFix}`}>
+            <p className={`${styles.kicker} ${mobileHeroFix.kickerFix}`}>Jahangirnagar University FinAnt Club <span>×</span> Enhance English</p>
+            <h1 className={`${styles.title} ${mobileHeroFix.titleFix}`}>
+              <span className={`${styles.titleMain} ${mobileHeroFix.titleMainFix}`}>Decoding IELTS</span>
+              <span className={`${styles.titleSub} ${mobileHeroFix.titleSubFix}`}>Your Gateway to Global Education</span>
             </h1>
-            <p className={styles.subtitle}>A focused IELTS Masterclass for students preparing for higher studies, global education pathways, and internationally competitive academic opportunities.</p>
-            <div className={styles.goldLine} />
-            <p className={styles.mobileIntro}>Join a practical campus session covering IELTS strategy, preparation direction, study abroad guidance, and next-step opportunities through Enhance English.</p>
+            <p className={`${styles.subtitle} ${mobileHeroFix.subtitleFix}`}>A focused IELTS Masterclass for students preparing for higher studies, global education pathways, and internationally competitive academic opportunities.</p>
+            <div className={`${styles.goldLine} ${mobileHeroFix.goldLineFix}`} />
+            <p className={`${styles.mobileIntro} ${mobileHeroFix.mobileIntroFix}`}>Join a practical campus session covering IELTS strategy, preparation direction, study abroad guidance, and next-step opportunities through Enhance English.</p>
           </div>
 
           <div className={styles.cards}>
@@ -68,13 +68,13 @@ export default function DecodingIELTSPage() {
 
           <div className={`${styles.mobileCards} ${mobileHeroFix.mobileCardsFix}`}>
             {mobileInfoCards.map(({label, value, icon: Icon}) => (
-              <div className={styles.mobileCard} key={label}><Icon className={styles.mobileCardIcon} /><div><span>{label}</span><strong>{value}</strong></div></div>
+              <div className={`${styles.mobileCard} ${mobileHeroFix.mobileCardFix}`} key={label}><Icon className={`${styles.mobileCardIcon} ${mobileHeroFix.mobileCardIconFix}`} /><div><span>{label}</span><strong>{value}</strong></div></div>
             ))}
           </div>
 
-          <div className={styles.actions}>
-            <Link href="#registration" className={styles.primary}>Register Now <ArrowRight /></Link>
-            <Link href="#journey" className={styles.secondary}>View Event Details <ArrowRight /></Link>
+          <div className={`${styles.actions} ${mobileHeroFix.actionsFix}`}>
+            <Link href="#registration" className={`${styles.primary} ${mobileHeroFix.primaryFix}`}>Register Now <ArrowRight /></Link>
+            <Link href="#journey" className={`${styles.secondary} ${mobileHeroFix.secondaryFix}`}>View Event Details <ArrowRight /></Link>
           </div>
         </div>
       </section>

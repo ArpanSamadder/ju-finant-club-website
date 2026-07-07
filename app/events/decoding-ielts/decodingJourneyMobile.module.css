@@ -7,16 +7,19 @@
 .stepNumberMobile {}
 .stepIconMobile {}
 .stepNoticeMobile { display: none; }
+.stepHighlightsMobile {}
 .journeyFootnoteMobile {}
 
 @media (max-width: 900px) {
   .journeyMobile {
     position: relative !important;
+    width: 100% !important;
     height: auto !important;
     min-height: 0 !important;
     max-height: none !important;
-    overflow: hidden !important;
-    padding: 1.6rem 0.9rem 1.75rem !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
+    padding: 0.8rem 0.45rem 1rem !important;
     background: linear-gradient(180deg, #f5faff 0%, #edf7ff 100%) !important;
     color: #061a4a !important;
   }
@@ -25,31 +28,34 @@
   .journeyMobile::after {
     content: '';
     position: absolute;
-    top: 2.15rem;
-    width: 12.5rem;
-    height: 8.5rem;
-    opacity: 0.28;
-    background-image: radial-gradient(circle, #7fb2ff 1.35px, transparent 1.75px);
-    background-size: 8px 8px;
+    top: 1.1rem;
+    width: 9rem;
+    height: 6rem;
+    opacity: 0.22;
+    background-image: radial-gradient(circle, #7fb2ff 1.1px, transparent 1.5px);
+    background-size: 7px 7px;
     border-radius: 40%;
     pointer-events: none;
   }
 
-  .journeyMobile::before { left: -3.8rem; }
-  .journeyMobile::after { right: -3.9rem; }
+  .journeyMobile::before { left: -2.8rem; }
+  .journeyMobile::after { right: -2.8rem; }
 
   .journeyShellMobile {
     position: relative !important;
     z-index: 2 !important;
     width: 100% !important;
+    max-width: 100% !important;
     margin: 0 auto !important;
-    padding: 2.45rem 1.5rem 1.65rem !important;
-    border-radius: 1.85rem !important;
-    background: rgba(255, 255, 255, 0.64) !important;
-    border: 1px solid rgba(255, 255, 255, 0.78) !important;
-    box-shadow: 0 18px 48px rgba(36, 90, 166, 0.08) !important;
+    padding: 1.5rem 0.7rem 1rem !important;
+    box-sizing: border-box !important;
+    border-radius: 1.25rem !important;
+    background: rgba(255, 255, 255, 0.66) !important;
+    border: 1px solid rgba(255, 255, 255, 0.8) !important;
+    box-shadow: 0 12px 30px rgba(36, 90, 166, 0.07) !important;
     display: block !important;
     text-align: center !important;
+    overflow: hidden !important;
   }
 
   .journeyTitleMobile {
@@ -57,56 +63,56 @@
     max-width: 100% !important;
     text-align: center !important;
     color: #061a4a !important;
-    font-size: clamp(2.05rem, 8.5vw, 3.45rem) !important;
+    font-size: clamp(1.6rem, 6.7vw, 2.35rem) !important;
     font-weight: 900 !important;
-    line-height: 1.12 !important;
-    letter-spacing: -0.07em !important;
+    line-height: 1.06 !important;
+    letter-spacing: -0.065em !important;
   }
 
-  .journeyTitleMobile span {
-    color: #075bea !important;
-  }
+  .journeyTitleMobile span { color: #075bea !important; }
 
   .pathwayBadgeMobile {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 0.56rem !important;
-    margin: 1.55rem auto 2.15rem !important;
-    padding: 0.6rem 1.55rem !important;
-    border: 1.5px solid #075bea !important;
+    gap: 0.42rem !important;
+    margin: 1rem auto 1.25rem !important;
+    padding: 0.43rem 1rem !important;
+    border: 1.2px solid #075bea !important;
     border-radius: 999px !important;
     background: rgba(255, 255, 255, 0.72) !important;
     color: #075bea !important;
-    font-size: clamp(1rem, 4.3vw, 1.35rem) !important;
+    font-size: clamp(0.78rem, 3.3vw, 1rem) !important;
     font-weight: 900 !important;
     line-height: 1 !important;
   }
 
   .pathwayBadgeMobile svg {
-    width: 1.35rem !important;
-    height: 1.35rem !important;
+    width: 0.95rem !important;
+    height: 0.95rem !important;
   }
 
   .stepTrackMobile {
     position: relative !important;
     display: grid !important;
-    grid-template-columns: 4.25rem 1fr !important;
-    column-gap: 0.95rem !important;
-    row-gap: 1.1rem !important;
+    grid-template-columns: 3.1rem minmax(0, 1fr) !important;
+    column-gap: 0.45rem !important;
+    row-gap: 0.72rem !important;
     width: 100% !important;
+    max-width: 100% !important;
     margin: 0 !important;
     min-height: 0 !important;
+    box-sizing: border-box !important;
   }
 
   .stepTrackMobile::before {
     content: '' !important;
     position: absolute !important;
     display: block !important;
-    top: 2.95rem !important;
-    bottom: 2.95rem !important;
-    left: 2.12rem !important;
-    width: 2px !important;
+    top: 2.15rem !important;
+    bottom: 2.15rem !important;
+    left: 1.55rem !important;
+    width: 1.5px !important;
     height: auto !important;
     right: auto !important;
     background: #075bea !important;
@@ -116,51 +122,50 @@
   .stepCardMobile {
     grid-column: 2 !important;
     position: relative !important;
-    min-height: 8.55rem !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    min-height: 6.6rem !important;
     height: auto !important;
-    max-height: none !important;
-    padding: 1.38rem 1.35rem 1.25rem 6.2rem !important;
-    border-radius: 1.18rem !important;
-    background: rgba(255, 255, 255, 0.88) !important;
-    border: 1px solid rgba(255, 255, 255, 0.94) !important;
-    box-shadow: 0 14px 38px rgba(36, 90, 166, 0.08) !important;
-    text-align: left !important;
+    padding: 0.9rem 0.78rem 0.82rem 4.45rem !important;
     box-sizing: border-box !important;
+    border-radius: 0.9rem !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    border: 1px solid rgba(255, 255, 255, 0.95) !important;
+    box-shadow: 0 10px 26px rgba(36, 90, 166, 0.07) !important;
+    text-align: left !important;
+    overflow: hidden !important;
   }
 
-  .stepCardMobile:not(:last-child)::after {
-    display: none !important;
-  }
+  .stepCardMobile:not(:last-child)::after { display: none !important; }
 
   .stepNumberMobile {
     position: absolute !important;
-    left: -5.15rem !important;
-    top: 2.08rem !important;
+    left: -3.95rem !important;
+    top: 1.35rem !important;
     transform: none !important;
-    width: 4.15rem !important;
-    height: 4.15rem !important;
+    width: 3rem !important;
+    height: 3rem !important;
     display: grid !important;
     place-items: center !important;
     border-radius: 50% !important;
     background: #fff !important;
     border: 1px solid rgba(7, 91, 234, 0.08) !important;
-    box-shadow: 0 8px 24px rgba(36, 90, 166, 0.12) !important;
+    box-shadow: 0 6px 18px rgba(36, 90, 166, 0.11) !important;
     color: #075bea !important;
-    font-size: 1.78rem !important;
+    font-size: 1.15rem !important;
     font-weight: 900 !important;
     z-index: 3 !important;
   }
 
-  .stepNumberMobile::before {
-    display: none !important;
-  }
+  .stepNumberMobile::before { display: none !important; }
 
   .stepIconMobile {
     position: absolute !important;
-    left: 1.25rem !important;
-    top: 1.48rem !important;
-    width: 4.65rem !important;
-    height: 4.65rem !important;
+    left: 0.72rem !important;
+    top: 0.95rem !important;
+    width: 3.2rem !important;
+    height: 3.2rem !important;
     margin: 0 !important;
     display: grid !important;
     place-items: center !important;
@@ -170,99 +175,113 @@
   }
 
   .stepIconMobile svg {
-    width: 2.72rem !important;
-    height: 2.72rem !important;
+    width: 1.82rem !important;
+    height: 1.82rem !important;
     stroke-width: 1.85 !important;
   }
 
   .stepCardMobile h3 {
     margin: 0 !important;
+    max-width: 100% !important;
+    overflow-wrap: anywhere !important;
     color: #061a4a !important;
-    font-size: clamp(1.25rem, 4.7vw, 1.75rem) !important;
+    font-size: clamp(0.92rem, 3.6vw, 1.12rem) !important;
     font-weight: 900 !important;
     line-height: 1.12 !important;
-    letter-spacing: -0.055em !important;
+    letter-spacing: -0.045em !important;
   }
 
-  .stepCardMobile h3 + div:not(.stepIconMobile) {
-    display: none !important;
-  }
+  .stepCardMobile h3 + div:not(.stepIconMobile) { display: none !important; }
 
   .stepCardMobile p {
-    margin: 0.55rem 0 0 !important;
+    margin: 0.34rem 0 0 !important;
+    max-width: 100% !important;
+    overflow-wrap: anywhere !important;
     color: #071a42 !important;
-    font-size: clamp(1.03rem, 3.85vw, 1.28rem) !important;
-    line-height: 1.48 !important;
-    letter-spacing: -0.035em !important;
+    font-size: clamp(0.76rem, 2.9vw, 0.9rem) !important;
+    line-height: 1.35 !important;
+    letter-spacing: -0.025em !important;
   }
 
   .stepNoticeMobile {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 0.45rem !important;
-    margin-top: 1rem !important;
-    padding: 0.45rem 1.15rem !important;
-    border: 1.4px solid #ff4c4c !important;
+    gap: 0.32rem !important;
+    max-width: 100% !important;
+    margin-top: 0.55rem !important;
+    padding: 0.32rem 0.62rem !important;
+    box-sizing: border-box !important;
+    border: 1.1px solid #ff4c4c !important;
     border-radius: 999px !important;
-    background: rgba(255, 255, 255, 0.72) !important;
+    background: rgba(255, 255, 255, 0.74) !important;
     color: #dc0a12 !important;
-    font-size: clamp(0.88rem, 3.35vw, 1.05rem) !important;
+    font-size: clamp(0.62rem, 2.45vw, 0.75rem) !important;
     font-weight: 900 !important;
-    line-height: 1.1 !important;
-    letter-spacing: -0.035em !important;
-    white-space: nowrap !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.025em !important;
+    white-space: normal !important;
+    text-align: center !important;
+    overflow-wrap: anywhere !important;
   }
 
   .stepNoticeMobile svg {
-    width: 1.05rem !important;
-    height: 1.05rem !important;
+    width: 0.82rem !important;
+    height: 0.82rem !important;
+    flex: 0 0 auto !important;
     stroke-width: 2.4 !important;
   }
 
-  .stepHighlights {
-    margin-top: 0.92rem !important;
-    font-size: clamp(0.95rem, 3.55vw, 1.1rem) !important;
-    line-height: 1.35 !important;
+  .stepHighlightsMobile {
+    margin: 0.55rem 0 0 !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+    font-size: clamp(0.68rem, 2.55vw, 0.8rem) !important;
+    line-height: 1.28 !important;
+    text-align: left !important;
   }
 
-  .stepHighlights li {
-    margin: 0.45rem 0 !important;
-    gap: 0.55rem !important;
+  .stepHighlightsMobile li {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 0.36rem !important;
+    margin: 0.28rem 0 !important;
+    overflow-wrap: anywhere !important;
   }
 
-  .stepHighlights svg {
-    width: 1.1rem !important;
-    height: 1.1rem !important;
+  .stepHighlightsMobile svg {
+    width: 0.86rem !important;
+    height: 0.86rem !important;
+    flex: 0 0 auto !important;
   }
 
   .journeyFootnoteMobile {
-    margin: 1.55rem 0 0 !important;
-    padding-top: 1.35rem !important;
+    margin: 1rem 0 0 !important;
+    padding-top: 0.85rem !important;
     border-top: 1px solid rgba(7, 91, 234, 0.14) !important;
-    display: flex !important;
-    flex-direction: row !important;
+    display: grid !important;
+    grid-template-columns: auto 1px minmax(0, 1fr) !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 1rem !important;
+    gap: 0.55rem !important;
     color: #061a4a !important;
-    font-size: clamp(0.92rem, 3.5vw, 1.12rem) !important;
-    line-height: 1.25 !important;
+    font-size: clamp(0.68rem, 2.75vw, 0.82rem) !important;
+    line-height: 1.2 !important;
     text-align: left !important;
   }
 
   .journeyFootnoteMobile span:first-child {
     display: inline-flex !important;
     align-items: center !important;
-    gap: 0.5rem !important;
+    gap: 0.32rem !important;
     color: #075bea !important;
     font-weight: 900 !important;
-    white-space: nowrap !important;
+    white-space: normal !important;
   }
 
   .journeyFootnoteMobile svg {
-    width: 1.05rem !important;
-    height: 1.05rem !important;
+    width: 0.82rem !important;
+    height: 0.82rem !important;
     color: #d8a016 !important;
     fill: #d8a016 !important;
   }
@@ -270,150 +289,42 @@
   .journeyFootnoteMobile i {
     display: block !important;
     width: 1px !important;
-    height: 1.6rem !important;
+    height: 1.25rem !important;
     background: #075bea !important;
     opacity: 0.85 !important;
-    flex: 0 0 auto !important;
   }
 }
 
 @media (max-width: 430px) {
-  .journeyMobile {
-    padding: 1.25rem 0.55rem 1.35rem !important;
-  }
-
-  .journeyShellMobile {
-    padding: 2.15rem 1rem 1.35rem !important;
-    border-radius: 1.55rem !important;
-  }
-
-  .journeyTitleMobile {
-    font-size: clamp(1.85rem, 8.6vw, 2.55rem) !important;
-  }
-
-  .pathwayBadgeMobile {
-    margin: 1.3rem auto 1.85rem !important;
-    padding: 0.52rem 1.25rem !important;
-    font-size: 1.04rem !important;
-  }
-
-  .stepTrackMobile {
-    grid-template-columns: 3.75rem 1fr !important;
-    column-gap: 0.72rem !important;
-    row-gap: 0.92rem !important;
-  }
-
-  .stepTrackMobile::before {
-    left: 1.86rem !important;
-    top: 2.75rem !important;
-    bottom: 2.75rem !important;
-  }
-
-  .stepCardMobile {
-    min-height: 7.9rem !important;
-    padding: 1.2rem 1rem 1.12rem 5.35rem !important;
-    border-radius: 1.05rem !important;
-  }
-
-  .stepNumberMobile {
-    left: -4.55rem !important;
-    top: 1.88rem !important;
-    width: 3.62rem !important;
-    height: 3.62rem !important;
-    font-size: 1.5rem !important;
-  }
-
-  .stepIconMobile {
-    left: 1rem !important;
-    top: 1.38rem !important;
-    width: 4rem !important;
-    height: 4rem !important;
-  }
-
-  .stepIconMobile svg {
-    width: 2.3rem !important;
-    height: 2.3rem !important;
-  }
-
-  .stepCardMobile h3 {
-    font-size: 1.12rem !important;
-  }
-
-  .stepCardMobile p {
-    margin-top: 0.42rem !important;
-    font-size: 0.91rem !important;
-    line-height: 1.42 !important;
-  }
-
-  .stepNoticeMobile {
-    margin-top: 0.72rem !important;
-    padding: 0.38rem 0.82rem !important;
-    font-size: 0.76rem !important;
-  }
-
-  .stepHighlights {
-    font-size: 0.82rem !important;
-  }
-
-  .journeyFootnoteMobile {
-    gap: 0.7rem !important;
-    font-size: 0.82rem !important;
-  }
+  .journeyMobile { padding: 0.55rem 0.3rem 0.8rem !important; }
+  .journeyShellMobile { padding: 1.25rem 0.48rem 0.8rem !important; border-radius: 1rem !important; }
+  .journeyTitleMobile { font-size: 1.55rem !important; line-height: 1.05 !important; }
+  .pathwayBadgeMobile { margin: 0.82rem auto 1rem !important; padding: 0.38rem 0.82rem !important; font-size: 0.78rem !important; }
+  .stepTrackMobile { grid-template-columns: 2.7rem minmax(0, 1fr) !important; column-gap: 0.35rem !important; row-gap: 0.58rem !important; }
+  .stepTrackMobile::before { left: 1.35rem !important; top: 1.95rem !important; bottom: 1.95rem !important; }
+  .stepCardMobile { min-height: 5.9rem !important; padding: 0.72rem 0.58rem 0.68rem 3.78rem !important; border-radius: 0.78rem !important; }
+  .stepNumberMobile { left: -3.42rem !important; top: 1.12rem !important; width: 2.55rem !important; height: 2.55rem !important; font-size: 1rem !important; }
+  .stepIconMobile { left: 0.52rem !important; top: 0.75rem !important; width: 2.75rem !important; height: 2.75rem !important; }
+  .stepIconMobile svg { width: 1.55rem !important; height: 1.55rem !important; }
+  .stepCardMobile h3 { font-size: 0.86rem !important; }
+  .stepCardMobile p { font-size: 0.7rem !important; line-height: 1.3 !important; }
+  .stepNoticeMobile { margin-top: 0.42rem !important; padding: 0.28rem 0.5rem !important; font-size: 0.58rem !important; }
+  .stepHighlightsMobile { margin-top: 0.42rem !important; font-size: 0.62rem !important; }
+  .journeyFootnoteMobile { gap: 0.4rem !important; font-size: 0.62rem !important; }
 }
 
 @media (max-width: 380px) {
-  .journeyShellMobile {
-    padding-left: 0.8rem !important;
-    padding-right: 0.8rem !important;
-  }
-
-  .journeyTitleMobile {
-    font-size: 1.72rem !important;
-  }
-
-  .pathwayBadgeMobile {
-    font-size: 0.92rem !important;
-  }
-
-  .stepTrackMobile {
-    grid-template-columns: 3.25rem 1fr !important;
-    column-gap: 0.6rem !important;
-  }
-
-  .stepTrackMobile::before {
-    left: 1.62rem !important;
-  }
-
-  .stepCardMobile {
-    padding-left: 4.7rem !important;
-  }
-
-  .stepNumberMobile {
-    left: -4rem !important;
-    width: 3.15rem !important;
-    height: 3.15rem !important;
-    font-size: 1.32rem !important;
-  }
-
-  .stepIconMobile {
-    width: 3.45rem !important;
-    height: 3.45rem !important;
-  }
-
-  .stepIconMobile svg {
-    width: 2rem !important;
-    height: 2rem !important;
-  }
-
-  .stepCardMobile h3 {
-    font-size: 1rem !important;
-  }
-
-  .stepCardMobile p {
-    font-size: 0.8rem !important;
-  }
-
-  .stepNoticeMobile {
-    font-size: 0.66rem !important;
-  }
+  .journeyTitleMobile { font-size: 1.38rem !important; }
+  .pathwayBadgeMobile { font-size: 0.7rem !important; }
+  .stepTrackMobile { grid-template-columns: 2.4rem minmax(0, 1fr) !important; column-gap: 0.28rem !important; }
+  .stepTrackMobile::before { left: 1.2rem !important; }
+  .stepCardMobile { padding-left: 3.35rem !important; }
+  .stepNumberMobile { left: -3.02rem !important; width: 2.25rem !important; height: 2.25rem !important; font-size: 0.9rem !important; }
+  .stepIconMobile { width: 2.42rem !important; height: 2.42rem !important; }
+  .stepIconMobile svg { width: 1.38rem !important; height: 1.38rem !important; }
+  .stepCardMobile h3 { font-size: 0.78rem !important; }
+  .stepCardMobile p { font-size: 0.64rem !important; }
+  .stepNoticeMobile { font-size: 0.53rem !important; }
+  .stepHighlightsMobile { font-size: 0.56rem !important; }
+  .journeyFootnoteMobile { font-size: 0.56rem !important; }
 }

@@ -27,14 +27,14 @@
   .bgFix::after { display: none !important; content: none !important; }
   .heroShellFix { padding: clamp(2.35rem, 8vw, 3rem) 6.7vw 2rem !important; }
   .kickerFix {
-    margin: 0 0 clamp(1.85rem, 5.8vw, 2.35rem) !important;
-    font-size: clamp(1rem, 3.85vw, 1.22rem) !important;
+    margin: 0 0 clamp(1.65rem, 5.2vw, 2.1rem) !important;
+    font-size: clamp(0.78rem, 2.65vw, 0.96rem) !important;
     line-height: 1.2 !important;
     color: #0048bd !important;
     white-space: nowrap !important;
     letter-spacing: -0.04em !important;
   }
-  .titleFix { margin: 0 0 clamp(0.85rem, 2.8vw, 1.05rem) !important; letter-spacing: -0.07em !important; }
+  .titleFix { margin: 0 0 clamp(0.75rem, 2.4vw, 0.95rem) !important; letter-spacing: -0.07em !important; }
   .titleMainFix {
     display: block !important;
     white-space: nowrap !important;
@@ -57,16 +57,16 @@
     font-weight: 800 !important;
   }
   .subtitleFix {
-    max-width: 96% !important;
-    font-size: clamp(1.2rem, 4.45vw, 1.45rem) !important;
-    line-height: 1.42 !important;
+    max-width: 88% !important;
+    font-size: clamp(0.92rem, 3.18vw, 1.08rem) !important;
+    line-height: 1.34 !important;
     color: #071a42 !important;
-    letter-spacing: -0.025em !important;
+    letter-spacing: -0.02em !important;
   }
   .goldLineFix {
     width: 6.75rem !important;
     height: 3px !important;
-    margin: clamp(1.05rem, 3.8vw, 1.35rem) 0 clamp(1.05rem, 3.8vw, 1.35rem) !important;
+    margin: clamp(0.85rem, 3vw, 1.05rem) 0 clamp(0.95rem, 3.2vw, 1.15rem) !important;
   }
   .mobileIntroFix { display: none !important; }
   .mobileCardsFix {
@@ -97,10 +97,10 @@
 
 @media (max-width: 430px) {
   .heroShellFix { padding: 2.45rem 6.4vw 1.85rem !important; }
-  .kickerFix { margin-bottom: 1.8rem !important; font-size: 0.98rem !important; }
+  .kickerFix { margin-bottom: 1.65rem !important; font-size: 0.82rem !important; }
   .titleMainFix { font-size: clamp(2.82rem, 11.05vw, 3.25rem) !important; }
   .titleSubFix { white-space: nowrap !important; font-size: clamp(0.93rem, 3.9vw, 1.05rem) !important; max-width: 100% !important; font-weight: 800 !important; letter-spacing: -0.045em !important; }
-  .subtitleFix { font-size: 1.08rem !important; max-width: 98% !important; }
+  .subtitleFix { font-size: 0.92rem !important; max-width: 88% !important; line-height: 1.34 !important; }
   .mobileCardsFix { margin-top: clamp(27.4rem, 111vw, 31rem) !important; gap: 0.72rem !important; }
   .mobileCardFix { grid-template-columns: 3.9rem 1fr !important; min-height: 5.95rem !important; padding: 0.9rem 0.82rem !important; }
   .mobileCardIconFix { width: 2.08rem !important; height: 2.08rem !important; }
@@ -111,9 +111,9 @@
 }
 
 @media (max-width: 380px) {
-  .kickerFix { font-size: 0.9rem !important; }
+  .kickerFix { font-size: 0.76rem !important; }
   .titleMainFix { font-size: 2.55rem !important; }
   .titleSubFix { white-space: nowrap !important; font-size: 0.85rem !important; }
-  .subtitleFix { font-size: 0.96rem !important; }
+  .subtitleFix { font-size: 0.82rem !important; max-width: 90% !important; line-height: 1.32 !important; }
   .mobileCardsFix { margin-top: 25.6rem !important; }
 }

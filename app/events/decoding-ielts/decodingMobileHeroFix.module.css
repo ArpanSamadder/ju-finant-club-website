@@ -72,20 +72,24 @@
   .mobileCardsFix {
     display: grid !important;
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: clamp(0.68rem, 2.25vw, 0.9rem) !important;
+    gap: clamp(0.7rem, 2.3vw, 0.9rem) !important;
     margin-top: clamp(25rem, 100vw, 31rem) !important;
     width: 100% !important;
   }
   .mobileCardFix {
-    min-height: clamp(5.55rem, 17.5vw, 6.65rem) !important;
-    grid-template-columns: clamp(3.35rem, 11.5vw, 4.25rem) 1fr !important;
+    min-height: clamp(6.1rem, 18.5vw, 7.05rem) !important;
+    display: flex !important;
+    flex-direction: column !important;
     align-items: center !important;
-    padding: clamp(0.75rem, 2.45vw, 0.98rem) clamp(0.68rem, 2.6vw, 0.98rem) !important;
+    justify-content: center !important;
+    gap: 0.34rem !important;
+    padding: clamp(0.72rem, 2.35vw, 0.95rem) clamp(0.62rem, 2.4vw, 0.9rem) !important;
     border-radius: 12px !important;
+    text-align: center !important;
   }
-  .mobileCardIconFix { width: clamp(1.85rem, 6.5vw, 2.32rem) !important; height: clamp(1.85rem, 6.5vw, 2.32rem) !important; }
-  .mobileCardFix span { font-size: clamp(0.78rem, 2.85vw, 0.94rem) !important; line-height: 1.05 !important; font-weight: 600 !important; }
-  .mobileCardFix strong { margin-top: 0.12rem !important; font-size: clamp(0.86rem, 3.05vw, 1rem) !important; line-height: 1.05 !important; font-weight: 900 !important; letter-spacing: -0.04em !important; }
+  .mobileCardIconFix { width: clamp(1.75rem, 6.2vw, 2.2rem) !important; height: clamp(1.75rem, 6.2vw, 2.2rem) !important; margin: 0 auto 0.12rem !important; }
+  .mobileCardFix span { display: block !important; font-size: clamp(0.68rem, 2.35vw, 0.82rem) !important; line-height: 1.02 !important; font-weight: 850 !important; color: #061a4a !important; }
+  .mobileCardFix strong { display: block !important; margin-top: 0.12rem !important; font-size: clamp(0.8rem, 2.78vw, 0.96rem) !important; line-height: 1.08 !important; font-weight: 900 !important; letter-spacing: -0.04em !important; color: #061a4a !important; }
   .actionsFix { margin-top: clamp(0.9rem, 3vw, 1.15rem) !important; gap: clamp(0.78rem, 2.5vw, 0.95rem) !important; }
   .primaryFix,
   .secondaryFix {
@@ -103,10 +107,10 @@
   .titleSubFix { white-space: nowrap !important; font-size: clamp(0.93rem, 3.9vw, 1.05rem) !important; max-width: 100% !important; font-weight: 800 !important; letter-spacing: -0.045em !important; }
   .subtitleFix { font-size: 0.92rem !important; max-width: 88% !important; line-height: 1.34 !important; }
   .mobileCardsFix { margin-top: clamp(21.4rem, 95vw, 25rem) !important; gap: 0.68rem !important; }
-  .mobileCardFix { grid-template-columns: 3.25rem 1fr !important; min-height: 5.45rem !important; padding: 0.78rem 0.72rem !important; }
-  .mobileCardIconFix { width: 1.85rem !important; height: 1.85rem !important; }
-  .mobileCardFix span { font-size: 0.78rem !important; line-height: 1.04 !important; }
-  .mobileCardFix strong { font-size: 0.86rem !important; line-height: 1.04 !important; }
+  .mobileCardFix { min-height: 5.7rem !important; padding: 0.72rem 0.62rem !important; gap: 0.24rem !important; }
+  .mobileCardIconFix { width: 1.72rem !important; height: 1.72rem !important; }
+  .mobileCardFix span { font-size: 0.66rem !important; line-height: 1.02 !important; }
+  .mobileCardFix strong { font-size: 0.76rem !important; line-height: 1.05 !important; }
   .primaryFix,
   .secondaryFix { min-height: 3.6rem !important; font-size: 1.12rem !important; }
 }
@@ -117,8 +121,8 @@
   .titleSubFix { white-space: nowrap !important; font-size: 0.85rem !important; }
   .subtitleFix { font-size: 0.82rem !important; max-width: 90% !important; line-height: 1.32 !important; }
   .mobileCardsFix { margin-top: 19.6rem !important; }
-  .mobileCardFix { grid-template-columns: 2.95rem 1fr !important; min-height: 5.1rem !important; padding: 0.68rem 0.62rem !important; }
-  .mobileCardIconFix { width: 1.65rem !important; height: 1.65rem !important; }
-  .mobileCardFix span { font-size: 0.72rem !important; }
-  .mobileCardFix strong { font-size: 0.8rem !important; }
+  .mobileCardFix { min-height: 5.3rem !important; padding: 0.62rem 0.54rem !important; }
+  .mobileCardIconFix { width: 1.55rem !important; height: 1.55rem !important; }
+  .mobileCardFix span { font-size: 0.6rem !important; }
+  .mobileCardFix strong { font-size: 0.7rem !important; }
 }

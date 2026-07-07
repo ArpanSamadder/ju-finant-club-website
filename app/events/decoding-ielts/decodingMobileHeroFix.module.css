@@ -17,27 +17,15 @@
 .secondaryFix {}
 
 @media (max-width: 900px) {
-  .heroFix {
-    background: #eef6ff !important;
-    overflow: hidden !important;
-  }
-
+  .heroFix { background: #eef6ff !important; overflow: hidden !important; }
   .bgFix {
     background-image: url('/images/events/decoding-ielts/hero-mobile.png') !important;
-    background-size: 100% 100% !important;
-    background-position: center top !important;
+    background-size: 100% auto !important;
+    background-position: center -77px !important;
     background-repeat: no-repeat !important;
   }
-
-  .bgFix::after {
-    display: none !important;
-    content: none !important;
-  }
-
-  .heroShellFix {
-    padding: clamp(2.35rem, 8vw, 3rem) 6.7vw 2rem !important;
-  }
-
+  .bgFix::after { display: none !important; content: none !important; }
+  .heroShellFix { padding: clamp(2.35rem, 8vw, 3rem) 6.7vw 2rem !important; }
   .kickerFix {
     margin: 0 0 clamp(1.85rem, 5.8vw, 2.35rem) !important;
     font-size: clamp(1rem, 3.85vw, 1.22rem) !important;
@@ -46,12 +34,7 @@
     white-space: nowrap !important;
     letter-spacing: -0.04em !important;
   }
-
-  .titleFix {
-    margin: 0 0 clamp(0.85rem, 2.8vw, 1.05rem) !important;
-    letter-spacing: -0.07em !important;
-  }
-
+  .titleFix { margin: 0 0 clamp(0.85rem, 2.8vw, 1.05rem) !important; letter-spacing: -0.07em !important; }
   .titleMainFix {
     display: block !important;
     white-space: nowrap !important;
@@ -61,11 +44,7 @@
     color: #061a4a !important;
     font-weight: 900 !important;
   }
-
-  .titleMainFix::after {
-    content: ':';
-  }
-
+  .titleMainFix::after { content: ':'; }
   .titleSubFix {
     display: block !important;
     max-width: 100% !important;
@@ -77,7 +56,6 @@
     color: #061a4a !important;
     font-weight: 800 !important;
   }
-
   .subtitleFix {
     max-width: 96% !important;
     font-size: clamp(1.2rem, 4.45vw, 1.45rem) !important;
@@ -85,23 +63,12 @@
     color: #071a42 !important;
     letter-spacing: -0.025em !important;
   }
-
   .goldLineFix {
     width: 6.75rem !important;
     height: 3px !important;
     margin: clamp(1.05rem, 3.8vw, 1.35rem) 0 clamp(1.05rem, 3.8vw, 1.35rem) !important;
   }
-
-  .mobileIntroFix {
-    display: block !important;
-    max-width: 96% !important;
-    margin: 0 !important;
-    font-size: clamp(1.08rem, 4.15vw, 1.34rem) !important;
-    line-height: 1.42 !important;
-    color: #071a42 !important;
-    letter-spacing: -0.025em !important;
-  }
-
+  .mobileIntroFix { display: none !important; }
   .mobileCardsFix {
     display: grid !important;
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
@@ -109,35 +76,16 @@
     margin-top: clamp(31rem, 116vw, 37rem) !important;
     width: 100% !important;
   }
-
   .mobileCardFix {
     min-height: clamp(5.95rem, 18.5vw, 7.15rem) !important;
     grid-template-columns: clamp(3.8rem, 13vw, 4.8rem) 1fr !important;
     padding: clamp(0.85rem, 2.8vw, 1.15rem) clamp(0.8rem, 3vw, 1.15rem) !important;
     border-radius: 12px !important;
   }
-
-  .mobileCardIconFix {
-    width: clamp(2rem, 7.2vw, 2.55rem) !important;
-    height: clamp(2rem, 7.2vw, 2.55rem) !important;
-  }
-
-  .mobileCardFix span {
-    font-size: clamp(0.92rem, 3.3vw, 1.08rem) !important;
-    line-height: 1.08 !important;
-  }
-
-  .mobileCardFix strong {
-    margin-top: 0.18rem !important;
-    font-size: clamp(1rem, 3.55vw, 1.15rem) !important;
-    line-height: 1.12 !important;
-  }
-
-  .actionsFix {
-    margin-top: clamp(1rem, 3.2vw, 1.25rem) !important;
-    gap: clamp(0.78rem, 2.5vw, 0.95rem) !important;
-  }
-
+  .mobileCardIconFix { width: clamp(2rem, 7.2vw, 2.55rem) !important; height: clamp(2rem, 7.2vw, 2.55rem) !important; }
+  .mobileCardFix span { font-size: clamp(0.92rem, 3.3vw, 1.08rem) !important; line-height: 1.08 !important; }
+  .mobileCardFix strong { margin-top: 0.18rem !important; font-size: clamp(1rem, 3.55vw, 1.15rem) !important; line-height: 1.12 !important; }
+  .actionsFix { margin-top: clamp(1rem, 3.2vw, 1.25rem) !important; gap: clamp(0.78rem, 2.5vw, 0.95rem) !important; }
   .primaryFix,
   .secondaryFix {
     min-height: clamp(3.65rem, 12vw, 4.2rem) !important;
@@ -148,88 +96,24 @@
 }
 
 @media (max-width: 430px) {
-  .heroShellFix {
-    padding: 2.45rem 6.4vw 1.85rem !important;
-  }
-
-  .kickerFix {
-    margin-bottom: 1.8rem !important;
-    font-size: 0.98rem !important;
-  }
-
-  .titleMainFix {
-    font-size: clamp(2.82rem, 11.05vw, 3.25rem) !important;
-  }
-
-  .titleSubFix {
-    white-space: nowrap !important;
-    font-size: clamp(0.93rem, 3.9vw, 1.05rem) !important;
-    max-width: 100% !important;
-    font-weight: 800 !important;
-    letter-spacing: -0.045em !important;
-  }
-
-  .subtitleFix {
-    font-size: 1.08rem !important;
-    max-width: 98% !important;
-  }
-
-  .mobileIntroFix {
-    font-size: 1.03rem !important;
-    max-width: 98% !important;
-  }
-
-  .mobileCardsFix {
-    margin-top: clamp(27.4rem, 111vw, 31rem) !important;
-    gap: 0.72rem !important;
-  }
-
-  .mobileCardFix {
-    grid-template-columns: 3.9rem 1fr !important;
-    min-height: 5.95rem !important;
-    padding: 0.9rem 0.82rem !important;
-  }
-
-  .mobileCardIconFix {
-    width: 2.08rem !important;
-    height: 2.08rem !important;
-  }
-
-  .mobileCardFix span {
-    font-size: 0.92rem !important;
-  }
-
-  .mobileCardFix strong {
-    font-size: 0.98rem !important;
-  }
-
+  .heroShellFix { padding: 2.45rem 6.4vw 1.85rem !important; }
+  .kickerFix { margin-bottom: 1.8rem !important; font-size: 0.98rem !important; }
+  .titleMainFix { font-size: clamp(2.82rem, 11.05vw, 3.25rem) !important; }
+  .titleSubFix { white-space: nowrap !important; font-size: clamp(0.93rem, 3.9vw, 1.05rem) !important; max-width: 100% !important; font-weight: 800 !important; letter-spacing: -0.045em !important; }
+  .subtitleFix { font-size: 1.08rem !important; max-width: 98% !important; }
+  .mobileCardsFix { margin-top: clamp(27.4rem, 111vw, 31rem) !important; gap: 0.72rem !important; }
+  .mobileCardFix { grid-template-columns: 3.9rem 1fr !important; min-height: 5.95rem !important; padding: 0.9rem 0.82rem !important; }
+  .mobileCardIconFix { width: 2.08rem !important; height: 2.08rem !important; }
+  .mobileCardFix span { font-size: 0.92rem !important; }
+  .mobileCardFix strong { font-size: 0.98rem !important; }
   .primaryFix,
-  .secondaryFix {
-    min-height: 3.6rem !important;
-    font-size: 1.12rem !important;
-  }
+  .secondaryFix { min-height: 3.6rem !important; font-size: 1.12rem !important; }
 }
 
 @media (max-width: 380px) {
-  .kickerFix {
-    font-size: 0.9rem !important;
-  }
-
-  .titleMainFix {
-    font-size: 2.55rem !important;
-  }
-
-  .titleSubFix {
-    white-space: nowrap !important;
-    font-size: 0.85rem !important;
-  }
-
-  .subtitleFix,
-  .mobileIntroFix {
-    font-size: 0.96rem !important;
-  }
-
-  .mobileCardsFix {
-    margin-top: 25.6rem !important;
-  }
+  .kickerFix { font-size: 0.9rem !important; }
+  .titleMainFix { font-size: 2.55rem !important; }
+  .titleSubFix { white-space: nowrap !important; font-size: 0.85rem !important; }
+  .subtitleFix { font-size: 0.96rem !important; }
+  .mobileCardsFix { margin-top: 25.6rem !important; }
 }

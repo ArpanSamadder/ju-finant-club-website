@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, BookOpen, Bus, CalendarDays, Clock, FileText, Globe2, GraduationCap, Headphones, Landmark, MapPin, Plane, Route, Star, UsersRound } from 'lucide-react';
+import { AlarmClock, ArrowRight, BookOpen, Bus, CalendarDays, Clock, FileText, Globe2, GraduationCap, Headphones, Landmark, MapPin, Plane, Route, Star, UsersRound } from 'lucide-react';
 import styles from './decodingIelts.module.css';
 import sectionStyles from './decodingSections.module.css';
 import mobileHeroFix from './decodingMobileHeroFix.module.css';
@@ -63,6 +63,12 @@ export default function DecodingIELTSPage() {
             {infoCards.map(({label, value, icon: Icon}) => (
               <div className={styles.card} key={label}><Icon className={styles.cardIcon} /><div><span>{label}</span><strong>{value}</strong></div></div>
             ))}
+          </div>
+
+          <div className={mobileHeroFix.urgencyFix}>
+            <span><AlarmClock /></span>
+            <strong>Only 100 Seats Available</strong>
+            <ArrowRight />
           </div>
 
           <div className={`${styles.mobileCards} ${mobileHeroFix.mobileCardsFix}`}>

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, BookOpen, Bus, CalendarDays, ClipboardList, Clock, FileText, Globe2, GraduationCap, Headphones, Landmark, MapPin, Plane, Route, Star, UserRound, UsersRound } from 'lucide-react';
+import { ArrowRight, BookOpen, Bus, CalendarDays, Clock, FileText, Globe2, GraduationCap, Headphones, Landmark, MapPin, Plane, Route, Star, UsersRound } from 'lucide-react';
 import styles from './decodingIelts.module.css';
 import sectionStyles from './decodingSections.module.css';
 import mobileHeroFix from './decodingMobileHeroFix.module.css';
@@ -17,10 +17,10 @@ const infoCards = [
 ];
 
 const mobileInfoCards = [
-  { label: 'Date:', value: 'July 20', icon: CalendarDays },
-  { label: 'Venue:', value: 'Jahangirnagar University Campus', icon: MapPin },
-  { label: 'For:', value: 'Final-year & Master’s Students', icon: UserRound },
-  { label: 'Access:', value: 'Registration Required', icon: ClipboardList },
+  { label: 'Date:', value: '20 July', icon: CalendarDays },
+  { label: 'Time:', value: '2.30pm', icon: Clock },
+  { label: 'Venue:', value: 'Seminar Room', icon: MapPin },
+  { label: 'Eligibility:', value: 'JU 50 & 51', icon: GraduationCap },
 ];
 
 const journeySteps = [

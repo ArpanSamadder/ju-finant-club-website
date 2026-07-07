@@ -1,0 +1,290 @@
+.desktopAbout {}
+.mobileAbout { display: none; }
+
+@media (max-width: 900px) {
+  .desktopAbout { display: none !important; }
+
+  .mobileAbout {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: .7rem .55rem 1rem;
+    box-sizing: border-box;
+    overflow: hidden;
+    background: linear-gradient(180deg, #edf6ff 0%, #f6fbff 100%);
+    color: #061a4a;
+  }
+
+  .mobilePanel {
+    position: relative;
+    width: 100%;
+    min-height: calc(100svh - 68px);
+    padding: 2.25rem 1.45rem 1.7rem;
+    box-sizing: border-box;
+    overflow: hidden;
+    border-radius: 2rem;
+    border: 1px solid rgba(255,255,255,.92);
+    background: rgba(255,255,255,.74);
+    box-shadow: 0 18px 46px rgba(42,88,156,.08);
+  }
+
+  .dotsTop,
+  .dotsBottom {
+    position: absolute;
+    width: 10rem;
+    height: 12rem;
+    opacity: .34;
+    background-image: radial-gradient(circle, #75aaff 1.55px, transparent 1.95px);
+    background-size: 8px 8px;
+    pointer-events: none;
+  }
+
+  .dotsTop { top: 0; right: -2rem; }
+  .dotsBottom { bottom: 0; left: -2rem; }
+
+  .heading {
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    color: #061a4a;
+    font-size: clamp(2.35rem, 9.5vw, 3.35rem);
+    font-weight: 900;
+    line-height: 1.02;
+    letter-spacing: -.07em;
+  }
+
+  .rule {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    width: 8.8rem;
+    margin: 1rem 0 1.35rem;
+  }
+
+  .rule::before,
+  .rule::after {
+    content: '';
+    height: 3px;
+    border-radius: 999px;
+  }
+
+  .rule::before { width: 4rem; background: #075bea; }
+  .rule::after { width: 4.2rem; background: #d8e7f8; }
+
+  .rule span {
+    width: .45rem;
+    height: .45rem;
+    border-radius: 50%;
+    background: #075bea;
+    flex: 0 0 auto;
+  }
+
+  .description {
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    color: #071a42;
+    font-size: clamp(1.05rem, 4.1vw, 1.3rem);
+    line-height: 1.62;
+    letter-spacing: -.025em;
+  }
+
+  .brandBlock {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2.2rem auto 2.3rem;
+    color: #0876d8;
+  }
+
+  .brandMark {
+    width: 5.8rem;
+    height: 5.8rem;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #0876d8;
+    color: #fff;
+    font-size: 4.75rem;
+    font-weight: 900;
+    line-height: .78;
+    letter-spacing: -.1em;
+    flex: 0 0 auto;
+  }
+
+  .brandWords {
+    text-align: left;
+  }
+
+  .brandWords strong {
+    display: block;
+    color: #0876d8;
+    font-size: clamp(2.25rem, 8.6vw, 3rem);
+    font-weight: 900;
+    line-height: .84;
+    letter-spacing: -.075em;
+  }
+
+  .brandWords small {
+    display: block;
+    margin-top: .8rem;
+    color: #0751c9;
+    font-size: clamp(1.05rem, 4vw, 1.3rem);
+    font-weight: 900;
+    letter-spacing: .06em;
+    white-space: nowrap;
+  }
+
+  .poweredRow {
+    display: flex;
+    align-items: center;
+    gap: .45rem;
+    margin-top: .65rem;
+    color: #111;
+    font-size: clamp(.9rem, 3.5vw, 1.08rem);
+    font-weight: 800;
+  }
+
+  .pfecLogo {
+    display: inline-flex;
+    align-items: center;
+    gap: .34rem;
+    color: #2f2c9e;
+  }
+
+  .pfecBars {
+    display: inline-grid;
+    grid-template-columns: repeat(3, .42rem);
+    gap: .13rem;
+    transform: skewX(-16deg);
+  }
+
+  .pfecBars i {
+    display: block;
+    width: .42rem;
+    height: 1.3rem;
+    background: #5d50d0;
+    border-radius: .05rem;
+  }
+
+  .pfecText {
+    display: flex;
+    flex-direction: column;
+    line-height: .82;
+    text-transform: uppercase;
+  }
+
+  .pfecText b { font-size: .95rem; letter-spacing: -.03em; }
+  .pfecText span { font-size: .58rem; font-weight: 800; letter-spacing: .02em; }
+
+  .cards {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: .65rem;
+    width: 100%;
+    margin-top: 1.2rem;
+  }
+
+  .card {
+    min-width: 0;
+    min-height: 18rem;
+    padding: 1.15rem .65rem 1rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border-radius: 1.15rem;
+    border: 1px solid rgba(255,255,255,.96);
+    background: rgba(255,255,255,.9);
+    box-shadow: 0 14px 34px rgba(36,90,166,.08);
+  }
+
+  .cardIcon {
+    width: 4.1rem;
+    height: 4.1rem;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #eaf3ff;
+    color: #075bea;
+    flex: 0 0 auto;
+  }
+
+  .cardIcon svg {
+    width: 2.25rem;
+    height: 2.25rem;
+    stroke-width: 1.85;
+  }
+
+  .card h3 {
+    margin: 1rem 0 .8rem;
+    color: #061a4a;
+    font-size: clamp(.9rem, 3.4vw, 1.1rem);
+    font-weight: 900;
+    line-height: 1.2;
+    letter-spacing: -.045em;
+  }
+
+  .card p {
+    margin: 0;
+    color: #071a42;
+    font-size: clamp(.76rem, 2.9vw, .92rem);
+    line-height: 1.5;
+    letter-spacing: -.02em;
+  }
+
+  .cardLine {
+    width: 2rem;
+    height: 3px;
+    margin-top: auto;
+    border-radius: 999px;
+    background: #075bea;
+  }
+}
+
+@media (max-width: 430px) {
+  .mobileAbout { padding: .45rem .35rem .75rem; }
+  .mobilePanel { min-height: 0; padding: 1.7rem 1rem 1.25rem; border-radius: 1.5rem; }
+  .heading { font-size: 2.15rem; }
+  .rule { margin: .8rem 0 1rem; }
+  .description { font-size: .95rem; line-height: 1.55; }
+  .brandBlock { gap: .75rem; margin: 1.8rem auto 1.8rem; }
+  .brandMark { width: 4.55rem; height: 4.55rem; font-size: 3.75rem; }
+  .brandWords strong { font-size: 2.1rem; }
+  .brandWords small { margin-top: .55rem; font-size: .9rem; }
+  .poweredRow { margin-top: .5rem; font-size: .78rem; }
+  .pfecBars { grid-template-columns: repeat(3, .33rem); }
+  .pfecBars i { width: .33rem; height: 1.05rem; }
+  .pfecText b { font-size: .75rem; }
+  .pfecText span { font-size: .47rem; }
+  .cards { gap: .45rem; margin-top: .9rem; }
+  .card { min-height: 15.8rem; padding: .9rem .45rem .8rem; border-radius: .95rem; }
+  .cardIcon { width: 3.45rem; height: 3.45rem; }
+  .cardIcon svg { width: 1.9rem; height: 1.9rem; }
+  .card h3 { margin: .8rem 0 .65rem; font-size: .82rem; line-height: 1.18; }
+  .card p { font-size: .69rem; line-height: 1.45; }
+  .cardLine { width: 1.6rem; }
+}
+
+@media (max-width: 380px) {
+  .mobilePanel { padding-left: .8rem; padding-right: .8rem; }
+  .heading { font-size: 1.95rem; }
+  .description { font-size: .86rem; }
+  .brandMark { width: 4rem; height: 4rem; font-size: 3.3rem; }
+  .brandWords strong { font-size: 1.85rem; }
+  .brandWords small { font-size: .8rem; }
+  .cards { gap: .35rem; }
+  .card { min-height: 14.5rem; padding: .78rem .36rem .7rem; }
+  .cardIcon { width: 3rem; height: 3rem; }
+  .cardIcon svg { width: 1.7rem; height: 1.7rem; }
+  .card h3 { font-size: .73rem; }
+  .card p { font-size: .62rem; }
+}

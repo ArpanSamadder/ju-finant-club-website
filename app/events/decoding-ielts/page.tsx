@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { ArrowRight, BookOpen, Bus, CalendarDays, ClipboardList, Clock, FileText, Globe2, GraduationCap, Headphones, Landmark, MapPin, Plane, Route, Star, UserRound, UsersRound } from 'lucide-react';
 import styles from './decodingIelts.module.css';
 import sectionStyles from './decodingSections.module.css';
+import mobileHeroFix from './decodingMobileHeroFix.module.css';
 
 export const metadata = {
   title: 'Decoding IELTS | JU FinAnt Club',
@@ -45,8 +46,8 @@ const partnerBenefits = [
 export default function DecodingIELTSPage() {
   return (
     <div className={styles.page}>
-      <section className={styles.hero}>
-        <div className={styles.bg} />
+      <section className={`${styles.hero} ${mobileHeroFix.heroFix}`}>
+        <div className={`${styles.bg} ${mobileHeroFix.bgFix}`} />
         <div className={styles.heroShell}>
           <div className={styles.copy}>
             <p className={styles.kicker}>Jahangirnagar University FinAnt Club <span>×</span> Enhance English</p>
@@ -65,7 +66,7 @@ export default function DecodingIELTSPage() {
             ))}
           </div>
 
-          <div className={styles.mobileCards}>
+          <div className={`${styles.mobileCards} ${mobileHeroFix.mobileCardsFix}`}>
             {mobileInfoCards.map(({label, value, icon: Icon}) => (
               <div className={styles.mobileCard} key={label}><Icon className={styles.mobileCardIcon} /><div><span>{label}</span><strong>{value}</strong></div></div>
             ))}

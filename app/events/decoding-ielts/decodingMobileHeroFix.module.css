@@ -48,7 +48,7 @@
   }
 
   .titleFix {
-    margin: 0 0 clamp(1.25rem, 4.2vw, 1.65rem) !important;
+    margin: 0 0 clamp(0.85rem, 2.8vw, 1.05rem) !important;
     letter-spacing: -0.07em !important;
   }
 
@@ -68,14 +68,14 @@
 
   .titleSubFix {
     display: block !important;
-    max-width: 96% !important;
-    white-space: normal !important;
-    margin-top: 0.12rem !important;
-    font-size: clamp(2.75rem, 9.8vw, 3.65rem) !important;
-    line-height: 1.06 !important;
-    letter-spacing: -0.07em !important;
+    max-width: 100% !important;
+    white-space: nowrap !important;
+    margin-top: 0.22rem !important;
+    font-size: clamp(1.05rem, 4.05vw, 1.34rem) !important;
+    line-height: 1.08 !important;
+    letter-spacing: -0.045em !important;
     color: #061a4a !important;
-    font-weight: 900 !important;
+    font-weight: 800 !important;
   }
 
   .subtitleFix {
@@ -162,8 +162,11 @@
   }
 
   .titleSubFix {
-    font-size: clamp(2.38rem, 9.55vw, 2.9rem) !important;
-    max-width: 98% !important;
+    white-space: nowrap !important;
+    font-size: clamp(0.93rem, 3.9vw, 1.05rem) !important;
+    max-width: 100% !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.045em !important;
   }
 
   .subtitleFix {
@@ -217,7 +220,8 @@
   }
 
   .titleSubFix {
-    font-size: 2.1rem !important;
+    white-space: nowrap !important;
+    font-size: 0.85rem !important;
   }
 
   .subtitleFix,

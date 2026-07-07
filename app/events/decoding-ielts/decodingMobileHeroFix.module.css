@@ -72,43 +72,58 @@
   .mobileIntroFix { display: none !important; }
   .urgencyFix {
     display: grid !important;
-    grid-template-columns: clamp(3.8rem, 14vw, 4.9rem) 1fr clamp(2rem, 7vw, 2.8rem) !important;
+    grid-template-columns: clamp(2.8rem, 10vw, 3.55rem) 1fr clamp(1.9rem, 6.6vw, 2.35rem) !important;
     align-items: center !important;
-    gap: clamp(0.72rem, 2.4vw, 1rem) !important;
+    gap: clamp(0.55rem, 2vw, 0.72rem) !important;
     width: 100% !important;
-    min-height: clamp(4.55rem, 14vw, 5.5rem) !important;
+    min-height: clamp(3.55rem, 11.2vw, 4.25rem) !important;
     margin-top: clamp(25rem, 100vw, 31rem) !important;
-    padding: clamp(0.72rem, 2.45vw, 1rem) clamp(0.9rem, 3.2vw, 1.25rem) !important;
-    border-radius: 12px !important;
+    padding: clamp(0.48rem, 1.75vw, 0.64rem) clamp(0.72rem, 2.75vw, 1rem) !important;
+    border-radius: 8px !important;
     border: 1px solid rgba(255, 255, 255, 0.72) !important;
-    background: linear-gradient(180deg, #ff3636 0%, #bf060d 100%) !important;
-    box-shadow: 0 16px 34px rgba(185, 0, 10, 0.22), inset 0 1px 0 rgba(255,255,255,0.42) !important;
+    background: linear-gradient(180deg, #ff3434 0%, #d4121c 55%, #b50610 100%) !important;
+    box-shadow: 0 11px 22px rgba(180, 0, 9, 0.2), inset 0 1px 0 rgba(255,255,255,0.45) !important;
     color: #fff !important;
   }
   .urgencyFix span {
-    width: clamp(3rem, 10vw, 3.9rem) !important;
-    height: clamp(3rem, 10vw, 3.9rem) !important;
+    width: clamp(2.25rem, 8vw, 2.9rem) !important;
+    height: clamp(2.25rem, 8vw, 2.9rem) !important;
     display: grid !important;
     place-items: center !important;
     border-radius: 50% !important;
     background: rgba(255,255,255,0.16) !important;
   }
   .urgencyFix span svg {
-    width: clamp(1.7rem, 5.8vw, 2.2rem) !important;
-    height: clamp(1.7rem, 5.8vw, 2.2rem) !important;
-    stroke-width: 2.5 !important;
+    width: clamp(1.42rem, 5vw, 1.85rem) !important;
+    height: clamp(1.42rem, 5vw, 1.85rem) !important;
+    stroke-width: 2.65 !important;
+  }
+  .urgencyFix div {
+    min-width: 0 !important;
   }
   .urgencyFix strong {
-    font-size: clamp(1.38rem, 5.1vw, 1.95rem) !important;
-    line-height: 1.05 !important;
+    display: block !important;
+    font-size: clamp(1.05rem, 3.95vw, 1.42rem) !important;
+    line-height: 1.02 !important;
     font-weight: 900 !important;
     letter-spacing: -0.05em !important;
     text-shadow: 0 1px 2px rgba(0,0,0,0.12) !important;
+    white-space: nowrap !important;
+  }
+  .urgencyFix small {
+    display: block !important;
+    margin-top: 0.24rem !important;
+    font-size: clamp(0.72rem, 2.65vw, 0.94rem) !important;
+    line-height: 1.05 !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.025em !important;
+    color: rgba(255,255,255,0.96) !important;
+    white-space: nowrap !important;
   }
   .urgencyFix > svg {
     justify-self: end !important;
-    width: clamp(1.75rem, 6.4vw, 2.4rem) !important;
-    height: clamp(1.75rem, 6.4vw, 2.4rem) !important;
+    width: clamp(1.65rem, 6vw, 2.18rem) !important;
+    height: clamp(1.65rem, 6vw, 2.18rem) !important;
     stroke-width: 2.4 !important;
   }
   .mobileCardsFix {
@@ -148,8 +163,11 @@
   .titleMainFix { font-size: clamp(2.82rem, 11.05vw, 3.25rem) !important; }
   .titleSubFix { white-space: nowrap !important; font-size: clamp(0.93rem, 3.9vw, 1.05rem) !important; max-width: 100% !important; font-weight: 800 !important; letter-spacing: -0.045em !important; }
   .subtitleFix { font-size: 0.92rem !important; max-width: 88% !important; line-height: 1.34 !important; }
-  .urgencyFix { margin-top: clamp(21.4rem, 95vw, 25rem) !important; min-height: 4.65rem !important; padding: 0.68rem 0.86rem !important; }
-  .urgencyFix strong { font-size: clamp(1.28rem, 5vw, 1.55rem) !important; }
+  .urgencyFix { margin-top: clamp(21.4rem, 95vw, 25rem) !important; min-height: 3.7rem !important; padding: 0.48rem 0.7rem !important; border-radius: 7px !important; }
+  .urgencyFix span { width: 2.45rem !important; height: 2.45rem !important; }
+  .urgencyFix span svg { width: 1.55rem !important; height: 1.55rem !important; }
+  .urgencyFix strong { font-size: clamp(0.96rem, 4vw, 1.12rem) !important; }
+  .urgencyFix small { font-size: clamp(0.68rem, 2.75vw, 0.78rem) !important; }
   .mobileCardsFix { margin-top: 0.72rem !important; gap: 0.68rem !important; }
   .mobileCardFix { min-height: 5.7rem !important; padding: 0.72rem 0.62rem !important; gap: 0.24rem !important; }
   .mobileCardIconFix { width: 1.72rem !important; height: 1.72rem !important; }
@@ -164,8 +182,11 @@
   .titleMainFix { font-size: 2.55rem !important; }
   .titleSubFix { white-space: nowrap !important; font-size: 0.85rem !important; }
   .subtitleFix { font-size: 0.82rem !important; max-width: 90% !important; line-height: 1.32 !important; }
-  .urgencyFix { margin-top: 19.6rem !important; min-height: 4.25rem !important; }
-  .urgencyFix strong { font-size: 1.08rem !important; }
+  .urgencyFix { margin-top: 19.6rem !important; min-height: 3.45rem !important; grid-template-columns: 2.25rem 1fr 1.8rem !important; }
+  .urgencyFix span { width: 2.15rem !important; height: 2.15rem !important; }
+  .urgencyFix span svg { width: 1.35rem !important; height: 1.35rem !important; }
+  .urgencyFix strong { font-size: 0.9rem !important; }
+  .urgencyFix small { font-size: 0.62rem !important; }
   .mobileCardFix { min-height: 5.3rem !important; padding: 0.62rem 0.54rem !important; }
   .mobileCardIconFix { width: 1.55rem !important; height: 1.55rem !important; }
   .mobileCardFix span { font-size: 0.6rem !important; }

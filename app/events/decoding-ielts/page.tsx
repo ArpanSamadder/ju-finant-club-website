@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import { AlarmClock, ArrowRight, Award, BadgePercent, BookOpen, Building2, Bus, CalendarDays, ChevronDown, CircleHelp, Clock, FileText, Globe2, GraduationCap, Headphones, Info, Landmark, Mail, MapPin, Phone, Plane, Route, Star, Target, Ticket, TrendingUp, Trophy, UserRound, UsersRound } from 'lucide-react';
+import { DecodingMobileSections } from '@/components/decoding-ielts/mobile-sections';
+import { FloatingRegisterButton } from '@/components/decoding-ielts/floating-register-button';
 import styles from './decodingIelts.module.css';
 import sectionStyles from './decodingSections.module.css';
 import mobileHeroFix from './decodingMobileHeroFix.module.css';
@@ -92,7 +94,7 @@ const faqItems = [
 export default function DecodingIELTSPage() {
   return (
     <div className={styles.page}>
-      <section className={`${styles.hero} ${mobileHeroFix.heroFix}`}>
+      <section id="decoding-ielts-hero" className={`${styles.hero} ${mobileHeroFix.heroFix}`}>
         <div className={`${styles.bg} ${mobileHeroFix.bgFix}`} />
         <div className={`${styles.heroShell} ${mobileHeroFix.heroShellFix}`}>
           <div className={`${styles.copy} ${mobileHeroFix.copyFix}`}>
@@ -124,7 +126,7 @@ export default function DecodingIELTSPage() {
           </div>
 
           <div className={`${styles.actions} ${mobileHeroFix.actionsFix}`}>
-            <Link href="#registration" className={`${styles.primary} ${mobileHeroFix.primaryFix}`}>Register Now <ArrowRight /></Link>
+            <Link href="/events/decoding-ielts/register" className={`${styles.primary} ${mobileHeroFix.primaryFix}`}>Register Now <ArrowRight /></Link>
             <Link href="#journey" className={`${styles.secondary} ${mobileHeroFix.secondaryFix}`}>View Event Details <ArrowRight /></Link>
           </div>
         </div>
@@ -251,7 +253,7 @@ export default function DecodingIELTSPage() {
                 <label className={desktopRegister.checkRow}><input type="checkbox" name="workshopInterest" /><span className={desktopRegister.checkIcon}><GraduationCap /></span><span>Interested in Dhanmondi Workshop</span></label>
                 <label className={desktopRegister.checkRow}><input type="checkbox" name="expoInterest" /><span className={desktopRegister.checkIcon}><Globe2 /></span><span>Interested in Global Education Expo</span></label>
               </div>
-              <div className={desktopRegister.formActions}><button className={desktopRegister.formPrimary} type="button">Register Now</button><Link className={desktopRegister.formSecondary} href="#journey">View Event Details <ArrowRight /></Link></div>
+              <div className={desktopRegister.formActions}><Link className={desktopRegister.formPrimary} href="/events/decoding-ielts/register">Register Now</Link><Link className={desktopRegister.formSecondary} href="#journey">View Event Details <ArrowRight /></Link></div>
             </div>
             <p className={`${desktopCommon.infoNote} ${desktopRegister.formFooter}`}><Info /> You will receive confirmation and updates after registration.</p>
           </form>
@@ -278,9 +280,8 @@ export default function DecodingIELTSPage() {
         </div>
       </section>
 
-      <section id="registration" className={`${styles.registration} ${desktopCommon.mobileRegistrationOnly}`}>
-        <p className={styles.sectionEyebrow}>Registration</p><h2>Registration opens through the official website.</h2><p>The registration form will be connected to a Google Sheet response database in the next implementation step.</p>
-      </section>
+      <DecodingMobileSections />
+      <FloatingRegisterButton />
     </div>
   );
 }

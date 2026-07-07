@@ -55,7 +55,7 @@ export default function DecodingIELTSPage() {
               <span className={`${styles.titleMain} ${mobileHeroFix.titleMainFix}`}>Decoding IELTS</span>
               <span className={`${styles.titleSub} ${mobileHeroFix.titleSubFix}`}>Your Gateway to Global Education</span>
             </h1>
-            <p className={`${styles.subtitle} ${mobileHeroFix.subtitleFix}`}>A focused IELTS Masterclass for students preparing for higher studies, global education pathways, and internationally competitive academic opportunities.</p>
+            <p className={`${styles.subtitle} ${mobileHeroFix.subtitleFix}`}>A focused IELTS Masterclass for higher studies, global education pathways, and competitive academic opportunities.</p>
             <div className={`${styles.goldLine} ${mobileHeroFix.goldLineFix}`} />
           </div>
 

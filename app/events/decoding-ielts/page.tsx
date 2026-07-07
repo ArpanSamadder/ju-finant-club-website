@@ -4,6 +4,7 @@ import styles from './decodingIelts.module.css';
 import sectionStyles from './decodingSections.module.css';
 import mobileHeroFix from './decodingMobileHeroFix.module.css';
 import journeyMobile from './decodingJourneyMobile.module.css';
+import aboutMobile from './decodingAboutMobile.module.css';
 
 export const metadata = {
   title: 'Decoding IELTS | JU FinAnt Club',
@@ -129,7 +130,7 @@ export default function DecodingIELTSPage() {
         </div>
       </section>
 
-      <section id="about-enhance" className={sectionStyles.aboutSection}>
+      <section id="about-enhance-desktop" className={`${sectionStyles.aboutSection} ${aboutMobile.desktopAbout}`}>
         <div className={sectionStyles.aboutDotsTop} />
         <div className={sectionStyles.aboutDotsBottom} />
         <div className={sectionStyles.aboutShell}>
@@ -147,6 +148,42 @@ export default function DecodingIELTSPage() {
             <div className={sectionStyles.logoRule} />
             <h3>Powered by <span>PFEC Global</span></h3>
             <div className={sectionStyles.benefitList}>{partnerBenefits.map(({text, icon: Icon}) => <div className={sectionStyles.benefitItem} key={text}><Icon /><span>{text}</span></div>)}</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about-enhance" className={aboutMobile.mobileAbout}>
+        <div className={aboutMobile.mobilePanel}>
+          <div className={aboutMobile.dotsTop} />
+          <div className={aboutMobile.dotsBottom} />
+          <h2 className={aboutMobile.heading}>About Enhance English</h2>
+          <div className={aboutMobile.rule}><span /></div>
+          <p className={aboutMobile.description}>Enhance English is a leading test preparation and study abroad guidance platform helping students achieve their global education goals. Powered by PFEC Global, they provide expert training, personalized guidance, and end-to-end support for IELTS, PTE, SAT and international admissions.</p>
+
+          <div className={aboutMobile.brandBlock}>
+            <div className={aboutMobile.brandMark}>e</div>
+            <div className={aboutMobile.brandWords}>
+              <strong>enhance<br />english</strong>
+              <small>IELTS | PTE | SAT</small>
+              <div className={aboutMobile.poweredRow}>
+                <span>Powered By</span>
+                <span className={aboutMobile.pfecLogo}>
+                  <span className={aboutMobile.pfecBars}><i /><i /><i /></span>
+                  <span className={aboutMobile.pfecText}><b>PFEC</b><span>Global</span></span>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div className={aboutMobile.cards}>
+            {partnerCards.map(({title, description, icon: Icon}) => (
+              <article className={aboutMobile.card} key={title}>
+                <div className={aboutMobile.cardIcon}><Icon /></div>
+                <h3>{title}</h3>
+                <p>{description}</p>
+                <span className={aboutMobile.cardLine} />
+              </article>
+            ))}
           </div>
         </div>
       </section>

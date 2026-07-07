@@ -94,19 +94,37 @@ export default function DecodingIELTSPage() {
         <div className={`${sectionStyles.journeyShell} ${journeyMobile.journeyShellMobile}`}>
           <h2 className={`${sectionStyles.journeyTitle} ${journeyMobile.journeyTitleMobile}`}>Your <span>FREE</span> Global Education Journey</h2>
           <div className={`${sectionStyles.pathwayBadge} ${journeyMobile.pathwayBadgeMobile}`}><Route /> <span>4-Step Pathway</span></div>
-          <div className={`${sectionStyles.stepTrack} ${journeyMobile.stepTrackMobile}`}>
-            {journeySteps.map(({step, title, description, icon: Icon, highlights, notice}) => (
-              <article className={`${sectionStyles.stepCard} ${journeyMobile.stepCardMobile}`} key={step}>
-                <div className={`${sectionStyles.stepNumber} ${journeyMobile.stepNumberMobile}`}>{step}</div>
-                <div className={`${sectionStyles.stepIcon} ${journeyMobile.stepIconMobile}`}><Icon /></div>
+
+          <div className={`${sectionStyles.stepTrack} ${journeyMobile.desktopTrack}`}>
+            {journeySteps.map(({step, title, description, icon: Icon, highlights}) => (
+              <article className={sectionStyles.stepCard} key={step}>
+                <div className={sectionStyles.stepNumber}>{step}</div>
+                <div className={sectionStyles.stepIcon}><Icon /></div>
                 <h3>{title}</h3>
                 <div className={sectionStyles.stepLine} />
                 <p>{description}</p>
-                {notice && <div className={journeyMobile.stepNoticeMobile}><UsersRound /> {notice}</div>}
-                {highlights && <ul className={`${sectionStyles.stepHighlights} ${journeyMobile.stepHighlightsMobile}`}><li><Star /> {highlights[0]}</li><li><Bus /> {highlights[1]}</li></ul>}
+                {highlights && <ul className={sectionStyles.stepHighlights}><li><Star /> {highlights[0]}</li><li><Bus /> {highlights[1]}</li></ul>}
               </article>
             ))}
           </div>
+
+          <div className={journeyMobile.mobileTrack}>
+            {journeySteps.map(({step, title, description, icon: Icon, highlights, notice}) => (
+              <div className={journeyMobile.mobileStepRow} key={step}>
+                <div className={journeyMobile.mobileStepNumber}>{step}</div>
+                <article className={journeyMobile.mobileStepCard}>
+                  <div className={journeyMobile.mobileStepIcon}><Icon /></div>
+                  <div className={journeyMobile.mobileStepContent}>
+                    <h3>{title}</h3>
+                    <p>{description}</p>
+                    {notice && <div className={journeyMobile.mobileStepNotice}><UsersRound /> <span>{notice}</span></div>}
+                    {highlights && <ul className={journeyMobile.mobileStepHighlights}><li><Star /> <span>{highlights[0]}</span></li><li><Bus /> <span>{highlights[1]}</span></li></ul>}
+                  </div>
+                </article>
+              </div>
+            ))}
+          </div>
+
           <div className={`${sectionStyles.journeyFootnote} ${journeyMobile.journeyFootnoteMobile}`}><span><Star /> Free student opportunity</span><i /><span>Open to final-year & master’s students</span></div>
         </div>
       </section>

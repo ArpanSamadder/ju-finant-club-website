@@ -1,11 +1,14 @@
 import Link from 'next/link';
-import { AlarmClock, ArrowRight, BookOpen, Bus, CalendarDays, Clock, FileText, Globe2, GraduationCap, Headphones, Landmark, MapPin, Plane, Route, Star, Target, TrendingUp, Trophy, UsersRound } from 'lucide-react';
+import { AlarmClock, ArrowRight, Award, BadgePercent, BookOpen, Building2, Bus, CalendarDays, ChevronDown, CircleHelp, Clock, FileText, Globe2, GraduationCap, Headphones, Info, Landmark, Mail, MapPin, Phone, Plane, Route, Star, Target, Ticket, TrendingUp, Trophy, UserRound, UsersRound } from 'lucide-react';
 import styles from './decodingIelts.module.css';
 import sectionStyles from './decodingSections.module.css';
 import mobileHeroFix from './decodingMobileHeroFix.module.css';
 import journeyMobile from './decodingJourneyMobile.module.css';
 import aboutMobile from './decodingAboutMobile.module.css';
 import whyAttendMobile from './decodingWhyAttendMobile.module.css';
+import desktopCommon from './decodingDesktopCommon.module.css';
+import desktopOverview from './decodingDesktopOverview.module.css';
+import desktopRegister from './decodingDesktopRegister.module.css';
 
 export const metadata = {
   title: 'Decoding IELTS | JU FinAnt Club',
@@ -59,6 +62,33 @@ const whyAttendStats = [
   { title: 'Global Reach', description: 'Universities & Admissions Worldwide', icon: GraduationCap },
 ];
 
+const participantBenefits = [
+  { number: '01', title: 'E-Certificate for Attendees', icon: Award },
+  { number: '02', title: 'Certificates of Excellence', icon: Trophy },
+  { number: '03', title: '35% IELTS Discount Coupon', icon: BadgePercent },
+  { number: '04', title: 'PFEC Counselor Access', icon: Headphones },
+  { number: '05', title: 'Dhanmondi Workshop Opportunity', icon: Landmark },
+  { number: '06', title: 'Sheraton Expo Access', icon: Globe2 },
+];
+
+const reserveInfo = [
+  { number: '01', label: 'Date', value: '20 July', icon: CalendarDays },
+  { number: '02', label: 'Time', value: '2.30 PM', icon: Clock },
+  { number: '03', label: 'Venue', value: 'Seminar Room', icon: MapPin },
+  { number: '04', label: 'Eligibility', value: 'JU 50 & 51', icon: UsersRound },
+];
+
+const faqItems = [
+  { question: 'Is registration required?', answer: 'Yes. Registration is required to attend the MasterClass.' },
+  { question: 'Is the event free to attend?', answer: 'Yes. This is a free student opportunity.' },
+  { question: 'Who can register?', answer: 'Priority will be given to JU 50 & 51 students.' },
+  { question: 'What should I bring to the MasterClass?', answer: 'Bring your student ID and any materials you need for note-taking.' },
+  { question: 'Will participants receive certificates?', answer: 'Attendees will receive e-certificates, and top performers will receive Certificates of Excellence.' },
+  { question: 'Will event updates be shared after registration?', answer: 'Yes. Registered participants will receive updates and confirmation details.' },
+  { question: 'Is the Dhanmondi workshop guaranteed for everyone?', answer: 'Workshop access will depend on eligibility and selection.' },
+  { question: 'Will transportation be provided for the Global Education Expo?', answer: 'Transportation from JU to Sheraton is planned if 60+ attendees are confirmed.' },
+];
+
 export default function DecodingIELTSPage() {
   return (
     <div className={styles.page}>
@@ -83,10 +113,7 @@ export default function DecodingIELTSPage() {
 
           <div className={mobileHeroFix.urgencyFix}>
             <span><AlarmClock /></span>
-            <div>
-              <strong>Only 100 Seats Available</strong>
-              <small>Register now to secure your spot!</small>
-            </div>
+            <div><strong>Only 100 Seats Available</strong><small>Register now to secure your spot!</small></div>
             <ArrowRight />
           </div>
 
@@ -109,20 +136,14 @@ export default function DecodingIELTSPage() {
         <div className={`${sectionStyles.journeyShell} ${journeyMobile.journeyShellMobile}`}>
           <h2 className={`${sectionStyles.journeyTitle} ${journeyMobile.journeyTitleMobile}`}>Your <span>FREE</span> Global Education Journey</h2>
           <div className={`${sectionStyles.pathwayBadge} ${journeyMobile.pathwayBadgeMobile}`}><Route /> <span>4-Step Pathway</span></div>
-
           <div className={`${sectionStyles.stepTrack} ${journeyMobile.desktopTrack}`}>
             {journeySteps.map(({step, title, description, icon: Icon, highlights}) => (
               <article className={sectionStyles.stepCard} key={step}>
-                <div className={sectionStyles.stepNumber}>{step}</div>
-                <div className={sectionStyles.stepIcon}><Icon /></div>
-                <h3>{title}</h3>
-                <div className={sectionStyles.stepLine} />
-                <p>{description}</p>
+                <div className={sectionStyles.stepNumber}>{step}</div><div className={sectionStyles.stepIcon}><Icon /></div><h3>{title}</h3><div className={sectionStyles.stepLine} /><p>{description}</p>
                 {highlights && <ul className={sectionStyles.stepHighlights}><li><Star /> {highlights[0]}</li><li><Bus /> {highlights[1]}</li></ul>}
               </article>
             ))}
           </div>
-
           <div className={journeyMobile.mobileTrack}>
             {journeySteps.map(({step, title, description, icon: Icon, highlights, notice}) => (
               <div className={journeyMobile.mobileStepRow} key={step}>
@@ -130,8 +151,7 @@ export default function DecodingIELTSPage() {
                 <article className={journeyMobile.mobileStepCard}>
                   <div className={journeyMobile.mobileStepIcon}><Icon /></div>
                   <div className={journeyMobile.mobileStepContent}>
-                    <h3>{title}</h3>
-                    <p>{description}</p>
+                    <h3>{title}</h3><p>{description}</p>
                     {notice && <div className={journeyMobile.mobileStepNotice}><UsersRound /> <span>{notice}</span></div>}
                     {highlights && <ul className={journeyMobile.mobileStepHighlights}><li><Star /> <span>{highlights[0]}</span></li><li><Bus /> <span>{highlights[1]}</span></li></ul>}
                   </div>
@@ -139,28 +159,22 @@ export default function DecodingIELTSPage() {
               </div>
             ))}
           </div>
-
           <div className={`${sectionStyles.journeyFootnote} ${journeyMobile.journeyFootnoteMobile}`}><span><Star /> Free student opportunity</span><i /><span>Open to final-year & master’s students</span></div>
         </div>
       </section>
 
       <section id="about-enhance-desktop" className={`${sectionStyles.aboutSection} ${aboutMobile.desktopAbout}`}>
-        <div className={sectionStyles.aboutDotsTop} />
-        <div className={sectionStyles.aboutDotsBottom} />
+        <div className={sectionStyles.aboutDotsTop} /><div className={sectionStyles.aboutDotsBottom} />
         <div className={sectionStyles.aboutShell}>
           <div className={sectionStyles.aboutCopy}>
-            <h2>About Enhance English</h2>
-            <div className={sectionStyles.aboutRule}><span /></div>
+            <h2>About Enhance English</h2><div className={sectionStyles.aboutRule}><span /></div>
             <p>Enhance English is a leading test preparation and study abroad guidance platform helping students achieve their global education goals. Powered by PFEC Global, they provide expert training, personalized guidance, and end-to-end support for IELTS, PTE, SAT and international admissions.</p>
-            <div className={sectionStyles.partnerCards}>
-              {partnerCards.map(({title, description, icon: Icon}) => <article className={sectionStyles.partnerCard} key={title}><div className={sectionStyles.partnerIcon}><Icon /></div><h3>{title}</h3><p>{description}</p><span /></article>)}
-            </div>
+            <div className={sectionStyles.partnerCards}>{partnerCards.map(({title, description, icon: Icon}) => <article className={sectionStyles.partnerCard} key={title}><div className={sectionStyles.partnerIcon}><Icon /></div><h3>{title}</h3><p>{description}</p><span /></article>)}</div>
           </div>
           <div className={sectionStyles.aboutDivider} />
           <div className={sectionStyles.aboutBrand}>
             <div className={sectionStyles.enhanceLogo}><div className={sectionStyles.enhanceMark}>e</div><div><strong>enhance<br />english</strong><small>IELTS | PTE | SAT</small></div></div>
-            <div className={sectionStyles.logoRule} />
-            <h3>Powered by <span>PFEC Global</span></h3>
+            <div className={sectionStyles.logoRule} /><h3>Powered by <span>PFEC Global</span></h3>
             <div className={sectionStyles.benefitList}>{partnerBenefits.map(({text, icon: Icon}) => <div className={sectionStyles.benefitItem} key={text}><Icon /><span>{text}</span></div>)}</div>
           </div>
         </div>
@@ -168,76 +182,104 @@ export default function DecodingIELTSPage() {
 
       <section id="about-enhance" className={aboutMobile.mobileAbout}>
         <div className={aboutMobile.mobilePanel}>
-          <div className={aboutMobile.dotsTop} />
-          <div className={aboutMobile.dotsBottom} />
-          <h2 className={aboutMobile.heading}>About Enhance English</h2>
-          <div className={aboutMobile.rule}><span /></div>
+          <div className={aboutMobile.dotsTop} /><div className={aboutMobile.dotsBottom} />
+          <h2 className={aboutMobile.heading}>About Enhance English</h2><div className={aboutMobile.rule}><span /></div>
           <p className={aboutMobile.description}>Enhance English is a leading test preparation and study abroad guidance platform helping students achieve their global education goals. Powered by PFEC Global, they provide expert training, personalized guidance, and end-to-end support for IELTS, PTE, SAT and international admissions.</p>
-
           <div className={aboutMobile.brandBlock}>
             <div className={aboutMobile.brandMark}>e</div>
             <div className={aboutMobile.brandWords}>
-              <strong>enhance<br />english</strong>
-              <small>IELTS | PTE | SAT</small>
-              <div className={aboutMobile.poweredRow}>
-                <span>Powered By</span>
-                <span className={aboutMobile.pfecLogo}>
-                  <span className={aboutMobile.pfecBars}><i /><i /><i /></span>
-                  <span className={aboutMobile.pfecText}><b>PFEC</b><span>Global</span></span>
-                </span>
+              <strong>enhance<br />english</strong><small>IELTS | PTE | SAT</small>
+              <div className={aboutMobile.poweredRow}><span>Powered By</span><span className={aboutMobile.pfecLogo}><span className={aboutMobile.pfecBars}><i /><i /><i /></span><span className={aboutMobile.pfecText}><b>PFEC</b><span>Global</span></span></span></div>
+            </div>
+          </div>
+          <div className={aboutMobile.cards}>
+            {partnerCards.map(({title, description, icon: Icon}) => <article className={aboutMobile.card} key={title}><div className={aboutMobile.cardIcon}><Icon /></div><h3>{title}</h3><p>{description}</p><span className={aboutMobile.cardLine} /></article>)}
+          </div>
+        </div>
+      </section>
+
+      <section id="why-attend-desktop" className={`${desktopCommon.desktopOnly} ${desktopCommon.desktopSection} ${desktopOverview.whyAttend}`}>
+        <div className={desktopCommon.sectionShell}>
+          <div className={desktopOverview.whyGrid}>
+            <div>
+              <div className={desktopOverview.whyHeader}><div className={desktopOverview.whyNumber}>04</div><h2 className={desktopOverview.whyHeading}>Why Attend <span>This Masterclass?</span></h2></div>
+              <div className={desktopOverview.whyRule}><i /></div>
+              <p className={desktopOverview.whyIntro}>This masterclass is designed to give you expert guidance, practical strategies, and real-world insights to help you achieve your target scores and global education goals.</p>
+              <div className={desktopOverview.whyCards}>
+                {whyAttendCards.map(({title, description, icon: Icon}) => <article className={desktopOverview.whyCard} key={title}><div className={desktopCommon.roundIcon}><Icon /></div><h3>{title}</h3><p>{description}</p><span className={desktopCommon.shortLine} /></article>)}
+              </div>
+            </div>
+            <div className={desktopOverview.whyVisual}>
+              <div className={`${whyAttendMobile.photo} ${desktopOverview.studentPhoto}`} role="img" aria-label="Students preparing together for IELTS and global education opportunities" />
+              <div className={desktopOverview.statStrip}>
+                {whyAttendStats.map(({title, description, icon: Icon}) => <article className={desktopOverview.stat} key={title}><div className={desktopOverview.statIcon}><Icon /></div><div><h4>{title}</h4><p>{description}</p></div></article>)}
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          <div className={aboutMobile.cards}>
-            {partnerCards.map(({title, description, icon: Icon}) => (
-              <article className={aboutMobile.card} key={title}>
-                <div className={aboutMobile.cardIcon}><Icon /></div>
-                <h3>{title}</h3>
-                <p>{description}</p>
-                <span className={aboutMobile.cardLine} />
-              </article>
-            ))}
+      <section id="participant-benefits" className={`${desktopCommon.desktopOnly} ${desktopCommon.desktopSection} ${desktopOverview.benefitSection}`}>
+        <div className={desktopCommon.sectionShell}>
+          <div className={desktopCommon.sectionHeader}><div className={desktopCommon.sectionNumber}>05</div><div className={desktopCommon.headerCopy}><h2 className={desktopCommon.sectionHeading}>Participant <span>Benefits</span> &amp; Recognition</h2><div className={desktopCommon.headerRule}><i /></div></div></div>
+          <div className={desktopOverview.benefitGrid}>
+            {participantBenefits.map(({number, title, icon: Icon}) => <article className={desktopOverview.benefitCard} key={number}><div className={desktopOverview.benefitIcon}><Icon /></div><div className={desktopOverview.benefitCopy}><span className={desktopOverview.benefitIndex}>{number}</span><h3>{title}</h3><span className={desktopCommon.shortLine} /></div></article>)}
+          </div>
+          <div className={desktopOverview.noteDivider} />
+          <p className={desktopCommon.infoNote}><Info /> Workshop and expo opportunities may depend on eligibility and attendance criteria.</p>
+        </div>
+      </section>
+
+      <section id="reserve-seat" className={`${desktopCommon.desktopOnly} ${desktopCommon.desktopSection} ${desktopRegister.reserveSection}`}>
+        <div className={`${desktopCommon.sectionShell} ${desktopRegister.reserveGrid}`}>
+          <div>
+            <div className={desktopRegister.reserveHeader}><div className={desktopCommon.sectionNumber}>06</div><div><h2 className={desktopRegister.reserveHeading}>Reserve Your <span>Seat</span></h2><div className={desktopCommon.headerRule}><i /></div></div></div>
+            <p className={desktopRegister.reserveIntro}>Registration is required. Priority will be given to JU 50 &amp; 51 students preparing for IELTS and global education opportunities.</p>
+            <div className={desktopRegister.eventRows}>
+              {reserveInfo.map(({number, label, value, icon: Icon}) => <div className={desktopRegister.eventRow} key={number}><div className={desktopRegister.eventRowIcon}><Icon /></div><div className={desktopRegister.eventRowLabel}><span>{number}</span><strong>{label}</strong></div><div className={desktopRegister.eventRowValue}>{value}</div></div>)}
+            </div>
+            <div className={desktopRegister.freeBadge}><Ticket /> Free Registration</div>
+            <p className={`${desktopCommon.infoNote} ${desktopRegister.reserveNote}`}><Info /> Limited seats. Early registration recommended.</p>
+          </div>
+          <form className={desktopRegister.formCard}>
+            <div className={desktopRegister.formGrid}>
+              <div className={desktopRegister.field}><label htmlFor="full-name">Full Name</label><div className={desktopRegister.inputWrap}><UserRound /><input id="full-name" name="fullName" type="text" placeholder="Enter your full name" /></div></div>
+              <div className={desktopRegister.field}><label htmlFor="department">Department</label><div className={desktopRegister.inputWrap}><Building2 /><input id="department" name="department" type="text" placeholder="Enter your department" /></div></div>
+              <div className={desktopRegister.field}><label htmlFor="phone">Phone Number</label><div className={desktopRegister.inputWrap}><Phone /><input id="phone" name="phone" type="tel" placeholder="Enter your phone number" /></div></div>
+              <div className={desktopRegister.field}><label htmlFor="email">Email Address</label><div className={desktopRegister.inputWrap}><Mail /><input id="email" name="email" type="email" placeholder="Enter your email address" /></div></div>
+              <div className={desktopRegister.checkRows}>
+                <label className={desktopRegister.checkRow}><input type="checkbox" name="workshopInterest" /><span className={desktopRegister.checkIcon}><GraduationCap /></span><span>Interested in Dhanmondi Workshop</span></label>
+                <label className={desktopRegister.checkRow}><input type="checkbox" name="expoInterest" /><span className={desktopRegister.checkIcon}><Globe2 /></span><span>Interested in Global Education Expo</span></label>
+              </div>
+              <div className={desktopRegister.formActions}><button className={desktopRegister.formPrimary} type="button">Register Now</button><Link className={desktopRegister.formSecondary} href="#journey">View Event Details <ArrowRight /></Link></div>
+            </div>
+            <p className={`${desktopCommon.infoNote} ${desktopRegister.formFooter}`}><Info /> You will receive confirmation and updates after registration.</p>
+          </form>
+        </div>
+      </section>
+
+      <section id="frequently-asked-questions" className={`${desktopCommon.desktopOnly} ${desktopCommon.desktopSection} ${desktopRegister.faqSection}`}>
+        <div className={desktopCommon.sectionShell}>
+          <div className={`${desktopCommon.sectionHeader} ${desktopRegister.faqHeader}`}><div className={desktopCommon.sectionNumber}>07</div><div className={desktopCommon.headerCopy}><h2 className={desktopCommon.sectionHeading}>Frequently Asked <span>Questions</span></h2><div className={desktopCommon.headerRule}><i /></div></div></div>
+          <p className={desktopRegister.faqIntro}>Here are the key details you may want to know before completing your registration.</p>
+          <div className={desktopRegister.faqGrid}>
+            {faqItems.map(({question, answer}) => <article className={desktopRegister.faqCard} key={question}><div className={desktopRegister.faqIcon}><CircleHelp /></div><div className={desktopRegister.faqText}><h3>{question}</h3><p>{answer}</p></div><ChevronDown className={desktopRegister.faqChevron} /></article>)}
           </div>
         </div>
       </section>
 
       <section id="why-attend" className={whyAttendMobile.mobileSection}>
         <div className={whyAttendMobile.panel}>
-          <div className={whyAttendMobile.number}>04</div>
-          <h2 className={whyAttendMobile.heading}>Why Attend <span>This Masterclass?</span></h2>
-          <div className={whyAttendMobile.rule}><i /></div>
+          <div className={whyAttendMobile.number}>04</div><h2 className={whyAttendMobile.heading}>Why Attend <span>This Masterclass?</span></h2><div className={whyAttendMobile.rule}><i /></div>
           <p className={whyAttendMobile.intro}>This masterclass is designed to give you expert guidance, practical strategies, and real-world insights to help you achieve your target scores and global education goals.</p>
-
-          <div className={whyAttendMobile.cards}>
-            {whyAttendCards.map(({title, description, icon: Icon}) => (
-              <article className={whyAttendMobile.card} key={title}>
-                <div className={whyAttendMobile.icon}><Icon /></div>
-                <h3>{title}</h3>
-                <p>{description}</p>
-                <span className={whyAttendMobile.line} />
-              </article>
-            ))}
-          </div>
-
+          <div className={whyAttendMobile.cards}>{whyAttendCards.map(({title, description, icon: Icon}) => <article className={whyAttendMobile.card} key={title}><div className={whyAttendMobile.icon}><Icon /></div><h3>{title}</h3><p>{description}</p><span className={whyAttendMobile.line} /></article>)}</div>
           <div className={whyAttendMobile.photo} role="img" aria-label="Students preparing together for IELTS and global education opportunities" />
-
-          <div className={whyAttendMobile.stats}>
-            {whyAttendStats.map(({title, description, icon: Icon}) => (
-              <article className={whyAttendMobile.stat} key={title}>
-                <div className={whyAttendMobile.statIcon}><Icon /></div>
-                <h4>{title}</h4>
-                <p>{description}</p>
-              </article>
-            ))}
-          </div>
+          <div className={whyAttendMobile.stats}>{whyAttendStats.map(({title, description, icon: Icon}) => <article className={whyAttendMobile.stat} key={title}><div className={whyAttendMobile.statIcon}><Icon /></div><h4>{title}</h4><p>{description}</p></article>)}</div>
         </div>
       </section>
 
-      <section id="registration" className={styles.registration}>
-        <p className={styles.sectionEyebrow}>Registration</p>
-        <h2>Registration opens through the official website.</h2>
-        <p>The registration form will be connected to a Google Sheet response database in the next implementation step.</p>
+      <section id="registration" className={`${styles.registration} ${desktopCommon.mobileRegistrationOnly}`}>
+        <p className={styles.sectionEyebrow}>Registration</p><h2>Registration opens through the official website.</h2><p>The registration form will be connected to a Google Sheet response database in the next implementation step.</p>
       </section>
     </div>
   );

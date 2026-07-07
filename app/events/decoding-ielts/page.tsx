@@ -103,7 +103,7 @@ export default function DecodingIELTSPage() {
                 <div className={sectionStyles.stepLine} />
                 <p>{description}</p>
                 {notice && <div className={journeyMobile.stepNoticeMobile}><UsersRound /> {notice}</div>}
-                {highlights && <ul className={sectionStyles.stepHighlights}><li><Star /> {highlights[0]}</li><li><Bus /> {highlights[1]}</li></ul>}
+                {highlights && <ul className={`${sectionStyles.stepHighlights} ${journeyMobile.stepHighlightsMobile}`}><li><Star /> {highlights[0]}</li><li><Bus /> {highlights[1]}</li></ul>}
               </article>
             ))}
           </div>

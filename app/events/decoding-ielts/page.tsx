@@ -57,7 +57,6 @@ export default function DecodingIELTSPage() {
             </h1>
             <p className={`${styles.subtitle} ${mobileHeroFix.subtitleFix}`}>A focused IELTS Masterclass for students preparing for higher studies, global education pathways, and internationally competitive academic opportunities.</p>
             <div className={`${styles.goldLine} ${mobileHeroFix.goldLineFix}`} />
-            <p className={`${styles.mobileIntro} ${mobileHeroFix.mobileIntroFix}`}>Join a practical campus session covering IELTS strategy, preparation direction, study abroad guidance, and next-step opportunities through Enhance English.</p>
           </div>
 
           <div className={styles.cards}>

@@ -1,0 +1,38 @@
+.heroFix {}
+.bgFix {}
+.mobileCardsFix {}
+
+@media (max-width: 900px) {
+  .heroFix {
+    background: #eef6ff !important;
+    overflow: hidden !important;
+  }
+
+  .bgFix {
+    background-image: url('/images/events/decoding-ielts/hero-mobile.png') !important;
+    background-size: 100% 100% !important;
+    background-position: center top !important;
+    background-repeat: no-repeat !important;
+  }
+
+  .bgFix::after {
+    display: none !important;
+    content: none !important;
+  }
+
+  .mobileCardsFix {
+    margin-top: clamp(14.5rem, 42vw, 18rem) !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .mobileCardsFix {
+    margin-top: clamp(13.4rem, 40vw, 16.5rem) !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .mobileCardsFix {
+    margin-top: 12.5rem !important;
+  }
+}

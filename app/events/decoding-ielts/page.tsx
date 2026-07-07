@@ -3,6 +3,7 @@ import { AlarmClock, ArrowRight, BookOpen, Bus, CalendarDays, Clock, FileText, G
 import styles from './decodingIelts.module.css';
 import sectionStyles from './decodingSections.module.css';
 import mobileHeroFix from './decodingMobileHeroFix.module.css';
+import journeyMobile from './decodingJourneyMobile.module.css';
 
 export const metadata = {
   title: 'Decoding IELTS | JU FinAnt Club',
@@ -25,9 +26,9 @@ const mobileInfoCards = [
 
 const journeySteps = [
   { step: '01', title: 'Register Online', description: 'Complete your registration to begin the journey.', icon: FileText },
-  { step: '02', title: 'Attend the JU MasterClass', description: 'Join the campus session on IELTS strategy and study abroad direction.', icon: UsersRound },
-  { step: '03', title: 'Join the Dhanmondi Workshop', description: 'Selected students can access a full-day workshop with expert guidance and lab testing.', icon: Landmark },
-  { step: '04', title: 'Access the Global Education Expo', description: 'Eligible participants can join the Hotel Sheraton global education expo.', icon: Globe2, highlights: ['5-star hotel venue.', 'Free transportation from JU to Sheraton provided.'] },
+  { step: '02', title: 'Attend the JU MasterClass', description: 'Join the campus session on IELTS strategy and study abroad direction.', icon: UsersRound, notice: '100 Seats Available!' },
+  { step: '03', title: 'Join the Dhanmondi Workshop', description: 'Selected students can access a full-day workshop with expert guidance and lab testing.', icon: Landmark, notice: 'Only 30 Participants will be selected' },
+  { step: '04', title: 'Access the Global Education Expo', description: 'Eligible participants can join the Hotel Sheraton global education expo.', icon: Globe2, highlights: ['5-star hotel venue.', 'Free transportation from JU to Sheraton provided.'], notice: 'Only 45 Participants will be selected' },
 ];
 
 const partnerCards = [
@@ -87,25 +88,26 @@ export default function DecodingIELTSPage() {
         </div>
       </section>
 
-      <section id="journey" className={sectionStyles.journeySection}>
+      <section id="journey" className={`${sectionStyles.journeySection} ${journeyMobile.journeyMobile}`}>
         <div className={sectionStyles.journeyMapLeft} />
         <div className={sectionStyles.journeyMapRight} />
-        <div className={sectionStyles.journeyShell}>
-          <h2 className={sectionStyles.journeyTitle}>Your <span>FREE</span> Global Education Journey</h2>
-          <div className={sectionStyles.pathwayBadge}><Route /> <span>4-Step Pathway</span></div>
-          <div className={sectionStyles.stepTrack}>
-            {journeySteps.map(({step, title, description, icon: Icon, highlights}) => (
-              <article className={sectionStyles.stepCard} key={step}>
-                <div className={sectionStyles.stepNumber}>{step}</div>
-                <div className={sectionStyles.stepIcon}><Icon /></div>
+        <div className={`${sectionStyles.journeyShell} ${journeyMobile.journeyShellMobile}`}>
+          <h2 className={`${sectionStyles.journeyTitle} ${journeyMobile.journeyTitleMobile}`}>Your <span>FREE</span> Global Education Journey</h2>
+          <div className={`${sectionStyles.pathwayBadge} ${journeyMobile.pathwayBadgeMobile}`}><Route /> <span>4-Step Pathway</span></div>
+          <div className={`${sectionStyles.stepTrack} ${journeyMobile.stepTrackMobile}`}>
+            {journeySteps.map(({step, title, description, icon: Icon, highlights, notice}) => (
+              <article className={`${sectionStyles.stepCard} ${journeyMobile.stepCardMobile}`} key={step}>
+                <div className={`${sectionStyles.stepNumber} ${journeyMobile.stepNumberMobile}`}>{step}</div>
+                <div className={`${sectionStyles.stepIcon} ${journeyMobile.stepIconMobile}`}><Icon /></div>
                 <h3>{title}</h3>
                 <div className={sectionStyles.stepLine} />
                 <p>{description}</p>
+                {notice && <div className={journeyMobile.stepNoticeMobile}><UsersRound /> {notice}</div>}
                 {highlights && <ul className={sectionStyles.stepHighlights}><li><Star /> {highlights[0]}</li><li><Bus /> {highlights[1]}</li></ul>}
               </article>
             ))}
           </div>
-          <div className={sectionStyles.journeyFootnote}><span><Star /> Free student opportunity</span><i /><span>Open to final-year & master’s students</span></div>
+          <div className={`${sectionStyles.journeyFootnote} ${journeyMobile.journeyFootnoteMobile}`}><span><Star /> Free student opportunity</span><i /><span>Open to final-year & master’s students</span></div>
         </div>
       </section>
 

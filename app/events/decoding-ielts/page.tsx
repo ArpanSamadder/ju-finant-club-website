@@ -67,7 +67,10 @@ export default function DecodingIELTSPage() {
 
           <div className={mobileHeroFix.urgencyFix}>
             <span><AlarmClock /></span>
-            <strong>Only 100 Seats Available</strong>
+            <div>
+              <strong>Only 100 Seats Available</strong>
+              <small>Register now to secure your spot!</small>
+            </div>
             <ArrowRight />
           </div>
 

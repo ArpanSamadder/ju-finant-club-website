@@ -12,14 +12,14 @@ export const metadata = {
 const infoCards = [
   { label: 'Date:', value: '20 July', icon: CalendarDays },
   { label: 'Time:', value: '2.30pm', icon: Clock },
-  { label: 'Venue:', value: 'Seminar Room', icon: MapPin },
+  { label: 'Venue:', value: 'Seminar Room, Zahir Raihan Auditorium', icon: MapPin },
   { label: 'Eligibility:', value: 'JU 50 & 51', icon: GraduationCap },
 ];
 
 const mobileInfoCards = [
   { label: 'Date:', value: '20 July', icon: CalendarDays },
   { label: 'Time:', value: '2.30pm', icon: Clock },
-  { label: 'Venue:', value: 'Seminar Room', icon: MapPin },
+  { label: 'Venue:', value: 'Seminar Room, Zahir Raihan Auditorium', icon: MapPin },
   { label: 'Eligibility:', value: 'JU 50 & 51', icon: GraduationCap },
 ];
 

@@ -21,7 +21,7 @@
   .bgFix {
     background-image: url('/images/events/decoding-ielts/hero-mobile.png') !important;
     background-size: 100% auto !important;
-    background-position: center -77px !important;
+    background-position: center -58px !important;
     background-repeat: no-repeat !important;
   }
   .bgFix::after { display: none !important; content: none !important; }

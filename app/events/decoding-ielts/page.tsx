@@ -1,10 +1,11 @@
 import Link from 'next/link';
-import { AlarmClock, ArrowRight, BookOpen, Bus, CalendarDays, Clock, FileText, Globe2, GraduationCap, Headphones, Landmark, MapPin, Plane, Route, Star, UsersRound } from 'lucide-react';
+import { AlarmClock, ArrowRight, BookOpen, Bus, CalendarDays, Clock, FileText, Globe2, GraduationCap, Headphones, Landmark, MapPin, Plane, Route, Star, Target, TrendingUp, Trophy, UsersRound } from 'lucide-react';
 import styles from './decodingIelts.module.css';
 import sectionStyles from './decodingSections.module.css';
 import mobileHeroFix from './decodingMobileHeroFix.module.css';
 import journeyMobile from './decodingJourneyMobile.module.css';
 import aboutMobile from './decodingAboutMobile.module.css';
+import whyAttendMobile from './decodingWhyAttendMobile.module.css';
 
 export const metadata = {
   title: 'Decoding IELTS | JU FinAnt Club',
@@ -43,6 +44,19 @@ const partnerBenefits = [
   { text: 'Personalized Guidance & Mentorship', icon: Headphones },
   { text: 'Global Opportunities & End-to-End Support', icon: Globe2 },
   { text: 'International Admissions Assistance', icon: Plane },
+];
+
+const whyAttendCards = [
+  { title: 'Expert Guidance', description: 'Learn from experienced trainers and academic experts.', icon: Trophy },
+  { title: 'Proven Strategies', description: 'Get exam strategies and techniques that actually work.', icon: Target },
+  { title: 'Score Improvement', description: 'Boost your confidence and improve your target scores.', icon: TrendingUp },
+  { title: 'Global Opportunities', description: 'Open doors to top universities and a global future.', icon: Globe2 },
+];
+
+const whyAttendStats = [
+  { title: 'Expert Trainers', description: 'Industry & Academic Experts', icon: UsersRound },
+  { title: 'Proven Results', description: 'Thousands of Students Guided', icon: TrendingUp },
+  { title: 'Global Reach', description: 'Universities & Admissions Worldwide', icon: GraduationCap },
 ];
 
 export default function DecodingIELTSPage() {
@@ -182,6 +196,38 @@ export default function DecodingIELTSPage() {
                 <h3>{title}</h3>
                 <p>{description}</p>
                 <span className={aboutMobile.cardLine} />
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="why-attend" className={whyAttendMobile.mobileSection}>
+        <div className={whyAttendMobile.panel}>
+          <div className={whyAttendMobile.number}>04</div>
+          <h2 className={whyAttendMobile.heading}>Why Attend <span>This Masterclass?</span></h2>
+          <div className={whyAttendMobile.rule}><i /></div>
+          <p className={whyAttendMobile.intro}>This masterclass is designed to give you expert guidance, practical strategies, and real-world insights to help you achieve your target scores and global education goals.</p>
+
+          <div className={whyAttendMobile.cards}>
+            {whyAttendCards.map(({title, description, icon: Icon}) => (
+              <article className={whyAttendMobile.card} key={title}>
+                <div className={whyAttendMobile.icon}><Icon /></div>
+                <h3>{title}</h3>
+                <p>{description}</p>
+                <span className={whyAttendMobile.line} />
+              </article>
+            ))}
+          </div>
+
+          <div className={whyAttendMobile.photo} role="img" aria-label="Students preparing together for IELTS and global education opportunities" />
+
+          <div className={whyAttendMobile.stats}>
+            {whyAttendStats.map(({title, description, icon: Icon}) => (
+              <article className={whyAttendMobile.stat} key={title}>
+                <div className={whyAttendMobile.statIcon}><Icon /></div>
+                <h4>{title}</h4>
+                <p>{description}</p>
               </article>
             ))}
           </div>

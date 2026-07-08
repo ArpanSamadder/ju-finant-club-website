@@ -17,6 +17,7 @@ import './no-glass-system.css';
 import { LegacyCarouselController } from '@/components/legacy-carousel-controller';
 import { IdentityCarouselController } from '@/components/identity-carousel-controller';
 import { VoicesCarouselController } from '@/components/voices-carousel-controller';
+import { LiveEventHeroLink } from '@/components/live-event-hero-link';
 import { SiteChrome } from '@/components/site-chrome';
 
 const display = Cormorant_Garamond({
@@ -42,6 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <div className="noise" />
         <SiteChrome>{children}</SiteChrome>
+        <LiveEventHeroLink />
         <LegacyCarouselController />
         <IdentityCarouselController />
         <VoicesCarouselController />

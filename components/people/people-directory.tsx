@@ -75,9 +75,7 @@ export function PeopleDirectory({groups}: {groups: DirectoryGroups}) {
     <div className={styles.pageShell}>
       <header className={styles.hero}>
         <h1>
-          The People
-          <br />
-          Building <span>FinAnt</span>
+          The People Building <span>FinAnt</span>
         </h1>
         <div className={styles.headingRule} aria-hidden="true">
           <span />

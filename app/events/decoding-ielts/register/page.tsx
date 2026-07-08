@@ -15,7 +15,15 @@ export default function DecodingIELTSRegistrationPage() {
           <img src="/images/brand/finant-mark.png" alt="Jahangirnagar University FinAnt Club" />
           <div><small>Jahangirnagar University</small><strong>FinAnt Club</strong></div>
         </div>
-        <div className={styles.cross}>×</div>
+        <span
+          aria-hidden="true"
+          style={{
+            width: '1px',
+            height: 'clamp(2rem, 4vw, 3.5rem)',
+            borderRadius: '999px',
+            background: '#9ab3df',
+          }}
+        />
         <div className={styles.enhance}>
           <div className={styles.eMark}>e</div>
           <div><strong>enhance<br />english</strong><small>IELTS | PTE | SAT</small></div>

@@ -1,7 +1,7 @@
 'use client';
 
 import {ChevronLeft, ChevronRight, UserRound} from 'lucide-react';
-import {useEffect, useMemo, useState} from 'react';
+import {useState, type CSSProperties} from 'react';
 import styles from '@/app/people/people.module.css';
 
 export type DirectoryPerson = {
@@ -20,6 +20,8 @@ export type DirectoryGroups = Record<
   DirectoryPerson[]
 >;
 
+type TickerDirection = 'left' | 'right';
+
 type SectionConfig = {
   key: keyof DirectoryGroups;
   eyebrow: string;
@@ -27,6 +29,7 @@ type SectionConfig = {
   accent: string;
   desktopPageSize: number;
   showCompany: boolean;
+  tickerDirection: TickerDirection;
   showViewAll?: boolean;
 };
 
@@ -38,6 +41,7 @@ const leadershipSections: SectionConfig[] = [
     accent: 'Body',
     desktopPageSize: 5,
     showCompany: false,
+    tickerDirection: 'left',
   },
   {
     key: 'Senior Executive Board',
@@ -46,6 +50,7 @@ const leadershipSections: SectionConfig[] = [
     accent: 'Board',
     desktopPageSize: 6,
     showCompany: false,
+    tickerDirection: 'right',
     showViewAll: true,
   },
 ];
@@ -58,6 +63,7 @@ const advisorSections: SectionConfig[] = [
     accent: 'Advisory Panel',
     desktopPageSize: 5,
     showCompany: true,
+    tickerDirection: 'left',
   },
   {
     key: 'Corporate Advisory Panel',
@@ -66,6 +72,7 @@ const advisorSections: SectionConfig[] = [
     accent: 'Advisory Panel',
     desktopPageSize: 5,
     showCompany: true,
+    tickerDirection: 'right',
     showViewAll: true,
   },
 ];
@@ -123,39 +130,24 @@ function DirectorySection({
   people: DirectoryPerson[];
   divided: boolean;
 }) {
-  const [isMobile, setIsMobile] = useState(false);
-  const [page, setPage] = useState(0);
   const [expanded, setExpanded] = useState(false);
+  const minimumLoopCount = Math.max(config.desktopPageSize + 1, people.length);
+  const loopPeople = people.length
+    ? Array.from({length: minimumLoopCount}, (_, index) => people[index % people.length])
+    : [];
+  const tickerStyle = {
+    '--desktop-count': config.desktopPageSize,
+    '--ticker-duration': `${Math.max(loopPeople.length * 8, 40)}s`,
+  } as CSSProperties;
 
-  useEffect(() => {
-    const media = window.matchMedia('(max-width: 760px)');
-    const sync = () => setIsMobile(media.matches);
-    sync();
-    media.addEventListener('change', sync);
-    return () => media.removeEventListener('change', sync);
-  }, []);
-
-  const pageSize = isMobile ? 3 : config.desktopPageSize;
-  const pageCount = Math.max(1, Math.ceil(people.length / pageSize));
-  const safePage = Math.min(page, pageCount - 1);
-
-  useEffect(() => {
-    setPage((current) => Math.min(current, pageCount - 1));
-  }, [pageCount]);
-
-  const visiblePeople = useMemo(() => {
-    if (expanded) return people;
-    const start = safePage * pageSize;
-    return people.slice(start, start + pageSize);
-  }, [expanded, pageSize, people, safePage]);
-
-  const move = (direction: number) => {
-    if (expanded) setExpanded(false);
-    setPage((current) => (current + direction + pageCount) % pageCount);
-  };
-
-  const dots = Math.max(3, Math.min(5, pageCount));
-  const activeDot = pageCount === 1 ? 1 : Math.min(safePage, dots - 1);
+  const renderCards = (items: DirectoryPerson[], groupKey: string) =>
+    items.map((person, index) => (
+      <PersonCard
+        key={`${groupKey}-${person.id}-${index}`}
+        person={person}
+        showCompany={config.showCompany}
+      />
+    ));
 
   return (
     <div className={`${styles.directorySection} ${divided ? styles.divided : ''}`}>
@@ -170,47 +162,54 @@ function DirectorySection({
         <button
           type="button"
           className={`${styles.arrow} ${styles.leftArrow}`}
-          aria-label={`Show previous ${config.key} profiles`}
-          onClick={() => move(-1)}
+          aria-hidden="true"
+          tabIndex={-1}
         >
           <ChevronLeft />
         </button>
 
-        <div
-          className={`${styles.cards} ${
-            expanded ? styles.expandedCards : ''
-          }`}
-          style={{'--desktop-count': config.desktopPageSize} as React.CSSProperties}
-        >
-          {visiblePeople.map((person) => (
-            <PersonCard
-              key={person.id}
-              person={person}
-              showCompany={config.showCompany}
-            />
-          ))}
-        </div>
+        {expanded ? (
+          <div
+            className={`${styles.cards} ${styles.expandedCards}`}
+            style={tickerStyle}
+          >
+            {renderCards(people, 'expanded')}
+          </div>
+        ) : (
+          <div className={styles.marqueeViewport} style={tickerStyle}>
+            <div
+              className={`${styles.marqueeTrack} ${
+                config.tickerDirection === 'right' ? styles.marqueeReverse : ''
+              }`}
+            >
+              <div className={styles.marqueeGroup}>
+                {renderCards(loopPeople, 'primary')}
+              </div>
+              <div className={styles.marqueeGroup} aria-hidden="true">
+                {renderCards(loopPeople, 'duplicate')}
+              </div>
+            </div>
+          </div>
+        )}
 
         <button
           type="button"
           className={`${styles.arrow} ${styles.rightArrow}`}
-          aria-label={`Show next ${config.key} profiles`}
-          onClick={() => move(1)}
+          aria-hidden="true"
+          tabIndex={-1}
         >
           <ChevronRight />
         </button>
       </div>
 
       <div className={styles.sectionFooter}>
-        <div className={styles.dots} aria-label={`${config.key} carousel pages`}>
-          {Array.from({length: dots}).map((_, index) => (
+        <div className={styles.dots} aria-hidden="true">
+          {Array.from({length: 3}).map((_, index) => (
             <button
               key={index}
               type="button"
-              className={index === activeDot ? styles.activeDot : ''}
-              aria-label={`Carousel indicator ${index + 1}`}
-              disabled={index >= pageCount}
-              onClick={() => index < pageCount && setPage(index)}
+              className={index === 1 ? styles.activeDot : ''}
+              tabIndex={-1}
             />
           ))}
         </div>

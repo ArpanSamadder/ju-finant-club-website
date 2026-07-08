@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { RegistrationForm } from './registration-form';
 import styles from './registration.module.css';
 
@@ -11,10 +12,15 @@ export default function DecodingIELTSRegistrationPage() {
   return (
     <div className={styles.page}>
       <div className={styles.header} aria-label="Event partners">
-        <div className={styles.finant}>
+        <Link
+          className={styles.finant}
+          href="/"
+          aria-label="Go to JU FinAnt Club homepage"
+          style={{ color: 'inherit', textDecoration: 'none' }}
+        >
           <img src="/images/brand/finant-mark.png" alt="Jahangirnagar University FinAnt Club" />
           <div><small>Jahangirnagar University</small><strong>FinAnt Club</strong></div>
-        </div>
+        </Link>
         <span
           aria-hidden="true"
           style={{

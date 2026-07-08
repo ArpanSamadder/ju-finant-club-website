@@ -1,8 +1,14 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowRight, CheckCircle2, LockKeyhole, Send } from 'lucide-react';
-import { FormEvent, useEffect, useRef, useState } from 'react';
+import {
+  ArrowRight,
+  CheckCircle2,
+  LoaderCircle,
+  LockKeyhole,
+  Send,
+} from 'lucide-react';
+import { FormEvent, useEffect, useState } from 'react';
 import styles from './registration.module.css';
 
 const goals = [
@@ -14,117 +20,24 @@ const goals = [
   'Skill Development',
 ];
 
-const PENDING_QUEUE_KEY =
+const LEGACY_QUEUE_KEY =
   'finant.decoding-ielts.pending-registrations.v1';
-
-type RegistrationPayload = {
-  name: string;
-  department: string;
-  batch: string;
-  registrationNo: string;
-  hall: string;
-  email: string;
-  contact: string;
-  primaryGoals: string[];
-  furtherGuidance: string;
-  workshopInterest: string;
-  expoInterest: string;
-  website: string;
-  submittedAt: string;
-  idempotencyKey: string;
-};
-
-function readPendingQueue(): RegistrationPayload[] {
-  if (typeof window === 'undefined') return [];
-
-  try {
-    const stored = window.localStorage.getItem(PENDING_QUEUE_KEY);
-    if (!stored) return [];
-
-    const parsed = JSON.parse(stored);
-    return Array.isArray(parsed) ? parsed : [];
-  } catch {
-    return [];
-  }
-}
-
-function writePendingQueue(items: RegistrationPayload[]) {
-  if (typeof window === 'undefined') return;
-
-  if (items.length === 0) {
-    window.localStorage.removeItem(PENDING_QUEUE_KEY);
-    return;
-  }
-
-  window.localStorage.setItem(PENDING_QUEUE_KEY, JSON.stringify(items));
-}
-
-function enqueueRegistration(payload: RegistrationPayload) {
-  const queue = readPendingQueue();
-  const alreadyQueued = queue.some(
-    (item) => item.idempotencyKey === payload.idempotencyKey
-  );
-
-  if (!alreadyQueued) {
-    writePendingQueue([...queue, payload]);
-  }
-}
-
-function removeQueuedRegistration(idempotencyKey: string) {
-  const queue = readPendingQueue().filter(
-    (item) => item.idempotencyKey !== idempotencyKey
-  );
-  writePendingQueue(queue);
-}
-
-async function sendRegistration(
-  payload: RegistrationPayload
-): Promise<boolean> {
-  try {
-    const response = await fetch('/api/events/decoding-ielts/register', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-      cache: 'no-store',
-      keepalive: true,
-    });
-
-    const result = await response.json().catch(() => ({}));
-    return response.ok || result?.ok === true;
-  } catch {
-    return false;
-  }
-}
-
-async function flushPendingQueue() {
-  const queue = readPendingQueue();
-
-  for (const payload of queue) {
-    const sent = await sendRegistration(payload);
-    if (sent) removeQueuedRegistration(payload.idempotencyKey);
-  }
-}
 
 export function RegistrationForm() {
   const [status, setStatus] = useState<
     'idle' | 'submitting' | 'success' | 'error'
   >('idle');
   const [message, setMessage] = useState('');
-  const submissionLocked = useRef(false);
 
   useEffect(() => {
-    void flushPendingQueue();
-
-    const retryWhenOnline = () => void flushPendingQueue();
-    window.addEventListener('online', retryWhenOnline);
-
-    return () => window.removeEventListener('online', retryWhenOnline);
+    /* Remove data left by the retired optimistic background queue. */
+    window.localStorage.removeItem(LEGACY_QUEUE_KEY);
   }, []);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    if (submissionLocked.current) return;
+    if (status === 'submitting') return;
 
     const form = event.currentTarget;
     const data = new FormData(form);
@@ -136,9 +49,7 @@ export function RegistrationForm() {
       return;
     }
 
-    submissionLocked.current = true;
-
-    const payload: RegistrationPayload = {
+    const payload = {
       name: String(data.get('name') || ''),
       department: String(data.get('department') || ''),
       batch: String(data.get('batch') || ''),
@@ -155,20 +66,55 @@ export function RegistrationForm() {
       idempotencyKey: crypto.randomUUID(),
     };
 
-    /*
-     * Save a local retry copy first, then confirm immediately to the user.
-     * The request continues in the background. The same idempotency key and
-     * registration number prevent duplicate rows if a retry is required.
-     */
-    enqueueRegistration(payload);
-    setStatus('success');
-    setMessage(
-      'Registration completed successfully. You will receive confirmation and updates shortly.'
-    );
-    form.reset();
+    setStatus('submitting');
+    setMessage('Submitting your registration…');
 
-    const sent = await sendRegistration(payload);
-    if (sent) removeQueuedRegistration(payload.idempotencyKey);
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), 32000);
+
+    try {
+      const response = await fetch('/api/events/decoding-ielts/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+        cache: 'no-store',
+        signal: controller.signal,
+      });
+
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok || result.ok !== true) {
+        throw new Error(
+          result.message ||
+            'Registration could not be saved. Please try again.'
+        );
+      }
+
+      setStatus('success');
+      setMessage(
+        result.duplicate
+          ? 'Your registration was already received successfully.'
+          : 'Registration submitted successfully. You will receive confirmation and updates shortly.'
+      );
+
+      form.reset();
+    } catch (error) {
+      setStatus('error');
+
+      if (error instanceof DOMException && error.name === 'AbortError') {
+        setMessage(
+          'The registration service took too long to confirm. Your information is still in the form. Please try again.'
+        );
+      } else {
+        setMessage(
+          error instanceof Error
+            ? error.message
+            : 'Registration could not be saved. Your information is still in the form; please try again.'
+        );
+      }
+    } finally {
+      window.clearTimeout(timeout);
+    }
   }
 
   return (
@@ -294,13 +240,20 @@ export function RegistrationForm() {
         <button
           className={styles.submit}
           type="submit"
-          disabled={status === 'submitting' || status === 'success'}
+          disabled={status === 'submitting'}
+          aria-busy={status === 'submitting'}
         >
-          {status === 'success' ? <CheckCircle2 /> : <Send />}
-          {status === 'success'
-            ? 'Registration Done'
-            : status === 'submitting'
-              ? 'Submitting…'
+          {status === 'submitting' ? (
+            <LoaderCircle className={styles.spinner} />
+          ) : status === 'success' ? (
+            <CheckCircle2 />
+          ) : (
+            <Send />
+          )}
+          {status === 'submitting'
+            ? 'Submitting…'
+            : status === 'success'
+              ? 'Registration Done'
               : 'Submit Registration'}
         </button>
         <Link

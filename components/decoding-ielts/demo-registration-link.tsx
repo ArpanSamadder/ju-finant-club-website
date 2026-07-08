@@ -2,7 +2,8 @@
 
 import { useEffect } from 'react';
 
-const GOOGLE_FORM_URL = '[Insert Google Form Link Here]';
+const REGISTRATION_URL =
+  'https://ju-finant-club-website.vercel.app/events/decoding-ielts/register';
 
 const DEMO_FORM_SELECTORS = [
   '#reserve-seat form',
@@ -38,12 +39,12 @@ export function DemoRegistrationLink() {
       });
 
       const overlay = document.createElement('a');
-      overlay.href = GOOGLE_FORM_URL;
+      overlay.href = REGISTRATION_URL;
       overlay.target = '_blank';
       overlay.rel = 'noopener noreferrer';
       overlay.setAttribute(
         'aria-label',
-        'Open the Decoding IELTS registration Google Form'
+        'Open the Decoding IELTS masterclass registration form'
       );
       overlay.title = 'Open registration form';
       overlay.style.position = 'absolute';

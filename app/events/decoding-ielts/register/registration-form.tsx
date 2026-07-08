@@ -96,8 +96,6 @@ export function RegistrationForm() {
           ? 'Your registration was already received successfully.'
           : 'Registration submitted successfully. You will receive confirmation and updates shortly.'
       );
-
-      form.reset();
     } catch (error) {
       setStatus('error');
 

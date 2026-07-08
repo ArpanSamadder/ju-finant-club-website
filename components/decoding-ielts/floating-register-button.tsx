@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import styles from '@/app/events/decoding-ielts/floatingRegister.module.css';
+import { DemoRegistrationLink } from './demo-registration-link';
 
 export function FloatingRegisterButton() {
   const [visible, setVisible] = useState(false);
@@ -22,11 +23,21 @@ export function FloatingRegisterButton() {
   }, []);
 
   return (
-    <div className={`${styles.wrap} ${visible ? styles.visible : ''}`} aria-hidden={!visible}>
-      <Link href="/events/decoding-ielts/register" className={styles.button} tabIndex={visible ? 0 : -1}>
-        <span>Register Now</span>
-        <ArrowRight />
-      </Link>
-    </div>
+    <>
+      <DemoRegistrationLink />
+      <div
+        className={`${styles.wrap} ${visible ? styles.visible : ''}`}
+        aria-hidden={!visible}
+      >
+        <Link
+          href="/events/decoding-ielts/register"
+          className={styles.button}
+          tabIndex={visible ? 0 : -1}
+        >
+          <span>Register Now</span>
+          <ArrowRight />
+        </Link>
+      </div>
+    </>
   );
 }

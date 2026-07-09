@@ -2,6 +2,9 @@
 
 import {useEffect} from 'react';
 
+const AUTOPLAY_DELAY_MS = 5000;
+const TRANSITION = 'transform 640ms cubic-bezier(.45,0,.2,1)';
+
 export function VoicesCarouselController() {
   useEffect(() => {
     const section = document.querySelector<HTMLElement>('#voices-of-finant');
@@ -27,7 +30,7 @@ export function VoicesCarouselController() {
 
     const move = (nextIndex: number, animate = true) => {
       track.style.animation = 'none';
-      track.style.transition = animate ? 'transform 560ms cubic-bezier(.45,0,.2,1)' : 'none';
+      track.style.transition = animate ? TRANSITION : 'none';
       track.style.transform = `translate3d(${-nextIndex * step()}px,0,0)`;
     };
 
@@ -52,7 +55,7 @@ export function VoicesCarouselController() {
 
     const restart = () => {
       window.clearInterval(timer);
-      timer = window.setInterval(forward, 2400);
+      timer = window.setInterval(forward, AUTOPLAY_DELAY_MS);
     };
 
     const done = (event: TransitionEvent) => {

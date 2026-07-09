@@ -18,9 +18,7 @@ export function HomeHeroRevealController() {
       frame = 0;
 
       const revealDistance = Math.max(260, Math.min(window.innerHeight * 0.58, 620));
-      const rootTop = root.getBoundingClientRect().top + window.scrollY;
-      const scrollInsideRoot = Math.max(0, window.scrollY - rootTop);
-      const progress = clamp(scrollInsideRoot / revealDistance);
+      const progress = clamp(window.scrollY / revealDistance);
 
       root.style.setProperty('--home-reveal-progress', progress.toFixed(4));
       root.classList.toggle('is-revealing', progress > 0.01);

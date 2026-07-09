@@ -1,7 +1,8 @@
 'use client';
 
-import {ChevronLeft, ChevronRight, UserRound} from 'lucide-react';
+import {ChevronRight, UserRound} from 'lucide-react';
 import {useState, type CSSProperties} from 'react';
+import {CarouselArrow} from '@/components/carousel-arrow';
 import styles from '@/app/people/people.module.css';
 
 export type DirectoryPerson = {
@@ -131,6 +132,8 @@ function DirectorySection({
   divided: boolean;
 }) {
   const [expanded, setExpanded] = useState(false);
+  const [tickerDirection, setTickerDirection] = useState<TickerDirection>(config.tickerDirection);
+  const [tickerRestartKey, setTickerRestartKey] = useState(0);
   const minimumLoopCount = Math.max(config.desktopPageSize + 1, people.length);
   const loopPeople = people.length
     ? Array.from({length: minimumLoopCount}, (_, index) => people[index % people.length])
@@ -139,6 +142,12 @@ function DirectorySection({
     '--desktop-count': config.desktopPageSize,
     '--ticker-duration': `${Math.max(loopPeople.length * 8, 40)}s`,
   } as CSSProperties;
+
+  const handleArrowNavigation = (direction: TickerDirection) => {
+    setExpanded(false);
+    setTickerDirection(direction === 'left' ? 'right' : 'left');
+    setTickerRestartKey((current) => current + 1);
+  };
 
   const renderCards = (items: DirectoryPerson[], groupKey: string) =>
     items.map((person, index) => (
@@ -159,14 +168,13 @@ function DirectorySection({
       </div>
 
       <div className={styles.carouselStage}>
-        <button
+        <CarouselArrow
           type="button"
+          direction="left"
           className={`${styles.arrow} ${styles.leftArrow}`}
-          aria-hidden="true"
-          tabIndex={-1}
-        >
-          <ChevronLeft />
-        </button>
+          aria-label={`Previous ${config.key}`}
+          onClick={() => handleArrowNavigation('left')}
+        />
 
         {expanded ? (
           <div
@@ -178,8 +186,9 @@ function DirectorySection({
         ) : (
           <div className={styles.marqueeViewport} style={tickerStyle}>
             <div
+              key={tickerRestartKey}
               className={`${styles.marqueeTrack} ${
-                config.tickerDirection === 'right' ? styles.marqueeReverse : ''
+                tickerDirection === 'right' ? styles.marqueeReverse : ''
               }`}
             >
               <div className={styles.marqueeGroup}>
@@ -192,14 +201,13 @@ function DirectorySection({
           </div>
         )}
 
-        <button
+        <CarouselArrow
           type="button"
+          direction="right"
           className={`${styles.arrow} ${styles.rightArrow}`}
-          aria-hidden="true"
-          tabIndex={-1}
-        >
-          <ChevronRight />
-        </button>
+          aria-label={`Next ${config.key}`}
+          onClick={() => handleArrowNavigation('right')}
+        />
       </div>
 
       <div className={styles.sectionFooter}>

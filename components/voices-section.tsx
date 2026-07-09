@@ -1,3 +1,4 @@
+import {CarouselArrow} from '@/components/carousel-arrow';
 import {client} from '@/sanity/lib/client';
 
 type VoiceCard = {
@@ -71,8 +72,8 @@ export async function VoicesSection() {
         <p className="voices-eyebrow">Voices of FinAnt</p>
 
         <div className="voices-carousel-wrap">
-          <button aria-label="Previous voice" className="voices-arrow voices-arrow-left">‹</button>
-          <button aria-label="Next voice" className="voices-arrow voices-arrow-right">›</button>
+          <CarouselArrow aria-label="Previous voice" direction="left" className="voices-arrow voices-arrow-left" />
+          <CarouselArrow aria-label="Next voice" direction="right" className="voices-arrow voices-arrow-right" />
 
           <div className="voices-track-viewport">
             <div className="voices-card-grid">

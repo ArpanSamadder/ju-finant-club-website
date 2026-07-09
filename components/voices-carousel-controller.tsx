@@ -10,7 +10,6 @@ export function VoicesCarouselController() {
     const cards = Array.from(section?.querySelectorAll<HTMLElement>('article.voice-card') ?? []);
     const prev = section?.querySelector<HTMLButtonElement>('button[aria-label="Previous voice"]');
     const next = section?.querySelector<HTMLButtonElement>('button[aria-label="Next voice"]');
-    const mobile = window.matchMedia('(max-width: 767px)');
 
     if (!section || !track || !viewport || cards.length < 2) return;
 
@@ -27,21 +26,20 @@ export function VoicesCarouselController() {
     };
 
     const move = (nextIndex: number, animate = true) => {
-      if (!mobile.matches) return;
       track.style.animation = 'none';
       track.style.transition = animate ? 'transform 560ms cubic-bezier(.45,0,.2,1)' : 'none';
       track.style.transform = `translate3d(${-nextIndex * step()}px,0,0)`;
     };
 
     const forward = () => {
-      if (!mobile.matches || busy) return;
+      if (busy) return;
       busy = true;
       index += 1;
       move(index);
     };
 
     const backward = () => {
-      if (!mobile.matches || busy) return;
+      if (busy) return;
       busy = true;
       if (index === 0) {
         index = count;
@@ -54,7 +52,7 @@ export function VoicesCarouselController() {
 
     const restart = () => {
       window.clearInterval(timer);
-      if (mobile.matches) timer = window.setInterval(forward, 2000);
+      timer = window.setInterval(forward, 2400);
     };
 
     const done = (event: TransitionEvent) => {
@@ -68,13 +66,13 @@ export function VoicesCarouselController() {
     };
 
     const onStart = (event: TouchEvent) => {
-      if (!mobile.matches || event.touches.length !== 1) return;
+      if (event.touches.length !== 1) return;
       startX = event.touches[0].clientX;
       startY = event.touches[0].clientY;
     };
 
     const onEnd = (event: TouchEvent) => {
-      if (!mobile.matches || !startX) return;
+      if (!startX) return;
       const dx = event.changedTouches[0].clientX - startX;
       const dy = event.changedTouches[0].clientY - startY;
       startX = 0;
@@ -106,6 +104,9 @@ export function VoicesCarouselController() {
       viewport.removeEventListener('touchend', onEnd);
       track.removeEventListener('transitionend', done);
       window.removeEventListener('resize', onResize);
+      track.style.transition = '';
+      track.style.transform = '';
+      track.style.animation = '';
     };
   }, []);
 

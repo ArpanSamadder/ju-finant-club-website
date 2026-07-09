@@ -5,6 +5,7 @@ import './mobile.css';
 import './mobile-cta-row.css';
 import './mobile-legacy.css';
 import './legacy-carousel-interactive.css';
+import './home-hero-reveal.css';
 import './identity-section.css';
 import './identity-mobile-grid.css';
 import './identity-card-compact.css';
@@ -16,6 +17,7 @@ import './performance-fixes.css';
 import './no-glass-system.css';
 import './carousel-arrows.css';
 import { LegacyCarouselController } from '@/components/legacy-carousel-controller';
+import { HomeHeroRevealController } from '@/components/home-hero-reveal-controller';
 import { IdentityCarouselController } from '@/components/identity-carousel-controller';
 import { VoicesCarouselController } from '@/components/voices-carousel-controller';
 import { LiveEventHeroLink } from '@/components/live-event-hero-link';
@@ -46,6 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SiteChrome>{children}</SiteChrome>
         <LiveEventHeroLink />
         <LegacyCarouselController />
+        <HomeHeroRevealController />
         <IdentityCarouselController />
         <VoicesCarouselController />
       </body>

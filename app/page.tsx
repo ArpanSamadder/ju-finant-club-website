@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import {client} from '@/sanity/lib/client';
+import {CarouselArrow} from '@/components/carousel-arrow';
 import {PartnersSection} from '@/components/partners-section';
 import {VoicesSection} from '@/components/voices-section';
 
@@ -230,12 +231,8 @@ export default async function HomePage() {
           </div>
 
           <div className="relative mt-[4.2vw] px-20 max-2xl:px-16 max-xl:px-10 max-lg:px-0">
-            <button aria-label="Previous legacy event" className="absolute left-0 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-[#115FEB]/80 bg-[#020817] text-3xl font-light leading-none text-white shadow-none transition hover:border-[#00D9FF] hover:text-[#00D9FF] max-xl:h-11 max-xl:w-11 max-xl:text-2xl max-lg:hidden">
-              ‹
-            </button>
-            <button aria-label="Next legacy event" className="absolute right-0 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-[#115FEB]/80 bg-[#020817] text-3xl font-light leading-none text-white shadow-none transition hover:border-[#00D9FF] hover:text-[#00D9FF] max-xl:h-11 max-xl:w-11 max-xl:text-2xl max-lg:hidden">
-              ›
-            </button>
+            <CarouselArrow aria-label="Previous legacy event" direction="left" />
+            <CarouselArrow aria-label="Next legacy event" direction="right" />
 
             <div className="grid grid-cols-4 gap-4 max-xl:grid-cols-2 max-md:grid-cols-1">
               {legacyLoopCards.map((card, index) => {

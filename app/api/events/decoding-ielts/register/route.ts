@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-export const maxDuration = 30;
 export const dynamic = 'force-dynamic';
 
 const requiredFields = [
@@ -16,203 +15,168 @@ const requiredFields = [
   'expoInterest',
 ] as const;
 
-type WebhookResult = {
-  ok?: boolean;
-  duplicate?: boolean;
-  message?: string;
-  submissionId?: string;
-  rowNumber?: number;
+type RegistrationPayload = Record<string, unknown>;
+
+type SupabaseRegistration = {
+  id?: string;
+  name: string;
+  department: string;
+  batch: string;
+  registration_no: string;
+  hall: string;
+  email: string;
+  contact: string;
+  primary_goals: string[];
+  further_guidance: string;
+  workshop_interest: string;
+  expo_interest: string;
+  submitted_at: string;
+  idempotency_key: string;
 };
 
-function parseWebhookResult(text: string): WebhookResult | null {
-  if (!text) return null;
+type SupabaseError = {
+  code?: string;
+  message?: string;
+  details?: string;
+  hint?: string;
+};
 
-  try {
-    return JSON.parse(text) as WebhookResult;
-  } catch {
-    return null;
-  }
+function cleanText(value: unknown) {
+  return String(value || '').trim();
 }
 
-function successResponse(result: WebhookResult) {
+function getStringArray(value: unknown) {
+  if (!Array.isArray(value)) return [];
+  return value.map((item) => cleanText(item)).filter(Boolean);
+}
+
+function isDuplicateError(error: SupabaseError) {
+  return error.code === '23505' || /duplicate key/i.test(error.message || '');
+}
+
+function isValidEmail(email: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function buildRegistration(payload: RegistrationPayload): SupabaseRegistration {
+  return {
+    name: cleanText(payload.name),
+    department: cleanText(payload.department),
+    batch: cleanText(payload.batch),
+    registration_no: cleanText(payload.registrationNo),
+    hall: cleanText(payload.hall),
+    email: cleanText(payload.email).toLowerCase(),
+    contact: cleanText(payload.contact),
+    primary_goals: getStringArray(payload.primaryGoals),
+    further_guidance: cleanText(payload.furtherGuidance),
+    workshop_interest: cleanText(payload.workshopInterest),
+    expo_interest: cleanText(payload.expoInterest),
+    submitted_at: cleanText(payload.submittedAt) || new Date().toISOString(),
+    idempotency_key: cleanText(payload.idempotencyKey),
+  };
+}
+
+function jsonError(message: string, status = 400) {
+  return NextResponse.json({ ok: false, message }, { status });
+}
+
+function jsonSuccess(registration: Partial<SupabaseRegistration>, duplicate = false) {
   return NextResponse.json(
     {
       ok: true,
-      duplicate: Boolean(result.duplicate),
-      message:
-        result.message ||
-        (result.duplicate
-          ? 'This registration has already been received.'
-          : 'Registration submitted successfully.'),
-      submissionId: result.submissionId,
-      rowNumber: result.rowNumber,
+      duplicate,
+      message: duplicate
+        ? 'This registration has already been received.'
+        : 'Registration submitted successfully.',
+      submissionId: registration.id,
     },
-    { status: result.duplicate ? 200 : 201 }
+    { status: duplicate ? 200 : 201 }
   );
-}
-
-function failureResponse(message?: string) {
-  return NextResponse.json(
-    {
-      ok: false,
-      message:
-        message || 'Registration could not be saved. Please try again.',
-    },
-    { status: 502 }
-  );
-}
-
-async function readVerifiedWebhookResult(
-  response: Response,
-  webhookUrl: string
-): Promise<WebhookResult | null> {
-  const isRedirect = [301, 302, 303, 307, 308].includes(response.status);
-
-  if (isRedirect) {
-    const location = response.headers.get('location');
-    if (!location) return null;
-
-    const confirmationUrl = new URL(location, webhookUrl).toString();
-    const confirmationResponse = await fetch(confirmationUrl, {
-      method: 'GET',
-      headers: { Accept: 'application/json' },
-      cache: 'no-store',
-      redirect: 'follow',
-    });
-
-    const confirmationText = await confirmationResponse.text();
-    const result = parseWebhookResult(confirmationText);
-
-    if (!confirmationResponse.ok || !result) {
-      console.error('Apps Script confirmation response was invalid', {
-        status: confirmationResponse.status,
-        url: confirmationResponse.url,
-        responsePreview: confirmationText.slice(0, 300),
-      });
-      return null;
-    }
-
-    return result;
-  }
-
-  const responseText = await response.text();
-  const result = parseWebhookResult(responseText);
-
-  if (!response.ok || !result) {
-    console.error('Apps Script response was invalid', {
-      status: response.status,
-      url: response.url,
-      responsePreview: responseText.slice(0, 300),
-    });
-    return null;
-  }
-
-  return result;
 }
 
 export async function POST(request: NextRequest) {
-  let payload: Record<string, unknown>;
+  let payload: RegistrationPayload;
 
   try {
     payload = await request.json();
   } catch {
-    return NextResponse.json(
-      { ok: false, message: 'Invalid registration request.' },
-      { status: 400 }
-    );
+    return jsonError('Invalid registration request.', 400);
   }
 
   if (payload.website) {
     return NextResponse.json({ ok: true });
   }
 
-  const missing = requiredFields.some(
-    (field) =>
-      typeof payload[field] !== 'string' || !String(payload[field]).trim()
-  );
+  const missing = requiredFields.some((field) => !cleanText(payload[field]));
+  const registration = buildRegistration(payload);
 
-  const goals = Array.isArray(payload.primaryGoals)
-    ? payload.primaryGoals.filter((value) => typeof value === 'string')
-    : [];
-
-  if (missing || goals.length === 0) {
-    return NextResponse.json(
-      {
-        ok: false,
-        message: 'Complete all required fields before submitting.',
-      },
-      { status: 400 }
-    );
+  if (missing || registration.primary_goals.length === 0) {
+    return jsonError('Complete all required fields before submitting.', 400);
   }
 
-  const email = String(payload.email);
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    return NextResponse.json(
-      { ok: false, message: 'Enter a valid email address.' },
-      { status: 400 }
-    );
+  if (!isValidEmail(registration.email)) {
+    return jsonError('Enter a valid email address.', 400);
   }
 
-  const webhookUrl = process.env.DECODING_IELTS_REGISTRATION_WEBHOOK_URL;
-  if (!webhookUrl) {
-    return NextResponse.json(
-      {
-        ok: false,
-        message:
-          'The registration database connection is not active yet. Please try again shortly.',
-      },
-      { status: 503 }
+  if (!registration.idempotency_key) {
+    return jsonError('Invalid registration session. Please refresh and try again.', 400);
+  }
+
+  const supabaseUrl = process.env.SUPABASE_URL?.replace(/\/$/, '');
+  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+  if (!supabaseUrl || !serviceRoleKey) {
+    return jsonError(
+      'The registration database connection is not active yet. Please try again shortly.',
+      503
     );
   }
 
   try {
-    /*
-     * Apps Script ContentService responds through a Google redirect.
-     * We handle that redirect explicitly, then read the final JSON body.
-     * Success is returned only when Apps Script confirms { ok: true }.
-     */
-    const webhookResponse = await fetch(webhookUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-        'X-Idempotency-Key': String(payload.idempotencyKey || ''),
-      },
-      body: JSON.stringify({ ...payload, primaryGoals: goals }),
-      cache: 'no-store',
-      redirect: 'manual',
-    });
-
-    const result = await readVerifiedWebhookResult(
-      webhookResponse,
-      webhookUrl
+    const response = await fetch(
+      `${supabaseUrl}/rest/v1/decoding_ielts_registrations?select=id,name,email,registration_no`,
+      {
+        method: 'POST',
+        headers: {
+          apikey: serviceRoleKey,
+          Authorization: `Bearer ${serviceRoleKey}`,
+          'Content-Type': 'application/json',
+          Prefer: 'return=representation',
+        },
+        body: JSON.stringify(registration),
+        cache: 'no-store',
+      }
     );
 
-    if (!result) {
-      return failureResponse(
-        'The registration service did not return a verified confirmation. Please try again.'
-      );
+    const responseBody = await response.text();
+    const parsed = responseBody ? JSON.parse(responseBody) : null;
+
+    if (!response.ok) {
+      const error = (parsed || {}) as SupabaseError;
+
+      if (isDuplicateError(error)) {
+        return jsonSuccess({}, true);
+      }
+
+      console.error('Supabase registration insert failed', {
+        status: response.status,
+        code: error.code,
+        message: error.message,
+        details: error.details,
+      });
+
+      return jsonError('Registration could not be saved. Please try again.', 502);
     }
 
-    if (result.ok === true) {
-      return successResponse(result);
-    }
+    const savedRegistration = Array.isArray(parsed) ? parsed[0] : parsed;
 
-    console.error('Apps Script rejected registration', {
-      message: result.message,
-    });
-
-    return failureResponse(result.message);
+    return jsonSuccess(savedRegistration || {});
   } catch (error) {
-    console.error('Registration webhook request failed', error);
+    console.error('Registration database request failed', error);
 
-    return NextResponse.json(
-      {
-        ok: false,
-        message:
-          'Registration service is temporarily unavailable. Your information has not been cleared; please try again.',
-      },
-      { status: 502 }
+    return jsonError(
+      'Registration service is temporarily unavailable. Your information has not been cleared; please try again.',
+      502
     );
   }
 }

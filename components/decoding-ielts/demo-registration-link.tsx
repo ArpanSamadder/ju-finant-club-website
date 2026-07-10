@@ -2,8 +2,7 @@
 
 import { useEffect } from 'react';
 
-const REGISTRATION_URL =
-  'https://ju-finant-club-website.vercel.app/events/decoding-ielts/register';
+const REGISTRATION_URL = '/decoding-ielts/register';
 
 const DEMO_FORM_SELECTORS = [
   '#reserve-seat form',
@@ -40,8 +39,6 @@ export function DemoRegistrationLink() {
 
       const overlay = document.createElement('a');
       overlay.href = REGISTRATION_URL;
-      overlay.target = '_blank';
-      overlay.rel = 'noopener noreferrer';
       overlay.setAttribute(
         'aria-label',
         'Open the Decoding IELTS masterclass registration form'

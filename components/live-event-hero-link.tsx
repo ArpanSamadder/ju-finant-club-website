@@ -4,8 +4,8 @@ import { usePathname } from 'next/navigation';
 import { useEffect } from 'react';
 
 const LIVE_EVENT = {
-  label: 'Decoding English',
-  href: '/events/decoding-ielts',
+  label: 'Decoding IELTS',
+  href: '/decoding-ielts',
 };
 
 export function LiveEventHeroLink() {

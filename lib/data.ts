@@ -2,7 +2,7 @@ import { BriefcaseBusiness, CalendarDays, Handshake, Sparkles, Trophy, UsersRoun
 
 export const navItems = [
   { label: 'Home', href: '/' },
-  { label: 'Decoding IELTS', href: '/events/decoding-ielts' },
+  { label: 'Decoding IELTS', href: '/decoding-ielts' },
   { label: 'Initiatives', href: '/initiatives' },
   { label: 'People', href: '/people' },
   { label: 'Join Us', href: '/join' }
@@ -44,7 +44,7 @@ export const eventCards = [
     category: 'IELTS Masterclass & Study Abroad Guidance',
     description: 'A focused campus learning session for IELTS strategy, preparation direction, and global education pathways.',
     stats: 'July 20 · JU Campus · Registration required',
-    href: '/events/decoding-ielts'
+    href: '/decoding-ielts'
   },
   {
     title: 'Crackademy',

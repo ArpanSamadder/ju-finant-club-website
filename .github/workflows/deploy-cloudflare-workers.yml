@@ -29,11 +29,14 @@ jobs:
       - name: Build OpenNext app
         run: npx opennextjs-cloudflare build
 
+      - name: Create or update Worker
+        run: npx opennextjs-cloudflare deploy
+
       - name: Upload Supabase URL secret
         run: printf "%s" "$SUPABASE_URL" | npx wrangler secret put SUPABASE_URL
 
       - name: Upload Supabase service role secret
         run: printf "%s" "$SUPABASE_SERVICE_ROLE_KEY" | npx wrangler secret put SUPABASE_SERVICE_ROLE_KEY
 
-      - name: Deploy Worker
+      - name: Redeploy Worker with runtime secrets
         run: npx opennextjs-cloudflare deploy

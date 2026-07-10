@@ -6,7 +6,9 @@ import { SiteHeader } from './site-header';
 
 export function SiteChrome({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const registrationRoute = pathname === '/events/decoding-ielts/register';
+  const registrationRoute =
+    pathname === '/events/decoding-ielts/register' ||
+    pathname === '/decoding-ielts/register';
 
   if (registrationRoute) return <main>{children}</main>;
 

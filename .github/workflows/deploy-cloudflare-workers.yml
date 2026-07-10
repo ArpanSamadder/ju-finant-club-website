@@ -29,8 +29,15 @@ jobs:
       - name: Build OpenNext app
         run: npx opennextjs-cloudflare build
 
-      - name: Create or update Worker
-        run: npx opennextjs-cloudflare deploy
+      - name: Create bootstrap Worker without self-reference binding
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const config = JSON.parse(fs.readFileSync('wrangler.jsonc', 'utf8'));
+          delete config.services;
+          fs.writeFileSync('wrangler.bootstrap.jsonc', JSON.stringify(config, null, 2));
+          NODE
+          npx wrangler deploy --config wrangler.bootstrap.jsonc
 
       - name: Upload Supabase URL secret
         run: printf "%s" "$SUPABASE_URL" | npx wrangler secret put SUPABASE_URL
@@ -38,5 +45,5 @@ jobs:
       - name: Upload Supabase service role secret
         run: printf "%s" "$SUPABASE_SERVICE_ROLE_KEY" | npx wrangler secret put SUPABASE_SERVICE_ROLE_KEY
 
-      - name: Redeploy Worker with runtime secrets
+      - name: Deploy OpenNext Worker with runtime secrets
         run: npx opennextjs-cloudflare deploy

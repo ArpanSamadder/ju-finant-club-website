@@ -35,7 +35,7 @@ const body = Inter({
 export const metadata: Metadata = {
   title: 'JU FinAnt Club',
   description: 'Official website of Jahangirnagar University FinAnt Club.',
-  metadataBase: new URL('https://ju-finant-club.vercel.app')
+  metadataBase: new URL('https://jufinantclub.org')
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

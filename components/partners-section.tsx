@@ -3,43 +3,50 @@ import {client} from '@/sanity/lib/client';
 type PartnerCard = {
   _id?: string;
   name: string;
-  logo?: string;
-  logoSub?: string;
-  logoClass?: string;
   logoUrl?: string;
+  websiteUrl?: string;
+  placeholder?: boolean;
 };
 
 const fallbackPartnerCards: PartnerCard[] = [
-  {name: 'Pragati Insurance Limited', logo: 'Pragati Insurance', logoSub: 'Limited', logoClass: 'partner-logo-pragati'},
-  {name: 'Chaldal', logo: 'Chaldal', logoSub: '.com', logoClass: 'partner-logo-chaldal'},
-  {name: 'LankaBangla Finance', logo: 'LankaBangla', logoSub: 'FINANCE', logoClass: 'partner-logo-lankabangla'},
-  {name: 'Green Delta Capital', logo: 'GREEN DELTA', logoSub: 'CAPITAL', logoClass: 'partner-logo-greendelta'},
+  {name: 'Partner 01', placeholder: true},
+  {name: 'Partner 02', placeholder: true},
+  {name: 'Partner 03', placeholder: true},
+  {name: 'Partner 04', placeholder: true},
 ];
 
 async function getPartnerCards() {
   try {
     const cmsCards = await client.fetch<PartnerCard[]>(
-      `*[_type == "partner" && defined(name) && defined(logo.asset)] | order(featured desc, _createdAt desc) {
+      `*[_type == "partner" && defined(name) && coalesce(isActive, true) == true] | order(displayOrder asc, _createdAt desc)[0...8] {
         _id,
         name,
-        "logoUrl": logo.asset->url
+        "logoUrl": logo.asset->url,
+        "websiteUrl": website
       }`,
       {},
       {next: {revalidate: 60}}
     );
 
-    const cleanCmsCards = cmsCards.filter((card) => card.name && card.logoUrl);
-
-    if (cleanCmsCards.length >= 4) return cleanCmsCards;
-
-    const fillers = fallbackPartnerCards.filter(
-      (fallback) => !cleanCmsCards.some((card) => card.name.toLowerCase().trim() === fallback.name.toLowerCase().trim())
-    );
+    const cleanCmsCards = cmsCards.filter((card) => card.name);
+    const fillers = fallbackPartnerCards.slice(0, Math.max(0, 4 - cleanCmsCards.length));
 
     return [...cleanCmsCards, ...fillers].slice(0, 8);
   } catch {
     return fallbackPartnerCards;
   }
+}
+
+function PartnerLogo({partner}: {partner: PartnerCard}) {
+  if (partner.logoUrl) {
+    return <img src={partner.logoUrl} alt="" loading="lazy" decoding="async" className="partner-logo-img" />;
+  }
+
+  return (
+    <div className="flex h-20 w-20 items-center justify-center rounded-2xl border border-[#315fbf]/55 bg-[#06142f] text-sm font-bold tracking-[0.12em] text-white/45">
+      LOGO
+    </div>
+  );
 }
 
 export async function PartnersSection() {
@@ -63,21 +70,33 @@ export async function PartnersSection() {
             <div className="partners-grid">
               {partnerLoopCards.map((partner, index) => {
                 const isClone = index >= partnerCards.length;
-
-                return (
-                  <article key={`${partner._id ?? partner.name}-${index}`} aria-hidden={isClone ? 'true' : undefined} className={`partner-card ${isClone ? 'partner-clone' : ''}`}>
-                    <div className={`partner-logo ${partner.logoClass ?? ''}`} aria-hidden="true">
-                      {partner.logoUrl ? (
-                        <img src={partner.logoUrl} alt="" loading="lazy" decoding="async" className="partner-logo-img" />
-                      ) : (
-                        <>
-                          <span>{partner.logo ?? partner.name}</span>
-                          {partner.logoSub ? <small>{partner.logoSub}</small> : null}
-                        </>
-                      )}
+                const cardContent = (
+                  <>
+                    <div className="partner-logo" aria-hidden="true">
+                      <PartnerLogo partner={partner} />
                     </div>
                     <div className="partner-rule" />
                     <h3 className="partner-name">{partner.name}</h3>
+                  </>
+                );
+
+                if (partner.websiteUrl && !isClone) {
+                  return (
+                    <a
+                      key={`${partner._id ?? partner.name}-${index}`}
+                      href={partner.websiteUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="partner-card transition duration-300 hover:-translate-y-1 hover:border-[#00D9FF]"
+                    >
+                      {cardContent}
+                    </a>
+                  );
+                }
+
+                return (
+                  <article key={`${partner._id ?? partner.name}-${index}`} aria-hidden={isClone ? 'true' : undefined} className={`partner-card ${isClone ? 'partner-clone' : ''}`}>
+                    {cardContent}
                   </article>
                 );
               })}

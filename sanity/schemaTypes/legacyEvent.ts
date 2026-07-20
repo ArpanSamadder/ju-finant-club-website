@@ -2,41 +2,25 @@ import {defineField, defineType} from 'sanity';
 
 export const legacyEvent = defineType({
   name: 'legacyEvent',
-  title: 'Legacy Event',
+  title: 'Legacy Foundation Card',
   type: 'document',
   fields: [
     defineField({
       name: 'title',
-      title: 'Event Title',
+      title: 'Event Name',
       type: 'string',
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
-      options: {source: 'title', maxLength: 96},
-    }),
-    defineField({
-      name: 'year',
-      title: 'Year',
-      type: 'string',
-    }),
-    defineField({
-      name: 'shortDescription',
-      title: 'Short Description',
-      type: 'text',
-      rows: 3,
+      validation: (rule) => rule.required().max(100),
     }),
     defineField({
       name: 'mainImage',
-      title: 'Main Card Image',
+      title: 'Background Image',
       type: 'image',
       options: {hotspot: true},
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'eventLogo',
-      title: 'Event Logo / Badge',
+      title: 'Event Logo',
       type: 'image',
       options: {hotspot: true},
     }),
@@ -45,36 +29,33 @@ export const legacyEvent = defineType({
       title: 'Display Order',
       type: 'number',
       initialValue: 1,
-      validation: (rule) => rule.integer().min(0),
+      validation: (rule) => rule.required().integer().min(0),
     }),
     defineField({
       name: 'isActive',
-      title: 'Show on Website',
+      title: 'Active / Hidden',
       type: 'boolean',
       initialValue: true,
+      description: 'Turn off to hide this card from the Homepage.',
     }),
-    defineField({
-      name: 'isFeatured',
-      title: 'Featured Event',
-      type: 'boolean',
-      initialValue: false,
-    }),
-    defineField({
-      name: 'eventUrl',
-      title: 'Optional Event Link',
-      type: 'url',
-    }),
+  ],
+  orderings: [
+    {
+      title: 'Display order',
+      name: 'displayOrderAsc',
+      by: [{field: 'displayOrder', direction: 'asc'}],
+    },
   ],
   preview: {
     select: {
       title: 'title',
-      year: 'year',
       media: 'eventLogo',
+      isActive: 'isActive',
     },
-    prepare({title, year, media}) {
+    prepare({title, media, isActive}) {
       return {
-        title,
-        subtitle: year ? `Legacy Event • ${year}` : 'Legacy Event',
+        title: title || 'Untitled legacy card',
+        subtitle: isActive === false ? 'Hidden from Homepage' : 'Visible on Homepage',
         media,
       };
     },

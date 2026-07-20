@@ -43,7 +43,7 @@ function PartnerLogo({partner}: {partner: PartnerCard}) {
   }
 
   return (
-    <div className="flex h-20 w-20 items-center justify-center rounded-2xl border border-[#315fbf]/55 bg-[#06142f] text-sm font-bold tracking-[0.12em] text-white/45">
+    <div className="partner-logo-placeholder">
       LOGO
     </div>
   );
@@ -51,7 +51,6 @@ function PartnerLogo({partner}: {partner: PartnerCard}) {
 
 export async function PartnersSection() {
   const partnerCards = await getPartnerCards();
-  const partnerLoopCards = [...partnerCards, ...partnerCards];
 
   return (
     <section id="partners-collaborators" className="partners-section relative overflow-hidden bg-[#020817] px-6 py-[6.8vw]">
@@ -65,11 +64,10 @@ export async function PartnersSection() {
         </div>
         <p className="partners-subtitle">Building trusted relationships across industry, academia, media, and youth communities.</p>
 
-        <div className="partners-carousel" aria-label="Partners and collaborators carousel">
+        <div className="partners-carousel" aria-label="Partners and collaborators">
           <div className="partners-track-viewport">
             <div className="partners-grid">
-              {partnerLoopCards.map((partner, index) => {
-                const isClone = index >= partnerCards.length;
+              {partnerCards.map((partner, index) => {
                 const cardContent = (
                   <>
                     <div className="partner-logo" aria-hidden="true">
@@ -80,14 +78,14 @@ export async function PartnersSection() {
                   </>
                 );
 
-                if (partner.websiteUrl && !isClone) {
+                if (partner.websiteUrl) {
                   return (
                     <a
-                      key={`${partner._id ?? partner.name}-${index}`}
+                      key={partner._id ?? `${partner.name}-${index}`}
                       href={partner.websiteUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="partner-card transition duration-300 hover:-translate-y-1 hover:border-[#00D9FF]"
+                      className="partner-card"
                     >
                       {cardContent}
                     </a>
@@ -95,7 +93,7 @@ export async function PartnersSection() {
                 }
 
                 return (
-                  <article key={`${partner._id ?? partner.name}-${index}`} aria-hidden={isClone ? 'true' : undefined} className={`partner-card ${isClone ? 'partner-clone' : ''}`}>
+                  <article key={partner._id ?? `${partner.name}-${index}`} className="partner-card">
                     {cardContent}
                   </article>
                 );

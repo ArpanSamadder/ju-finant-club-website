@@ -8,7 +8,7 @@ type FooterContent = {
   facebookUrl?: string;
   linkedinUrl?: string;
   instagramUrl?: string;
-  copyrightText?: string;
+  copyrightText: string;
 };
 
 const footerNav = [
@@ -26,7 +26,7 @@ const fallbackFooter: FooterContent = {
   copyrightText: '© {year} Jahangirnagar University FinAnt Club. All rights reserved.',
 };
 
-async function getFooterContent() {
+async function getFooterContent(): Promise<FooterContent> {
   try {
     const content = await client.fetch<Partial<FooterContent> | null>(
       `*[_type == "footerSettings"][0] {
@@ -42,7 +42,15 @@ async function getFooterContent() {
       {next: {revalidate: 60}}
     );
 
-    return {...fallbackFooter, ...(content ?? {})};
+    return {
+      logoUrl: content?.logoUrl,
+      description: content?.description || fallbackFooter.description,
+      email: content?.email || fallbackFooter.email,
+      facebookUrl: content?.facebookUrl,
+      linkedinUrl: content?.linkedinUrl,
+      instagramUrl: content?.instagramUrl,
+      copyrightText: content?.copyrightText || fallbackFooter.copyrightText,
+    };
   } catch {
     return fallbackFooter;
   }
@@ -54,16 +62,27 @@ function SocialIcon({name}: {name: 'Facebook' | 'LinkedIn' | 'Instagram'}) {
   }
 
   if (name === 'LinkedIn') {
-    return <><path d="M4 10h5v16H4V10Zm2.5-8A2.9 2.9 0 1 1 6.5 7.8 2.9 2.9 0 0 1 6.5 2Z" /><path d="M12 10h4.8v2.2h.1c.7-1.3 2.3-2.8 4.8-2.8 5.1 0 6.1 3.4 6.1 7.8V26h-5v-7.8c0-1.9 0-4.3-2.6-4.3s-3 2-3 4.1v8h-5V10Z" /></>;
+    return (
+      <>
+        <path d="M4 10h5v16H4V10Zm2.5-8A2.9 2.9 0 1 1 6.5 7.8 2.9 2.9 0 0 1 6.5 2Z" />
+        <path d="M12 10h4.8v2.2h.1c.7-1.3 2.3-2.8 4.8-2.8 5.1 0 6.1 3.4 6.1 7.8V26h-5v-7.8c0-1.9 0-4.3-2.6-4.3s-3 2-3 4.1v8h-5V10Z" />
+      </>
+    );
   }
 
-  return <><rect x="4" y="4" width="24" height="24" rx="7" fill="none" stroke="currentColor" strokeWidth="2.4" /><circle cx="16" cy="16" r="5.5" fill="none" stroke="currentColor" strokeWidth="2.4" /><circle cx="24.2" cy="7.8" r="1.5" /></>;
+  return (
+    <>
+      <rect x="4" y="4" width="24" height="24" rx="7" fill="none" stroke="currentColor" strokeWidth="2.4" />
+      <circle cx="16" cy="16" r="5.5" fill="none" stroke="currentColor" strokeWidth="2.4" />
+      <circle cx="24.2" cy="7.8" r="1.5" />
+    </>
+  );
 }
 
 export async function SiteFooter() {
   const footer = await getFooterContent();
   const currentYear = new Date().getFullYear();
-  const copyright = (footer.copyrightText || fallbackFooter.copyrightText || '')
+  const copyright = footer.copyrightText
     .replaceAll('{year}', String(currentYear))
     .replaceAll('[year]', String(currentYear));
 
@@ -118,7 +137,7 @@ export async function SiteFooter() {
                   aria-disabled={!social.href}
                   className={`flex h-10 w-10 items-center justify-center rounded-xl border border-[#315fbf]/65 bg-[#06132d] text-[#8fdfff] transition ${social.href ? 'hover:-translate-y-0.5 hover:border-[#00F0FF] hover:text-white' : 'cursor-default opacity-45'}`}
                 >
-                  <svg viewBox="0 0 32 32" className="h-4.5 w-4.5 fill-current" aria-hidden="true">
+                  <svg viewBox="0 0 32 32" className="h-[18px] w-[18px] fill-current" aria-hidden="true">
                     <SocialIcon name={social.name} />
                   </svg>
                 </a>

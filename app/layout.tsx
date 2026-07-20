@@ -1,5 +1,5 @@
-import type { Metadata } from 'next';
-import { Cormorant_Garamond, Inter } from 'next/font/google';
+import type {Metadata} from 'next';
+import {Cormorant_Garamond, Inter} from 'next/font/google';
 import './globals.css';
 import './mobile.css';
 import './mobile-cta-row.css';
@@ -15,35 +15,36 @@ import './partners-section.css';
 import './performance-fixes.css';
 import './no-glass-system.css';
 import './carousel-arrows.css';
-import { LegacyCarouselController } from '@/components/legacy-carousel-controller';
-import { IdentityCarouselController } from '@/components/identity-carousel-controller';
-import { VoicesCarouselController } from '@/components/voices-carousel-controller';
-import { LiveEventHeroLink } from '@/components/live-event-hero-link';
-import { SiteChrome } from '@/components/site-chrome';
+import {LegacyCarouselController} from '@/components/legacy-carousel-controller';
+import {IdentityCarouselController} from '@/components/identity-carousel-controller';
+import {VoicesCarouselController} from '@/components/voices-carousel-controller';
+import {LiveEventHeroLink} from '@/components/live-event-hero-link';
+import {SiteChrome} from '@/components/site-chrome';
+import {SiteFooter} from '@/components/site-footer';
 
 const display = Cormorant_Garamond({
   subsets: ['latin'],
   variable: '--font-display',
-  weight: ['500', '600', '700']
+  weight: ['500', '600', '700'],
 });
 
 const body = Inter({
   subsets: ['latin'],
-  variable: '--font-body'
+  variable: '--font-body',
 });
 
 export const metadata: Metadata = {
   title: 'JU FinAnt Club',
   description: 'Official website of Jahangirnagar University FinAnt Club.',
-  metadataBase: new URL('https://jufinantclub.org')
+  metadataBase: new URL('https://jufinantclub.org'),
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable}`}>
       <body>
         <div className="noise" />
-        <SiteChrome>{children}</SiteChrome>
+        <SiteChrome footer={<SiteFooter />}>{children}</SiteChrome>
         <LiveEventHeroLink />
         <LegacyCarouselController />
         <IdentityCarouselController />

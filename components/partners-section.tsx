@@ -3,38 +3,33 @@ import {client} from '@/sanity/lib/client';
 type PartnerCard = {
   _id?: string;
   name: string;
-  logo?: string;
-  logoSub?: string;
-  logoClass?: string;
   logoUrl?: string;
+  websiteUrl?: string;
+  placeholder?: boolean;
 };
 
 const fallbackPartnerCards: PartnerCard[] = [
-  {name: 'Pragati Insurance Limited', logo: 'Pragati Insurance', logoSub: 'Limited', logoClass: 'partner-logo-pragati'},
-  {name: 'Chaldal', logo: 'Chaldal', logoSub: '.com', logoClass: 'partner-logo-chaldal'},
-  {name: 'LankaBangla Finance', logo: 'LankaBangla', logoSub: 'FINANCE', logoClass: 'partner-logo-lankabangla'},
-  {name: 'Green Delta Capital', logo: 'GREEN DELTA', logoSub: 'CAPITAL', logoClass: 'partner-logo-greendelta'},
+  {name: 'Partner 01', placeholder: true},
+  {name: 'Partner 02', placeholder: true},
+  {name: 'Partner 03', placeholder: true},
+  {name: 'Partner 04', placeholder: true},
 ];
 
 async function getPartnerCards() {
   try {
     const cmsCards = await client.fetch<PartnerCard[]>(
-      `*[_type == "partner" && defined(name) && defined(logo.asset)] | order(featured desc, _createdAt desc) {
+      `*[_type == "partner" && defined(name) && coalesce(isActive, true) == true] | order(displayOrder asc, _createdAt desc)[0...8] {
         _id,
         name,
-        "logoUrl": logo.asset->url
+        "logoUrl": logo.asset->url,
+        "websiteUrl": website
       }`,
       {},
       {next: {revalidate: 60}}
     );
 
-    const cleanCmsCards = cmsCards.filter((card) => card.name && card.logoUrl);
-
-    if (cleanCmsCards.length >= 4) return cleanCmsCards;
-
-    const fillers = fallbackPartnerCards.filter(
-      (fallback) => !cleanCmsCards.some((card) => card.name.toLowerCase().trim() === fallback.name.toLowerCase().trim())
-    );
+    const cleanCmsCards = cmsCards.filter((card) => card.name);
+    const fillers = fallbackPartnerCards.slice(0, Math.max(0, 4 - cleanCmsCards.length));
 
     return [...cleanCmsCards, ...fillers].slice(0, 8);
   } catch {
@@ -42,9 +37,20 @@ async function getPartnerCards() {
   }
 }
 
+function PartnerLogo({partner}: {partner: PartnerCard}) {
+  if (partner.logoUrl) {
+    return <img src={partner.logoUrl} alt="" loading="lazy" decoding="async" className="partner-logo-img" />;
+  }
+
+  return (
+    <div className="partner-logo-placeholder">
+      LOGO
+    </div>
+  );
+}
+
 export async function PartnersSection() {
   const partnerCards = await getPartnerCards();
-  const partnerLoopCards = [...partnerCards, ...partnerCards];
 
   return (
     <section id="partners-collaborators" className="partners-section relative overflow-hidden bg-[#020817] px-6 py-[6.8vw]">
@@ -58,26 +64,37 @@ export async function PartnersSection() {
         </div>
         <p className="partners-subtitle">Building trusted relationships across industry, academia, media, and youth communities.</p>
 
-        <div className="partners-carousel" aria-label="Partners and collaborators carousel">
+        <div className="partners-carousel" aria-label="Partners and collaborators">
           <div className="partners-track-viewport">
             <div className="partners-grid">
-              {partnerLoopCards.map((partner, index) => {
-                const isClone = index >= partnerCards.length;
-
-                return (
-                  <article key={`${partner._id ?? partner.name}-${index}`} aria-hidden={isClone ? 'true' : undefined} className={`partner-card ${isClone ? 'partner-clone' : ''}`}>
-                    <div className={`partner-logo ${partner.logoClass ?? ''}`} aria-hidden="true">
-                      {partner.logoUrl ? (
-                        <img src={partner.logoUrl} alt="" loading="lazy" decoding="async" className="partner-logo-img" />
-                      ) : (
-                        <>
-                          <span>{partner.logo ?? partner.name}</span>
-                          {partner.logoSub ? <small>{partner.logoSub}</small> : null}
-                        </>
-                      )}
+              {partnerCards.map((partner, index) => {
+                const cardContent = (
+                  <>
+                    <div className="partner-logo" aria-hidden="true">
+                      <PartnerLogo partner={partner} />
                     </div>
                     <div className="partner-rule" />
                     <h3 className="partner-name">{partner.name}</h3>
+                  </>
+                );
+
+                if (partner.websiteUrl) {
+                  return (
+                    <a
+                      key={partner._id ?? `${partner.name}-${index}`}
+                      href={partner.websiteUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="partner-card"
+                    >
+                      {cardContent}
+                    </a>
+                  );
+                }
+
+                return (
+                  <article key={partner._id ?? `${partner.name}-${index}`} className="partner-card">
+                    {cardContent}
                   </article>
                 );
               })}

@@ -1,250 +1,56 @@
-@media (min-width: 768px) {
-  #legacy-foundation .legacy-clone {
-    display: none !important;
-  }
-}
-
 @media (max-width: 767px) {
   #legacy-foundation {
     min-height: auto !important;
-    margin-top: -11.4rem !important;
-    padding: 5.35rem 1.25rem 4.8rem !important;
-    overflow: hidden !important;
-    background: transparent !important;
-  }
-
-  #legacy-foundation > div:nth-of-type(1) {
-    top: 4.55rem !important;
-  }
-
-  #legacy-foundation > div:nth-of-type(2) {
-    top: 4.55rem !important;
-  }
-
-  #legacy-foundation > svg {
-    top: -42px !important;
-    width: 210vw !important;
-    height: 220px !important;
-    opacity: 1 !important;
-  }
-
-  #legacy-foundation > svg path:first-of-type {
-    stroke-width: 10 !important;
-    stroke: rgba(17, 95, 235, 0.22) !important;
-  }
-
-  #legacy-foundation > svg path:last-of-type {
-    stroke-width: 2.4 !important;
-    stroke: #115FEB !important;
-  }
-
-  #legacy-foundation > .relative.z-10 {
-    max-width: 100% !important;
-  }
-
-  #legacy-foundation .text-center p {
-    font-size: 0.62rem !important;
-    letter-spacing: 0.56em !important;
-    line-height: 1 !important;
-  }
-
-  #legacy-foundation .text-center h2 {
-    max-width: 100% !important;
-    margin: 1.18rem auto 0 !important;
-    font-family: var(--font-body) !important;
-    font-weight: 800 !important;
-    font-size: clamp(1.62rem, 6.85vw, 2.18rem) !important;
-    line-height: 1.08 !important;
-    letter-spacing: -0.07em !important;
-    white-space: nowrap !important;
-    text-shadow: 0 18px 58px rgba(0, 0, 0, 0.68) !important;
-  }
-
-  #legacy-foundation .text-center h2 span {
-    font-weight: 800 !important;
-  }
-
-  #legacy-foundation .text-center h2 span:nth-child(2) {
-    background: linear-gradient(180deg, #22f3ff 0%, #11a7ff 42%, #115feb 100%) !important;
-    -webkit-background-clip: text !important;
-    background-clip: text !important;
-    color: transparent !important;
-  }
-
-  #legacy-foundation .text-center h2 span:last-child {
-    display: block !important;
-    margin-top: 0.12rem !important;
-    white-space: nowrap !important;
-  }
-
-  #legacy-foundation > .relative.z-10 > div:nth-child(2) {
-    margin-top: 3.7rem !important;
-    padding-left: 1.72rem !important;
-    padding-right: 1.72rem !important;
-    overflow: hidden !important;
-  }
-
-  #legacy-foundation > .relative.z-10 > div:nth-child(2)::after {
-    content: "";
-    position: absolute;
-    left: calc(50% - 0.92rem);
-    bottom: -2.28rem;
-    width: 2.1rem;
-    height: 0.34rem;
-    border-radius: 999px;
-    background: #115FEB;
-    box-shadow: 0 0 13px rgba(17, 95, 235, 0.62);
-  }
-
-  #legacy-foundation > .relative.z-10 > div:nth-child(2)::before {
-    content: "";
-    position: absolute;
-    left: calc(50% + 1.82rem);
-    bottom: -2.22rem;
-    width: 1.65rem;
-    height: 0.28rem;
-    border-radius: 999px;
-    background: rgba(75, 93, 130, 0.72);
-  }
-
-  #legacy-foundation > .relative.z-10 > div:nth-child(2) > button {
-    display: flex !important;
-    width: 1.8rem !important;
-    height: 1.8rem !important;
-    top: 50% !important;
-    border-color: rgba(90, 132, 255, 0.9) !important;
-    background: rgba(2, 8, 23, 0.88) !important;
-    font-size: 1.35rem !important;
-    color: white !important;
-  }
-
-  #legacy-foundation > .relative.z-10 > div:nth-child(2) > button:first-child {
-    left: -0.9rem !important;
-  }
-
-  #legacy-foundation > .relative.z-10 > div:nth-child(2) > button:nth-child(2) {
-    right: -0.9rem !important;
-  }
-
-  #legacy-foundation .grid {
-    display: flex !important;
-    grid-template-columns: none !important;
-    gap: 0.6rem !important;
-    width: max-content !important;
-    will-change: transform;
-    transform: translate3d(0, 0, 0);
-    backface-visibility: hidden;
-    animation: legacyMobileMarquee 16s linear infinite;
-  }
-
-  #legacy-foundation article {
-    flex: 0 0 calc((100vw - 6rem) / 2) !important;
-    border-radius: 0.55rem !important;
-    box-shadow: 0 15px 36px rgba(0, 0, 0, 0.58) !important;
-  }
-
-  #legacy-foundation article.legacy-clone {
-    display: block !important;
-  }
-
-  #legacy-foundation article > div {
-    height: 10.55rem !important;
-    border-radius: 0.5rem !important;
-  }
-
-  #legacy-foundation article img {
-    opacity: 0.68 !important;
-  }
-
-  #legacy-foundation article > div > div:nth-last-child(3) {
-    bottom: 3.4rem !important;
-    left: 0.65rem !important;
-    right: 0.65rem !important;
-  }
-
-  #legacy-foundation article > div > div:last-child {
-    left: 0.6rem !important;
-    right: 0.6rem !important;
-    bottom: 0.72rem !important;
-    gap: 0.45rem !important;
-  }
-
-  #legacy-foundation article > div > div:last-child > div {
-    width: 2rem !important;
-    height: 2rem !important;
-    border-color: rgba(17, 95, 235, 0.95) !important;
-  }
-
-  #legacy-foundation article h3 {
-    font-size: 0.72rem !important;
-    line-height: 1 !important;
-    letter-spacing: -0.045em !important;
-  }
-}
-
-@keyframes legacyMobileMarquee {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-
-  to {
-    transform: translate3d(calc(-1 * ((((100vw - 6rem) / 2) + 0.6rem) * 4)), 0, 0);
-  }
-}
-
-@media (max-width: 390px) {
-  #legacy-foundation {
-    margin-top: -9.9rem !important;
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-    background: transparent !important;
-  }
-
-  #legacy-foundation > div:nth-of-type(1) {
-    top: 4.15rem !important;
-  }
-
-  #legacy-foundation > div:nth-of-type(2) {
-    top: 4.15rem !important;
+    margin-top: -4rem !important;
+    padding: 6rem 1.25rem 4.8rem !important;
   }
 
   #legacy-foundation > svg {
     top: -36px !important;
     width: 220vw !important;
-    height: 210px !important;
+    height: 230px !important;
+  }
+
+  #legacy-foundation .text-center p {
+    font-size: 0.62rem !important;
+    letter-spacing: 0.48em !important;
   }
 
   #legacy-foundation .text-center h2 {
-    font-size: clamp(1.42rem, 6.1vw, 1.78rem) !important;
-    letter-spacing: -0.073em !important;
+    max-width: 23rem !important;
+    margin: 1.15rem auto 0 !important;
+    font-family: var(--font-body) !important;
+    font-size: clamp(1.7rem, 7.1vw, 2.25rem) !important;
+    font-weight: 750 !important;
+    line-height: 1.08 !important;
+    letter-spacing: -0.065em !important;
   }
 
-  #legacy-foundation > .relative.z-10 > div:nth-child(2) {
-    padding-left: 1.55rem !important;
-    padding-right: 1.55rem !important;
+  #legacy-foundation .legacy-cards-viewport {
+    margin-top: 2.8rem !important;
   }
 
-  #legacy-foundation article {
-    flex-basis: calc((100vw - 5.5rem) / 2) !important;
+  #legacy-foundation .legacy-card > div {
+    height: 17rem !important;
   }
 
-  #legacy-foundation article > div {
-    height: 9.8rem !important;
-  }
-
-  #legacy-foundation article h3 {
-    font-size: 0.66rem !important;
+  #legacy-foundation .legacy-card h3 {
+    font-size: 1rem !important;
   }
 }
 
 @media (max-width: 390px) {
-  @keyframes legacyMobileMarquee {
-    from {
-      transform: translate3d(0, 0, 0);
-    }
+  #legacy-foundation {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
 
-    to {
-      transform: translate3d(calc(-1 * ((((100vw - 5.5rem) / 2) + 0.6rem) * 4)), 0, 0);
-    }
+  #legacy-foundation .legacy-cards-viewport {
+    margin-inline: -1rem !important;
+    padding-inline: 1rem !important;
+  }
+
+  #legacy-foundation .legacy-card {
+    flex-basis: calc(100vw - 2.75rem) !important;
   }
 }

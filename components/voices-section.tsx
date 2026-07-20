@@ -5,58 +5,91 @@ type VoiceCard = {
   _id?: string;
   name: string;
   role: string;
+  organisation: string;
   quote: string;
   photoUrl?: string;
   photoClass?: string;
+  placeholder?: boolean;
 };
 
 const fallbackVoiceCards: VoiceCard[] = [
   {
     name: 'Arpan Samadder',
-    role: 'Founding President, Jahangirnagar University FinAnt Club',
-    quote: 'FinAnt was built for one reason: the AI age is here, and most professionals are not ready. We did not build events for the sake of events. We built a platform that develops AI-native professionals the industry will compete to hire, measured not by event counts, but by what our members become.',
+    role: 'President',
+    organisation: 'Jahangirnagar University FinAnt Club',
+    quote: 'FinAnt exists to build future-ready professionals through leadership, AI-powered learning, industry exposure, and meaningful execution.',
     photoClass: 'voice-photo-arpan',
   },
   {
-    name: 'Demo CA 1',
-    role: 'Corporate Advisor, Jahangirnagar University FinAnt Club',
-    quote: 'The talent gap in Bangladesh’s corporate sector is real, and FinAnt is one of the few platforms actively closing it. This is not a club running events. It is a structured development platform producing disciplined, AI-aware professionals who can contribute from day one — exactly what the industry needs.',
-    photoClass: 'voice-photo-advisor',
+    name: 'Faculty Advisor',
+    role: 'Faculty Advisor',
+    organisation: 'Department of Finance and Banking, Jahangirnagar University',
+    quote: 'FinAnt creates a structured bridge between academic learning, professional development, and future-ready capability.',
+    placeholder: true,
   },
 ];
 
 function optimizedSanityImage(url?: string, width = 900) {
   if (!url) return undefined;
   const separator = url.includes('?') ? '&' : '?';
-  return `${url}${separator}auto=format&w=${width}&q=75`;
+  return `${url}${separator}auto=format&w=${width}&q=78`;
 }
 
 async function getVoiceCards() {
   try {
-    const cmsCards = await client.fetch<VoiceCard[]>(
-      `*[_type == "voiceOfFinant" && isActive == true] | order(displayOrder asc, _createdAt desc) {
+    const cmsCards = await client.fetch<Partial<VoiceCard>[]>(
+      `*[_type == "voiceOfFinant" && coalesce(isActive, true) == true] | order(displayOrder asc, _createdAt desc) {
         _id,
         name,
-        "role": designation,
-        "quote": message,
+        "role": homepageDesignation,
+        organisation,
+        "quote": statement,
         "photoUrl": photo.asset->url
       }`,
       {},
       {next: {revalidate: 60}}
     );
 
-    const cleanCmsCards = cmsCards.filter((card) => card.name && card.role && card.quote);
+    const approvedNames = new Map(fallbackVoiceCards.map((card) => [card.name.toLowerCase(), card]));
+    const normalizedCmsCards = cmsCards
+      .filter((card) => card.name && !card.name.toLowerCase().includes('demo'))
+      .map((card) => {
+        const fallback = approvedNames.get(card.name!.toLowerCase());
+        if (fallback) {
+          return {
+            ...fallback,
+            _id: card._id,
+            photoUrl: card.photoUrl,
+            role: card.role || fallback.role,
+            organisation: card.organisation || fallback.organisation,
+            quote: card.quote || fallback.quote,
+          } as VoiceCard;
+        }
 
-    if (cleanCmsCards.length >= 2) return cleanCmsCards;
+        if (!card.role || !card.organisation || !card.quote) return null;
+        return card as VoiceCard;
+      })
+      .filter((card): card is VoiceCard => Boolean(card));
 
     const fillers = fallbackVoiceCards.filter(
-      (fallback) => !cleanCmsCards.some((card) => card.name.toLowerCase().trim() === fallback.name.toLowerCase().trim())
+      (fallback) => !normalizedCmsCards.some((card) => card.name.toLowerCase().trim() === fallback.name.toLowerCase().trim())
     );
 
-    return [...cleanCmsCards, ...fillers].slice(0, 6);
+    return [...normalizedCmsCards, ...fillers].slice(0, 2);
   } catch {
     return fallbackVoiceCards;
   }
+}
+
+function FacultyPlaceholder() {
+  return (
+    <div className="voice-photo flex items-center justify-center bg-[radial-gradient(circle_at_50%_32%,rgba(71,112,190,.34),transparent_30%),linear-gradient(145deg,#071735,#020817)]" aria-hidden="true">
+      <svg viewBox="0 0 120 120" className="h-32 w-32 text-[#7596d9]/55" fill="currentColor">
+        <circle cx="60" cy="39" r="23" />
+        <path d="M22 105c2-27 17-43 38-43s36 16 38 43H22Z" />
+      </svg>
+    </div>
+  );
 }
 
 export async function VoicesSection() {
@@ -87,6 +120,8 @@ export async function VoicesSection() {
                       <div className="voice-photo" aria-hidden="true">
                         <img src={photoSrc} alt="" loading="lazy" decoding="async" />
                       </div>
+                    ) : voice.placeholder ? (
+                      <FacultyPlaceholder />
                     ) : (
                       <div className={`voice-photo ${voice.photoClass ?? 'voice-photo-advisor'}`} aria-hidden="true" />
                     )}
@@ -96,6 +131,7 @@ export async function VoicesSection() {
                       <div className="voice-signature">
                         <h3>{voice.name}</h3>
                         <p>{voice.role}</p>
+                        <p className="mt-1 text-white/48">{voice.organisation}</p>
                       </div>
                     </div>
                   </article>
@@ -105,7 +141,6 @@ export async function VoicesSection() {
           </div>
 
           <div className="voices-dots" aria-hidden="true">
-            <span />
             <span />
             <span />
           </div>

@@ -1,15 +1,61 @@
-import { defineField, defineType } from 'sanity';
+import {defineField, defineType} from 'sanity';
 
 export const partner = defineType({
   name: 'partner',
-  title: 'Sponsors & Partners',
+  title: 'Partner & Collaborator',
   type: 'document',
   fields: [
-    defineField({ name: 'name', title: 'Organization Name', type: 'string', validation: (Rule) => Rule.required() }),
-    defineField({ name: 'type', title: 'Partner Type', type: 'string', options: { list: ['Sponsor', 'Strategic Partner', 'Academic Partner', 'Media Partner', 'Club Collaboration', 'Corporate Advisor Organization'] } }),
-    defineField({ name: 'tier', title: 'Tier / Segment', type: 'string' }),
-    defineField({ name: 'logo', title: 'Logo', type: 'image', options: { hotspot: true } }),
-    defineField({ name: 'website', title: 'Website', type: 'url' }),
-    defineField({ name: 'featured', title: 'Featured', type: 'boolean', initialValue: false })
-  ]
+    defineField({
+      name: 'name',
+      title: 'Partner Name',
+      type: 'string',
+      validation: (rule) => rule.required().max(140),
+    }),
+    defineField({
+      name: 'logo',
+      title: 'Partner Logo',
+      type: 'image',
+      options: {hotspot: true},
+    }),
+    defineField({
+      name: 'website',
+      title: 'Website URL',
+      type: 'url',
+    }),
+    defineField({
+      name: 'displayOrder',
+      title: 'Display Order',
+      type: 'number',
+      initialValue: 1,
+      validation: (rule) => rule.required().integer().min(0),
+    }),
+    defineField({
+      name: 'isActive',
+      title: 'Active / Hidden',
+      type: 'boolean',
+      initialValue: true,
+      description: 'Turn off to hide this partner from the Homepage.',
+    }),
+  ],
+  orderings: [
+    {
+      title: 'Display order',
+      name: 'displayOrderAsc',
+      by: [{field: 'displayOrder', direction: 'asc'}],
+    },
+  ],
+  preview: {
+    select: {
+      title: 'name',
+      media: 'logo',
+      isActive: 'isActive',
+    },
+    prepare({title, media, isActive}) {
+      return {
+        title: title || 'Unnamed partner',
+        subtitle: isActive === false ? 'Hidden from Homepage' : 'Visible on Homepage',
+        media,
+      };
+    },
+  },
 });

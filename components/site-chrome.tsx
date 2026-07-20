@@ -1,10 +1,9 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
-import { SiteFooter } from './site-footer';
-import { SiteHeader } from './site-header';
+import {usePathname} from 'next/navigation';
+import {SiteHeader} from './site-header';
 
-export function SiteChrome({ children }: { children: React.ReactNode }) {
+export function SiteChrome({children, footer}: {children: React.ReactNode; footer: React.ReactNode}) {
   const pathname = usePathname();
   const registrationRoute =
     pathname === '/events/decoding-ielts/register' ||
@@ -16,7 +15,7 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
     <>
       <SiteHeader />
       <main>{children}</main>
-      <SiteFooter />
+      {footer}
     </>
   );
 }

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import {client} from '@/sanity/lib/client';
-import {CarouselArrow} from '@/components/carousel-arrow';
+import {ClosingCtaSection} from '@/components/closing-cta-section';
 import {PartnersSection} from '@/components/partners-section';
 import {VoicesSection} from '@/components/voices-section';
 
@@ -9,11 +9,8 @@ export const revalidate = 60;
 type LegacyCard = {
   _id?: string;
   title: string;
-  year?: string;
-  shortDescription?: string;
   mainImageUrl?: string;
   eventLogoUrl?: string;
-  eventUrl?: string;
   badge?: string;
   accent?: string;
 };
@@ -26,7 +23,7 @@ type IdentityCard = {
 
 const fallbackLegacyCards: LegacyCard[] = [
   {
-    title: 'Biztigation',
+    title: 'Biztigation 2024',
     badge: 'BIZ\nTIGATION',
     accent: 'from-[#06123d] via-[#071b58] to-[#020817]',
   },
@@ -117,12 +114,9 @@ function IdentityIcon({icon}: {icon: IdentityCard['icon']}) {
 async function getLegacyCards() {
   try {
     const cards = await client.fetch<LegacyCard[]>(
-      `*[_type == "legacyEvent" && isActive == true] | order(displayOrder asc, _createdAt desc) {
+      `*[_type == "legacyEvent" && coalesce(isActive, true) == true] | order(displayOrder asc, _createdAt desc)[0...4] {
         _id,
         title,
-        year,
-        shortDescription,
-        eventUrl,
         "mainImageUrl": mainImage.asset->url,
         "eventLogoUrl": eventLogo.asset->url
       }`,
@@ -130,11 +124,13 @@ async function getLegacyCards() {
       {next: {revalidate: 60}}
     );
 
-    const cmsCards = cards.map((card, index) => ({
-      ...card,
-      badge: makeBadge(card.title),
-      accent: legacyAccentFallbacks[index % legacyAccentFallbacks.length],
-    }));
+    const cmsCards = cards
+      .filter((card) => card.title)
+      .map((card, index) => ({
+        ...card,
+        badge: makeBadge(card.title),
+        accent: legacyAccentFallbacks[index % legacyAccentFallbacks.length],
+      }));
 
     const fillers = fallbackLegacyCards.filter(
       (fallback) => !cmsCards.some((card) => card.title.toLowerCase().trim() === fallback.title.toLowerCase().trim())
@@ -148,7 +144,6 @@ async function getLegacyCards() {
 
 export default async function HomePage() {
   const legacyCards = await getLegacyCards();
-  const legacyLoopCards = [...legacyCards, ...legacyCards];
 
   return (
     <div className="bg-[#020817] text-white">
@@ -230,48 +225,48 @@ export default async function HomePage() {
             </h2>
           </div>
 
-          <div className="relative mt-[4.2vw] px-20 max-2xl:px-16 max-xl:px-10 max-lg:px-0">
-            <CarouselArrow aria-label="Previous legacy event" direction="left" />
-            <CarouselArrow aria-label="Next legacy event" direction="right" />
+          <div className="legacy-cards-viewport mt-[4.2vw]">
+            <div className="legacy-cards-track">
+              {legacyCards.map((card, index) => (
+                <article key={card._id ?? `${card.title}-${index}`} className="legacy-card group relative overflow-hidden rounded-[14px] border border-[#5F79FF]/90 bg-[#030817]/92 p-[1px] shadow-[0_18px_48px_rgba(0,0,0,.62)] transition duration-300 hover:-translate-y-1 hover:border-[#00D9FF] hover:shadow-[0_24px_60px_rgba(0,0,0,.68)]">
+                  <div className={`relative h-[16rem] overflow-hidden rounded-[13px] bg-gradient-to-br ${card.accent ?? 'from-[#06123d] via-[#071b58] to-[#020817]'} max-2xl:h-[14.5rem] max-xl:h-[16rem]`}>
+                    {card.mainImageUrl ? (
+                      <img
+                        src={card.mainImageUrl}
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                        className="absolute inset-0 h-full w-full object-cover opacity-72 saturate-[1.08] transition duration-500 group-hover:scale-[1.025] group-hover:opacity-82"
+                      />
+                    ) : (
+                      <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(6,18,61,.94)_0%,rgba(7,27,88,.62)_48%,rgba(2,8,23,.98)_100%)]" />
+                    )}
 
-            <div className="grid grid-cols-4 gap-4 max-xl:grid-cols-2 max-md:grid-cols-1">
-              {legacyLoopCards.map((card, index) => {
-                const isClone = index >= legacyCards.length;
+                    <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,8,23,.08)_0%,rgba(2,8,23,.18)_42%,rgba(2,8,23,.96)_100%)]" />
+                    <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#020817] via-[#020817]/90 to-transparent" />
 
-                return (
-                  <article key={`${card._id ?? card.title}-${index}`} aria-hidden={isClone ? 'true' : undefined} className={`legacy-card ${isClone ? 'legacy-clone' : ''} group relative overflow-hidden rounded-[14px] border border-[#5F79FF]/90 bg-[#030817]/92 p-[1px] shadow-[0_18px_48px_rgba(0,0,0,.62)] transition duration-500 hover:-translate-y-1.5 hover:border-[#00D9FF] hover:shadow-[0_24px_60px_rgba(0,0,0,.68)]`}>
-                    <div className={`relative h-[16rem] overflow-hidden rounded-[13px] bg-gradient-to-br ${card.accent ?? 'from-[#06123d] via-[#071b58] to-[#020817]'} max-2xl:h-[14.5rem] max-xl:h-[16rem]`}>
-                      {card.mainImageUrl ? (
-                        <img
-                          src={card.mainImageUrl}
-                          alt=""
-                          className="absolute inset-0 h-full w-full object-cover opacity-62 grayscale-[8%] saturate-[1.18] transition duration-700 group-hover:scale-105 group-hover:opacity-74"
-                        />
-                      ) : (
-                        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(6,18,61,.94)_0%,rgba(7,27,88,.62)_48%,rgba(2,8,23,.98)_100%)]" />
-                      )}
-
-                      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,8,23,.12)_0%,rgba(2,8,23,.22)_38%,rgba(2,8,23,.92)_100%)]" />
-                      <div className="absolute inset-x-6 bottom-[4.5rem] h-px bg-gradient-to-r from-transparent via-white/26 to-transparent" />
-                      <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#020817] via-[#020817]/88 to-transparent" />
-
-                      <div className="absolute bottom-4 left-5 right-5 flex items-center gap-3">
-                        <div className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-full border border-[#115FEB]/95 bg-[#05112d]/72 text-center text-[.43rem] font-black uppercase leading-[.86] tracking-[-.04em] text-white shadow-[0_0_10px_rgba(17,95,235,.24)] backdrop-blur-md whitespace-pre-line">
-                          {card.eventLogoUrl ? (
-                            <img src={card.eventLogoUrl} alt="" className="h-full w-full scale-[1.55] object-contain p-0" />
-                          ) : (
-                            card.badge
-                          )}
-                        </div>
-                        <h3 className="min-w-0 text-[clamp(1rem,1vw,1.22rem)] font-medium leading-none tracking-[-0.045em] text-white drop-shadow-[0_10px_24px_rgba(0,0,0,.95)]">
-                          {card.title}
-                        </h3>
+                    <div className="absolute bottom-4 left-5 right-5 flex items-center gap-3">
+                      <div className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-full border border-[#115FEB]/95 bg-[#05112d]/86 text-center text-[.43rem] font-black uppercase leading-[.86] tracking-[-.04em] text-white shadow-[0_0_10px_rgba(17,95,235,.24)] whitespace-pre-line">
+                        {card.eventLogoUrl ? (
+                          <img src={card.eventLogoUrl} alt="" loading="lazy" decoding="async" className="h-full w-full object-contain p-1" />
+                        ) : (
+                          card.badge
+                        )}
                       </div>
+                      <h3 className="min-w-0 text-[clamp(1rem,1vw,1.22rem)] font-semibold leading-none tracking-[-0.045em] text-white drop-shadow-[0_10px_24px_rgba(0,0,0,.95)]">
+                        {card.title}
+                      </h3>
                     </div>
-                  </article>
-                );
-              })}
+                  </div>
+                </article>
+              ))}
             </div>
+          </div>
+
+          <div className="mt-16 flex justify-center max-md:mt-10">
+            <Link href="/initiatives" className="group inline-flex items-center justify-center gap-5 rounded-2xl border border-[#13a8ff] bg-[#061128] px-9 py-4 text-base font-semibold text-white shadow-[0_0_0_1px_rgba(0,217,255,.08)] transition duration-300 hover:-translate-y-0.5 hover:border-[#00F0FF] hover:bg-[#08183a]">
+              View All Initiatives <span className="text-xl text-[#00D9FF] transition group-hover:translate-x-1">→</span>
+            </Link>
           </div>
         </div>
       </section>
@@ -319,6 +314,8 @@ export default async function HomePage() {
       <VoicesSection />
 
       <PartnersSection />
+
+      <ClosingCtaSection />
     </div>
   );
 }

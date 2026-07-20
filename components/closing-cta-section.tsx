@@ -12,7 +12,7 @@ type ClosingCtaContent = {
   organisationDescription: string;
   organisationButtonLabel: string;
   organisationButtonLink: string;
-  isActive?: boolean;
+  isActive: boolean;
 };
 
 const fallbackContent: ClosingCtaContent = {
@@ -29,7 +29,7 @@ const fallbackContent: ClosingCtaContent = {
   isActive: true,
 };
 
-async function getClosingCtaContent() {
+async function getClosingCtaContent(): Promise<ClosingCtaContent> {
   try {
     const content = await client.fetch<Partial<ClosingCtaContent> | null>(
       `*[_type == "homepageClosingCta"][0] {
@@ -49,7 +49,19 @@ async function getClosingCtaContent() {
       {next: {revalidate: 60}}
     );
 
-    return {...fallbackContent, ...(content ?? {})};
+    return {
+      sectionEyebrow: content?.sectionEyebrow || fallbackContent.sectionEyebrow,
+      sectionHeadline: content?.sectionHeadline || fallbackContent.sectionHeadline,
+      studentTitle: content?.studentTitle || fallbackContent.studentTitle,
+      studentDescription: content?.studentDescription || fallbackContent.studentDescription,
+      studentButtonLabel: content?.studentButtonLabel || fallbackContent.studentButtonLabel,
+      studentButtonLink: content?.studentButtonLink || fallbackContent.studentButtonLink,
+      organisationTitle: content?.organisationTitle || fallbackContent.organisationTitle,
+      organisationDescription: content?.organisationDescription || fallbackContent.organisationDescription,
+      organisationButtonLabel: content?.organisationButtonLabel || fallbackContent.organisationButtonLabel,
+      organisationButtonLink: content?.organisationButtonLink || fallbackContent.organisationButtonLink,
+      isActive: content?.isActive ?? fallbackContent.isActive,
+    };
   } catch {
     return fallbackContent;
   }
@@ -58,7 +70,7 @@ async function getClosingCtaContent() {
 export async function ClosingCtaSection() {
   const content = await getClosingCtaContent();
 
-  if (content.isActive === false) return null;
+  if (!content.isActive) return null;
 
   const panels = [
     {
@@ -99,7 +111,7 @@ export async function ClosingCtaSection() {
               <p className="text-sm font-semibold tracking-[0.28em] text-[#1597ff]">{panel.marker}</p>
               <h3 className="mt-8 text-[clamp(1.9rem,2.5vw,3rem)] font-semibold tracking-[-0.045em] text-white">{panel.title}</h3>
               <p className="mt-5 max-w-xl text-base leading-8 text-white/68 sm:text-lg">{panel.description}</p>
-              <Link href={panel.href || '#'} className="mt-9 inline-flex items-center gap-4 rounded-xl border border-[#1597ff]/85 bg-[#07142e] px-6 py-3.5 font-semibold text-white transition duration-300 hover:border-[#00F0FF] hover:bg-[#0b1c40]">
+              <Link href={panel.href} className="mt-9 inline-flex items-center gap-4 rounded-xl border border-[#1597ff]/85 bg-[#07142e] px-6 py-3.5 font-semibold text-white transition duration-300 hover:border-[#00F0FF] hover:bg-[#0b1c40]">
                 {panel.label} <span className="text-[#00D9FF] transition group-hover:translate-x-1">→</span>
               </Link>
             </article>

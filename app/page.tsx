@@ -1,8 +1,10 @@
 import Link from 'next/link';
 import {client} from '@/sanity/lib/client';
 import {ClosingCtaSection} from '@/components/closing-cta-section';
+import {HomepageHero, type CurrentEventLink} from '@/components/homepage-hero';
 import {PartnersSection} from '@/components/partners-section';
 import {VoicesSection} from '@/components/voices-section';
+import {currentEventFallback} from '@/lib/current-event-fallback';
 
 export const revalidate = 60;
 
@@ -19,6 +21,12 @@ type IdentityCard = {
   title: string;
   body: string;
   icon: 'ai' | 'briefcase' | 'legacy';
+};
+
+type CmsCurrentEvent = {
+  _id?: string;
+  label?: string;
+  href?: string;
 };
 
 const fallbackLegacyCards: LegacyCard[] = [
@@ -111,6 +119,51 @@ function IdentityIcon({icon}: {icon: IdentityCard['icon']}) {
   );
 }
 
+function isSafeNavigationHref(href: string) {
+  return href.startsWith('/') || href.startsWith('https://');
+}
+
+function getBootstrapCurrentEvent(): CurrentEventLink | null {
+  if (!currentEventFallback.enabled || !isSafeNavigationHref(currentEventFallback.href)) return null;
+
+  return {
+    label: currentEventFallback.label,
+    href: currentEventFallback.href,
+  };
+}
+
+async function getCurrentEvent(): Promise<CurrentEventLink | null> {
+  try {
+    const currentEvent = await client.fetch<CmsCurrentEvent | null>(
+      `*[_type == "currentEventSettings" && _id == "currentEventSettings"][0] {
+        _id,
+        "label": event->title,
+        "href": event->navigationUrl
+      }`,
+      {},
+      {next: {revalidate: 60}}
+    );
+
+    if (!currentEvent?._id) return getBootstrapCurrentEvent();
+
+    if (
+      currentEvent.label?.trim() &&
+      currentEvent.href?.trim() &&
+      isSafeNavigationHref(currentEvent.href.trim())
+    ) {
+      return {
+        label: currentEvent.label.trim(),
+        href: currentEvent.href.trim(),
+      };
+    }
+
+    // A configured singleton with no valid selection intentionally hides the secondary CTA.
+    return null;
+  } catch {
+    return getBootstrapCurrentEvent();
+  }
+}
+
 async function getLegacyCards() {
   try {
     const cards = await client.fetch<LegacyCard[]>(
@@ -143,50 +196,11 @@ async function getLegacyCards() {
 }
 
 export default async function HomePage() {
-  const legacyCards = await getLegacyCards();
+  const [currentEvent, legacyCards] = await Promise.all([getCurrentEvent(), getLegacyCards()]);
 
   return (
     <div className="bg-[#020817] text-white">
-      <section className="relative min-h-[calc(100svh-72px)] overflow-hidden bg-[#020817]">
-        <img
-          src="/images/hero/hero-bg.png"
-          alt=""
-          className="absolute inset-0 h-full w-full select-none object-cover object-center"
-        />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,8,23,.18)_0%,rgba(2,8,23,.08)_42%,rgba(2,8,23,.02)_100%)]" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent via-[#020817]/72 to-[#020817]" />
-
-        <div className="absolute left-[6.6vw] top-[6.95vw] z-10 max-w-[760px] max-xl:left-[6.2vw] max-xl:top-[6.5vw] max-lg:left-8 max-lg:top-16">
-          <h1 className="font-body font-bold tracking-[-0.052em] drop-shadow-[0_18px_58px_rgba(0,0,0,.74)]">
-            <span className="block whitespace-nowrap text-[clamp(2.75rem,4.45vw,5.35rem)] leading-[1.02] max-xl:whitespace-normal max-md:text-[clamp(2.55rem,10.5vw,3.95rem)]">
-              <span className="bg-gradient-to-b from-white via-white to-[#bbc2ce] bg-clip-text text-transparent">Building</span>{' '}
-              <span className="text-[#115FEB]">Future-Ready</span>
-            </span>
-            <span className="mt-1 block text-[clamp(3.75rem,5.85vw,7.05rem)] leading-[0.95] tracking-[-0.058em] max-md:text-[clamp(3.15rem,13.5vw,5.15rem)]">
-              <span className="bg-gradient-to-b from-white via-white to-[#bbc2ce] bg-clip-text text-transparent">Professionals.</span>
-            </span>
-          </h1>
-
-          <div className="mt-[2.05vw] text-[clamp(1.62rem,2.46vw,2.94rem)] leading-[1.16] tracking-[-0.044em] drop-shadow-[0_12px_34px_rgba(0,0,0,.55)] max-lg:mt-7 max-md:text-[clamp(1.74rem,7.2vw,2.64rem)]">
-            <p className="font-normal text-[#f7fbff]">Jahangirnagar University</p>
-            <p className="mt-1 font-bold text-[#115FEB]">FinAnt Club</p>
-          </div>
-
-          <p className="mt-3 max-w-[565px] text-[clamp(1.14rem,1.26vw,1.3rem)] font-light leading-[1.42] tracking-[-0.006em] text-white/88 drop-shadow-[0_10px_26px_rgba(0,0,0,.5)]">
-            An AI-first career platform for professional readiness,<br />
-            leadership growth, and corporate trust.
-          </p>
-
-          <div className="mt-5 flex flex-col gap-4 sm:flex-row">
-            <Link href="#legacy-foundation" className="group inline-flex min-w-[245px] items-center justify-center gap-12 rounded-md border border-cyan-200/25 bg-[#115FEB] px-8 py-4 text-[1.08rem] font-medium tracking-[-0.01em] text-white shadow-[0_20px_55px_rgba(17,95,235,.38)] transition hover:-translate-y-1 hover:bg-[#1a6bff] max-sm:min-w-0 max-sm:w-full">
-              Explore FinAnt <span className="text-3xl font-light leading-none transition group-hover:translate-x-1">&gt;</span>
-            </Link>
-            <Link href="/biztigation" className="group inline-flex min-w-[245px] items-center justify-center gap-12 rounded-md border border-white/62 bg-[#030817]/32 px-8 py-4 text-[1.08rem] font-medium tracking-[-0.01em] text-white backdrop-blur-md transition hover:-translate-y-1 hover:border-cyan-300 max-sm:min-w-0 max-sm:w-full">
-              Biztigation 2.0 <span className="text-3xl font-light leading-none transition group-hover:translate-x-1">&gt;</span>
-            </Link>
-          </div>
-        </div>
-      </section>
+      <HomepageHero currentEvent={currentEvent} />
 
       <section id="legacy-foundation" className="relative min-h-[calc(100svh-72px)] overflow-hidden bg-[#020817] px-6 py-[7vw]">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_18%,rgba(17,95,235,.16),transparent_31%),radial-gradient(circle_at_50%_84%,rgba(0,217,255,.08),transparent_35%)]" />

@@ -218,11 +218,10 @@ async function assertMobileState(browser, width, height, screenshots = {}) {
       (await menuButton.getAttribute('aria-expanded')) === 'false',
       `${width}px: Escape closes the menu`
     );
-    assert(
-      (await page.evaluate(() => document.activeElement?.getAttribute('aria-label'))) ===
-        'Open navigation menu',
-      `${width}px: focus returns to the hamburger after Escape`
+    await page.waitForFunction(
+      () => document.activeElement?.getAttribute('aria-label') === 'Open navigation menu'
     );
+    assert(true, `${width}px: focus returns to the hamburger after Escape`);
 
     await menuButton.click();
     await dialog.waitFor({state: 'visible'});

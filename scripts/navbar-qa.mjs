@@ -92,10 +92,19 @@ async function assertTransitionState(browser, width, height) {
     const menuButton = page.getByRole('button', {name: 'Open navigation menu'});
     const desktopVisible = await primaryNavigation.isVisible();
     const mobileVisible = await menuButton.isVisible();
+    const diagnostics = await page.evaluate(() => ({
+      innerWidth: window.innerWidth,
+      clientWidth: document.documentElement.clientWidth,
+    }));
+
+    await page.screenshot({
+      path: `${outputDir}/transition-${width}.png`,
+      clip: {x: 0, y: 0, width, height: Math.min(height, 190)},
+    });
 
     assert(
       desktopVisible !== mobileVisible,
-      `${width}px: exactly one responsive navigation mode is active`
+      `${width}px: exactly one responsive navigation mode is active (desktop=${desktopVisible}, mobile=${mobileVisible}, innerWidth=${diagnostics.innerWidth}, clientWidth=${diagnostics.clientWidth})`
     );
 
     if (desktopVisible) {

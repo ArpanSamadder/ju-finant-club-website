@@ -16,7 +16,7 @@ async function createPage(browser, width, height) {
     deviceScaleFactor: 1,
   });
   const page = await context.newPage();
-  await page.goto(baseUrl, {waitUntil: 'domcontentloaded'});
+  await page.goto(baseUrl, {waitUntil: 'networkidle'});
   await page.getByRole('banner').waitFor({state: 'visible'});
   return {context, page};
 }

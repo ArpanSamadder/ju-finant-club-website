@@ -174,7 +174,7 @@ export function SiteHeader({currentEvent}: {currentEvent: CurrentEventNavItem | 
         <div className={styles.overlay}>
           <button
             type="button"
-            aria-label="Close navigation menu"
+            aria-label="Close navigation backdrop"
             onClick={() => closeMobileMenu()}
             className={styles.backdrop}
           />

@@ -1,23 +1,40 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { useState } from 'react';
-import { navItems } from '@/lib/data';
+import {usePathname} from 'next/navigation';
+import {useMemo, useState} from 'react';
+import type {CurrentEventLink} from '@/lib/homepage-settings';
 
-export function SiteHeader() {
+type NavigationItem = {
+  label: string;
+  href: string;
+  currentEvent?: boolean;
+};
+
+export function SiteHeader({currentEvent}: {currentEvent: CurrentEventLink | null}) {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const navigationItems = useMemo<NavigationItem[]>(
+    () => [
+      {label: 'Home', href: '/'},
+      ...(currentEvent ? [{...currentEvent, currentEvent: true}] : []),
+      {label: 'Initiatives', href: '/initiatives'},
+      {label: 'People', href: '/people'},
+      {label: 'Join Us', href: '/join'},
+    ],
+    [currentEvent]
+  );
 
   const isActive = (href: string) => {
     if (href === '/') return pathname === '/';
     return pathname === href || pathname.startsWith(`${href}/`);
   };
 
-  const iconFor = (label: string) => {
+  const iconFor = (item: NavigationItem) => {
     const base = 'h-8 w-8 text-[#1597ff] drop-shadow-[0_0_14px_rgba(21,151,255,.45)]';
 
-    if (label === 'Home') {
+    if (item.label === 'Home') {
       return (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className={base}>
           <path d="M3 10.7 12 3l9 7.7" />
@@ -26,19 +43,7 @@ export function SiteHeader() {
       );
     }
 
-    if (label === 'Decoding IELTS') {
-      return (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className={base}>
-          <path d="M5 4.8h9.2A3.8 3.8 0 0 1 18 8.6v10.6H8.8A3.8 3.8 0 0 0 5 23V4.8Z" />
-          <path d="M8 8h6" />
-          <path d="M8 11.5h7" />
-          <path d="M8 15h5" />
-          <path d="M18 8.8h1.8A1.2 1.2 0 0 1 21 10v9.2h-3" />
-        </svg>
-      );
-    }
-
-    if (label === 'Biztigation 2.0') {
+    if (item.currentEvent) {
       return (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className={base}>
           <path d="M8 4h8v3a4 4 0 0 1-8 0V4Z" />
@@ -51,7 +56,7 @@ export function SiteHeader() {
       );
     }
 
-    if (label === 'Initiatives') {
+    if (item.label === 'Initiatives') {
       return (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className={base}>
           <circle cx="12" cy="12" r="8" />
@@ -62,7 +67,7 @@ export function SiteHeader() {
       );
     }
 
-    if (label === 'People') {
+    if (item.label === 'People') {
       return (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className={base}>
           <circle cx="9" cy="8" r="3.2" />
@@ -102,13 +107,13 @@ export function SiteHeader() {
           </span>
         </Link>
 
-        <nav className="hidden h-full items-center gap-10 lg:flex">
-          {navItems.map((item) => {
+        <nav className="hidden h-full items-center gap-10 lg:flex" aria-label="Primary navigation">
+          {navigationItems.map((item) => {
             const active = isActive(item.href);
 
             return (
               <Link
-                key={item.href}
+                key={`${item.label}-${item.href}`}
                 href={item.href}
                 className={`relative flex h-full items-center whitespace-nowrap text-lg font-bold transition-colors after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-left after:rounded-full after:bg-[#1597ff] after:shadow-[0_0_14px_rgba(21,151,255,.72)] after:transition-transform after:duration-300 ${
                   active
@@ -127,6 +132,8 @@ export function SiteHeader() {
         <button
           type="button"
           aria-label="Open navigation menu"
+          aria-expanded={mobileMenuOpen}
+          aria-controls="mobile-navigation-panel"
           onClick={() => setMobileMenuOpen(true)}
           className="flex h-[3.15rem] w-[3.15rem] shrink-0 items-center justify-center rounded-xl border border-[#115FEB] bg-[#030817]/76 shadow-[0_0_24px_rgba(17,95,235,.18),inset_0_0_18px_rgba(17,95,235,.08)] lg:hidden max-sm:h-[2.85rem] max-sm:w-[2.85rem]"
         >
@@ -147,7 +154,7 @@ export function SiteHeader() {
             className="absolute inset-0 bg-[#020817]/18"
           />
 
-          <aside className="absolute right-4 top-6 w-[min(78vw,410px)] rounded-[2.1rem] border border-[#115FEB]/85 bg-[linear-gradient(145deg,rgba(5,16,42,.98),rgba(1,7,22,.98))] px-8 pb-8 pt-8 shadow-[0_0_0_1px_rgba(0,217,255,.20),-18px_0_70px_rgba(17,95,235,.28),inset_0_0_42px_rgba(17,95,235,.18)] max-sm:right-3 max-sm:top-4 max-sm:w-[82vw] max-sm:rounded-[1.6rem] max-sm:px-6">
+          <aside id="mobile-navigation-panel" className="absolute right-4 top-6 w-[min(78vw,410px)] rounded-[2.1rem] border border-[#115FEB]/85 bg-[linear-gradient(145deg,rgba(5,16,42,.98),rgba(1,7,22,.98))] px-8 pb-8 pt-8 shadow-[0_0_0_1px_rgba(0,217,255,.20),-18px_0_70px_rgba(17,95,235,.28),inset_0_0_42px_rgba(17,95,235,.18)] max-sm:right-3 max-sm:top-4 max-sm:w-[82vw] max-sm:rounded-[1.6rem] max-sm:px-6">
             <button
               type="button"
               aria-label="Close navigation menu"
@@ -160,20 +167,20 @@ export function SiteHeader() {
               </svg>
             </button>
 
-            <nav className="mt-9 space-y-0 max-sm:mt-7">
-              {navItems.map((item) => {
+            <nav className="mt-9 space-y-0 max-sm:mt-7" aria-label="Mobile navigation">
+              {navigationItems.map((item) => {
                 const active = isActive(item.href);
 
                 return (
                   <Link
-                    key={item.href}
+                    key={`${item.label}-${item.href}`}
                     href={item.href}
                     onClick={() => setMobileMenuOpen(false)}
                     className={`flex items-center gap-7 border-b border-white/10 py-7 text-[1.55rem] font-bold tracking-[-0.035em] transition max-sm:gap-5 max-sm:py-5 max-sm:text-[1.22rem] ${
                       active ? 'text-white' : 'text-white/92 hover:text-[#53d6ff]'
                     }`}
                   >
-                    {iconFor(item.label)}
+                    {iconFor(item)}
                     <span>{item.label}</span>
                   </Link>
                 );

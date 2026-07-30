@@ -1,120 +1,147 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { useState } from 'react';
-import { navItems } from '@/lib/data';
+import {usePathname} from 'next/navigation';
+import {
+  Handshake,
+  Home,
+  Menu,
+  Newspaper,
+  Target,
+  UserPlus,
+  Users,
+  X,
+  type LucideIcon,
+} from 'lucide-react';
+import {useCallback, useEffect, useMemo, useRef, useState} from 'react';
+import type {CurrentEventNavItem} from '@/lib/current-event';
+import styles from './site-header.module.css';
 
-export function SiteHeader() {
+type NavigationItem = {
+  label: string;
+  href: string;
+  icon: LucideIcon;
+};
+
+const primaryNavigation: NavigationItem[] = [
+  {label: 'Home', href: '/', icon: Home},
+  {label: 'Initiatives', href: '/initiatives', icon: Target},
+  {label: 'People', href: '/people', icon: Users},
+  {label: 'Join Us', href: '/join', icon: UserPlus},
+];
+
+const partnerHref = '/partner-with-us';
+
+export function SiteHeader({currentEvent}: {currentEvent: CurrentEventNavItem | null}) {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const menuPanelRef = useRef<HTMLElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
 
-  const isActive = (href: string) => {
-    if (href === '/') return pathname === '/';
-    return pathname === href || pathname.startsWith(`${href}/`);
-  };
+  const navigationItems = useMemo<NavigationItem[]>(() => {
+    const [homeItem, ...remainingItems] = primaryNavigation;
 
-  const iconFor = (label: string) => {
-    const base = 'h-8 w-8 text-[#1597ff] drop-shadow-[0_0_14px_rgba(21,151,255,.45)]';
+    return [
+      homeItem,
+      ...(currentEvent
+        ? [{label: currentEvent.label, href: currentEvent.href, icon: Newspaper}]
+        : []),
+      ...remainingItems,
+    ];
+  }, [currentEvent]);
 
-    if (label === 'Home') {
-      return (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className={base}>
-          <path d="M3 10.7 12 3l9 7.7" />
-          <path d="M5.6 9.2v10.1h4.6v-5.7h3.6v5.7h4.6V9.2" />
-        </svg>
-      );
+  const isActive = useCallback(
+    (href: string) => {
+      const pathOnly = href.split(/[?#]/, 1)[0] || '/';
+
+      if (pathOnly === '/') return pathname === '/';
+      return pathname === pathOnly || pathname.startsWith(`${pathOnly}/`);
+    },
+    [pathname]
+  );
+
+  const closeMobileMenu = useCallback((restoreFocus = true) => {
+    setMobileMenuOpen(false);
+
+    if (restoreFocus) {
+      window.requestAnimationFrame(() => menuButtonRef.current?.focus());
     }
+  }, []);
 
-    if (label === 'Decoding IELTS') {
-      return (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className={base}>
-          <path d="M5 4.8h9.2A3.8 3.8 0 0 1 18 8.6v10.6H8.8A3.8 3.8 0 0 0 5 23V4.8Z" />
-          <path d="M8 8h6" />
-          <path d="M8 11.5h7" />
-          <path d="M8 15h5" />
-          <path d="M18 8.8h1.8A1.2 1.2 0 0 1 21 10v9.2h-3" />
-        </svg>
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    closeButtonRef.current?.focus();
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        closeMobileMenu();
+        return;
+      }
+
+      if (event.key !== 'Tab' || !menuPanelRef.current) return;
+
+      const focusableElements = Array.from(
+        menuPanelRef.current.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        )
       );
-    }
 
-    if (label === 'Biztigation 2.0') {
-      return (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className={base}>
-          <path d="M8 4h8v3a4 4 0 0 1-8 0V4Z" />
-          <path d="M8 6H5.5a2.5 2.5 0 0 0 0 5H8" />
-          <path d="M16 6h2.5a2.5 2.5 0 0 1 0 5H16" />
-          <path d="M12 11v5" />
-          <path d="M8.5 20h7" />
-          <path d="M10 16h4" />
-        </svg>
-      );
-    }
+      if (focusableElements.length === 0) return;
 
-    if (label === 'Initiatives') {
-      return (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className={base}>
-          <circle cx="12" cy="12" r="8" />
-          <circle cx="12" cy="12" r="4" />
-          <path d="m15 9 4-4" />
-          <path d="M19 5v4h-4" />
-        </svg>
-      );
-    }
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
 
-    if (label === 'People') {
-      return (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className={base}>
-          <circle cx="9" cy="8" r="3.2" />
-          <path d="M3.5 20a5.5 5.5 0 0 1 11 0" />
-          <circle cx="17" cy="9" r="2.5" />
-          <path d="M15.5 14.2A5 5 0 0 1 21 19" />
-        </svg>
-      );
-    }
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
+      }
+    };
 
-    return (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className={base}>
-        <circle cx="9" cy="8" r="3.2" />
-        <path d="M3.5 20a5.5 5.5 0 0 1 11 0" />
-        <path d="M18 8v7" />
-        <path d="M14.5 11.5h7" />
-      </svg>
-    );
-  };
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [closeMobileMenu, mobileMenuOpen]);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-cyan-400/10 bg-[#020817]/90 backdrop-blur-xl max-lg:bg-[#020817]/96">
-      <div className="mx-auto flex h-20 w-[min(1528px,calc(100%-40px))] items-center justify-between gap-6 max-lg:h-[4.3rem] max-lg:w-full max-lg:px-[5.6vw] max-sm:h-[3.85rem] max-sm:gap-3">
-        <Link href="/" className="flex min-w-0 items-center gap-4 max-lg:gap-3 max-sm:gap-2.5" aria-label="JU FinAnt Club home">
+    <header className={styles.header}>
+      <div className={styles.bar}>
+        <Link href="/" className={styles.brand} aria-label="JU FinAnt Club home">
           <img
             src="/images/brand/finant-mark.png"
-            alt="JU FinAnt Club"
-            className="h-14 w-auto shrink-0 object-contain md:h-16 max-lg:h-[2.9rem] max-sm:h-[2.45rem]"
+            alt=""
+            className={styles.logo}
           />
-          <span className="flex min-w-0 flex-col leading-none">
-            <span className="whitespace-nowrap font-serif text-[1.72rem] font-medium tracking-[0.02em] text-white drop-shadow-[0_8px_20px_rgba(0,0,0,.55)] max-lg:text-[1.24rem] max-sm:text-[1.03rem]">
-              JU FinAnt Club
-            </span>
-            <span className="mt-1 whitespace-nowrap font-body text-[0.78rem] font-semibold uppercase tracking-[0.42em] text-[#1597ff] drop-shadow-[0_6px_18px_rgba(0,118,255,.35)] max-lg:text-[0.44rem] max-lg:tracking-[0.34em] max-sm:text-[0.36rem] max-sm:tracking-[0.27em]">
-              INDUSTRY · INTEGRITY · LEGACY
-            </span>
+          <span className={styles.brandCopy}>
+            <span className={styles.brandName}>JU FinAnt Club</span>
+            <span className={styles.motto}>INDUSTRY · INTEGRITY · LEGACY</span>
           </span>
         </Link>
 
-        <nav className="hidden h-full items-center gap-10 lg:flex">
-          {navItems.map((item) => {
+        <nav className={styles.desktopNav} aria-label="Primary navigation">
+          {navigationItems.map((item) => {
             const active = isActive(item.href);
 
             return (
               <Link
-                key={item.href}
+                key={`${item.label}-${item.href}`}
                 href={item.href}
-                className={`relative flex h-full items-center whitespace-nowrap text-lg font-bold transition-colors after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-left after:rounded-full after:bg-[#1597ff] after:shadow-[0_0_14px_rgba(21,151,255,.72)] after:transition-transform after:duration-300 ${
-                  active
-                    ? 'text-[#53d6ff] after:scale-x-100'
-                    : 'text-white/90 hover:text-cyan-300 after:scale-x-0 hover:after:scale-x-100'
-                }`}
+                aria-current={active ? 'page' : undefined}
+                className={`${styles.navLink} ${active ? styles.navLinkActive : ''}`}
               >
                 {item.label}
               </Link>
@@ -122,70 +149,87 @@ export function SiteHeader() {
           })}
         </nav>
 
-        <Link href="/#partner-with-us" className="hidden rounded-2xl bg-blue-600 px-7 py-4 text-lg font-bold text-white lg:block">Partner With Us</Link>
+        <Link
+          href={partnerHref}
+          aria-current={isActive(partnerHref) ? 'page' : undefined}
+          className={`${styles.cta} ${isActive(partnerHref) ? styles.ctaActive : ''}`}
+        >
+          Partner With Us
+        </Link>
 
         <button
+          ref={menuButtonRef}
           type="button"
           aria-label="Open navigation menu"
+          aria-expanded={mobileMenuOpen}
+          aria-controls="finant-mobile-navigation"
           onClick={() => setMobileMenuOpen(true)}
-          className="flex h-[3.15rem] w-[3.15rem] shrink-0 items-center justify-center rounded-xl border border-[#115FEB] bg-[#030817]/76 shadow-[0_0_24px_rgba(17,95,235,.18),inset_0_0_18px_rgba(17,95,235,.08)] lg:hidden max-sm:h-[2.85rem] max-sm:w-[2.85rem]"
+          className={styles.menuButton}
         >
-          <span className="flex flex-col gap-[0.31rem] max-sm:gap-[0.26rem]">
-            <span className="h-[2px] w-7 rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,.45)] max-sm:w-6" />
-            <span className="h-[2px] w-7 rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,.45)] max-sm:w-6" />
-            <span className="h-[2px] w-7 rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,.45)] max-sm:w-6" />
-          </span>
+          <Menu className={styles.menuIcon} aria-hidden="true" />
         </button>
       </div>
 
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-50 lg:hidden">
+        <div className={styles.overlay}>
           <button
             type="button"
-            aria-label="Close navigation backdrop"
-            onClick={() => setMobileMenuOpen(false)}
-            className="absolute inset-0 bg-[#020817]/18"
+            aria-label="Close navigation menu"
+            onClick={() => closeMobileMenu()}
+            className={styles.backdrop}
           />
 
-          <aside className="absolute right-4 top-6 w-[min(78vw,410px)] rounded-[2.1rem] border border-[#115FEB]/85 bg-[linear-gradient(145deg,rgba(5,16,42,.98),rgba(1,7,22,.98))] px-8 pb-8 pt-8 shadow-[0_0_0_1px_rgba(0,217,255,.20),-18px_0_70px_rgba(17,95,235,.28),inset_0_0_42px_rgba(17,95,235,.18)] max-sm:right-3 max-sm:top-4 max-sm:w-[82vw] max-sm:rounded-[1.6rem] max-sm:px-6">
-            <button
-              type="button"
-              aria-label="Close navigation menu"
-              onClick={() => setMobileMenuOpen(false)}
-              className="ml-auto flex h-16 w-16 items-center justify-center rounded-2xl border border-[#115FEB]/85 text-white shadow-[0_0_28px_rgba(17,95,235,.22)] max-sm:h-12 max-sm:w-12"
-            >
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="h-8 w-8 max-sm:h-6 max-sm:w-6">
-                <path d="M6 6l12 12" />
-                <path d="M18 6L6 18" />
-              </svg>
-            </button>
+          <aside
+            ref={menuPanelRef}
+            id="finant-mobile-navigation"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="finant-mobile-navigation-title"
+            className={styles.mobilePanel}
+          >
+            <div className={styles.mobilePanelHeader}>
+              <h2 id="finant-mobile-navigation-title" className={styles.srOnly}>
+                Navigation menu
+              </h2>
+              <button
+                ref={closeButtonRef}
+                type="button"
+                aria-label="Close navigation menu"
+                onClick={() => closeMobileMenu()}
+                className={styles.closeButton}
+              >
+                <X className={styles.closeIcon} aria-hidden="true" />
+              </button>
+            </div>
 
-            <nav className="mt-9 space-y-0 max-sm:mt-7">
-              {navItems.map((item) => {
+            <nav className={styles.mobileNav} aria-label="Mobile navigation">
+              {navigationItems.map((item) => {
                 const active = isActive(item.href);
+                const Icon = item.icon;
 
                 return (
                   <Link
-                    key={item.href}
+                    key={`${item.label}-${item.href}`}
                     href={item.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className={`flex items-center gap-7 border-b border-white/10 py-7 text-[1.55rem] font-bold tracking-[-0.035em] transition max-sm:gap-5 max-sm:py-5 max-sm:text-[1.22rem] ${
-                      active ? 'text-white' : 'text-white/92 hover:text-[#53d6ff]'
-                    }`}
+                    aria-current={active ? 'page' : undefined}
+                    onClick={() => closeMobileMenu()}
+                    className={`${styles.mobileLink} ${active ? styles.mobileLinkActive : ''}`}
                   >
-                    {iconFor(item.label)}
-                    <span>{item.label}</span>
+                    <Icon className={styles.mobileLinkIcon} aria-hidden="true" />
+                    <span className={styles.mobileLinkLabel}>{item.label}</span>
                   </Link>
                 );
               })}
             </nav>
 
             <Link
-              href="/#partner-with-us"
-              onClick={() => setMobileMenuOpen(false)}
-              className="mt-9 flex h-20 items-center justify-center rounded-2xl border border-cyan-200/30 bg-[#115FEB] text-center text-[1.65rem] font-bold tracking-[-0.035em] text-white shadow-[0_0_34px_rgba(17,95,235,.42)] max-sm:mt-7 max-sm:h-16 max-sm:text-[1.25rem]"
+              href={partnerHref}
+              aria-current={isActive(partnerHref) ? 'page' : undefined}
+              onClick={() => closeMobileMenu()}
+              className={styles.mobileCta}
             >
-              Partner With Us
+              <Handshake className={styles.mobileCtaIcon} aria-hidden="true" />
+              <span>Partner With Us</span>
             </Link>
           </aside>
         </div>

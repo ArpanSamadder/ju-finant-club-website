@@ -5,6 +5,7 @@ on:
     paths:
       - '.github/workflows/navbar-preview.yml'
       - 'app/layout.tsx'
+      - 'app/mobile.css'
       - 'components/site-chrome.tsx'
       - 'components/site-header.tsx'
       - 'components/site-header.module.css'
@@ -31,6 +32,9 @@ jobs:
 
       - name: Install project dependencies
         run: npm install
+
+      - name: Run existing lint check
+        run: npm run lint
 
       - name: Install Playwright Chromium
         run: |

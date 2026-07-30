@@ -15,7 +15,8 @@ export const event = defineType({
         'Internal website route used when this event is selected as Current Event, for example /biztigation.',
       validation: (Rule) =>
         Rule.custom((value) => {
-          if (!value) return true;
+          if (value === undefined || value === null || value === '') return true;
+          if (typeof value !== 'string') return 'Navigation URL must be text.';
           return /^\/(?!\/)/.test(value)
             ? true
             : 'Use an internal URL beginning with a single forward slash.';

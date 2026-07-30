@@ -44,6 +44,14 @@ export const structure: StructureResolver = (S) =>
             .title('Global Settings')
             .items([
               S.listItem()
+                .title('Current Event')
+                .child(
+                  S.document()
+                    .schemaType('currentEventSettings')
+                    .documentId('currentEventSettings')
+                    .title('Current Event')
+                ),
+              S.listItem()
                 .title('Footer')
                 .child(
                   S.document()

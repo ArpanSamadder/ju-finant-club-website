@@ -22,7 +22,20 @@ function normalizeInternalHref(value: string | null | undefined) {
   return href;
 }
 
+function getDevelopmentPreviewEvent(): CurrentEventNavItem | null {
+  if (process.env.NODE_ENV === 'production') return null;
+
+  const label = process.env.NAVBAR_PREVIEW_EVENT_LABEL?.trim();
+  const href = normalizeInternalHref(process.env.NAVBAR_PREVIEW_EVENT_URL);
+
+  if (!label || !href) return null;
+  return {label, href};
+}
+
 export async function getCurrentEventNavItem(): Promise<CurrentEventNavItem | null> {
+  const previewEvent = getDevelopmentPreviewEvent();
+  if (previewEvent) return previewEvent;
+
   try {
     const result = await client.fetch<CurrentEventQueryResult | null>(
       currentEventQuery,

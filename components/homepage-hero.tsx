@@ -1,13 +1,13 @@
 import Link from 'next/link';
+import type {CurrentEventLink, HeroArtworkSource} from '@/lib/homepage-settings';
 import styles from './homepage-hero.module.css';
-
-export type CurrentEventLink = {
-  label: string;
-  href: string;
-};
 
 type HomepageHeroProps = {
   currentEvent?: CurrentEventLink | null;
+  heroArtwork?: {
+    desktop?: HeroArtworkSource | null;
+    mobile?: HeroArtworkSource | null;
+  };
 };
 
 function ArrowIcon() {
@@ -19,7 +19,24 @@ function ArrowIcon() {
   );
 }
 
-export function HomepageHero({currentEvent}: HomepageHeroProps) {
+function CmsArtwork({source, mobile}: {source: HeroArtworkSource; mobile?: boolean}) {
+  return (
+    <img
+      src={source.src}
+      srcSet={source.srcSet}
+      sizes="100vw"
+      alt=""
+      width={source.width}
+      height={source.height}
+      fetchPriority="high"
+      loading="eager"
+      decoding="async"
+      className={`${styles.artworkImage} ${mobile ? styles.cmsMobileArtwork : styles.cmsDesktopArtwork}`}
+    />
+  );
+}
+
+export function HomepageHero({currentEvent, heroArtwork}: HomepageHeroProps) {
   return (
     <section className={styles.hero} aria-labelledby="homepage-hero-title">
       <picture className={styles.artwork} aria-hidden="true">
@@ -39,6 +56,9 @@ export function HomepageHero({currentEvent}: HomepageHeroProps) {
           className={styles.artworkImage}
         />
       </picture>
+
+      {heroArtwork?.desktop ? <CmsArtwork source={heroArtwork.desktop} /> : null}
+      {heroArtwork?.mobile ? <CmsArtwork source={heroArtwork.mobile} mobile /> : null}
 
       <div className={styles.scrim} aria-hidden="true" />
       <div className={styles.bottomFade} aria-hidden="true" />

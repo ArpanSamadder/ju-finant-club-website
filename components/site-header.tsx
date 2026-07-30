@@ -38,6 +38,7 @@ export function SiteHeader({currentEvent}: {currentEvent: CurrentEventNavItem | 
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const menuPanelRef = useRef<HTMLElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const restoreFocusAfterCloseRef = useRef(false);
 
   const navigationItems = useMemo<NavigationItem[]>(() => {
     const [homeItem, ...remainingItems] = primaryNavigation;
@@ -62,16 +63,22 @@ export function SiteHeader({currentEvent}: {currentEvent: CurrentEventNavItem | 
   );
 
   const closeMobileMenu = useCallback((restoreFocus = true) => {
+    restoreFocusAfterCloseRef.current = restoreFocus;
     setMobileMenuOpen(false);
-
-    if (restoreFocus) {
-      window.requestAnimationFrame(() => menuButtonRef.current?.focus());
-    }
   }, []);
 
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [pathname]);
+
+  useEffect(() => {
+    if (mobileMenuOpen || !restoreFocusAfterCloseRef.current) return;
+
+    restoreFocusAfterCloseRef.current = false;
+    const animationFrame = window.requestAnimationFrame(() => menuButtonRef.current?.focus());
+
+    return () => window.cancelAnimationFrame(animationFrame);
+  }, [mobileMenuOpen]);
 
   useEffect(() => {
     if (!mobileMenuOpen) return;

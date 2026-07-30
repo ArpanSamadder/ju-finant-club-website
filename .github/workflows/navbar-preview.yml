@@ -1,0 +1,77 @@
+name: Navbar Preview QA
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/navbar-preview.yml'
+      - 'app/layout.tsx'
+      - 'components/site-chrome.tsx'
+      - 'components/site-header.tsx'
+      - 'components/site-header.module.css'
+      - 'lib/current-event.ts'
+      - 'scripts/navbar-qa.mjs'
+      - 'sanity/schemaTypes/event.ts'
+      - 'sanity/schemaTypes/index.ts'
+      - 'sanity/schemaTypes/navigationSettings.ts'
+      - 'sanity/structure.ts'
+
+jobs:
+  navbar-qa:
+    name: Responsive navbar screenshots and checks
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install project dependencies
+        run: npm install
+
+      - name: Install Playwright Chromium
+        run: |
+          npm install --no-save playwright@1.54.1
+          npx playwright install --with-deps chromium
+
+      - name: Start local navbar preview
+        env:
+          NAVBAR_PREVIEW_EVENT_LABEL: Biztigation 2.0
+          NAVBAR_PREVIEW_EVENT_URL: /biztigation
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          nohup npm run dev -- --hostname 0.0.0.0 > /tmp/navbar-preview.log 2>&1 &
+          echo $! > /tmp/navbar-preview.pid
+
+          for attempt in {1..90}; do
+            if curl -fsS http://127.0.0.1:3000 > /dev/null; then
+              exit 0
+            fi
+            sleep 2
+          done
+
+          cat /tmp/navbar-preview.log
+          exit 1
+
+      - name: Run navbar functional QA and capture screenshots
+        env:
+          NAVBAR_QA_BASE_URL: http://127.0.0.1:3000
+          NAVBAR_QA_OUTPUT_DIR: artifacts/navbar
+        run: node scripts/navbar-qa.mjs
+
+      - name: Show preview server log on failure
+        if: failure()
+        run: cat /tmp/navbar-preview.log || true
+
+      - name: Upload navbar screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: approved-navbar-preview
+          path: artifacts/navbar/*.png
+          if-no-files-found: warn
+          retention-days: 14

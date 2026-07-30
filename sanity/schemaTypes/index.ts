@@ -1,3 +1,4 @@
+import {currentEventSettings} from './currentEventSettings';
 import {event} from './event';
 import {footerSettings} from './footerSettings';
 import {galleryItem} from './galleryItem';
@@ -10,6 +11,7 @@ import {voiceOfFinant} from './voiceOfFinant';
 
 export const schemaTypes = [
   event,
+  currentEventSettings,
   legacyEvent,
   voiceOfFinant,
   partner,

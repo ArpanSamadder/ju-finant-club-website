@@ -1,9 +1,18 @@
 'use client';
 
 import {usePathname} from 'next/navigation';
+import type {CurrentEventLink} from '@/lib/homepage-settings';
 import {SiteHeader} from './site-header';
 
-export function SiteChrome({children, footer}: {children: React.ReactNode; footer: React.ReactNode}) {
+export function SiteChrome({
+  children,
+  footer,
+  currentEvent,
+}: {
+  children: React.ReactNode;
+  footer: React.ReactNode;
+  currentEvent: CurrentEventLink | null;
+}) {
   const pathname = usePathname();
   const registrationRoute =
     pathname === '/events/decoding-ielts/register' ||
@@ -13,7 +22,7 @@ export function SiteChrome({children, footer}: {children: React.ReactNode; foote
 
   return (
     <>
-      <SiteHeader />
+      <SiteHeader currentEvent={currentEvent} />
       <main>{children}</main>
       {footer}
     </>

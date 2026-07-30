@@ -18,9 +18,9 @@ import './carousel-arrows.css';
 import {LegacyCarouselController} from '@/components/legacy-carousel-controller';
 import {IdentityCarouselController} from '@/components/identity-carousel-controller';
 import {VoicesCarouselController} from '@/components/voices-carousel-controller';
-import {LiveEventHeroLink} from '@/components/live-event-hero-link';
 import {SiteChrome} from '@/components/site-chrome';
 import {SiteFooter} from '@/components/site-footer';
+import {getHomepageSettings} from '@/lib/homepage-settings';
 
 const display = Cormorant_Garamond({
   subsets: ['latin'],
@@ -39,13 +39,14 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://jufinantclub.org'),
 };
 
-export default function RootLayout({children}: {children: React.ReactNode}) {
+export default async function RootLayout({children}: {children: React.ReactNode}) {
+  const {currentEvent} = await getHomepageSettings();
+
   return (
     <html lang="en" className={`${display.variable} ${body.variable}`}>
       <body>
         <div className="noise" />
-        <SiteChrome footer={<SiteFooter />}>{children}</SiteChrome>
-        <LiveEventHeroLink />
+        <SiteChrome currentEvent={currentEvent} footer={<SiteFooter />}>{children}</SiteChrome>
         <LegacyCarouselController />
         <IdentityCarouselController />
         <VoicesCarouselController />

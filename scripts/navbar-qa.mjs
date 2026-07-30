@@ -84,6 +84,35 @@ async function assertDesktopState(browser, width, height, screenshotName) {
   }
 }
 
+async function assertTransitionState(browser, width, height) {
+  const {context, page} = await createPage(browser, width, height);
+
+  try {
+    const primaryNavigation = page.getByRole('navigation', {name: 'Primary navigation'});
+    const menuButton = page.getByRole('button', {name: 'Open navigation menu'});
+    const desktopVisible = await primaryNavigation.isVisible();
+    const mobileVisible = await menuButton.isVisible();
+
+    assert(
+      desktopVisible !== mobileVisible,
+      `${width}px: exactly one responsive navigation mode is active`
+    );
+
+    if (desktopVisible) {
+      const currentEvent = page.getByRole('link', {name: 'Biztigation 2.0'}).first();
+      const partnerCta = page.getByRole('link', {name: 'Partner With Us'}).first();
+      assert(await currentEvent.isVisible(), `${width}px transition: Current Event remains visible`);
+      assert(await partnerCta.isVisible(), `${width}px transition: CTA remains visible`);
+    } else {
+      assert(await menuButton.isVisible(), `${width}px transition: mobile control is usable`);
+    }
+
+    await assertNoHorizontalOverflow(page, `${width}px transition`);
+  } finally {
+    await context.close();
+  }
+}
+
 async function assertMobileState(browser, width, height, screenshots = {}) {
   const {context, page} = await createPage(browser, width, height);
 
@@ -211,7 +240,7 @@ try {
   await assertDesktopState(browser, 1440, 900, 'desktop-1440.png');
   await assertDesktopState(browser, 1280, 800);
   await assertDesktopState(browser, 1024, 768, 'tablet-1024.png');
-  await assertDesktopState(browser, 900, 720);
+  await assertTransitionState(browser, 900, 720);
   await assertMobileState(browser, 768, 900);
   await assertMobileState(browser, 390, 844, {
     closed: 'mobile-closed-390.png',

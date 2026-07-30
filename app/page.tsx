@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import {client} from '@/sanity/lib/client';
 import {ClosingCtaSection} from '@/components/closing-cta-section';
-import {HomepageHero, type CurrentEventLink} from '@/components/homepage-hero';
+import {HomepageHero} from '@/components/homepage-hero';
 import {PartnersSection} from '@/components/partners-section';
 import {VoicesSection} from '@/components/voices-section';
-import {currentEventFallback} from '@/lib/current-event-fallback';
+import {getHomepageSettings} from '@/lib/homepage-settings';
 
 export const revalidate = 60;
 
@@ -21,12 +21,6 @@ type IdentityCard = {
   title: string;
   body: string;
   icon: 'ai' | 'briefcase' | 'legacy';
-};
-
-type CmsCurrentEvent = {
-  _id?: string;
-  label?: string;
-  href?: string;
 };
 
 const fallbackLegacyCards: LegacyCard[] = [
@@ -119,51 +113,6 @@ function IdentityIcon({icon}: {icon: IdentityCard['icon']}) {
   );
 }
 
-function isSafeNavigationHref(href: string) {
-  return href.startsWith('/') || href.startsWith('https://');
-}
-
-function getBootstrapCurrentEvent(): CurrentEventLink | null {
-  if (!currentEventFallback.enabled || !isSafeNavigationHref(currentEventFallback.href)) return null;
-
-  return {
-    label: currentEventFallback.label,
-    href: currentEventFallback.href,
-  };
-}
-
-async function getCurrentEvent(): Promise<CurrentEventLink | null> {
-  try {
-    const currentEvent = await client.fetch<CmsCurrentEvent | null>(
-      `*[_type == "currentEventSettings" && _id == "currentEventSettings"][0] {
-        _id,
-        "label": event->title,
-        "href": event->navigationUrl
-      }`,
-      {},
-      {next: {revalidate: 60}}
-    );
-
-    if (!currentEvent?._id) return getBootstrapCurrentEvent();
-
-    if (
-      currentEvent.label?.trim() &&
-      currentEvent.href?.trim() &&
-      isSafeNavigationHref(currentEvent.href.trim())
-    ) {
-      return {
-        label: currentEvent.label.trim(),
-        href: currentEvent.href.trim(),
-      };
-    }
-
-    // A configured singleton with no valid selection intentionally hides the secondary CTA.
-    return null;
-  } catch {
-    return getBootstrapCurrentEvent();
-  }
-}
-
 async function getLegacyCards() {
   try {
     const cards = await client.fetch<LegacyCard[]>(
@@ -196,11 +145,11 @@ async function getLegacyCards() {
 }
 
 export default async function HomePage() {
-  const [currentEvent, legacyCards] = await Promise.all([getCurrentEvent(), getLegacyCards()]);
+  const [homepageSettings, legacyCards] = await Promise.all([getHomepageSettings(), getLegacyCards()]);
 
   return (
     <div className="bg-[#020817] text-white">
-      <HomepageHero currentEvent={currentEvent} />
+      <HomepageHero currentEvent={homepageSettings.currentEvent} heroArtwork={homepageSettings.heroArtwork} />
 
       <section id="legacy-foundation" className="relative min-h-[calc(100svh-72px)] overflow-hidden bg-[#020817] px-6 py-[7vw]">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_18%,rgba(17,95,235,.16),transparent_31%),radial-gradient(circle_at_50%_84%,rgba(0,217,255,.08),transparent_35%)]" />

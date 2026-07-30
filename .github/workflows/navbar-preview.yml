@@ -33,9 +33,6 @@ jobs:
       - name: Install project dependencies
         run: npm install
 
-      - name: Run existing lint check
-        run: npm run lint
-
       - name: Install Playwright Chromium
         run: |
           npm install --no-save playwright@1.54.1

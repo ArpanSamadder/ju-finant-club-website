@@ -1,7 +1,7 @@
 'use client';
 
 import type {CSSProperties, PointerEvent as ReactPointerEvent} from 'react';
-import {useCallback, useEffect, useMemo, useRef, useState} from 'react';
+import {useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState} from 'react';
 import styles from './legacy-section.module.css';
 
 export type LegacyItem = {
@@ -17,6 +17,16 @@ type InteractionState = {
   hover: boolean;
   focus: boolean;
   drag: boolean;
+};
+
+type WrapAnimation = {
+  element: HTMLArticleElement;
+  direction: -1 | 1;
+  startOpacity: string;
+  startTransform: string;
+  previousPointerEvents: string;
+  previousTransition: string;
+  previousVisibility: string;
 };
 
 function ArrowIcon({direction}: {direction: 'left' | 'right'}) {
@@ -82,6 +92,11 @@ function relativeSlot(index: number, active: number, length: number) {
   return difference;
 }
 
+function shiftTransform(transform: string, deltaX: number) {
+  const matrix = transform === 'none' ? new DOMMatrixReadOnly() : new DOMMatrixReadOnly(transform);
+  return `matrix(${matrix.a}, ${matrix.b}, ${matrix.c}, ${matrix.d}, ${matrix.e + deltaX}, ${matrix.f})`;
+}
+
 export function LegacyCarousel({items}: {items: LegacyItem[]}) {
   const initialIndex = Math.max(0, items.findIndex((item) => item.title === 'Finance Fest'));
   const [activeIndex, setActiveIndex] = useState(initialIndex);
@@ -89,6 +104,10 @@ export function LegacyCarousel({items}: {items: LegacyItem[]}) {
   const [reducedMotion, setReducedMotion] = useState(false);
   const pointerStart = useRef<{x: number; y: number} | null>(null);
   const resumeTimer = useRef<number | null>(null);
+  const stageRef = useRef<HTMLDivElement>(null);
+  const pendingWrap = useRef<WrapAnimation | null>(null);
+  const runningWrapAnimation = useRef<Animation | null>(null);
+  const movingRef = useRef(false);
   const interaction = useRef<InteractionState>({hover: false, focus: false, drag: false});
   const reducedMotionRef = useRef(false);
   const activeItem = items[activeIndex] ?? items[0];
@@ -107,9 +126,68 @@ export function LegacyCarousel({items}: {items: LegacyItem[]}) {
   }, []);
 
   const move = useCallback((direction: -1 | 1) => {
-    if (items.length <= 1) return;
-    setActiveIndex((current) => (current + direction + items.length) % items.length);
-  }, [items.length]);
+    if (items.length <= 1 || movingRef.current) return;
+
+    const nextIndex = (activeIndex + direction + items.length) % items.length;
+    const nextSlots = items.map((_, index) => relativeSlot(index, nextIndex, items.length));
+    const wrapIndex = slots.findIndex((slot, index) => Math.abs(nextSlots[index] - slot) > 1);
+    const wrapElement = wrapIndex >= 0
+      ? stageRef.current?.querySelector<HTMLArticleElement>(`[data-legacy-index="${wrapIndex}"]`)
+      : null;
+
+    if (wrapElement && !reducedMotionRef.current) {
+      const computed = getComputedStyle(wrapElement);
+      pendingWrap.current = {
+        element: wrapElement,
+        direction,
+        startOpacity: computed.opacity,
+        startTransform: computed.transform,
+        previousPointerEvents: wrapElement.style.pointerEvents,
+        previousTransition: wrapElement.style.transition,
+        previousVisibility: wrapElement.style.visibility,
+      };
+      movingRef.current = true;
+      wrapElement.style.pointerEvents = 'none';
+      wrapElement.style.transition = 'none';
+      wrapElement.style.visibility = 'visible';
+    }
+
+    setActiveIndex(nextIndex);
+  }, [activeIndex, items, slots]);
+
+  useLayoutEffect(() => {
+    const pending = pendingWrap.current;
+    if (!pending) return;
+
+    const {element, direction, startOpacity, startTransform} = pending;
+    const computed = getComputedStyle(element);
+    const endOpacity = computed.opacity;
+    const endTransform = computed.transform;
+    const travel = element.getBoundingClientRect().width + 32;
+    const exitOffset = direction === 1 ? -travel : travel;
+    const entryOffset = -exitOffset;
+
+    const animation = element.animate(
+      [
+        {transform: startTransform, opacity: startOpacity, offset: 0, easing: 'cubic-bezier(.2,.78,.2,1)'},
+        {transform: shiftTransform(startTransform, exitOffset), opacity: '0', offset: 0.45, easing: 'linear'},
+        {transform: shiftTransform(endTransform, entryOffset), opacity: '0', offset: 0.46, easing: 'cubic-bezier(.2,.78,.2,1)'},
+        {transform: endTransform, opacity: endOpacity, offset: 1},
+      ],
+      {duration: 650, fill: 'both'}
+    );
+
+    runningWrapAnimation.current = animation;
+    animation.finished.catch(() => undefined).finally(() => {
+      if (runningWrapAnimation.current === animation) runningWrapAnimation.current = null;
+      animation.cancel();
+      element.style.pointerEvents = pending.previousPointerEvents;
+      element.style.transition = pending.previousTransition;
+      element.style.visibility = pending.previousVisibility;
+      pendingWrap.current = null;
+      movingRef.current = false;
+    });
+  }, [activeIndex]);
 
   const hasActiveInteraction = useCallback(() => Object.values(interaction.current).some(Boolean), []);
 
@@ -159,7 +237,16 @@ export function LegacyCarousel({items}: {items: LegacyItem[]}) {
     return () => window.clearTimeout(timer);
   }, [activeIndex, controlsDisabled, move, paused, reducedMotion]);
 
-  useEffect(() => () => clearResumeTimer(), [clearResumeTimer]);
+  useEffect(() => () => {
+    clearResumeTimer();
+    runningWrapAnimation.current?.cancel();
+    const pending = pendingWrap.current;
+    if (pending) {
+      pending.element.style.pointerEvents = pending.previousPointerEvents;
+      pending.element.style.transition = pending.previousTransition;
+      pending.element.style.visibility = pending.previousVisibility;
+    }
+  }, [clearResumeTimer]);
 
   const onPointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
     const target = event.target as Element;
@@ -231,7 +318,7 @@ export function LegacyCarousel({items}: {items: LegacyItem[]}) {
           onPointerUp={finishPointer}
           onPointerCancel={() => finishPointer()}
         >
-          <div className={styles.stage}>
+          <div ref={stageRef} className={styles.stage}>
             {items.map((item, index) => {
               const slot = slots[index];
               const distance = Math.abs(slot);
@@ -245,6 +332,7 @@ export function LegacyCarousel({items}: {items: LegacyItem[]}) {
                   aria-hidden={!isActive}
                   data-active={isActive ? 'true' : 'false'}
                   data-legacy-id={item.id}
+                  data-legacy-index={index}
                 >
                   <div className={styles.imageFrame}>
                     {item.imageUrl ? (

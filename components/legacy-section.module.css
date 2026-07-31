@@ -1,0 +1,506 @@
+.section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 780px;
+  padding: clamp(5.5rem, 7vw, 8rem) 0 clamp(4.5rem, 6vw, 7rem);
+  background: #020817;
+  color: white;
+}
+
+.background {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 50% 18%, rgba(17, 95, 235, 0.18), transparent 31%),
+    radial-gradient(circle at 50% 88%, rgba(0, 217, 255, 0.08), transparent 30%),
+    linear-gradient(142deg, transparent 0 68%, rgba(17, 95, 235, 0.13) 68.08%, transparent 68.2%),
+    linear-gradient(180deg, #020817 0%, #020817 74%, #030b1d 100%);
+}
+
+.background::before,
+.background::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+}
+
+.background::before {
+  inset: auto 0 0;
+  height: 35%;
+  opacity: 0.24;
+  background-image:
+    linear-gradient(rgba(17, 95, 235, 0.14) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(17, 95, 235, 0.14) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: linear-gradient(to bottom, transparent, black);
+  transform: perspective(450px) rotateX(64deg) scale(1.3);
+  transform-origin: bottom;
+}
+
+.background::after {
+  top: 3%;
+  left: 7%;
+  width: 18rem;
+  height: 10rem;
+  opacity: 0.34;
+  background-image: radial-gradient(circle, #0a86ff 1px, transparent 1.5px);
+  background-size: 19px 19px;
+  mask-image: linear-gradient(135deg, black, transparent 74%);
+}
+
+.content {
+  width: min(100%, 1800px);
+  margin-inline: auto;
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0;
+  color: #00d9ff;
+  font-size: clamp(0.72rem, 0.86vw, 1rem);
+  font-weight: 650;
+  line-height: 1;
+  letter-spacing: 0.68em;
+  padding-left: 0.68em;
+  text-transform: uppercase;
+  text-shadow: 0 0 18px rgba(0, 217, 255, 0.7);
+}
+
+.eyebrow::after {
+  content: '';
+  display: block;
+  width: min(36rem, 60vw);
+  height: 1px;
+  margin: 0.65rem auto 0;
+  background: linear-gradient(90deg, transparent, rgba(17, 95, 235, 0.88), transparent);
+  box-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
+}
+
+.title {
+  max-width: 86rem;
+  margin: 1.65rem auto 0;
+  padding-inline: 2rem;
+  color: white;
+  font-size: clamp(2.35rem, 3.3vw, 4.55rem);
+  font-weight: 760;
+  line-height: 1.05;
+  letter-spacing: -0.055em;
+  text-wrap: balance;
+}
+
+.title span {
+  color: #1673ff;
+  text-shadow: 0 0 30px rgba(17, 95, 235, 0.25);
+}
+
+.description {
+  max-width: 72rem;
+  margin: 1.35rem auto 0;
+  padding-inline: 2rem;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: clamp(0.95rem, 1.12vw, 1.28rem);
+  line-height: 1.55;
+  text-wrap: balance;
+}
+
+.carousel {
+  position: relative;
+  margin-top: clamp(2.4rem, 3.5vw, 4.2rem);
+  outline: none;
+  touch-action: pan-y;
+}
+
+.carousel:focus-visible {
+  box-shadow: inset 0 0 0 2px rgba(0, 217, 255, 0.78);
+}
+
+.stage {
+  position: relative;
+  height: clamp(25rem, 31vw, 34rem);
+  overflow: hidden;
+}
+
+.card {
+  --slot: 0;
+  --distance: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: clamp(15.5rem, 18vw, 20rem);
+  height: clamp(22rem, 27vw, 30rem);
+  overflow: hidden;
+  border: 1px solid rgba(150, 165, 220, 0.42);
+  border-radius: 1.1rem;
+  background: rgba(2, 8, 23, 0.94);
+  box-shadow: 0 24px 65px rgba(0, 0, 0, 0.58), inset 0 0 45px rgba(17, 95, 235, 0.06);
+  opacity: calc(1 - (var(--distance) * 0.13));
+  transform:
+    translate3d(calc(-50% + (var(--slot) * clamp(15.8rem, 18.2vw, 21rem))), -50%, 0)
+    scale(calc(1 - (var(--distance) * 0.055)));
+  transition: transform 520ms cubic-bezier(.2,.78,.2,1), opacity 360ms ease, border-color 360ms ease, box-shadow 360ms ease;
+  z-index: calc(10 - var(--distance));
+}
+
+.activeCard {
+  border-color: #7b9bff;
+  box-shadow:
+    0 0 0 1px rgba(0, 217, 255, 0.7),
+    0 0 26px rgba(17, 95, 235, 0.5),
+    0 28px 78px rgba(0, 0, 0, 0.64),
+    inset 0 0 50px rgba(17, 95, 235, 0.1);
+  transform: translate3d(-50%, -50%, 0) scale(1.08);
+  opacity: 1;
+}
+
+.hiddenCard {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.imageFrame {
+  position: relative;
+  height: 57%;
+  overflow: hidden;
+  margin: 0.65rem;
+  border-radius: 0.82rem;
+  background: #06112d;
+}
+
+.imageFrame > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(1.05) contrast(1.02);
+}
+
+.imageFallback {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  place-items: center;
+  color: #1790ff;
+  background:
+    radial-gradient(circle at 50% 48%, rgba(0, 217, 255, 0.22), transparent 32%),
+    linear-gradient(145deg, #07183e, #020817 74%);
+}
+
+.imageFallback svg {
+  width: 5.5rem;
+  height: 5.5rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.imageShade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 58%, rgba(2, 8, 23, 0.55));
+}
+
+.cardBody {
+  display: grid;
+  grid-template-columns: 4rem minmax(0, 1fr);
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.2rem 1rem;
+  text-align: left;
+}
+
+.cardIcon {
+  display: grid;
+  width: 3.4rem;
+  height: 3.4rem;
+  place-items: center;
+  color: #0e9cff;
+}
+
+.cardIcon svg,
+.cardIcon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.cardIcon svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.cardBody h3 {
+  margin: 0;
+  color: white;
+  font-size: clamp(1.05rem, 1.35vw, 1.5rem);
+  font-weight: 740;
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+}
+
+.cardBody p {
+  margin: 0.55rem 0 0;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: clamp(0.72rem, 0.82vw, 0.95rem);
+  line-height: 1.38;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 30;
+  display: grid;
+  width: clamp(3.2rem, 4vw, 4.6rem);
+  height: clamp(3.2rem, 4vw, 4.6rem);
+  place-items: center;
+  border: 1px solid rgba(126, 151, 255, 0.66);
+  border-radius: 50%;
+  color: white;
+  background: rgba(2, 8, 23, 0.78);
+  box-shadow: 0 0 22px rgba(17, 95, 235, 0.22);
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: border-color 180ms ease, background 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.arrow:hover {
+  border-color: #00d9ff;
+  background: #071735;
+  box-shadow: 0 0 26px rgba(0, 217, 255, 0.28);
+}
+
+.arrow:focus-visible {
+  outline: 2px solid #00f0ff;
+  outline-offset: 4px;
+}
+
+.arrow:active {
+  transform: translateY(-50%) scale(0.96);
+}
+
+.arrow svg {
+  width: 55%;
+  height: 55%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.arrowLeft {
+  left: clamp(1rem, 2.3vw, 3rem);
+}
+
+.arrowRight {
+  right: clamp(1rem, 2.3vw, 3rem);
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 1.15rem;
+  margin-top: 0.4rem;
+}
+
+.pagination button {
+  width: 0.78rem;
+  height: 0.78rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(202, 210, 230, 0.3);
+  cursor: pointer;
+  transition: background 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.pagination button:hover,
+.pagination button:focus-visible {
+  background: rgba(0, 217, 255, 0.7);
+  outline: none;
+  transform: scale(1.12);
+}
+
+.pagination .activeDot {
+  background: #087cff;
+  box-shadow: 0 0 15px rgba(17, 95, 235, 0.9);
+}
+
+.liveStatus {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+}
+
+@media (max-width: 1023px) {
+  .section {
+    min-height: 720px;
+  }
+
+  .title {
+    max-width: 55rem;
+  }
+
+  .stage {
+    height: 31rem;
+  }
+
+  .card {
+    width: 17rem;
+    height: 25rem;
+    transform: translate3d(calc(-50% + (var(--slot) * 16rem)), -50%, 0) scale(calc(1 - (var(--distance) * 0.065)));
+  }
+
+  .activeCard {
+    transform: translate3d(-50%, -50%, 0) scale(1.06);
+  }
+}
+
+@media (max-width: 767px) {
+  .section {
+    min-height: auto;
+    padding: 5.3rem 0 4.4rem;
+  }
+
+  .background::before {
+    display: none;
+  }
+
+  .background::after {
+    top: 0;
+    left: 0;
+    width: 11rem;
+    height: 13rem;
+    background-size: 16px 16px;
+  }
+
+  .content {
+    width: 100%;
+  }
+
+  .eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.48em;
+    padding-left: 0.48em;
+  }
+
+  .eyebrow::after {
+    width: 80%;
+  }
+
+  .title {
+    max-width: 26rem;
+    margin-top: 1.45rem;
+    padding-inline: 1.35rem;
+    font-size: clamp(2rem, 9.4vw, 3rem);
+    line-height: 1.1;
+  }
+
+  .description {
+    max-width: 40rem;
+    margin-top: 1.25rem;
+    padding-inline: 1.35rem;
+    font-size: clamp(0.92rem, 4.1vw, 1.08rem);
+    line-height: 1.62;
+  }
+
+  .carousel {
+    margin-top: 2.5rem;
+  }
+
+  .stage {
+    height: 35rem;
+  }
+
+  .card {
+    width: 72vw;
+    max-width: 23rem;
+    height: 31rem;
+    border-radius: 1.15rem;
+    opacity: calc(1 - (var(--distance) * 0.18));
+    transform: translate3d(calc(-50% + (var(--slot) * 58vw)), -50%, 0) scale(calc(1 - (var(--distance) * 0.1)));
+  }
+
+  .activeCard {
+    transform: translate3d(-50%, -50%, 0) scale(1);
+  }
+
+  .imageFrame {
+    height: 58%;
+  }
+
+  .cardBody {
+    grid-template-columns: 4.2rem minmax(0, 1fr);
+    padding: 1.5rem 1.3rem 1rem;
+  }
+
+  .cardBody h3 {
+    font-size: 1.45rem;
+  }
+
+  .cardBody p {
+    font-size: 0.9rem;
+  }
+
+  .arrow {
+    top: auto;
+    bottom: -0.2rem;
+    width: 4.05rem;
+    height: 4.05rem;
+    transform: none;
+  }
+
+  .arrow:active {
+    transform: scale(0.96);
+  }
+
+  .arrowLeft {
+    left: 8.5vw;
+  }
+
+  .arrowRight {
+    right: 8.5vw;
+  }
+
+  .pagination {
+    margin-top: 1.3rem;
+    gap: 1.15rem;
+  }
+
+  .pagination button {
+    width: 0.82rem;
+    height: 0.82rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .stage {
+    height: 33.5rem;
+  }
+
+  .card {
+    width: 74vw;
+    height: 29.5rem;
+    transform: translate3d(calc(-50% + (var(--slot) * 60vw)), -50%, 0) scale(calc(1 - (var(--distance) * 0.1)));
+  }
+
+  .activeCard {
+    transform: translate3d(-50%, -50%, 0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .arrow,
+  .pagination button {
+    transition: none;
+  }
+}

@@ -1,0 +1,1 @@
+Temporary marker for Hero asset consolidation. Remove after binary asset tree transfer.

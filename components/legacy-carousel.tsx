@@ -92,6 +92,12 @@ export function LegacyCarousel({items}: {items: LegacyItem[]}) {
   };
 
   const onPointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
+    const target = event.target as Element;
+    if (target.closest('button, a')) {
+      pointerStart.current = null;
+      return;
+    }
+
     pointerStart.current = {x: event.clientX, y: event.clientY};
     event.currentTarget.setPointerCapture?.(event.pointerId);
   };

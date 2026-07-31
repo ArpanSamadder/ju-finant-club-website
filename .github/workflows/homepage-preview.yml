@@ -1,0 +1,93 @@
+name: Full Homepage Preview QA
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/homepage-preview.yml'
+      - 'app/layout.tsx'
+      - 'app/page.tsx'
+      - 'app/hero-locked-overrides.css'
+      - 'components/legacy-section.tsx'
+      - 'components/legacy-carousel.tsx'
+      - 'components/legacy-section.module.css'
+      - 'components/identity-section.tsx'
+      - 'components/identity-section.module.css'
+      - 'components/voices-section.tsx'
+      - 'components/voices-carousel.tsx'
+      - 'components/voices-section.module.css'
+      - 'components/partners-section.tsx'
+      - 'components/partners-marquee.tsx'
+      - 'components/partners-section.module.css'
+      - 'components/closing-cta-section.tsx'
+      - 'package.json'
+      - 'scripts/homepage-qa.mjs'
+
+jobs:
+  homepage-qa:
+    name: Responsive full homepage checks
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install project dependencies
+        run: npm install
+
+      - name: Prepare Hero assets
+        run: npm run prepare:hero-assets
+
+      - name: Build application
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: npm run build
+
+      - name: Install Playwright Chromium
+        run: |
+          npm install --no-save playwright@1.54.1
+          npx playwright install --with-deps chromium
+
+      - name: Start local homepage preview
+        env:
+          NAVBAR_PREVIEW_EVENT_LABEL: Biztigation 2.0
+          NAVBAR_PREVIEW_EVENT_URL: /biztigation
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          nohup npm run dev -- --hostname 0.0.0.0 > /tmp/homepage-preview.log 2>&1 &
+          echo $! > /tmp/homepage-preview.pid
+
+          for attempt in {1..90}; do
+            if curl -fsS http://127.0.0.1:3000 > /dev/null; then
+              exit 0
+            fi
+            sleep 2
+          done
+
+          cat /tmp/homepage-preview.log
+          exit 1
+
+      - name: Run responsive homepage QA and capture screenshots
+        env:
+          HOMEPAGE_QA_BASE_URL: http://127.0.0.1:3000
+          HOMEPAGE_QA_OUTPUT_DIR: artifacts/homepage
+        run: node scripts/homepage-qa.mjs
+
+      - name: Show preview server log on failure
+        if: failure()
+        run: cat /tmp/homepage-preview.log || true
+
+      - name: Upload homepage screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: full-homepage-preview
+          path: artifacts/homepage/*.png
+          if-no-files-found: warn
+          retention-days: 14

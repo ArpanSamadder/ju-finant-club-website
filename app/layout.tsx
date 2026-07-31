@@ -3,21 +3,10 @@ import {Cormorant_Garamond, Inter} from 'next/font/google';
 import './globals.css';
 import './mobile.css';
 import './mobile-cta-row.css';
-import './mobile-legacy.css';
-import './legacy-carousel-interactive.css';
-import './identity-section.css';
-import './identity-mobile-grid.css';
-import './identity-card-compact.css';
-import './identity-carousel-mobile.css';
 import './voices-section.css';
-import './voices-carousel-interactive.css';
-import './partners-section.css';
 import './performance-fixes.css';
 import './no-glass-system.css';
 import './carousel-arrows.css';
-import {LegacyCarouselController} from '@/components/legacy-carousel-controller';
-import {IdentityCarouselController} from '@/components/identity-carousel-controller';
-import {VoicesCarouselController} from '@/components/voices-carousel-controller';
 import {LiveEventHeroLink} from '@/components/live-event-hero-link';
 import {SiteChrome} from '@/components/site-chrome';
 import {SiteFooter} from '@/components/site-footer';
@@ -51,9 +40,6 @@ export default async function RootLayout({children}: {children: React.ReactNode}
           {children}
         </SiteChrome>
         <LiveEventHeroLink />
-        <LegacyCarouselController />
-        <IdentityCarouselController />
-        <VoicesCarouselController />
       </body>
     </html>
   );

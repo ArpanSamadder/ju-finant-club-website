@@ -133,7 +133,6 @@ try {
       if (width <= 390) {
         for (const [name, section] of [['Legacy', legacy], ['Voices', voices]]) {
           const row = section.locator('[data-carousel-controls]');
-          const arrows = row.locator('button').filter({has: row.locator('svg')});
           const rowBox = await row.boundingBox();
           const leftBox = await row.locator('button').first().boundingBox();
           const rightBox = await row.locator('button').last().boundingBox();
@@ -142,7 +141,6 @@ try {
           assert(leftBox.width >= 44 && leftBox.height >= 44 && rightBox.width >= 44 && rightBox.height >= 44, `${label}: ${name} arrows meet 44px touch targets`);
           assert(rowBox.y >= activeBox.y + activeBox.height + 12, `${label}: ${name} controls sit below the active card`);
           assert(Math.abs((leftBox.y + leftBox.height / 2) - (rightBox.y + rightBox.height / 2)) <= 3, `${label}: ${name} arrows share one control-row baseline`);
-          void arrows;
         }
 
         const partnerCards = partners.locator('[data-partner-card]');
@@ -179,6 +177,9 @@ try {
     }
     assert(Number(await legacyCarousel.getAttribute('data-active-index')) === initialLegacyIndex, 'Legacy manual loop returns seamlessly to the first logical record');
 
+    await behaviorPage.evaluate(() => {
+      if (document.activeElement instanceof HTMLElement) document.activeElement.blur();
+    });
     await behaviorPage.mouse.move(10, 10);
     const autoplayStart = Number(await legacyCarousel.getAttribute('data-active-index'));
     await behaviorPage.waitForTimeout(4300);

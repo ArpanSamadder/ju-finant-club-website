@@ -1,0 +1,108 @@
+/* Focused below-the-fold spacing guardrails. Navbar and Hero are intentionally excluded. */
+#legacy-foundation,
+#our-identity,
+#voices-of-finant,
+#partners-collaborators,
+#partner-with-us {
+  min-height: 0 !important;
+}
+
+#our-identity,
+#partner-with-us {
+  padding-top: clamp(4rem, 4.5vw, 4.5rem) !important;
+  padding-bottom: clamp(4rem, 4.5vw, 4.5rem) !important;
+}
+
+#our-identity [class*="capabilitySystem"] {
+  margin-top: clamp(2rem, 2.6vw, 2.5rem) !important;
+}
+
+#partner-with-us > div:last-child > div:last-child {
+  margin-top: clamp(2rem, 2.8vw, 2.5rem) !important;
+}
+
+/* Keep the Legacy-to-Identity boundary on one continuous navy surface. */
+#legacy-foundation,
+#our-identity {
+  background-color: #020817 !important;
+}
+
+#legacy-foundation > [class*="background"] {
+  background:
+    radial-gradient(circle at 50% 18%, rgba(17, 95, 235, 0.18), transparent 31%),
+    radial-gradient(circle at 50% 88%, rgba(0, 217, 255, 0.08), transparent 30%),
+    linear-gradient(142deg, transparent 0 68%, rgba(17, 95, 235, 0.13) 68.08%, transparent 68.2%),
+    #020817 !important;
+}
+
+#legacy-foundation > [class*="background"]::before {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 28%, black 72%, transparent 100%) !important;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 28%, black 72%, transparent 100%) !important;
+}
+
+@media (max-width: 1399px) {
+  #our-identity,
+  #partner-with-us {
+    padding-top: clamp(3rem, 4vw, 3.5rem) !important;
+    padding-bottom: clamp(3rem, 4vw, 3.5rem) !important;
+  }
+}
+
+/* Fit the complete Legacy composition inside standard short laptop viewports. */
+@media (min-width: 768px) and (max-height: 800px) {
+  #legacy-foundation {
+    padding-top: clamp(2.25rem, 4.5vh, 2.75rem) !important;
+    padding-bottom: clamp(2.25rem, 4.5vh, 2.75rem) !important;
+  }
+
+  #legacy-foundation [class*="eyebrow"]::after {
+    margin-top: 0.5rem !important;
+  }
+
+  #legacy-foundation [class*="title"] {
+    margin-top: 1rem !important;
+    font-size: clamp(2rem, 2.8vw, 3rem) !important;
+  }
+
+  #legacy-foundation [class*="description"] {
+    margin-top: 0.9rem !important;
+    font-size: clamp(0.88rem, 1vw, 1.05rem) !important;
+    line-height: 1.42 !important;
+  }
+
+  #legacy-foundation [class*="carousel"] {
+    margin-top: 1.5rem !important;
+  }
+
+  #legacy-foundation [class*="stage"] {
+    height: clamp(17.75rem, 38vh, 19rem) !important;
+  }
+
+  #legacy-foundation [data-legacy-id] {
+    height: clamp(15.9rem, 34vh, 17.3rem) !important;
+  }
+
+  #legacy-foundation [class*="pagination"] {
+    margin-top: 0.75rem !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  #our-identity,
+  #partner-with-us {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+}
+
+@media (max-width: 767px) {
+  #our-identity,
+  #partner-with-us {
+    padding-top: clamp(2.25rem, 10vw, 2.75rem) !important;
+    padding-bottom: clamp(2.25rem, 10vw, 2.75rem) !important;
+  }
+
+  #our-identity [class*="capabilitySystem"] {
+    margin-top: 2rem !important;
+  }
+}

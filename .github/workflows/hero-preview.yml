@@ -1,0 +1,85 @@
+name: Homepage Hero Preview QA
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/hero-preview.yml'
+      - 'app/page.tsx'
+      - 'app/mobile.css'
+      - 'components/homepage-hero.tsx'
+      - 'components/homepage-hero.module.css'
+      - 'lib/current-event.ts'
+      - 'package.json'
+      - 'public/images/hero/**'
+      - 'scripts/build-hero-assets.mjs'
+      - 'scripts/hero-qa.mjs'
+
+jobs:
+  hero-qa:
+    name: Responsive homepage Hero checks
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install project dependencies
+        run: npm install
+
+      - name: Prepare Hero assets
+        run: npm run prepare:hero-assets
+
+      - name: Build application
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: npm run build
+
+      - name: Install Playwright Chromium
+        run: |
+          npm install --no-save playwright@1.54.1
+          npx playwright install --with-deps chromium
+
+      - name: Start local Hero preview
+        env:
+          NAVBAR_PREVIEW_EVENT_LABEL: Biztigation 2.0
+          NAVBAR_PREVIEW_EVENT_URL: /biztigation
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          nohup npm run dev -- --hostname 0.0.0.0 > /tmp/hero-preview.log 2>&1 &
+          echo $! > /tmp/hero-preview.pid
+
+          for attempt in {1..90}; do
+            if curl -fsS http://127.0.0.1:3000 > /dev/null; then
+              exit 0
+            fi
+            sleep 2
+          done
+
+          cat /tmp/hero-preview.log
+          exit 1
+
+      - name: Run Hero responsive QA and capture screenshots
+        env:
+          HERO_QA_BASE_URL: http://127.0.0.1:3000
+          HERO_QA_OUTPUT_DIR: artifacts/hero
+        run: node scripts/hero-qa.mjs
+
+      - name: Show preview server log on failure
+        if: failure()
+        run: cat /tmp/hero-preview.log || true
+
+      - name: Upload Hero screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: homepage-hero-preview
+          path: artifacts/hero/*.png
+          if-no-files-found: warn
+          retention-days: 14

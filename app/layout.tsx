@@ -7,6 +7,7 @@ import './voices-section.css';
 import './performance-fixes.css';
 import './carousel-arrows.css';
 import './hero-locked-overrides.css';
+import './homepage-refinement.css';
 import {LiveEventHeroLink} from '@/components/live-event-hero-link';
 import {SiteChrome} from '@/components/site-chrome';
 import {SiteFooter} from '@/components/site-footer';

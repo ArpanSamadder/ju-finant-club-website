@@ -116,7 +116,7 @@ try {
       const identityCopyFits = await identity.evaluate((section) => Array.from(section.querySelectorAll('p')).every((paragraph) => paragraph.scrollHeight <= paragraph.clientHeight + 2 || getComputedStyle(paragraph).overflow === 'visible'));
       assert(identityCopyFits, `${label}: Our Identity copy is not clipped`);
 
-      const voiceCarousel = voices.getByRole('region', {name: 'Leadership and advisory voices'});
+      const voiceCarousel = voices.getByRole('region', {name: 'Leadership and advisory voices', exact: true});
       const voiceCount = Number(await voiceCarousel.getAttribute('data-record-count'));
       const voiceDots = voices.locator('[data-pagination-count] button');
       assert(voiceCount > 0, `${label}: Voices has published records`);
@@ -186,7 +186,7 @@ try {
     const autoplayEnd = Number(await legacyCarousel.getAttribute('data-active-index'));
     assert(autoplayEnd !== autoplayStart, 'Legacy autoplay advances after four seconds');
 
-    const voices = behaviorPage.getByRole('region', {name: 'Leadership and advisory voices'});
+    const voices = behaviorPage.getByRole('region', {name: 'Leadership and advisory voices', exact: true});
     const voiceCount = Number(await voices.getAttribute('data-record-count'));
     if (voiceCount > 1) {
       const initialVoiceIndex = Number(await voices.getAttribute('data-active-index'));
@@ -222,7 +222,7 @@ try {
   try {
     await loadHome(reducedPage);
     const legacy = reducedPage.getByRole('region', {name: 'Departmental legacy platforms'});
-    const voices = reducedPage.getByRole('region', {name: 'Leadership and advisory voices'});
+    const voices = reducedPage.getByRole('region', {name: 'Leadership and advisory voices', exact: true});
     await reducedPage.waitForTimeout(150);
     assert((await legacy.getAttribute('data-autoplay')) === 'reduced', 'Reduced motion disables Legacy autoplay');
     assert((await voices.getAttribute('data-autoplay')) === 'reduced', 'Reduced motion disables Voices autoplay');

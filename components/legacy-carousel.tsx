@@ -126,7 +126,12 @@ export function LegacyCarousel({items}: {items: LegacyItem[]}) {
   }, []);
 
   const move = useCallback((direction: -1 | 1) => {
-    if (items.length <= 1 || movingRef.current) return;
+    if (items.length <= 1) return;
+
+    if (movingRef.current) {
+      setActiveIndex((current) => (current + direction + items.length) % items.length);
+      return;
+    }
 
     const nextIndex = (activeIndex + direction + items.length) % items.length;
     const nextSlots = items.map((_, index) => relativeSlot(index, nextIndex, items.length));
@@ -157,7 +162,7 @@ export function LegacyCarousel({items}: {items: LegacyItem[]}) {
 
   useLayoutEffect(() => {
     const pending = pendingWrap.current;
-    if (!pending) return;
+    if (!pending || runningWrapAnimation.current) return;
 
     const {element, direction, startOpacity, startTransform} = pending;
     const computed = getComputedStyle(element);

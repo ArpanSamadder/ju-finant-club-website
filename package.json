@@ -10,6 +10,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "qa:homepage": "node scripts/homepage-qa.mjs",
     "prepreview": "npm run prepare:hero-assets",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "predeploy": "npm run prepare:hero-assets",

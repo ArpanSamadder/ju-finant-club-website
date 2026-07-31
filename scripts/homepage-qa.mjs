@@ -59,10 +59,13 @@ try {
       assert((await legacyCards.count()) >= 5, `${width}px: Legacy has the five approved platforms`);
       const activeLegacy = legacy.locator('article[data-active="true"]');
       assert(await activeLegacy.isVisible(), `${width}px: Legacy active center card is visible`);
-      const beforeLegacy = (await activeLegacy.textContent())?.trim();
+      const beforeLegacy = await activeLegacy.getAttribute('data-legacy-id');
       await legacy.getByRole('button', {name: 'Next legacy event'}).click();
-      await page.waitForTimeout(620);
-      const afterLegacy = (await legacy.locator('article[data-active="true"]').textContent())?.trim();
+      await page.waitForFunction(
+        (previousId) => document.querySelector('#legacy-foundation article[data-active="true"]')?.getAttribute('data-legacy-id') !== previousId,
+        beforeLegacy
+      );
+      const afterLegacy = await legacy.locator('article[data-active="true"]').getAttribute('data-legacy-id');
       assert(Boolean(beforeLegacy && afterLegacy && beforeLegacy !== afterLegacy), `${width}px: Legacy arrow changes the active card`);
 
       const legacyBoxes = [];

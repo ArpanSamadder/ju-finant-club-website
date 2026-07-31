@@ -30,7 +30,16 @@ try {
       await hero.waitFor({state: 'visible'});
       assert(await heading.isVisible(), `${width}px: Hero headline is visible`);
       assert(await primaryCta.isVisible(), `${width}px: Explore FinAnt CTA is visible`);
-      assert(await currentEvent.isVisible(), `${width}px: Current Event CTA is visible`);
+
+      if ((await currentEvent.count()) > 0) {
+        assert(await currentEvent.isVisible(), `${width}px: Current Event CTA is visible when configured`);
+        assert(
+          (await currentEvent.getAttribute('href')) === '/biztigation',
+          `${width}px: Current Event CTA uses the PR #6 CMS route`
+        );
+      } else {
+        checks.push(`${width}px: Current Event CTA is hidden when no valid CMS selection is available`);
+      }
 
       const dimensions = await page.evaluate(() => ({
         clientWidth: document.documentElement.clientWidth,

@@ -20,7 +20,7 @@ type InteractionState = {
 };
 
 type WrapAnimation = {
-  element: HTMLArticleElement;
+  element: HTMLElement;
   direction: -1 | 1;
   startOpacity: string;
   startTransform: string;
@@ -132,7 +132,7 @@ export function LegacyCarousel({items}: {items: LegacyItem[]}) {
     const nextSlots = items.map((_, index) => relativeSlot(index, nextIndex, items.length));
     const wrapIndex = slots.findIndex((slot, index) => Math.abs(nextSlots[index] - slot) > 1);
     const wrapElement = wrapIndex >= 0
-      ? stageRef.current?.querySelector<HTMLArticleElement>(`[data-legacy-index="${wrapIndex}"]`)
+      ? stageRef.current?.querySelector<HTMLElement>(`[data-legacy-index="${wrapIndex}"]`)
       : null;
 
     if (wrapElement && !reducedMotionRef.current) {

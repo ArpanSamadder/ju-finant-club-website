@@ -153,6 +153,7 @@ export function LegacyCarousel({items}: {items: LegacyItem[]}) {
                   style={{'--slot': slot, '--distance': distance} as CSSProperties}
                   aria-hidden={!isActive}
                   data-active={isActive ? 'true' : 'false'}
+                  data-legacy-id={item.id}
                 >
                   <div className={styles.imageFrame}>
                     {item.imageUrl ? (

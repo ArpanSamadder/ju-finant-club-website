@@ -1,7 +1,7 @@
 'use client';
 
 import type {CSSProperties, PointerEvent as ReactPointerEvent} from 'react';
-import {useMemo, useRef, useState} from 'react';
+import {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import styles from './legacy-section.module.css';
 
 export type LegacyItem = {
@@ -11,6 +11,12 @@ export type LegacyItem = {
   imageUrl?: string;
   logoUrl?: string;
   icon: 'trophy' | 'academy' | 'festival' | 'people' | 'briefcase';
+};
+
+type InteractionState = {
+  hover: boolean;
+  focus: boolean;
+  drag: boolean;
 };
 
 function ArrowIcon({direction}: {direction: 'left' | 'right'}) {
@@ -79,17 +85,81 @@ function relativeSlot(index: number, active: number, length: number) {
 export function LegacyCarousel({items}: {items: LegacyItem[]}) {
   const initialIndex = Math.max(0, items.findIndex((item) => item.title === 'Finance Fest'));
   const [activeIndex, setActiveIndex] = useState(initialIndex);
+  const [paused, setPaused] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
   const pointerStart = useRef<{x: number; y: number} | null>(null);
+  const resumeTimer = useRef<number | null>(null);
+  const interaction = useRef<InteractionState>({hover: false, focus: false, drag: false});
+  const reducedMotionRef = useRef(false);
   const activeItem = items[activeIndex] ?? items[0];
+  const controlsDisabled = items.length <= 1;
 
   const slots = useMemo(
     () => items.map((_, index) => relativeSlot(index, activeIndex, items.length)),
     [activeIndex, items]
   );
 
-  const move = (direction: -1 | 1) => {
+  const clearResumeTimer = useCallback(() => {
+    if (resumeTimer.current !== null) {
+      window.clearTimeout(resumeTimer.current);
+      resumeTimer.current = null;
+    }
+  }, []);
+
+  const move = useCallback((direction: -1 | 1) => {
+    if (items.length <= 1) return;
     setActiveIndex((current) => (current + direction + items.length) % items.length);
-  };
+  }, [items.length]);
+
+  const hasActiveInteraction = useCallback(() => Object.values(interaction.current).some(Boolean), []);
+
+  const pauseFor = useCallback((reason: keyof InteractionState) => {
+    interaction.current[reason] = true;
+    clearResumeTimer();
+    setPaused(true);
+  }, [clearResumeTimer]);
+
+  const resumeAfterInteraction = useCallback((delay = 4000) => {
+    clearResumeTimer();
+    if (hasActiveInteraction()) return;
+    setPaused(true);
+    resumeTimer.current = window.setTimeout(() => {
+      if (hasActiveInteraction()) return;
+      setPaused(false);
+      if (!reducedMotionRef.current && items.length > 1) move(1);
+    }, delay);
+  }, [clearResumeTimer, hasActiveInteraction, items.length, move]);
+
+  const releaseReason = useCallback((reason: keyof InteractionState) => {
+    interaction.current[reason] = false;
+    resumeAfterInteraction(4000);
+  }, [resumeAfterInteraction]);
+
+  const manualMove = useCallback((direction: -1 | 1) => {
+    clearResumeTimer();
+    setPaused(true);
+    move(direction);
+    resumeAfterInteraction(4000);
+  }, [clearResumeTimer, move, resumeAfterInteraction]);
+
+  useEffect(() => {
+    const media = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const update = () => {
+      reducedMotionRef.current = media.matches;
+      setReducedMotion(media.matches);
+    };
+    update();
+    media.addEventListener?.('change', update);
+    return () => media.removeEventListener?.('change', update);
+  }, []);
+
+  useEffect(() => {
+    if (controlsDisabled || reducedMotion || paused) return;
+    const timer = window.setTimeout(() => move(1), 4000);
+    return () => window.clearTimeout(timer);
+  }, [activeIndex, controlsDisabled, move, paused, reducedMotion]);
+
+  useEffect(() => () => clearResumeTimer(), [clearResumeTimer]);
 
   const onPointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
     const target = event.target as Element;
@@ -99,18 +169,23 @@ export function LegacyCarousel({items}: {items: LegacyItem[]}) {
     }
 
     pointerStart.current = {x: event.clientX, y: event.clientY};
+    pauseFor('drag');
     event.currentTarget.setPointerCapture?.(event.pointerId);
   };
 
-  const onPointerUp = (event: ReactPointerEvent<HTMLDivElement>) => {
+  const finishPointer = (event?: ReactPointerEvent<HTMLDivElement>) => {
     const start = pointerStart.current;
     pointerStart.current = null;
-    if (!start) return;
 
-    const deltaX = event.clientX - start.x;
-    const deltaY = event.clientY - start.y;
-    if (Math.abs(deltaX) < 42 || Math.abs(deltaX) < Math.abs(deltaY) * 1.15) return;
-    move(deltaX < 0 ? 1 : -1);
+    if (start && event) {
+      const deltaX = event.clientX - start.x;
+      const deltaY = event.clientY - start.y;
+      if (Math.abs(deltaX) >= 42 && Math.abs(deltaX) >= Math.abs(deltaY) * 1.15) {
+        move(deltaX < 0 ? 1 : -1);
+      }
+    }
+
+    releaseReason('drag');
   };
 
   if (!items.length) return null;
@@ -133,30 +208,40 @@ export function LegacyCarousel({items}: {items: LegacyItem[]}) {
           aria-roledescription="carousel"
           aria-label="Departmental legacy platforms"
           tabIndex={0}
+          data-active-index={activeIndex}
+          data-record-count={items.length}
+          data-autoplay={reducedMotion ? 'reduced' : paused ? 'paused' : 'running'}
+          onMouseEnter={() => pauseFor('hover')}
+          onMouseLeave={() => releaseReason('hover')}
+          onFocusCapture={() => pauseFor('focus')}
+          onBlurCapture={(event) => {
+            if (!event.currentTarget.contains(event.relatedTarget as Node | null)) releaseReason('focus');
+          }}
           onKeyDown={(event) => {
-            if (event.key === 'ArrowLeft') move(-1);
-            if (event.key === 'ArrowRight') move(1);
+            if (event.key === 'ArrowLeft') {
+              event.preventDefault();
+              manualMove(-1);
+            }
+            if (event.key === 'ArrowRight') {
+              event.preventDefault();
+              manualMove(1);
+            }
           }}
           onPointerDown={onPointerDown}
-          onPointerUp={onPointerUp}
-          onPointerCancel={() => {
-            pointerStart.current = null;
-          }}
+          onPointerUp={finishPointer}
+          onPointerCancel={() => finishPointer()}
         >
-          <button type="button" className={`${styles.arrow} ${styles.arrowLeft}`} aria-label="Previous legacy event" onClick={() => move(-1)}>
-            <ArrowIcon direction="left" />
-          </button>
-
           <div className={styles.stage}>
             {items.map((item, index) => {
               const slot = slots[index];
               const distance = Math.abs(slot);
+              const direction = slot === 0 ? 0 : slot > 0 ? 1 : -1;
               const isActive = index === activeIndex;
               return (
                 <article
                   key={item.id}
                   className={`${styles.card} ${isActive ? styles.activeCard : ''} ${distance > 2 ? styles.hiddenCard : ''}`}
-                  style={{'--slot': slot, '--distance': distance} as CSSProperties}
+                  style={{'--slot': slot, '--distance': distance, '--direction': direction} as CSSProperties}
                   aria-hidden={!isActive}
                   data-active={isActive ? 'true' : 'false'}
                   data-legacy-id={item.id}
@@ -185,23 +270,35 @@ export function LegacyCarousel({items}: {items: LegacyItem[]}) {
             })}
           </div>
 
-          <button type="button" className={`${styles.arrow} ${styles.arrowRight}`} aria-label="Next legacy event" onClick={() => move(1)}>
-            <ArrowIcon direction="right" />
-          </button>
+          <div className={styles.controls} data-carousel-controls>
+            <button type="button" className={`${styles.arrow} ${styles.arrowLeft}`} aria-label="Previous legacy event" onClick={() => manualMove(-1)} disabled={controlsDisabled}>
+              <ArrowIcon direction="left" />
+            </button>
+
+            <div className={styles.pagination} aria-label="Select a legacy platform" data-pagination-count={items.length}>
+              {items.map((item, index) => (
+                <button
+                  type="button"
+                  key={item.id}
+                  aria-label={`Show ${item.title}`}
+                  aria-current={index === activeIndex ? 'true' : undefined}
+                  className={index === activeIndex ? styles.activeDot : ''}
+                  onClick={() => {
+                    clearResumeTimer();
+                    setPaused(true);
+                    setActiveIndex(index);
+                    resumeAfterInteraction(4000);
+                  }}
+                />
+              ))}
+            </div>
+
+            <button type="button" className={`${styles.arrow} ${styles.arrowRight}`} aria-label="Next legacy event" onClick={() => manualMove(1)} disabled={controlsDisabled}>
+              <ArrowIcon direction="right" />
+            </button>
+          </div>
         </div>
 
-        <div className={styles.pagination} aria-label="Select a legacy platform">
-          {items.map((item, index) => (
-            <button
-              type="button"
-              key={item.id}
-              aria-label={`Show ${item.title}`}
-              aria-current={index === activeIndex ? 'true' : undefined}
-              className={index === activeIndex ? styles.activeDot : ''}
-              onClick={() => setActiveIndex(index)}
-            />
-          ))}
-        </div>
         <p className={styles.liveStatus} aria-live="polite">{activeItem?.title}</p>
       </div>
     </section>

@@ -26,8 +26,10 @@ export function VoicesCarousel({items}: {items: VoiceItem[]}) {
   const [activeIndex, setActiveIndex] = useState(0);
   const pointerStart = useRef<{x: number; y: number} | null>(null);
   const item = items[activeIndex];
+  const controlsDisabled = items.length <= 1;
 
   const move = (direction: -1 | 1) => {
+    if (controlsDisabled) return;
     setActiveIndex((current) => (current + direction + items.length) % items.length);
   };
 
@@ -98,16 +100,12 @@ export function VoicesCarousel({items}: {items: VoiceItem[]}) {
           </div>
         </article>
 
-        {items.length > 1 ? (
-          <>
-            <button type="button" className={`${styles.arrow} ${styles.arrowLeft}`} aria-label="Previous voice" onClick={() => move(-1)}>
-              <ArrowIcon direction="left" />
-            </button>
-            <button type="button" className={`${styles.arrow} ${styles.arrowRight}`} aria-label="Next voice" onClick={() => move(1)}>
-              <ArrowIcon direction="right" />
-            </button>
-          </>
-        ) : null}
+        <button type="button" className={`${styles.arrow} ${styles.arrowLeft}`} aria-label="Previous voice" onClick={() => move(-1)} disabled={controlsDisabled}>
+          <ArrowIcon direction="left" />
+        </button>
+        <button type="button" className={`${styles.arrow} ${styles.arrowRight}`} aria-label="Next voice" onClick={() => move(1)} disabled={controlsDisabled}>
+          <ArrowIcon direction="right" />
+        </button>
       </div>
 
       <div className={styles.pagination} aria-label="Select a voice">

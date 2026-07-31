@@ -2,8 +2,7 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  min-height: 760px !important;
-  padding: clamp(4.5rem, 6vw, 7rem) clamp(1.5rem, 5vw, 6rem) clamp(4.5rem, 6vw, 6.5rem) !important;
+  padding: clamp(4rem, 4.5vw, 4.5rem) clamp(1.5rem, 5vw, 6rem);
   background: #020817;
   color: white;
 }
@@ -28,7 +27,7 @@
 
 .background::before {
   inset: 0;
-  opacity: 0.34;
+  opacity: 0.32;
   background-image: radial-gradient(circle, rgba(0, 139, 255, 0.9) 1px, transparent 1.5px);
   background-size: 18px 18px;
   mask-image: linear-gradient(90deg, black 0%, transparent 22%, transparent 79%, black 100%);
@@ -51,22 +50,69 @@
   box-shadow: inset 0 0 0 2px rgba(0, 217, 255, 0.72);
 }
 
+.slideStage {
+  position: relative;
+}
+
 .slide {
   display: grid;
-  min-height: clamp(38rem, 43vw, 47rem);
-  grid-template-columns: minmax(22rem, 42%) minmax(0, 1fr);
+  min-height: clamp(29rem, 36vw, 38rem);
+  grid-template-columns: minmax(19rem, 40%) minmax(0, 1fr);
   grid-template-rows: auto 1fr;
   grid-template-areas:
     'portrait header'
     'portrait quote';
-  column-gap: clamp(3rem, 6vw, 8rem);
+  column-gap: clamp(2.5rem, 5vw, 6rem);
   align-items: start;
+  will-change: transform, opacity;
+}
+
+.incomingForward {
+  animation: voice-in-forward 650ms cubic-bezier(.2,.78,.2,1) both;
+}
+
+.outgoingForward {
+  position: absolute;
+  inset: 0;
+  animation: voice-out-forward 650ms cubic-bezier(.2,.78,.2,1) both;
+  pointer-events: none;
+}
+
+.incomingBackward {
+  animation: voice-in-backward 650ms cubic-bezier(.2,.78,.2,1) both;
+}
+
+.outgoingBackward {
+  position: absolute;
+  inset: 0;
+  animation: voice-out-backward 650ms cubic-bezier(.2,.78,.2,1) both;
+  pointer-events: none;
+}
+
+@keyframes voice-in-forward {
+  from { opacity: 0; transform: translate3d(7%, 0, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes voice-out-forward {
+  from { opacity: 1; transform: translate3d(0, 0, 0); }
+  to { opacity: 0; transform: translate3d(-7%, 0, 0); }
+}
+
+@keyframes voice-in-backward {
+  from { opacity: 0; transform: translate3d(-7%, 0, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes voice-out-backward {
+  from { opacity: 1; transform: translate3d(0, 0, 0); }
+  to { opacity: 0; transform: translate3d(7%, 0, 0); }
 }
 
 .portrait {
   grid-area: portrait;
   align-self: stretch;
-  min-height: 38rem;
+  min-height: clamp(29rem, 36vw, 38rem);
   overflow: hidden;
   background-color: #020817;
   background-position: center bottom;
@@ -89,7 +135,7 @@
 
 .header {
   grid-area: header;
-  padding-top: clamp(2rem, 4vw, 5rem);
+  padding-top: clamp(1rem, 2.2vw, 2.5rem);
 }
 
 .eyebrow {
@@ -116,9 +162,9 @@
 
 .subtitle {
   max-width: 42rem;
-  margin: 1.2rem 0 0;
+  margin: clamp(1.15rem, 1.5vw, 1.4rem) 0 0;
   color: rgba(255, 255, 255, 0.74);
-  font-size: clamp(1rem, 1.23vw, 1.38rem);
+  font-size: clamp(1rem, 1.18vw, 1.32rem);
   font-weight: 400;
   line-height: 1.48;
   letter-spacing: -0.02em;
@@ -128,16 +174,16 @@
   grid-area: quote;
   align-self: center;
   min-width: 0;
-  padding: 1.4rem 2rem 1rem 2.25rem;
+  padding: 1rem 1.5rem 0.75rem 2rem;
   border-left: 2px solid #087cff;
   box-shadow: -10px 0 25px -19px rgba(0, 217, 255, 0.9);
 }
 
 .quoteMark {
-  height: 3.7rem;
+  height: 3.2rem;
   color: #0a5fe8;
   font-family: Georgia, serif;
-  font-size: 5.7rem;
+  font-size: 5.1rem;
   font-weight: 700;
   line-height: 0.9;
   text-shadow: 0 0 22px rgba(17, 95, 235, 0.46);
@@ -145,9 +191,9 @@
 
 .quote {
   max-width: 54rem;
-  margin: 1rem 0 0;
+  margin: 0.8rem 0 0;
   color: rgba(255, 255, 255, 0.91);
-  font-size: clamp(1.55rem, 2.05vw, 2.55rem);
+  font-size: clamp(1.42rem, 1.85vw, 2.25rem);
   font-weight: 400;
   line-height: 1.42;
   letter-spacing: -0.035em;
@@ -156,26 +202,26 @@
 }
 
 .longQuote {
-  font-size: clamp(1.3rem, 1.65vw, 2rem);
-  line-height: 1.43;
+  font-size: clamp(1.22rem, 1.5vw, 1.8rem);
+  line-height: 1.44;
 }
 
 .extraLongQuote {
-  font-size: clamp(1.08rem, 1.35vw, 1.65rem);
-  line-height: 1.46;
+  font-size: clamp(1.02rem, 1.25vw, 1.48rem);
+  line-height: 1.47;
 }
 
 .rule {
   width: min(42rem, 100%);
   height: 1px;
-  margin-top: 2rem;
+  margin-top: clamp(1.4rem, 1.8vw, 1.8rem);
   background: linear-gradient(90deg, #087cff, rgba(17, 95, 235, 0.34), transparent);
   box-shadow: 0 0 9px rgba(0, 217, 255, 0.62);
 }
 
 .signature {
   position: relative;
-  margin-top: 1.5rem;
+  margin-top: clamp(1.1rem, 1.5vw, 1.4rem);
   padding-left: 1.8rem;
 }
 
@@ -200,29 +246,35 @@
 }
 
 .signature p {
-  margin: 0.65rem 0 0;
+  margin: 0.55rem 0 0;
   color: #1481ff;
-  font-size: clamp(0.92rem, 1.05vw, 1.16rem);
+  font-size: clamp(0.9rem, 1vw, 1.12rem);
   line-height: 1.35;
 }
 
 .signature .organisation {
-  margin-top: 0.45rem;
+  margin-top: 0.4rem;
   color: rgba(255, 255, 255, 0.68);
+}
+
+.controls {
+  position: static;
 }
 
 .arrow {
   position: absolute;
-  top: 54%;
+  top: 50%;
   z-index: 5;
   display: grid;
-  width: clamp(3.2rem, 3.8vw, 4.4rem);
-  height: clamp(3.2rem, 3.8vw, 4.4rem);
+  width: clamp(3rem, 3.7vw, 4.2rem);
+  height: clamp(3rem, 3.7vw, 4.2rem);
+  min-width: 44px;
+  min-height: 44px;
   place-items: center;
   border: 1px solid rgba(126, 151, 255, 0.62);
   border-radius: 50%;
   color: white;
-  background: rgba(2, 8, 23, 0.78);
+  background: rgba(2, 8, 23, 0.82);
   box-shadow: 0 0 22px rgba(17, 95, 235, 0.24);
   cursor: pointer;
   transform: translateY(-50%);
@@ -244,6 +296,11 @@
   transform: translateY(-50%) scale(0.96);
 }
 
+.arrow:disabled {
+  cursor: default;
+  opacity: 0.42;
+}
+
 .arrow svg {
   width: 55%;
   height: 55%;
@@ -255,23 +312,24 @@
 }
 
 .arrowLeft {
-  left: -1rem;
+  left: -0.75rem;
 }
 
 .arrowRight {
-  right: -1rem;
+  right: -0.75rem;
 }
 
 .pagination {
   display: flex;
+  align-items: center;
   justify-content: center;
-  gap: 1.1rem;
-  margin: -1.5rem auto 0;
+  gap: clamp(0.72rem, 1vw, 1rem);
+  margin: clamp(1rem, 1.4vw, 1.25rem) auto 0;
 }
 
 .pagination button {
-  width: 0.78rem;
-  height: 0.78rem;
+  width: 0.72rem;
+  height: 0.72rem;
   padding: 0;
   border: 0;
   border-radius: 50%;
@@ -300,26 +358,45 @@
   clip-path: inset(50%);
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 1399px) {
+  :global(#voices-of-finant).section {
+    padding-block: clamp(3rem, 4vw, 3.5rem);
+  }
+
+  .slide,
+  .portrait {
+    min-height: clamp(27rem, 34vw, 31rem);
+  }
+
   .slide {
-    min-height: 42rem;
-    grid-template-columns: minmax(18rem, 42%) minmax(0, 1fr);
-    column-gap: 3rem;
+    grid-template-columns: minmax(17rem, 39%) minmax(0, 1fr);
+    column-gap: clamp(2rem, 4vw, 4rem);
+  }
+}
+
+@media (max-width: 1023px) {
+  :global(#voices-of-finant).section {
+    padding: 3rem 2rem;
+  }
+
+  .slide {
+    min-height: 29rem;
+    grid-template-columns: minmax(16rem, 40%) minmax(0, 1fr);
+    column-gap: 2rem;
   }
 
   .portrait {
-    min-height: 35rem;
+    min-height: 29rem;
   }
 
   .quote {
-    font-size: clamp(1.35rem, 2.35vw, 1.9rem);
+    font-size: clamp(1.22rem, 2.25vw, 1.7rem);
   }
 }
 
 @media (max-width: 767px) {
   :global(#voices-of-finant).section {
-    min-height: auto !important;
-    padding: 4.8rem 1.1rem 5.2rem !important;
+    padding: clamp(2.25rem, 10vw, 2.75rem) 1.05rem;
   }
 
   .background {
@@ -348,7 +425,7 @@
   }
 
   .header {
-    padding: 0 0.7rem;
+    padding: 0 0.55rem;
   }
 
   .eyebrow {
@@ -364,69 +441,80 @@
   .subtitle {
     max-width: 32rem;
     margin-top: 1.2rem;
-    font-size: clamp(1rem, 4.35vw, 1.18rem);
+    font-size: clamp(0.98rem, 4.2vw, 1.14rem);
     line-height: 1.55;
   }
 
   .portrait {
     width: 100%;
-    min-height: 31rem;
-    margin-top: 1rem;
+    min-height: clamp(25rem, 116vw, 29rem);
+    margin-top: 0.75rem;
     background-position: center bottom;
     background-size: contain;
     mask-image: linear-gradient(to bottom, black 0 76%, transparent 100%);
   }
 
   .quoteBlock {
-    margin-top: -2.4rem;
-    padding: 0 0.75rem 0 1.1rem;
+    margin-top: -2rem;
+    padding: 0 0.65rem 0 1rem;
     border-left: 0;
     box-shadow: none;
   }
 
   .quoteMark {
-    height: 4.2rem;
-    font-size: 6.2rem;
+    height: 3.7rem;
+    font-size: 5.7rem;
   }
 
   .quote {
     margin-top: 0.35rem;
-    font-size: clamp(1.52rem, 6.7vw, 2rem);
+    font-size: clamp(1.4rem, 6.2vw, 1.82rem);
     line-height: 1.48;
   }
 
   .longQuote {
-    font-size: clamp(1.25rem, 5.45vw, 1.62rem);
+    font-size: clamp(1.18rem, 5.15vw, 1.5rem);
     line-height: 1.5;
   }
 
   .extraLongQuote {
-    font-size: clamp(1.08rem, 4.75vw, 1.38rem);
+    font-size: clamp(1.02rem, 4.45vw, 1.28rem);
     line-height: 1.52;
   }
 
   .rule {
-    margin-top: 1.75rem;
+    margin-top: 1.5rem;
   }
 
   .signature {
-    margin-top: 1.45rem;
-    padding-left: 1.65rem;
+    margin-top: 1.25rem;
+    padding-left: 1.55rem;
   }
 
   .signature h3 {
-    font-size: clamp(1.55rem, 6.4vw, 2rem);
+    font-size: clamp(1.45rem, 6vw, 1.85rem);
   }
 
   .signature p {
-    font-size: clamp(1rem, 4.35vw, 1.18rem);
+    font-size: clamp(0.96rem, 4.1vw, 1.1rem);
+  }
+
+  .controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(0.9rem, 4vw, 1.25rem);
+    width: min(calc(100% - 1rem), 28rem);
+    margin: clamp(1rem, 4.5vw, 1.25rem) auto 0;
   }
 
   .arrow {
-    top: auto;
-    bottom: -4.8rem;
-    width: 4rem;
-    height: 4rem;
+    position: static;
+    flex: 0 0 44px;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
     transform: none;
   }
 
@@ -434,31 +522,31 @@
     transform: scale(0.96);
   }
 
-  .arrowLeft {
-    left: 0.2rem;
-  }
-
-  .arrowRight {
-    right: 0.2rem;
-  }
-
   .pagination {
-    margin-top: 2.7rem;
-    gap: 1.15rem;
+    flex: 0 1 auto;
+    gap: clamp(0.58rem, 2.8vw, 0.82rem);
+    margin: 0;
   }
 }
 
 @media (max-width: 390px) {
   .portrait {
-    min-height: 28rem;
+    min-height: 25rem;
   }
 
   .quoteBlock {
-    margin-top: -2rem;
+    margin-top: -1.8rem;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .incomingForward,
+  .outgoingForward,
+  .incomingBackward,
+  .outgoingBackward {
+    animation: none;
+  }
+
   .arrow,
   .pagination button {
     transition: none;

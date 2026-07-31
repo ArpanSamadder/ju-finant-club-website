@@ -23,9 +23,9 @@ try {
     try {
       await page.goto(baseUrl, {waitUntil: 'networkidle'});
       const hero = page.locator('section[aria-labelledby="homepage-hero-title"]');
-      const heading = page.getByRole('heading', {name: 'Building Future-Ready Professionals.'});
-      const primaryCta = page.getByRole('link', {name: 'Explore FinAnt'});
-      const currentEvent = page.getByRole('link', {name: /Biztigation 2\.0/i});
+      const heading = hero.getByRole('heading', {name: 'Building Future-Ready Professionals.'});
+      const primaryCta = hero.getByRole('link', {name: 'Explore FinAnt'});
+      const currentEvent = hero.getByRole('link', {name: /Biztigation 2\.0/i});
 
       await hero.waitFor({state: 'visible'});
       assert(await heading.isVisible(), `${width}px: Hero headline is visible`);
@@ -41,8 +41,10 @@ try {
       const heroBox = await hero.boundingBox();
       assert(Boolean(heroBox && heroBox.width <= width + 1 && heroBox.height > 0), `${width}px: Hero stays inside viewport`);
 
-      const imageSource = await page.locator('section[aria-labelledby="homepage-hero-title"] picture img').getAttribute('src');
-      assert(imageSource === '/images/hero/hero-desktop.webp', `${width}px: Hero fallback image reference is valid`);
+      const artwork = hero.locator('picture img');
+      const currentSource = await artwork.evaluate((image) => image.currentSrc);
+      const expectedAsset = width <= 767 ? 'hero-mobile.' : 'hero-desktop.';
+      assert(currentSource.includes(expectedAsset), `${width}px: correct responsive Hero artwork is selected`);
 
       await page.screenshot({path: `${outputDir}/hero-${width}.png`, fullPage: false});
     } finally {

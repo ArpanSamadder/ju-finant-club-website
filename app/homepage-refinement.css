@@ -1,0 +1,50 @@
+/* Focused below-the-fold spacing guardrails. Navbar and Hero are intentionally excluded. */
+#legacy-foundation,
+#our-identity,
+#voices-of-finant,
+#partners-collaborators,
+#partner-with-us {
+  min-height: 0 !important;
+}
+
+#our-identity,
+#partner-with-us {
+  padding-top: clamp(4rem, 4.5vw, 4.5rem) !important;
+  padding-bottom: clamp(4rem, 4.5vw, 4.5rem) !important;
+}
+
+#our-identity [class*="capabilitySystem"] {
+  margin-top: clamp(2rem, 2.6vw, 2.5rem) !important;
+}
+
+#partner-with-us > div:last-child > div:last-child {
+  margin-top: clamp(2rem, 2.8vw, 2.5rem) !important;
+}
+
+@media (max-width: 1399px) {
+  #our-identity,
+  #partner-with-us {
+    padding-top: clamp(3rem, 4vw, 3.5rem) !important;
+    padding-bottom: clamp(3rem, 4vw, 3.5rem) !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  #our-identity,
+  #partner-with-us {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+}
+
+@media (max-width: 767px) {
+  #our-identity,
+  #partner-with-us {
+    padding-top: clamp(2.25rem, 10vw, 2.75rem) !important;
+    padding-bottom: clamp(2.25rem, 10vw, 2.75rem) !important;
+  }
+
+  #our-identity [class*="capabilitySystem"] {
+    margin-top: 2rem !important;
+  }
+}
